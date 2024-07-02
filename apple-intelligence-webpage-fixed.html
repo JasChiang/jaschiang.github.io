@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apple Intelligence 系統架構</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        h1 {
+            color: #0070c9;
+            text-align: center;
+        }
+        .architecture-container {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            padding: 20px;
+            margin-top: 20px;
+        }
+        svg {
+            width: 100%;
+            height: auto;
+        }
+        .info-box {
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 10px;
+            margin-top: 10px;
+            font-size: 14px;
+        }
+        .info-box h4 {
+            margin-top: 0;
+        }
+        .feature-list {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+        .feature-item {
+            display: flex;
+            align-items: center;
+            margin: 5px;
+        }
+        .feature-item svg {
+            width: 20px;
+            height: 20px;
+            margin-right: 5px;
+        }
+        .highlight {
+            transition: opacity 0.3s ease;
+        }
+    </style>
+</head>
+<body>
+    <h1>Apple Intelligence 系統架構</h1>
+    <div class="architecture-container">
+        <svg viewBox="0 0 800 750" id="architecture-svg">
+            <!-- System-wide experiences -->
+            <g>
+                <rect x="50" y="20" width="700" height="120" rx="10" fill="#f0f0f0" stroke="#000" />
+                <text x="400" y="45" text-anchor="middle" font-size="18" font-weight="bold">系統級體驗</text>
+                
+                <!-- Siri, Writing Tools, Image Playground -->
+                <rect x="100" y="60" width="150" height="30" rx="5" fill="#d1e8ff" stroke="#000" class="highlight" data-index="0" />
+                <text x="175" y="80" text-anchor="middle" font-size="14" font-weight="bold">Siri</text>
+                
+                <rect x="325" y="60" width="150" height="30" rx="5" fill="#ffe8d1" stroke="#000" class="highlight" data-index="1" />
+                <text x="400" y="80" text-anchor="middle" font-size="14" font-weight="bold">書寫工具</text>
+                
+                <rect x="550" y="60" width="150" height="30" rx="5" fill="#d1ffe8" stroke="#000" class="highlight" data-index="2" />
+                <text x="625" y="80" text-anchor="middle" font-size="14" font-weight="bold">Image Playground</text>
+
+                <!-- Apps -->
+                <text x="100" y="110" font-size="14" font-weight="bold">Apps</text>
+                <rect x="150" y="95" width="500" height="30" rx="5" fill="#e0e0e0" stroke="#000" />
+                <text x="400" y="115" text-anchor="middle" font-size="12">Messages, Mail, Notes, Photos, ...</text>
+
+                <circle cx="730" cy="30" r="10" fill="#0070c9" class="info-icon" data-info="systemExperiences" />
+                <text x="730" y="35" text-anchor="middle" font-size="14" fill="white" pointer-events="none">i</text>
+            </g>
+
+            <!-- Personal Intelligence System -->
+            <g>
+                <rect x="50" y="160" width="700" height="120" rx="10" fill="#e6f2ff" stroke="#000" />
+                <text x="400" y="180" text-anchor="middle" font-size="18" font-weight="bold">個人智能系統</text>
+                <rect x="100" y="200" width="200" height="60" rx="5" fill="#b3d9ff" />
+                <text x="200" y="235" text-anchor="middle" font-size="14">語義索引</text>
+                <rect x="500" y="200" width="200" height="60" rx="5" fill="#b3d9ff" />
+                <text x="600" y="235" text-anchor="middle" font-size="14">App Intents 工具箱</text>
+                <circle cx="730" cy="170" r="10" fill="#0070c9" class="info-icon" data-info="personalIntelligence" />
+                <text x="730" y="175" text-anchor="middle" font-size="14" fill="white" pointer-events="none">i</text>
+            </g>
+
+            <!-- Orchestration -->
+            <g>
+                <rect x="250" y="300" width="300" height="40" rx="10" fill="#d9d9d9" stroke="#000" />
+                <text x="400" y="325" text-anchor="middle" font-size="14">協調</text>
+                <circle cx="560" cy="320" r="10" fill="#0070c9" class="info-icon" data-info="orchestration" />
+                <text x="560" y="325" text-anchor="middle" font-size="14" fill="white" pointer-events="none">i</text>
+            </g>
+
+            <!-- On-device models and Private Cloud Compute -->
+            <g>
+                <rect x="50" y="360" width="300" height="180" rx="10" fill="#ffe6e6" stroke="#000" />
+                <text x="200" y="390" text-anchor="middle" font-size="18" font-weight="bold">設備內模型</text>
+                <rect x="80" y="410" width="240" height="40" rx="5" fill="#ffb3b3" />
+                <text x="200" y="435" text-anchor="middle" font-size="14">語言</text>
+                <rect x="80" y="460" width="240" height="40" rx="5" fill="#ffb3b3" />
+                <text x="200" y="485" text-anchor="middle" font-size="14">圖像</text>
+                <circle cx="330" cy="370" r="10" fill="#0070c9" class="info-icon" data-info="onDeviceModels" />
+                <text x="330" y="375" text-anchor="middle" font-size="14" fill="white" pointer-events="none">i</text>
+
+                <rect x="450" y="360" width="300" height="180" rx="10" fill="#e6ffe6" stroke="#000" />
+                <text x="600" y="390" text-anchor="middle" font-size="18" font-weight="bold">私有雲計算</text>
+                <rect x="480" y="410" width="240" height="90" rx="5" fill="#b3ffb3" />
+                <text x="600" y="455" text-anchor="middle" font-size="14">伺服器模型</text>
+                <circle cx="730" cy="370" r="10" fill="#0070c9" class="info-icon" data-info="privateCloudCompute" />
+                <text x="730" y="375" text-anchor="middle" font-size="14" fill="white" pointer-events="none">i</text>
+            </g>
+
+            <!-- Apple silicon -->
+            <g>
+                <rect x="50" y="560" width="700" height="80" rx="10" fill="#f0f0f0" stroke="#000" />
+                <text x="400" y="590" text-anchor="middle" font-size="18" font-weight="bold">Apple 晶片</text>
+                <text x="150" y="620" font-size="14">CPU</text>
+                <text x="300" y="620" font-size="14">GPU</text>
+                <text x="450" y="620" font-size="14">Neural Engine</text>
+                <text x="650" y="620" font-size="14">Secure Enclave</text>
+                <circle cx="730" cy="570" r="10" fill="#0070c9" class="info-icon" data-info="appleSilicon" />
+                <text x="730" y="575" text-anchor="middle" font-size="14" fill="white" pointer-events="none">i</text>
+            </g>
+
+            <!-- ChatGPT -->
+            <g>
+                <rect x="250" y="660" width="300" height="60" rx="10" fill="#ffd700" stroke="#000" />
+                <text x="400" y="695" text-anchor="middle" font-size="16" font-weight="bold">ChatGPT (第三方服務)</text>
+                <circle cx="530" cy="670" r="10" fill="#0070c9" class="info-icon" data-info="chatGPT" />
+                <text x="530" y="675" text-anchor="middle" font-size="14" fill="white" pointer-events="none">i</text>
+            </g>
+
+            <!-- Arrows -->
+            <g>
+                <path d="M400 140 L400 160" stroke="#000" stroke-width="2" marker-end="url(#arrowhead)" />
+                <path d="M400 280 L400 300" stroke="#000" stroke-width="2" marker-end="url(#arrowhead)" />
+                <path d="M400 340 L250 360" stroke="#000" stroke-width="2" marker-end="url(#arrowhead)" />
+                <path d="M400 340 L550 360" stroke="#000" stroke-width="2" marker-end="url(#arrowhead)" />
+                <path d="M200 540 L200 560" stroke="#000" stroke-width="2" marker-end="url(#arrowhead)" />
+                <path d="M600 540 L600 560" stroke="#000" stroke-width="2" marker-end="url(#arrowhead)" />
+                <path d="M400 340 L400 660" stroke="#000" stroke-width="2" stroke-dasharray="5,5" marker-end="url(#arrowhead)" />
+            </g>
+
+            <!-- Arrow definition -->
+            <defs>
+                <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="0" refY="3.5" orient="auto">
+                    <polygon points="0 0, 10 3.5, 0 7" fill="#000" />
+                </marker>
+            </defs>
+        </svg>
+        <div id="info-box" class="info-box" style="display: none;">
+            <h4 id="info-title"></h4>
+            <p id="info-content"></p>
+        </div>
+    </div>
+    <div class="feature-list">
+        <div class="feature-item">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+            <span>隱私優先</span>
+        </div>
+        <div class="feature-item">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+            <span>自然語言交互</span>
+        </div>
+        <div class="feature-item">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18"></rect><line x1="7" y1="2" x2="7" y2="22"></line><line x1="17" y1="2" x2="17" y2="22"></line><line x1="2" y1="12" x2="22" y2="12"></line><line x1="2" y1="7" x2="7" y2="7"></line><line x1="2" y1="17" x2="7" y2="17"></line><line x1="17" y1="17" x2="22" y2="17"></line><line x1="17" y1="7" x2="22" y2="7"></line></svg>
+            <span>圖像生成</span>
+        </div>
+        <div class="feature-item">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"></path><circle cx="6" cy="18" r="3"></circle><circle cx="18" cy="16" r="3"></circle></svg>
+            <span>音頻處理</span>
+        </div>
+    </div>
+
+    <script>
+        const infoData = {
+            systemExperiences: {
+                title: "系統級體驗",
+                content: "包括Siri、書寫工具和Image Playground等核心功能，以及各種Apps。Siri提供更自然的語言交互，書寫工具協助文本創作和編輯，Image Playground則用於圖像生成和編輯。這些功能深度整合到系
