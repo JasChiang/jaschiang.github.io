@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apple Intelligence 系統架構</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        h1 {
+            color: #0070c9;
+            text-align: center;
+        }
+        .architecture-container {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            padding: 20px;
+            margin-top: 20px;
+            position: relative;
+        }
+        svg {
+            width: 100%;
+            height: auto;
+        }
+        .info-box {
+            background-color: #f0f8ff;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 10px;
+            margin-top: 10px;
+            font-size: 14px;
+        }
+        .info-box h4 {
+            margin-top: 0;
+            color: #0070c9;
+        }
+        .feature-list {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+        .feature-item {
+            display: flex;
+            align-items: center;
+            margin: 5px;
+        }
+        .feature-item svg {
+            width: 20px;
+            height: 20px;
+            margin-right: 5px;
+        }
+        .highlight {
+            transition: opacity 0.3s ease;
+        }
+        .animation-path {
+            stroke-dasharray: 5;
+            animation: dash 20s linear infinite;
+        }
+        @keyframes dash {
+            to {
+                stroke-dashoffset: 1000;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Apple Intelligence 系統架構</h1>
+    <div class="architecture-container">
+        <svg viewBox="0 0 800 750" id="architecture-svg">
+            <!-- System-wide experiences -->
+            <g>
+                <rect x="50" y="20" width="700" height="120" rx="10" fill="#f0f0f0" stroke="#000" />
+                <text x="400" y="45" text-anchor="middle" font-size="18" font-weight="bold">系統級體驗</text>
+                
+                <rect x="100" y="60" width="150" height="30" rx="5" fill="#d1e8ff" stroke="#000" class="highlight" data-index="0" />
+                <text x="175" y="80" text-anchor="middle" font-size="14" font-weight="bold">Siri</text>
+                
+                <rect x="325" y="60" width="150" height="30" rx="5" fill="#ffe8d1" stroke="#000" class="highlight" data-index="1" />
+                <text x="400" y="80" text-anchor="middle" font-size="14" font-weight="bold">Writing Tools</text>
+                
+                <rect x="550" y="60" width="150" height="30" rx="5" fill="#d1ffe8" stroke="#000" class="highlight" data-index="2" />
+                <text x="625" y="80" text-anchor="middle" font-size="14" font-weight="bold">Image Playground</text>
+
+                <text x="100" y="110" font-size="14" font-weight="bold">Apps</text>
+                <rect x="150" y="95" width="500" height="30" rx="5" fill="#e0e0e0" stroke="#000" />
+                <text x="400" y="115" text-anchor="middle" font-size="12">Messages, Mail, Notes, Photos, ...</text>
+            </g>
+
+            <!-- Personal Intelligence System -->
+            <g>
+                <rect x="50" y="160" width="700" height="120" rx="10" fill="#e6f2ff" stroke="#000" />
+                <text x="400" y="180" text-anchor="middle" font-size="18" font-weight="bold">個人智能系統</text>
+                <rect x="100" y="200" width="200" height="60" rx="5" fill="#b3d9ff" />
+                <text x="200" y="235" text-anchor="middle" font-size="14">語義索引</text>
+                <rect x="500" y="200" width="200" height="60" rx="5" fill="#b3d9ff" />
+                <text x="600" y="235" text-anchor="middle" font-size="14">App Intents 工具箱</text>
+            </g>
+
+            <!-- Orchestration -->
+            <g>
+                <rect x="250" y="300" width="300" height="40" rx="10" fill="#d9d9d9" stroke="#000" />
+                <text x="400" y="325" text-anchor="middle" font-size="14">協調</text>
+            </g>
+
+            <!-- On-device models and Private Cloud Compute -->
+            <g>
+                <rect x="50" y="360" width="300" height="180" rx="10" fill="#ffe6e6" stroke="#000" />
+                <text x="200" y="390" text-anchor="middle" font-size="18" font-weight="bold">設備內模型</text>
+                <rect x="80" y="410" width="240" height="40" rx="5" fill="#ffb3b3" />
+                <text x="200" y="435" text-anchor="middle" font-size="14">語言</text>
+                <rect x="80" y="460" width="240" height="40" rx="5" fill="#ffb3b3" />
+                <text x="200" y="485" text-anchor="middle" font-size="14">圖像</text>
+
+                <rect x="450" y="360" width="300" height="180" rx="10" fill="#e6ffe6" stroke="#000" />
+                <text x="600" y="390" text-anchor="middle" font-size="18" font-weight="bold">私有雲計算</text>
+                <rect x="480" y="410" width="240" height="90" rx="5" fill="#b3ffb3" />
+                <text x="600" y="455" text-anchor="middle" font-size="14">伺服器模型</text>
+            </g>
+
+            <!-- Apple silicon -->
+            <g>
+                <rect x="50" y="560" width="700" height="80" rx="10" fill="#f0f0f0" stroke="#000" />
+                <text x="400" y="590" text-anchor="middle" font-size="18" font-weight="bold">Apple 晶片</text>
+                <text x="150" y="620" font-size="14">CPU</text>
+                <text x="300" y="620" font-size="14">GPU</text>
+                <text x="450" y="620" font-size="14">Neural Engine</text>
+                <text x="650" y="620" font-size="14">Secure Enclave</text>
+            </g>
+
+            <!-- Animation paths -->
+            <path d="M200 260 L200 300 L400 300 L400 340 L200 360" fill="none" stroke="#0070c9" stroke-width="2" class="animation-path" />
+            <path d="M600 260 L600 300 L400 300 L400 340 L600 360" fill="none" stroke="#0070c9" stroke-width="2" class="animation-path" />
+            <path d="M200 540 L200 560" fill="none" stroke="#0070c9" stroke-width="2" class="animation-path" />
+            <path d="M600 540 L600 560" fill="none" stroke="#0070c9" stroke-width="2" class="animation-path" />
+        </svg>
+        <div class="info-box">
+            <h4>系統架構說明</h4>
+            <p>Apple Intelligence 是一個深度整合的個人智能系統,它利用強大的生成式模型來提供各種智能功能。系統包括以下主要組件:</p>
+            <ul>
+                <li><strong>系統級體驗:</strong> 包括 Siri、Writing Tools 和 Image Playground 等核心功能,以及各種 Apps。</li>
+                <li><strong>個人智能系統:</strong> 包含語義索引和 App Intents 工具箱,用於理解和組織用戶的個人信息。</li>
+                <li><strong>協調層:</strong> 負責協調各個組件之間的交互。</li>
+                <li><strong>設備內模型:</strong> 包括語言和圖像處理模型,直接在設備上運行。</li>
+                <li><strong>私有雲計算:</strong> 用於處理更複雜的任務,確保用戶數據的隱私和安全。</li>
+                <li><strong>Apple 晶片:</strong> 為整個系統提供強大的硬件支持,包括 CPU、GPU、Neural Engine 和 Secure Enclave。</li>
+            </ul>
+        </div>
+    </div>
+    <div class="feature-list">
+        <div class="feature-item">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+            <span>隱私優先</span>
+        </div>
+        <div class="feature-item">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+            <span>自然語言交互</span>
+        </div>
+        <div class="feature-item">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18"></rect><line x1="7" y1="2" x2="7" y2="22"></line><line x1="17" y1="2" x2="17" y2="22"></line><line x1="2" y1="12" x2="22" y2="12"></line><line x1="2" y1="7" x2="7" y2="7"></line><line x1="2" y1="17" x2="7" y2="17"></line><line x1="17" y1="17" x2="22" y2="17"></line><line x1="17" y1="7" x2="22" y2="7"></line></svg>
+            <span>圖像生成</span>
+        </div>
+        <div class="feature-item">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"></path><circle cx="6" cy="18" r="3"></circle><circle cx="18" cy="16" r="3"></circle></svg>
+            <span>音頻處理</span>
+        </div>
+    </div>
+    <script>
+        // 這裡可以添加一些 JavaScript 代碼來實現更複雜的動畫效果
+    </script>
+</body>
+</html>
