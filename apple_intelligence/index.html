@@ -69,18 +69,6 @@
             padding: 10px;
             margin-top: 20px;
         }
-        .counter-container {
-            text-align: center;
-            padding: 20px;
-            background-color: white;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-        #visit-count {
-            font-size: 1em;
-            font-weight: bold;
-            color: #0066cc;
-        }
     </style>
 </head>
 <body>
@@ -441,24 +429,5 @@
         <li>ChatGPT 訂閱戶可以連結帳號，使用付費功能。</li>
     </ul>
 </div>
-<div class="counter-container">
-        <div id="visit-count">載入中...</div>
-    </div>
-    <script>
-        const countElement = document.getElementById('visit-count');
-        
-        const countUrl = 'https://api.countapi.xyz/hit/jaschiang.github.io/apple_intelligence';
-
-        fetch(countUrl)
-            .then(response => response.json())
-            .then(data => {
-                countElement.textContent = data.value;
-            })
-            .catch(error => {
-                console.error('訪問計數錯誤:', error);
-                countElement.textContent = '無法載入';
-            });
-    </script>
-</body>
 </body>
 </html>
