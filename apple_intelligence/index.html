@@ -25,7 +25,7 @@
             margin-top: 20px;
         }
         svg {
-            width: 100%;
+            width: auto;
             height: auto;
         }
         .info-box {
@@ -63,7 +63,7 @@
             height: 20px;
             margin-right: 5px;
         }
-                .chatgpt-box {
+        .chatgpt-box {
             background-color: #ffd700;
             border-radius: 8px;
             padding: 10px;
@@ -239,7 +239,6 @@
         <circle cx="20" cy="65" r="4" fill="#22d3ee" />
         <circle cx="50" cy="75" r="4" fill="#22d3ee" />
     </g>
-</g>
 
 <!-- Server Model -->
 <g>
@@ -307,7 +306,7 @@
         <circle cx="30" cy="50" r="4" fill="#4ade80" />
         <circle cx="60" cy="65" r="4" fill="#22d3ee" />
         <circle cx="0" cy="65" r="4" fill="#22d3ee" />
-        <circle cx="30" cy="75" r="4" fill="#22d3ee" />    </g></g>
+        <circle cx="30" cy="75" r="4" fill="#22d3ee" /></g>
         <!-- Apple silicon -->
         <g>
 <rect x="50" y="560" width="700" height="80" rx="10" fill="#f0f0f0" stroke="#000" />
@@ -348,16 +347,63 @@
             <path d="M600 540 L600 560" fill="none" stroke="#0070c9" stroke-width="2" class="animation-path" />
             <!-- 新增從協調到 ChatGPT 的路徑 -->
 <path d="M250 320 L30 320 L30 690 L250 690" fill="none" stroke="#0070c9" stroke-width="2" stroke-dasharray="5,5" class="animation-path" />
-
-
-        </svg>
+</svg>
 
     
 <div class="info-box">
     <h3>Foundation Models 和 Adapters 說明</h3>
+<!-- Foundation Models 說明-->
+<svg viewBox="0 0 100 100" width="50" height="50">
+    <defs>
+        <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" style="stop-color:#4ade80;stop-opacity:1" />
+            <stop offset="100%" style="stop-color:#22d3ee;stop-opacity:1" />
+        </linearGradient>
+    </defs>
+        <g transform="translate(0, 20)">
+        <!-- Lines-->
+        <line x1="50" y1="25" x2="80" y2="35" stroke="url(#gradient)" stroke-width="1.5" />
+        <line x1="50" y1="25" x2="20" y2="35" stroke="url(#gradient)" stroke-width="1.5" />
+        <line x1="50" y1="25" x2="80" y2="65" stroke="url(#gradient)" stroke-width="1.5" />
+        <line x1="50" y1="25" x2="20" y2="65" stroke="url(#gradient)" stroke-width="1.5" />
+        <line x1="50" y1="25" x2="50" y2="50" stroke="url(#gradient)" stroke-width="1.5" />
+        <line x1="50" y1="25" x2="50" y2="75" stroke="url(#gradient)" stroke-width="1.5" />
+        <line x1="80" y1="35" x2="20" y2="35" stroke="url(#gradient)" stroke-width="1.5" />
+        <line x1="80" y1="35" x2="50" y2="50" stroke="url(#gradient)" stroke-width="1.5" />
+        <line x1="80" y1="35" x2="80" y2="65" stroke="url(#gradient)" stroke-width="1.5" />
+        <line x1="80" y1="35" x2="20" y2="65" stroke="url(#gradient)" stroke-width="1.5" />
+        <line x1="80" y1="35" x2="50" y2="75" stroke="url(#gradient)" stroke-width="1.5" />
+        <line x1="20" y1="35" x2="50" y2="50" stroke="url(#gradient)" stroke-width="1.5" />
+        <line x1="20" y1="35" x2="80" y2="65" stroke="url(#gradient)" stroke-width="1.5" />
+        <line x1="20" y1="35" x2="20" y2="65" stroke="url(#gradient)" stroke-width="1.5" />
+        <line x1="20" y1="35" x2="50" y2="75" stroke="url(#gradient)" stroke-width="1.5" />
+        <line x1="50" y1="50" x2="80" y2="65" stroke="url(#gradient)" stroke-width="1.5" />
+        <line x1="50" y1="50" x2="20" y2="65" stroke="url(#gradient)" stroke-width="1.5" />
+        <line x1="50" y1="50" x2="50" y2="75" stroke="url(#gradient)" stroke-width="1.5" />
+        <line x1="80" y1="65" x2="20" y2="65" stroke="url(#gradient)" stroke-width="1.5" />
+        <line x1="80" y1="65" x2="50" y2="75" stroke="url(#gradient)" stroke-width="1.5" />
+        <line x1="20" y1="65" x2="50" y2="75" stroke="url(#gradient)" stroke-width="1.5" />
+        
+        <!-- Nodes -->
+        <circle cx="50" cy="25" r="4" fill="#4ade80" />
+        <circle cx="80" cy="35" r="4" fill="#4ade80" />
+        <circle cx="20" cy="35" r="4" fill="#4ade80" />
+        <circle cx="50" cy="50" r="4" fill="#4ade80" />
+        <circle cx="80" cy="65" r="4" fill="#22d3ee" />
+        <circle cx="20" cy="65" r="4" fill="#22d3ee" />
+        <circle cx="50" cy="75" r="4" fill="#22d3ee" />
+    </g>
+
+</svg>
     <p><strong>Foundation Models：</strong>這些是大型預訓練模型，為 Apple Intelligence 提供基礎能力。設備內模型包括語言和影像兩個部分，每個約有 30 億參數，而伺服器模型更大，可以處理更複雜的任務。</p>
-    <p><strong>Adapters：</strong>這些是小型神經網路模組，可以動態加載到 Foundation Models 中，使模型能夠適應特定任務，如文本摘要、校對或生成郵件回覆等。這種方法既保留了原始模型的通用知識，又能高效地處理各種特定任務。</p>
+    <p>
+       <svg width="0" height="30">
+    <rect x="0" y="10" width="60" height="10" fill="#33a1ff" />
+     <rect x="70" y="10" width="60" height="10" fill=" #4CAF50" />
+</svg>
+<br><strong>Adapters：</strong>這些是小型神經網路模組，可以動態加載到 Foundation Models 中，使模型能夠適應特定任務，如文本摘要、校對或生成郵件回覆等。這種方法既保留了原始模型的通用知識，又能高效地處理各種特定任務。</br></p>
 </div>
+
 <div class="info-box">
 <h4>系統架構說明</h4>
 <p>Apple Intelligence 是一個深度整合的個人智慧系統，它利用強大的生成式模型來提供各種智慧功能。系統包括以下主要組件：</p>
