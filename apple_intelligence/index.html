@@ -3,29 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Apple Intelligence 系統架構</title>
+    <title>Apple Intelligence：架構解析</title>
     <style>
-        /* 保留之前的樣式 */
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             line-height: 1.6;
             color: #333;
-            max-width: 900px;
+            max-width: 1000px;
             margin: 0 auto;
             padding: 20px;
             background-color: #f4f4f4;
         }
-        h1 {
+        h1, h2 {
             color: #0070c9;
-            text-align: center;
         }
-        .architecture-container {
+        .container {
             background-color: white;
             border-radius: 8px;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
             padding: 20px;
             margin-top: 20px;
-            position: relative;
         }
         svg {
             width: 100%;
@@ -35,13 +32,20 @@
             background-color: #f0f8ff;
             border: 1px solid #ddd;
             border-radius: 4px;
-            padding: 10px;
-            margin-top: 10px;
-            font-size: 14px;
+            padding: 15px;
+            margin-top: 20px;
         }
-        .info-box h4 {
-            margin-top: 0;
-            color: #0070c9;
+        .highlight {
+            transition: opacity 0.3s ease;
+        }
+        .animation-path {
+            stroke-dasharray: 5;
+            animation: dash 20s linear infinite;
+        }
+        @keyframes dash {
+            to {
+                stroke-dashoffset: 1000;
+            }
         }
         .feature-list {
             display: flex;
@@ -59,20 +63,7 @@
             height: 20px;
             margin-right: 5px;
         }
-        .highlight {
-            transition: opacity 0.3s ease;
-        }
-        .animation-path {
-            stroke-dasharray: 5;
-            animation: dash 20s linear infinite;
-        }
-        @keyframes dash {
-            to {
-                stroke-dashoffset: 1000;
-            }
-        }
-        /* 新增樣式 */
-        .chatgpt-box {
+                .chatgpt-box {
             background-color: #ffd700;
             border-radius: 8px;
             padding: 10px;
@@ -81,10 +72,11 @@
     </style>
 </head>
 <body>
-    <h1>Apple Intelligence 系統架構</h1>
-    <div class="architecture-container">
+    <h1>Apple Intelligence：架構解析</h1>
+    以 Claude 3.5 Sonnet 與 GPT-4o 生成並人工微調
+    
+    <div class="container">
         <svg viewBox="0 0 800 800" id="architecture-svg">
-            <!-- 保留之前的系統組件 -->
             <!-- System-wide experiences -->
             <g>
                 <rect x="50" y="20" width="700" height="120" rx="10" fill="#f0f0f0" stroke="#000" />
@@ -93,117 +85,297 @@
                 <rect x="100" y="60" width="150" height="30" rx="5" fill="#d1e8ff" stroke="#000" class="highlight" data-index="0" />
                 <text x="175" y="80" text-anchor="middle" font-size="14" font-weight="bold">Siri</text>
                 
-                <rect x="325" y="60" width="150" height="30" rx="5" fill="#ffe8d1" stroke="#000" class="highlight" data-index="1" />
-                <text x="400" y="80" text-anchor="middle" font-size="14" font-weight="bold">Writing Tools</text>
+                <rect x="260" y="60" width="150" height="30" rx="5" fill="#ffe8d1" stroke="#000" class="highlight" data-index="1" />
+                <text x="335" y="80" text-anchor="middle" font-size="14" font-weight="bold">Writing Tools</text>
                 
-                <rect x="550" y="60" width="150" height="30" rx="5" fill="#d1ffe8" stroke="#000" class="highlight" data-index="2" />
-                <text x="625" y="80" text-anchor="middle" font-size="14" font-weight="bold">Image Playground</text>
+                <rect x="420" y="60" width="150" height="30" rx="5" fill="#d1ffe8" stroke="#000" class="highlight" data-index="2" />
+                <text x="495" y="80" text-anchor="middle" font-size="14" font-weight="bold">Image Playground</text>
+                
+                <rect x="580" y="60" width="30" height="30" rx="5" fill="#e0e0e0" stroke="#000" />
+                <text x="595" y="80" text-anchor="middle" font-size="14" font-weight="bold">...</text>
 
                 <text x="100" y="110" font-size="14" font-weight="bold">Apps</text>
-                <rect x="150" y="95" width="500" height="30" rx="5" fill="#e0e0e0" stroke="#000" />
-                <text x="400" y="115" text-anchor="middle" font-size="12">Messages, Mail, Notes, Photos, ...</text>
+                <g transform="translate(150, 95)">
+                    <rect width="40" height="30" rx="5" fill="#c0c0c0" stroke="#000" />
+                    <rect x="50" width="40" height="30" rx="5" fill="#c0c0c0" stroke="#000" />
+                    <rect x="100" width="40" height="30" rx="5" fill="#c0c0c0" stroke="#000" />
+                    <rect x="150" width="40" height="30" rx="5" fill="#c0c0c0" stroke="#000" />
+                    <rect x="200" width="40" height="30" rx="5" fill="#c0c0c0" stroke="#000" />
+                    <rect x="250" width="40" height="30" rx="5" fill="#c0c0c0" stroke="#000" />
+                    <rect x="300" width="40" height="30" rx="5" fill="#c0c0c0" stroke="#000" />
+                    <rect x="350" width="40" height="30" rx="5" fill="#c0c0c0" stroke="#000" />
+                    <rect x="400" width="40" height="30" rx="5" fill="#c0c0c0" stroke="#000" />
+                    <rect x="450" width="40" height="30" rx="5" fill="#c0c0c0" stroke="#000" />
+                </g>
             </g>
 
             <!-- Personal Intelligence System -->
             <g>
                 <rect x="50" y="160" width="700" height="120" rx="10" fill="#e6f2ff" stroke="#000" />
-                <text x="400" y="180" text-anchor="middle" font-size="18" font-weight="bold">個人智能系統</text>
+                <text x="400" y="180" text-anchor="middle" font-size="18" font-weight="bold">個人智慧系統</text>
                 <rect x="100" y="200" width="200" height="60" rx="5" fill="#b3d9ff" />
-                <text x="200" y="235" text-anchor="middle" font-size="14">語義索引</text>
+<text x="200" y="225" text-anchor="middle" font-size="14">
+        <tspan x="200" dy="0">語義索引</tspan>
+        <tspan x="200" dy="1.2em">Semantic index</tspan>
+    </text>
                 <rect x="500" y="200" width="200" height="60" rx="5" fill="#b3d9ff" />
-                <text x="600" y="235" text-anchor="middle" font-size="14">App Intents 工具箱</text>
+    <text x="600" y="225" text-anchor="middle" font-size="14">
+        <tspan x="600" dy="0">App 意圖工具箱</tspan>
+        <tspan x="600" dy="1.2em">App Intents Toolbox</tspan>
+    </text>
             </g>
 
             <!-- Orchestration -->
             <g>
                 <rect x="250" y="300" width="300" height="40" rx="10" fill="#d9d9d9" stroke="#000" />
-                <text x="400" y="325" text-anchor="middle" font-size="14">協調</text>
+                <text x="400" y="325" text-anchor="middle" font-size="14">協調層 Orchestration</text>
             </g>
 
-            <!-- On-device models and Private Cloud Compute -->
-            <g>
-                <rect x="50" y="360" width="300" height="180" rx="10" fill="#ffe6e6" stroke="#000" />
-                <text x="200" y="390" text-anchor="middle" font-size="18" font-weight="bold">設備內模型</text>
-                <rect x="80" y="410" width="240" height="40" rx="5" fill="#ffb3b3" />
-                <text x="200" y="435" text-anchor="middle" font-size="14">語言</text>
-                <rect x="80" y="460" width="240" height="40" rx="5" fill="#ffb3b3" />
-                <text x="200" y="485" text-anchor="middle" font-size="14">圖像</text>
+         <!-- On-device models and Private Cloud Compute -->
+<g>
+    <rect x="50" y="360" width="300" height="180" rx="10" fill="#ffe6e6" stroke="#000" />
+    <text x="200" y="380" text-anchor="middle" font-size="18" font-weight="bold">設備內模型</text>
+    
+    <!-- Language Model -->
+    <rect x="70" y="390" width="120" height="140" rx="5" fill="#ffb3b3" />
+    <text x="130" y="410" text-anchor="middle" font-size="14" font-weight="bold">語言</text>
+    <g transform="translate(80, 420)">
+        <rect x="0" y="0" width="10" height="60" fill="#33a1ff" />
+        <rect x="15" y="0" width="10" height="60" fill="#33a1ff" />
+        <rect x="30" y="0" width="10" height="60" fill="#33a1ff" />
+        <rect x="45" y="0" width="10" height="60" fill="#33a1ff" />
+        <rect x="60" y="0" width="10" height="60" fill="#33a1ff" />
+        <rect x="75" y="0" width="10" height="60" fill="#33a1ff" />
+        <rect x="90" y="0" width="10" height="60" fill="#33a1ff" />
+    </g>
+    
+    <!-- Updated Network Diagram for Language Model -->
+    <g transform="translate(100, 490) scale(0.5)">
+        <defs>
+            <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" style="stop-color:#4ade80;stop-opacity:1" />
+                <stop offset="100%" style="stop-color:#22d3ee;stop-opacity:1" />
+            </linearGradient>
+        </defs>
+        
+        <!-- Lines -->
+        <line x1="50" y1="25" x2="80" y2="35" stroke="url(#gradient)" stroke-width="1.5" />
+        <line x1="50" y1="25" x2="20" y2="35" stroke="url(#gradient)" stroke-width="1.5" />
+        <line x1="50" y1="25" x2="80" y2="65" stroke="url(#gradient)" stroke-width="1.5" />
+        <line x1="50" y1="25" x2="20" y2="65" stroke="url(#gradient)" stroke-width="1.5" />
+        <line x1="50" y1="25" x2="50" y2="50" stroke="url(#gradient)" stroke-width="1.5" />
+        <line x1="50" y1="25" x2="50" y2="75" stroke="url(#gradient)" stroke-width="1.5" />
+        <line x1="80" y1="35" x2="20" y2="35" stroke="url(#gradient)" stroke-width="1.5" />
+        <line x1="80" y1="35" x2="50" y2="50" stroke="url(#gradient)" stroke-width="1.5" />
+        <line x1="80" y1="35" x2="80" y2="65" stroke="url(#gradient)" stroke-width="1.5" />
+        <line x1="80" y1="35" x2="20" y2="65" stroke="url(#gradient)" stroke-width="1.5" />
+        <line x1="80" y1="35" x2="50" y2="75" stroke="url(#gradient)" stroke-width="1.5" />
+        <line x1="20" y1="35" x2="50" y2="50" stroke="url(#gradient)" stroke-width="1.5" />
+        <line x1="20" y1="35" x2="80" y2="65" stroke="url(#gradient)" stroke-width="1.5" />
+        <line x1="20" y1="35" x2="20" y2="65" stroke="url(#gradient)" stroke-width="1.5" />
+        <line x1="20" y1="35" x2="50" y2="75" stroke="url(#gradient)" stroke-width="1.5" />
+        <line x1="50" y1="50" x2="80" y2="65" stroke="url(#gradient)" stroke-width="1.5" />
+        <line x1="50" y1="50" x2="20" y2="65" stroke="url(#gradient)" stroke-width="1.5" />
+        <line x1="50" y1="50" x2="50" y2="75" stroke="url(#gradient)" stroke-width="1.5" />
+        <line x1="80" y1="65" x2="20" y2="65" stroke="url(#gradient)" stroke-width="1.5" />
+        <line x1="80" y1="65" x2="50" y2="75" stroke="url(#gradient)" stroke-width="1.5" />
+        <line x1="20" y1="65" x2="50" y2="75" stroke="url(#gradient)" stroke-width="1.5" />
+        
+        <!-- Nodes -->
+        <circle cx="50" cy="25" r="4" fill="#4ade80" />
+        <circle cx="80" cy="35" r="4" fill="#4ade80" />
+        <circle cx="20" cy="35" r="4" fill="#4ade80" />
+        <circle cx="50" cy="50" r="4" fill="#4ade80" />
+        <circle cx="80" cy="65" r="4" fill="#22d3ee" />
+        <circle cx="20" cy="65" r="4" fill="#22d3ee" />
+        <circle cx="50" cy="75" r="4" fill="#22d3ee" />
+    </g>
+    
+    <!-- Image Model -->
+    <rect x="210" y="390" width="120" height="140" rx="5" fill="#d1ffe8" />
+    <text x="270" y="410" text-anchor="middle" font-size="14" font-weight="bold">Image</text>
+    <g transform="translate(220, 420)">
+        <rect x="0" y="0" width="10" height="60" fill="#4CAF50" />
+        <rect x="15" y="0" width="10" height="60" fill="#4CAF50" />
+        <rect x="30" y="0" width="10" height="60" fill="#4CAF50" />
+        <rect x="45" y="0" width="10" height="60" fill="#4CAF50" />
+        <rect x="60" y="0" width="10" height="60" fill="#4CAF50" />
+        <rect x="75" y="0" width="10" height="60" fill="#4CAF50" />
+        <rect x="90" y="0" width="10" height="60" fill="#4CAF50" />
+    </g>
+    
+    <!-- Updated Network Diagram for Image Model -->
+    <g transform="translate(245, 490) scale(0.5)">
+        <!-- Lines (reusing the gradient from Language Model) -->
+        <line x1="50" y1="25" x2="80" y2="35" stroke="url(#gradient)" stroke-width="1.5" />
+        <line x1="50" y1="25" x2="20" y2="35" stroke="url(#gradient)" stroke-width="1.5" />
+        <line x1="50" y1="25" x2="80" y2="65" stroke="url(#gradient)" stroke-width="1.5" />
+        <line x1="50" y1="25" x2="20" y2="65" stroke="url(#gradient)" stroke-width="1.5" />
+        <line x1="50" y1="25" x2="50" y2="50" stroke="url(#gradient)" stroke-width="1.5" />
+        <line x1="50" y1="25" x2="50" y2="75" stroke="url(#gradient)" stroke-width="1.5" />
+        <line x1="80" y1="35" x2="20" y2="35" stroke="url(#gradient)" stroke-width="1.5" />
+        <line x1="80" y1="35" x2="50" y2="50" stroke="url(#gradient)" stroke-width="1.5" />
+        <line x1="80" y1="35" x2="80" y2="65" stroke="url(#gradient)" stroke-width="1.5" />
+        <line x1="80" y1="35" x2="20" y2="65" stroke="url(#gradient)" stroke-width="1.5" />
+        <line x1="80" y1="35" x2="50" y2="75" stroke="url(#gradient)" stroke-width="1.5" />
+        <line x1="20" y1="35" x2="50" y2="50" stroke="url(#gradient)" stroke-width="1.5" />
+        <line x1="20" y1="35" x2="80" y2="65" stroke="url(#gradient)" stroke-width="1.5" />
+        <line x1="20" y1="35" x2="20" y2="65" stroke="url(#gradient)" stroke-width="1.5" />
+        <line x1="20" y1="35" x2="50" y2="75" stroke="url(#gradient)" stroke-width="1.5" />
+        <line x1="50" y1="50" x2="80" y2="65" stroke="url(#gradient)" stroke-width="1.5" />
+        <line x1="50" y1="50" x2="20" y2="65" stroke="url(#gradient)" stroke-width="1.5" />
+        <line x1="50" y1="50" x2="50" y2="75" stroke="url(#gradient)" stroke-width="1.5" />
+        <line x1="80" y1="65" x2="20" y2="65" stroke="url(#gradient)" stroke-width="1.5" />
+        <line x1="80" y1="65" x2="50" y2="75" stroke="url(#gradient)" stroke-width="1.5" />
+        <line x1="20" y1="65" x2="50" y2="75" stroke="url(#gradient)" stroke-width="1.5" />
+        
+        <!-- Nodes -->
+        <circle cx="50" cy="25" r="4" fill="#4ade80" />
+        <circle cx="80" cy="35" r="4" fill="#4ade80" />
+        <circle cx="20" cy="35" r="4" fill="#4ade80" />
+        <circle cx="50" cy="50" r="4" fill="#4ade80" />
+        <circle cx="80" cy="65" r="4" fill="#22d3ee" />
+        <circle cx="20" cy="65" r="4" fill="#22d3ee" />
+        <circle cx="50" cy="75" r="4" fill="#22d3ee" />
+    </g>
+</g>
 
-                <rect x="450" y="360" width="300" height="180" rx="10" fill="#e6ffe6" stroke="#000" />
-                <text x="600" y="390" text-anchor="middle" font-size="18" font-weight="bold">私有雲計算</text>
-                <rect x="480" y="410" width="240" height="90" rx="5" fill="#b3ffb3" />
-                <text x="600" y="455" text-anchor="middle" font-size="14">伺服器模型</text>
-            </g>
+<!-- Server Model -->
+<g>
+    <rect x="450" y="360" width="300" height="180" rx="10" fill="#e6ffe6" stroke="#000" />
+    <text x="600" y="380" text-anchor="middle" font-size="18" font-weight="bold">伺服器模型</text>
+    
+  <!-- Server Model -->
+<g>
+    <rect x="450" y="360" width="300" height="180" rx="10" fill="#e6ffe6" stroke="#000" />
+    <text x="600" y="380" text-anchor="middle" font-size="18" font-weight="bold">伺服器模型</text>
+    
+    <!-- Server Model -->
+    <rect x="470" y="390" width="260" height="140" rx="5" fill="#b3ffb3" />
+    <g transform="translate(480, 400)">
+        <rect x="5" y="0" width="10" height="80" fill="#33a1ff" />
+        <rect x="25" y="0" width="10" height="80" fill="#33a1ff" />
+        <rect x="45" y="0" width="10" height="80" fill="#33a1ff" />
+        <rect x="65" y="0" width="10" height="80" fill="#33a1ff" />
+        <rect x="85" y="0" width="10" height="80" fill="#33a1ff" />
+        <rect x="105" y="0" width="10" height="80" fill="#33a1ff" />
+        <rect x="125" y="0" width="10" height="80" fill="#33a1ff" />
+        <rect x="145" y="0" width="10" height="80" fill="#33a1ff" />
+        <rect x="165" y="0" width="10" height="80" fill="#33a1ff" />
+        <rect x="185" y="0" width="10" height="80" fill="#33a1ff" />
+        <rect x="205" y="0" width="10" height="80" fill="#33a1ff" />
+        <rect x="225" y="0" width="10" height="80" fill="#33a1ff" />
+    </g>
+    
+   <!-- Updated Network Diagram for Server Model -->
+    <g transform="translate(590, 490) scale(0.5)">
+        <defs>
+            <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" style="stop-color:#4ade80;stop-opacity:1" />
+                <stop offset="100%" style="stop-color:#22d3ee;stop-opacity:1" />
+            </linearGradient>
+        </defs>
+        
+        <!-- Lines -->
+        <line x1="30" y1="25" x2="60" y2="35" stroke="url(#gradient)" stroke-width="1.5" />
+        <line x1="30" y1="25" x2="0" y2="35" stroke="url(#gradient)" stroke-width="1.5" />
+        <line x1="30" y1="25" x2="60" y2="65" stroke="url(#gradient)" stroke-width="1.5" />
+        <line x1="30" y1="25" x2="0" y2="65" stroke="url(#gradient)" stroke-width="1.5" />
+        <line x1="30" y1="25" x2="30" y2="50" stroke="url(#gradient)" stroke-width="1.5" />
+        <line x1="30" y1="25" x2="30" y2="75" stroke="url(#gradient)" stroke-width="1.5" />
+        <line x1="60" y1="35" x2="0" y2="35" stroke="url(#gradient)" stroke-width="1.5" />
+        <line x1="60" y1="35" x2="30" y2="50" stroke="url(#gradient)" stroke-width="1.5" />
+        <line x1="60" y1="35" x2="60" y2="65" stroke="url(#gradient)" stroke-width="1.5" />
+        <line x1="60" y1="35" x2="0" y2="65" stroke="url(#gradient)" stroke-width="1.5" />
+        <line x1="60" y1="35" x2="30" y2="75" stroke="url(#gradient)" stroke-width="1.5" />
+        <line x1="0" y1="35" x2="30" y2="50" stroke="url(#gradient)" stroke-width="1.5" />
+        <line x1="0" y1="35" x2="60" y2="65" stroke="url(#gradient)" stroke-width="1.5" />
+        <line x1="0" y1="35" x2="0" y2="65" stroke="url(#gradient)" stroke-width="1.5" />
+        <line x1="0" y1="35" x2="30" y2="75" stroke="url(#gradient)" stroke-width="1.5" />
+        <line x1="30" y1="50" x2="60" y2="65" stroke="url(#gradient)" stroke-width="1.5" />
+        <line x1="30" y1="50" x2="0" y2="65" stroke="url(#gradient)" stroke-width="1.5" />
+        <line x1="30" y1="50" x2="30" y2="75" stroke="url(#gradient)" stroke-width="1.5" />
+        <line x1="60" y1="65" x2="0" y2="65" stroke="url(#gradient)" stroke-width="1.5" />
+        <line x1="60" y1="65" x2="30" y2="75" stroke="url(#gradient)" stroke-width="1.5" />
+        <line x1="0" y1="65" x2="30" y2="75" stroke="url(#gradient)" stroke-width="1.5" />
+        
+        <!-- Nodes -->
+        <circle cx="30" cy="25" r="4" fill="#4ade80" />
+        <circle cx="60" cy="35" r="4" fill="#4ade80" />
+        <circle cx="0" cy="35" r="4" fill="#4ade80" />
+        <circle cx="30" cy="50" r="4" fill="#4ade80" />
+        <circle cx="60" cy="65" r="4" fill="#22d3ee" />
+        <circle cx="0" cy="65" r="4" fill="#22d3ee" />
+        <circle cx="30" cy="75" r="4" fill="#22d3ee" />    </g></g>
+        <!-- Apple silicon -->
+        <g>
+<rect x="50" y="560" width="700" height="80" rx="10" fill="#f0f0f0" stroke="#000" />
+<text x="400" y="580" text-anchor="middle" font-size="18" font-weight="bold">Apple 晶片</text>
+<rect x="80" y="590" width="140" height="40" rx="5" fill="#d9d9d9" stroke="#000" />
+<text x="150" y="615" text-anchor="middle" font-size="14">CPU</text>
+<rect x="246.67" y="590" width="140" height="40" rx="5" fill="#d9d9d9" stroke="#000" />
+<text x="316.67" y="615" text-anchor="middle" font-size="14">GPU</text>
+<rect x="413.34" y="590" width="140" height="40" rx="5" fill="#d9d9d9" stroke="#000" />
+<text x="483.34" y="615" text-anchor="middle" font-size="14">Neural Engine</text>
+<rect x="580" y="590" width="140" height="40" rx="5" fill="#d9d9d9" stroke="#000" />
+<text x="650" y="615" text-anchor="middle" font-size="14">Secure Enclave</text>
 
-            <!-- Apple silicon -->
-            <g>
-                <rect x="50" y="560" width="700" height="80" rx="10" fill="#f0f0f0" stroke="#000" />
-                <text x="400" y="590" text-anchor="middle" font-size="18" font-weight="bold">Apple 晶片</text>
-                <text x="150" y="620" font-size="14">CPU</text>
-                <text x="300" y="620" font-size="14">GPU</text>
-                <text x="450" y="620" font-size="14">Neural Engine</text>
-                <text x="650" y="620" font-size="14">Secure Enclave</text>
-            </g>
+        </g>
 
-            <!-- 新增 ChatGPT 組件 -->
+    <!-- 新增 ChatGPT 組件 -->
             <g>
                 <rect x="250" y="660" width="300" height="60" rx="10" fill="#ffd700" stroke="#000" />
-                <text x="400" y="695" text-anchor="middle" font-size="16" font-weight="bold">ChatGPT (第三方服務)</text>
+                <text x="400" y="695" text-anchor="middle" font-size="16" font-weight="bold">ChatGPT（第三方服務）</text>
             </g>
 
             <!-- 動畫路徑 -->
-            <path d="M200 260 L200 300 L400 300 L400 340 L200 360" fill="none" stroke="#0070c9" stroke-width="2" class="animation-path" />
-            <path d="M600 260 L600 300 L400 300 L400 340 L600 360" fill="none" stroke="#0070c9" stroke-width="2" class="animation-path" />
+<!-- 左邊的線 -->
+  <path d="M200 280 L400 300" fill="none" stroke="#0070c9" stroke-width="2" class="animation-path" />
+
+    <path d="M400 340 L200 360" fill="none" stroke="#0070c9" stroke-width="2" class="animation-path" />
+
+    <!-- 右邊的線 -->
+<path d="M600 280 L400 300" fill="none" stroke="#0070c9" stroke-width="2" class="animation-path" />
+
+    <path d="M400 340 L600 360" fill="none" stroke="#0070c9" stroke-width="2" class="animation-path" />
             <path d="M200 540 L200 560" fill="none" stroke="#0070c9" stroke-width="2" class="animation-path" />
             <path d="M600 540 L600 560" fill="none" stroke="#0070c9" stroke-width="2" class="animation-path" />
             <!-- 新增從協調到 ChatGPT 的路徑 -->
-            <path d="M400 340 L400 660" fill="none" stroke="#0070c9" stroke-width="2" stroke-dasharray="5,5" class="animation-path" />
+<path d="M250 320 L30 320 L30 690 L250 690" fill="none" stroke="#0070c9" stroke-width="2" stroke-dasharray="5,5" class="animation-path" />
+
+
         </svg>
-        <div class="info-box">
-            <h4>系統架構說明</h4>
-            <p>Apple Intelligence 是一個深度整合的個人智能系統,它利用強大的生成式模型來提供各種智能功能。系統包括以下主要組件:</p>
-            <ul>
-                <li><strong>系統級體驗:</strong> 包括 Siri、Writing Tools 和 Image Playground 等核心功能,以及各種 Apps。</li>
-                <li><strong>個人智能系統:</strong> 包含語義索引和 App Intents 工具箱,用於理解和組織用戶的個人信息。</li>
-                <li><strong>協調層:</strong> 負責協調各個組件之間的交互。</li>
-                <li><strong>設備內模型:</strong> 包括語言和圖像處理模型,直接在設備上運行。</li>
-                <li><strong>私有雲計算:</strong> 用於處理更複雜的任務,確保用戶數據的隱私和安全。</li>
-                <li><strong>Apple 晶片:</strong> 為整個系統提供強大的硬件支持,包括 CPU、GPU、Neural Engine 和 Secure Enclave。</li>
-                <li><strong>ChatGPT 整合:</strong> 當設備內模型和私有雲計算無法解決問題時,系統會詢問用戶是否使用 ChatGPT 等第三方服務。</li>
-            </ul>
-        </div>
-        <div class="chatgpt-box">
-            <h4>ChatGPT 整合</h4>
-            <p>OpenAI 出品的 ChatGPT 已緊密整合至 Siri 和「書寫工具」中。主要特點：</p>
-            <ul>
-                <li>Siri 能利用 ChatGPT 來回應某些要求,包括照片或文件等相關問題。</li>
-                <li>「書寫工具」中的「編寫」功能讓用戶從零開始建立並創作原創內容。</li>
-                <li>用戶可以控制 ChatGPT 的使用時機,系統會在共享資訊前徵詢用戶同意。</li>
-                <li>無須建立帳號,所有用戶都能免費使用基本功能。</li>
-                <li>ChatGPT 訂閱戶可以連結帳號,使用付費功能。</li>
-            </ul>
-        </div>
-    </div>
-    <div class="feature-list">
-        <div class="feature-item">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
-            <span>隱私優先</span>
-        </div>
-        <div class="feature-item">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
-            <span>自然語言交互</span>
-        </div>
-        <div class="feature-item">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18"></rect><line x1="7" y1="2" x2="7" y2="22"></line><line x1="17" y1="2" x2="17" y2="22"></line><line x1="2" y1="12" x2="22" y2="12"></line><line x1="2" y1="7" x2="7" y2="7"></line><line x1="2" y1="17" x2="7" y2="17"></line><line x1="17" y1="17" x2="22" y2="17"></line><line x1="17" y1="7" x2="22" y2="7"></line></svg>
-            <span>圖像生成</span>
-        </div>
-        <div class="feature-item">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"></path><circle cx="6" cy="18" r="3"></circle><circle cx="18" cy="16" r="3"></circle></svg>
-            <span>音頻處理</span>
-        </div>
-    </div>
-    <script>
-        // 這裡可以添加一些 JavaScript 代碼來實現更複雜的動畫效果
-    </script>
+
+    
+<div class="info-box">
+    <h3>Foundation Models 和 Adapters 說明</h3>
+    <p><strong>Foundation Models：</strong>這些是大型預訓練模型，為 Apple Intelligence 提供基礎能力。設備內模型包括語言和影像兩個部分，每個約有 30 億參數，而伺服器模型更大，可以處理更複雜的任務。</p>
+    <p><strong>Adapters：</strong>這些是小型神經網路模組，可以動態加載到 Foundation Models 中，使模型能夠適應特定任務，如文本摘要、校對或生成郵件回覆等。這種方法既保留了原始模型的通用知識，又能高效地處理各種特定任務。</p>
+</div>
+<div class="info-box">
+<h4>系統架構說明</h4>
+<p>Apple Intelligence 是一個深度整合的個人智慧系統，它利用強大的生成式模型來提供各種智慧功能。系統包括以下主要組件：</p>
+<ul>
+    <li><strong>系統級體驗：</strong>包括 Siri、Writing Tools 和 Image Playground 等核心功能，以及各種 Apps。</li>
+    <li><strong>個人智慧系統：</strong>包含語義索引和 App Intents 工具箱，用於理解和組織使用者的個人資訊。</li>
+    <li><strong>協調層：</strong>負責協調各個組件之間的互動。</li>
+    <li><strong>設備內模型：</strong>包括語言和影像處理模型，直接在設備上運行。</li>
+    <li><strong>私有雲計算：</strong>用於處理更複雜的任務，確保使用者資料的隱私和安全。</li>
+    <li><strong>Apple 晶片：</strong>為整個系統提供強大的硬體支援，包括 CPU、GPU、Neural Engine 和 Secure Enclave。</li>
+    <li><strong>ChatGPT 整合：</strong>當設備內模型和私有雲計算無法解決問題時，系統會詢問使用者是否使用 ChatGPT 等第三方服務。</li>
+</ul>
+</div>
+<div class="chatgpt-box">
+    <h4>ChatGPT 整合</h4>
+    <p>OpenAI 出品的 ChatGPT 已緊密整合至 Siri 和「書寫工具」中。主要特點：</p>
+    <ul>
+        <li>Siri 能利用 ChatGPT 來回應某些要求，包括照片或文件等相關問題。</li>
+        <li>「書寫工具」中的「編寫」功能讓使用者從零開始建立並創作原創內容。</li>
+        <li>使用者可以控制 ChatGPT 的使用時機，系統會在共享資訊前徵詢使用者同意。</li>
+        <li>無須建立帳號，所有使用者都能免費使用基本功能。</li>
+        <li>ChatGPT 訂閱戶可以連結帳號，使用付費功能。</li>
+    </ul>
+</div>
+
 </body>
 </html>
