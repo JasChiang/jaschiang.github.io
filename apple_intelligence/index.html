@@ -73,8 +73,22 @@
 </head>
 <body>
     <h1>Apple Intelligence：架構解析</h1>
-    以 Claude 3.5 Sonnet 與 GPT-4o 生成並人工微調
+    <p>以 Claude 3.5 Sonnet 與 GPT-4o 生成並人工微調</p>
     
+    <div class="container">
+<h2>什麼是 Apple Intelligence</h2>
+<p>Apple Intelligence 是內建在你 iPhone、iPad 和 Mac 的個人智慧系統，它利用強大的生成式模型來提供各種智慧功能，幫助你撰寫文句、表達自我，輕鬆完成各項任務。</p>
+<p>Apple Intelligence 包括以下主要組件：</p>
+<ul>
+    <li><strong>系統級體驗：</strong>包括 Siri、Writing Tools 和 Image Playground 等核心功能，以及各種 Apps。</li>
+    <li><strong>個人智慧系統：</strong>包含語義索引和 App Intents 工具箱，用於理解和組織使用者的個人資訊。</li>
+    <li><strong>協調層：</strong>負責協調各個組件之間的互動。</li>
+    <li><strong>設備內模型：</strong>包括語言和影像處理模型，直接在設備上運行。</li>
+    <li><strong>伺服器模型：</strong>在私有雲（Private Cloud）上用於處理更複雜的任務，確保使用者資料的隱私和安全。</li>
+    <li><strong>Apple 晶片：</strong>為整個系統提供強大的硬體支援，包括 CPU、GPU、Neural Engine 和 Secure Enclave。</li>
+    <li><strong>ChatGPT 整合：</strong>當設備內與伺服器模型無法解決問題時，系統會詢問使用者是否使用 ChatGPT 等第三方服務。</li>
+</ul>
+</div>
     <div class="container">
         <svg viewBox="0 0 800 800" id="architecture-svg">
             <!-- System-wide experiences -->
@@ -395,28 +409,16 @@
     </g>
 
 </svg>
-    <p><strong>Foundation Models：</strong>這些是大型預訓練模型，為 Apple Intelligence 提供基礎能力。設備內模型包括語言和影像兩個部分，每個約有 30 億參數，而伺服器模型更大，可以處理更複雜的任務。</p>
+    <p><strong>Foundation Models：</strong>Foundation Models 是 Apple Intelligence 的核心，是經過大規模預訓練的基礎模型。設備內模型包括語言和用於圖片生成的擴散模型兩個部分，每個約有 30 億參數，而伺服器模型更大，可以處理更複雜的任務。結合 Adapters 技術，Foundation Models 可靈活適應各種特定任務，同時保持通用知識和高效處理能力。</p>
     <p>
        <svg width="0" height="30">
     <rect x="0" y="10" width="60" height="10" fill="#33a1ff" />
      <rect x="70" y="10" width="60" height="10" fill=" #4CAF50" />
 </svg>
-<br><strong>Adapters：</strong>這些是小型神經網路模組，可以動態加載到 Foundation Models 中，使模型能夠適應特定任務，如文本摘要、校對或生成郵件回覆等。這種方法既保留了原始模型的通用知識，又能高效地處理各種特定任務。</br></p>
+<br><strong>Adapters：</strong>小型神經網路模組，通過對預訓練的 Foundation Models 進行適應性微調而產生。可以動態加載到 Foundation Models 中，使模型能夠適應特定任務，如文本摘要、校對或生成郵件回覆等。這種方法可以靈活地載入和交換，從而使基礎模型能夠高效地處理各種特定任務。這種方法既保留了原始模型的通用知識，又實現了高效的任務特化，同時維持了模型的整體性能和記憶體使用效率。</br></p>
 </div>
 
-<div class="info-box">
-<h4>系統架構說明</h4>
-<p>Apple Intelligence 是一個深度整合的個人智慧系統，它利用強大的生成式模型來提供各種智慧功能。系統包括以下主要組件：</p>
-<ul>
-    <li><strong>系統級體驗：</strong>包括 Siri、Writing Tools 和 Image Playground 等核心功能，以及各種 Apps。</li>
-    <li><strong>個人智慧系統：</strong>包含語義索引和 App Intents 工具箱，用於理解和組織使用者的個人資訊。</li>
-    <li><strong>協調層：</strong>負責協調各個組件之間的互動。</li>
-    <li><strong>設備內模型：</strong>包括語言和影像處理模型，直接在設備上運行。</li>
-    <li><strong>私有雲計算：</strong>用於處理更複雜的任務，確保使用者資料的隱私和安全。</li>
-    <li><strong>Apple 晶片：</strong>為整個系統提供強大的硬體支援，包括 CPU、GPU、Neural Engine 和 Secure Enclave。</li>
-    <li><strong>ChatGPT 整合：</strong>當設備內模型和私有雲計算無法解決問題時，系統會詢問使用者是否使用 ChatGPT 等第三方服務。</li>
-</ul>
-</div>
+
 <div class="chatgpt-box">
     <h4>ChatGPT 整合</h4>
     <p>OpenAI 出品的 ChatGPT 已緊密整合至 Siri 和「書寫工具」中。主要特點：</p>
