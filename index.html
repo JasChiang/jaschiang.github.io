@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Apple Intelligence 和 Galaxy AI 比較</title>
+    <title>Apple Intelligence | Galaxy AI | Google AI | Copilot+ PC</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <style>
     body {
         font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
@@ -357,16 +358,197 @@
     #GoogleAI tr:nth-child(even) {
         background-color: #f8f9fa;
     }
+
+    :root {
+            --copilot-blue: #0078D4;
+            --copilot-green: #107C10;
+            --copilot-yellow: #FFB900;
+            --copilot-red: #E74856;
+            --copilot-light-blue: #00A4EF;
+            --copilot-light-green: #7FBA00;
+            --copilot-orange: #F25022;
+            --copilot-pink: #FF69B4;
+        }
+        .copilot-body {
+            font-family: "微軟正黑體", "Microsoft JhengHei", sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        .copilot-heading {
+        font-size: 2.5em;
+        text-align: center;
+        margin-bottom: 30px;
+        background: linear-gradient(
+            45deg,
+            #00B2FF 0%,
+            #00B2FF 10%,
+            #7B68EE 20%,
+            #DA70D6 30%,
+            #FF69B4 40%,
+            #FF6347 50%,
+            #FFA500 60%,
+            #FFD700 70%,
+            #32CD32 80%,
+            #00CED1 90%,
+            #00B2FF 100%
+        );
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        text-fill-color: transparent;
+        animation: gradient-animation 10s ease infinite;
+        background-size: 200% 200%;
+    }
+
+    @keyframes gradient-animation {
+        0% {
+            background-position: 0% 50%;
+        }
+        50% {
+            background-position: 100% 50%;
+        }
+        100% {
+            background-position: 0% 50%;
+        }
+    }
+        .copilot-container {
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            padding: 30px;
+            margin-top: 20px;
+        }
+        .copilot-feature-container, .copilot-spec-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-bottom: 30px;
+        }
+        .copilot-feature-row, .copilot-spec-row {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+            margin-bottom: 20px;
+        }
+        .copilot-feature-item, .copilot-spec-item {
+            flex-basis: calc(50% - 20px);
+            margin: 0 10px;
+            padding: 20px;
+            background-color: #FFF5E6;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            display: flex;
+            align-items: center;
+            text-align: left;
+        }
+        .copilot-feature-icon, .copilot-spec-icon {
+            width: 50px;
+            height: 50px;
+            margin-right: 20px;
+            background-color: var(--copilot-blue);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            flex-shrink: 0;
+        }
+        .copilot-feature-content, .copilot-spec-content {
+            flex: 1;
+        }
+        .copilot-feature-title, .copilot-spec-title {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: var(--copilot-blue);
+            margin-bottom: 10px;
+        }
+        .copilot-feature-description, .copilot-spec-description {
+            font-size: 0.9em;
+            line-height: 1.4;
+        }
+        .copilot-section-title {
+            color: var(--copilot-green);
+            border-bottom: 2px solid var(--copilot-green);
+            padding-bottom: 10px;
+            margin-top: 40px;
+            text-align: left;
+        }
+        .copilot-highlight {
+            background: linear-gradient(135deg, var(--copilot-light-blue), var(--copilot-light-green));
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+        }
+        .copilot-warning {
+            background-color: var(--copilot-yellow);
+            color: #333;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 25px;
+        }
+        .copilot-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            margin-top: 30px;
+        }
+        .copilot-table th, .copilot-table td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        .copilot-table th {
+            background-color: var(--copilot-light-blue);
+            color: white;
+        }
+        .copilot-table tr:nth-child(even) {
+            background-color: #f8f8f8;
+        }
+        @media (max-width: 768px) {
+            .copilot-feature-row, .copilot-spec-row {
+                flex-direction: column;
+            }
+            .copilot-feature-item, .copilot-spec-item {
+                flex-basis: 100%;
+                margin: 10px 0;
+            }
+            .copilot-table {
+                font-size: 14px;
+            }
+            .copilot-table th, .copilot-table td {
+                padding: 8px;
+            }
+        }
+        @media (max-width: 480px) {
+            .copilot-heading {
+                font-size: 2em;
+            }
+            .copilot-feature-icon, .copilot-spec-icon {
+                width: 40px;
+                height: 40px;
+                font-size: 20px;
+            }
+            .copilot-table {
+                font-size: 12px;
+            }
+        }    
     </style>
 </head>
 <body>
-    <h1>Apple Intelligence | Galaxy AI | Google AI 介紹</h1>
+    <h1>Apple Intelligence | Galaxy AI | Google AI | Copilot+ PC 介紹</h1>
     <p>以 Claude 3.5 Sonnet 與 GPT-4o 生成並人工微調</p>
 
     <div class="tab">
         <button class="tablinks" onclick="openTab(event, 'AppleIntelligence')" id="defaultOpen">Apple Intelligence</button>
         <button class="tablinks" onclick="openTab(event, 'GalaxyAI')">Galaxy AI</button>
         <button class="tablinks" onclick="openTab(event, 'GoogleAI')">Google AI</button>
+        <button class="tablinks" onclick="openTab(event, 'Copilot+ PC')">Copilot+ PC</button>
     </div>
 
     <div id="AppleIntelligence" class="tab-content">
@@ -1297,6 +1479,7 @@
         </div>
     </div>
       </div>
+<!--以下是 Google AI-->
 <div id="GoogleAI" class="tab-content">
 
     <div class="container">
@@ -1422,7 +1605,185 @@
     </div>
     </div>
 </div>
+</div>
+ <!--以下是 Copilot+ PC-->  
+<div id="Copilot+ PC" class="tab-content">
+    <div class="container">
+        <h1 class="copilot-heading">Copilot+ PC</h1>
+        
+        <div class="copilot-container">
+            <div class="copilot-highlight">
+                <p>Copilot+ PC 是全新等級的 Windows 11 裝置，由強大的神經處理單元 (NPU) 支援，每秒可執行超過 40 兆次運算 (TOPS)，為您帶來前所未有的人工智慧體驗。</p>
+            </div>
     
+            <h2 class="copilot-section-title">特色功能</h2>
+            <div class="copilot-feature-container">
+                <div class="copilot-feature-row">
+                    <div class="copilot-feature-item">
+                        <div class="copilot-feature-icon">
+                            <i class="fas fa-undo"></i>
+                        </div>
+                        <div class="copilot-feature-content">
+                            <div class="copilot-feature-title">回顧 (Recall)</div>
+                            <p class="copilot-feature-description">快速找到您先前在電腦上瀏覽過的內容，如同擁有照相般的記憶力。</p>
+                        </div>
+                    </div>
+                    <div class="copilot-feature-item">
+                        <div class="copilot-feature-icon">
+                            <i class="fas fa-paint-brush"></i>
+                        </div>
+                        <div class="copilot-feature-content">
+                            <div class="copilot-feature-title">共同創作者 (Cocreator)</div>
+                            <p class="copilot-feature-description">使用文字或圖像提示來生成和編輯圖像，激發您的創意靈感。</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="copilot-feature-row">
+                    <div class="copilot-feature-item">
+                        <div class="copilot-feature-icon">
+                            <i class="fas fa-closed-captioning"></i>
+                        </div>
+                        <div class="copilot-feature-content">
+                            <div class="copilot-feature-title">即時字幕 (Live Captions)</div>
+                            <p class="copilot-feature-description">將 44 種語言的音訊和視訊內容即時翻譯成英文字幕。</p>
+                        </div>
+                    </div>
+                    <div class="copilot-feature-item">
+                        <div class="copilot-feature-icon">
+                            <i class="fas fa-video"></i>
+                        </div>
+                        <div class="copilot-feature-content">
+                            <div class="copilot-feature-title">Windows 工作室效果</div>
+                            <p class="copilot-feature-description">提供 AI 支援的視訊通話和音訊效果，讓您在虛擬會議中展現最佳狀態。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    
+            <h2 class="copilot-section-title">升級加倍</h2>
+            <p>配備由 Snapdragon® X 系列支援的強力神經處理單元 (NPU)，閃電般的速度和順暢的效能將為您帶來無與倫比的體驗。</p>
+    
+            <div class="copilot-spec-container">
+                <div class="copilot-spec-row">
+                    <div class="copilot-spec-item">
+                        <div class="copilot-spec-icon">
+                            <i class="fas fa-microchip"></i>
+                        </div>
+                        <div class="copilot-spec-content">
+                            <div class="copilot-spec-title">強大的處理器</div>
+                            <p class="copilot-spec-description">透過這些超快的中央處理器 (CPU)，更快地顯示影片。</p>
+                        </div>
+                    </div>
+                    <div class="copilot-spec-item">
+                        <div class="copilot-spec-icon">
+                            <i class="fas fa-battery-full"></i>
+                        </div>
+                        <div class="copilot-spec-content">
+                            <div class="copilot-spec-title">全天候的電池使用時間</div>
+                            <p class="copilot-spec-description">一次充電，使用更久。</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="copilot-spec-row">
+                    <div class="copilot-spec-item">
+                        <div class="copilot-spec-icon">
+                            <i class="fas fa-memory"></i>
+                        </div>
+                        <div class="copilot-spec-content">
+                            <div class="copilot-spec-title">記憶體越多，多工作業越多</div>
+                            <p class="copilot-spec-description">同一時間執行更多應用程式。</p>
+                        </div>
+                    </div>
+                    <div class="copilot-spec-item">
+                        <div class="copilot-spec-icon">
+                            <i class="fas fa-hdd"></i>
+                        </div>
+                        <div class="copilot-spec-content">
+                            <div class="copilot-spec-title">高容量的磁碟機適用於先進的 AI 功能</div>
+                            <p class="copilot-spec-description">透過電腦的內建加密功能，安全地儲存更多資料。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <h2 class="copilot-section-title">Copilot+ PC 硬體需求</h2>
+            <h3>最低系統要求</h3>
+            <ul>
+                <li><strong>處理器：</strong>相容的處理器或系統單晶片（SoC）。目前包括 Snapdragon® X Plus 和 Snapdragon® X Elite。</li>
+                <li><strong>記憶體：</strong>16GB DDR5/LPDDR5</li>
+                <li><strong>儲存空間：</strong>256GB SSD/UFS</li>
+                <li><strong>NPU：</strong>能夠執行 40+ TOPS（每秒兆次運算）的神經處理單元</li>
+            </ul>
+            
+            <div class="copilot-warning">
+                <p>注意：特定功能以及您新增到 Copilot+ PC 的應用程式和硬體可能會超過這些最低要求。</p>
+            </div>
+    
+            <h3>Copilot+ PC 專屬功能</h3>
+            <p>以下功能僅在 Copilot+ PC 上支援：</p>
+            <ul>
+                <li>自動超解析度</li>
+                <li>即時字幕</li>
+                <li>繪圖共同創作者</li>
+                <li>相片增強功能：重新設計圖像和圖像創作器</li>
+                <li>回顧（需要使用 Windows Hello 進階登入安全性）</li>
+                <li>Windows 工作室效果（完整體驗）</li>
+            </ul>
+    
+            <p>這些 Copilot+ PC 功能不僅僅是應用程式，它們是需要 40+ TOPS NPU 才能如預期運作的進階 AI 功能。沒有 NPU，這些功能可能無法正常運行或完全無法運行。</p>
+    
+            <h2 class="copilot-section-title">可選購機型</h2>
+            <table class="copilot-table">
+                <tr>
+                    <th>品牌</th>
+                    <th>型號</th>
+                    <th>特點</th>
+                </tr>
+                <tr>
+                    <td>Microsoft</td>
+                    <td>Surface Pro</td>
+                    <td>靈活的二合一筆記型電腦，配備可選的 OLED HDR 顯示螢幕</td>
+                </tr>
+                <tr>
+                    <td>Microsoft</td>
+                    <td>Surface Laptop</td>
+                    <td>提供 13.8 吋和 15 吋顯示螢幕選擇，配備觸控式觸控板</td>
+                </tr>
+                <tr>
+                    <td>宏碁</td>
+                    <td>Swift 14 AI</td>
+                    <td>2.5K 觸控螢幕，支援 Acer PurifiedVoice 2.0 和 Purified View</td>
+                </tr>
+                <tr>
+                    <td>華碩</td>
+                    <td>Vivobook S 15</td>
+                    <td>雙風扇冷卻系統，最大 1TB 儲存空間，RGB 背光鍵盤</td>
+                </tr>
+                <tr>
+                    <td>戴爾</td>
+                    <td>XPS 13</td>
+                    <td>搭載 Snapdragon X Elite 處理器，優質未來感設計</td>
+                </tr>
+                <tr>
+                    <td>惠普</td>
+                    <td>OmniBook X AI PC</td>
+                    <td>配備 500 萬畫素相機，支援自動取景和眼神聚焦</td>
+                </tr>
+                <tr>
+                    <td>聯想</td>
+                    <td>Yoga Slim 7x</td>
+                    <td>14.5 吋觸控螢幕，3K Dolby Vision 顯示，最佳化 3D 渲染和影片編輯</td>
+                </tr>
+                <tr>
+                    <td>三星</td>
+                    <td>Galaxy Book4 Edge</td>
+                    <td>超薄輕巧，3K 解析度動態 AMOLED 2X 顯示螢幕，支援 Wi-Fi 7</td>
+                </tr>
+            </table>
+    
+            <div class="copilot-warning">
+                <p>注意：Copilot+ PC 功能的效能可能會因您的電腦的功率和性能而有所不同。這些功能可能會隨著時間的推移和更新而需要額外的硬體或軟體。請確保您想要安裝的應用程式與您的裝置相容，以獲得最佳體驗。</p>
+            </div>
+        </div>
 </div>
     <script>
         function openTab(evt, tabName) {
