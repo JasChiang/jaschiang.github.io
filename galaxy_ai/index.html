@@ -123,13 +123,19 @@
         .description-table tr:hover, .support-table tr:hover {
             background-color: #f1f1f1;
         }
+        
         .source-description {
-            margin-top: 10px;
             width: 80%;
             background: #fff;
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .source-description .description-title {
+            font-size: 1.5em;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: #333;
         }
         .source-description ul {
             list-style-type: none;
@@ -138,6 +144,9 @@
         .source-description li {
             margin-bottom: 10px;
         }
+        .source-description li > ul {
+            padding-left: 20px;
+        }
         .source-description a {
             color: #1a73e8;
             text-decoration: none;
@@ -145,7 +154,7 @@
         .source-description a:hover {
             text-decoration: underline;
         }
-    </style>
+</style>
 </head>
 <body>
     <div class="container">
@@ -186,7 +195,7 @@
                 <div class="column-title">三星鍵盤</div>
                  <div class="feature on-device account-required">聊天翻譯</div>
                 <div class="feature both account-required">智慧寫手*</div>
-                <div class="feature both account-required">拼寫和文法修正*</div>*英語和韓語可在裝置上處理。 <br>其他所有語言在雲端處理。</br>
+                <div class="feature both account-required">拼寫和文法修正*</div><h5>*英語和韓語可在裝置上處理。 <br>其他所有語言在雲端處理。</h5></br>
             </div>
             <div class="feature-column">
                 <div class="column-title">Samsung Notes</div>
@@ -696,18 +705,18 @@
             </table>
         </div>
     </div>
-     <div class="container">
+<div class="container">
         <div class="source-description">
             <div class="description-title">資料來源</div>
             <ul>
-                <li>支援機型：
+                <li><h4>支援機型</h4>
                     <ul>
                         <li>Galaxy AI | 流動電話 AI 和裝置上的 AI 功能 | 三星電子 HK
                             <a href="https://www.samsung.com/hk/galaxy-ai/" target="_blank">https://www.samsung.com/hk/galaxy-ai/</a>
                         </li>
                     </ul>
                 </li>
-                <li>Galaxy AI 的資料處理方式：
+                <li><h4>Galaxy AI 的資料處理方式</h4>
                     <ul>
                         <li>An overview of the Galaxy AI features on the S24 series
                             <a href="https://www.reddit.com/r/Android/comments/1aex75z/" target="_blank">https://www.reddit.com/r/Android/comments/1aex75z/</a>
@@ -720,6 +729,5 @@
             </ul>
         </div>
     </div>
-
    </body>
 </html>
