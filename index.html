@@ -3,33 +3,108 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jas Bought It.</title>
+    <title>Apple Intelligence 和 Galaxy AI 比較</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f9;
-            margin: 0;
-            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 1920px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        h1, h2 {
+            color: #0070c9;
         }
         .container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
             padding: 20px;
+            margin-top: 20px;
         }
-        .title {
-            font-size: 32px;
-            font-weight: bold;
-            margin: 20px 0;
-            color: #333;
+        svg {
+            max-width: 100%;
+            height: auto;
         }
-        .link-container {
+        .info-box {
+            background-color: #f0f8ff;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 15px;
+            margin-top: 20px;
+        }
+        .highlight {
+            transition: opacity 0.3s ease;
+        }
+        .animation-path {
+            stroke-dasharray: 5;
+            animation: dash 20s linear infinite;
+        }
+        @keyframes dash {
+            to {
+                stroke-dashoffset: 1000;
+            }
+        }
+        .feature-list {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+        .feature-item {
+            display: flex;
+            align-items: center;
+            margin: 5px;
+        }
+        .feature-item svg {
+            width: 20px;
+            height: 20px;
+            margin-right: 5px;
+        }
+        .chatgpt-box {
+            background-color: #ffd700;
+            border-radius: 8px;
+            padding: 10px;
+            margin-top: 20px;
+        }
+        .tab {
+            overflow: hidden;
+            border: 1px solid #ccc;
+            background-color: #f1f1f1;
+        }
+        .tab button {
+            background-color: inherit;
+            float: left;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            padding: 14px 16px;
+            transition: 0.3s;
+            font-size: 15px;
+        }
+        .tab button:hover {
+            background-color: #ddd;
+        }
+        .tab button.active {
+            background-color: #0070c9; /* 將選中時的底色改為藍色 */
+            color: white; /* 選中時的文字顏色改為白色,使其更易讀 */
+        }
+        .tab-content {
+            display: none;
+            padding: 6px 12px;
+            border: 1px solid #ccc;
+            border-top: none;
+        }
+        /* Galaxy AI Styles */
+        .feature-container {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
             margin-bottom: 40px;
         }
-        .link-column {
+        .feature-column {
             margin: 10px;
             display: flex;
             flex-direction: column;
@@ -39,40 +114,1058 @@
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
-        .link-title {
-            font-size: 24px;
+        .column-title {
+            font-size: 20px;
             font-weight: bold;
             margin-bottom: 10px;
             color: #555;
         }
-        .link {
+        .feature {
             margin: 5px 0;
             padding: 10px;
             border-radius: 5px;
             width: 200px;
             text-align: center;
-            text-decoration: none;
-            color: white;
-            background-color: #0070c9;
         }
-        .link:hover {
-            background-color: #005fa3;
+        .on-device {
+            background-color: #ADD8E6;
+        }
+        .online {
+            background-color: #90EE90;
+        }
+        .both {
+            background: linear-gradient(90deg, #ADD8E6 50%, #90EE90 50%);
+        }
+        .legend {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+        .legend-item {
+            display: flex;
+            align-items: center;
+        }
+        .legend-color {
+            width: 20px;
+            height: 20px;
+            margin-right: 5px;
+            border-radius: 5px;
+        }
+        .on-device-color {
+            background-color: #ADD8E6;
+        }
+        .online-color {
+            background-color: #90EE90;
+        }
+        .both-color {
+            background: linear-gradient(90deg, #ADD8E6 50%, #90EE90 50%);
+        }
+        .account-required {
+            border: 2px solid red;
+        }
+        .description-table, .support-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        .description-table th, .description-table td, .support-table th, .support-table td {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+        .description-table th, .support-table th {
+            background-color: #f2f2f2;
+            text-align: left;
+            font-size: 18px;
+        }
+        .description-table td, .support-table td {
+            font-size: 16px;
+        }
+        .description-table tr:hover, .support-table tr:hover {
+            background-color: #f1f1f1;
+        }
+         
+        }
+        .source-description .description-title {
+            font-size: 1.5em;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: #333;
+        }
+        .source-description ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        .source-description li {
+            margin-bottom: 10px;
+        }
+        .source-description li > ul {
+            padding-left: 20px;
+        }
+        .source-description a {
+            color: #1a73e8;
+            text-decoration: none;
+        }
+        .source-description a:hover {
+            text-decoration: underline;
         }
     </style>
 </head>
 <body>
+    <h1>Apple Intelligence 與 Galaxy AI 介紹</h1>
+    <p>以 Claude 3.5 Sonnet 與 GPT-4o 生成並人工微調</p>
+
+    <div class="tab">
+        <button class="tablinks" onclick="openTab(event, 'AppleIntelligence')" id="defaultOpen">Apple Intelligence</button>
+        <button class="tablinks" onclick="openTab(event, 'GalaxyAI')">Galaxy AI</button>
+    </div>
+
+    <div id="AppleIntelligence" class="tab-content">
+        <div class="container">
+<h2>什麼是 Apple Intelligence</h2>
+<p>Apple Intelligence 是內建在你 iPhone、iPad 和 Mac 的個人智慧系統，它利用強大的生成式模型來提供各種智慧功能，幫助你撰寫文句、表達自我，輕鬆完成各項任務。</p>
+<p>Apple Intelligence 包括以下主要組件：</p>
+<ul>
+    <li><strong>系統級體驗：</strong>包括 Siri、Writing Tools 和 Image Playground 等核心功能，以及各種 Apps。</li>
+    <li><strong>個人智慧系統：</strong>包含語義索引和 App Intents 工具箱，用於理解和組織使用者的個人資訊。</li>
+    <li><strong>協調層：</strong>負責協調各個組件之間的互動。</li>
+    <li><strong>設備內模型：</strong>包括語言和影像處理模型，直接在設備上運行。</li>
+    <li><strong>伺服器模型：</strong>在私有雲（Private Cloud）上用於處理更複雜的任務，確保使用者資料的隱私和安全。</li>
+    <li><strong>Apple 晶片：</strong>為整個系統提供強大的硬體支援，包括 CPU、GPU、Neural Engine 和 Secure Enclave。</li>
+    <li><strong>ChatGPT 整合：</strong>當設備內與伺服器模型無法解決問題時，系統會詢問使用者是否使用 ChatGPT 等第三方服務。</li>
+</ul>
+</div>
     <div class="container">
-        <div class="title"></div>
-        <div class="link-container">
-            <div class="link-column">
-                <div class="link-title">Galaxy AI</div>
-                <a href="/galaxy_ai" class="link">了解更多</a>
-            </div>
-            <div class="link-column">
-                <div class="link-title">Apple Intelligence</div>
-                <a href="/apple_intelligence" class="link">了解更多</a>
-            </div>
+        <svg viewBox="0 0 800 650" id="architecture-svg">
+            <!-- System-wide experiences -->
+            <g>
+                <rect x="50" y="20" width="700" height="120" rx="10" fill="#f0f0f0" stroke="#000" />
+                <text x="400" y="45" text-anchor="middle" font-size="18" font-weight="bold">系統級體驗與 Apps</text>
+                
+                <rect x="150" y="60" width="150" height="30" rx="5" fill="#d1e8ff" stroke="#000" class="highlight" data-index="0" />
+<text x="225" y="80" text-anchor="middle" font-size="14" font-weight="bold">Siri</text>
+
+<rect x="310" y="60" width="150" height="30" rx="5" fill="#ffe8d1" stroke="#000" class="highlight" data-index="1" />
+<text x="385" y="80" text-anchor="middle" font-size="14" font-weight="bold">Writing Tools</text>
+
+<rect x="470" y="60" width="150" height="30" rx="5" fill="#d1ffe8" stroke="#000" class="highlight" data-index="2" />
+<text x="545" y="80" text-anchor="middle" font-size="14" font-weight="bold">Image Playground</text>
+
+<rect x="630" y="60" width="60" height="30" rx="5" fill="#e0e0e0" stroke="#000" />
+<text x="660" y="80" text-anchor="middle" font-size="14" font-weight="bold">...</text>
+
+                <text x="100" y="110" font-size="14" font-weight="bold">Apps</text>
+                <g transform="translate(150, 95)">
+                    <rect width="40" height="30" rx="5" fill="#c0c0c0" stroke="#000" />
+                    <rect x="50" width="40" height="30" rx="5" fill="#c0c0c0" stroke="#000" />
+                    <rect x="100" width="40" height="30" rx="5" fill="#c0c0c0" stroke="#000" />
+                    <rect x="150" width="40" height="30" rx="5" fill="#c0c0c0" stroke="#000" />
+                    <rect x="200" width="40" height="30" rx="5" fill="#c0c0c0" stroke="#000" />
+                    <rect x="250" width="40" height="30" rx="5" fill="#c0c0c0" stroke="#000" />
+                    <rect x="300" width="40" height="30" rx="5" fill="#c0c0c0" stroke="#000" />
+                    <rect x="350" width="40" height="30" rx="5" fill="#c0c0c0" stroke="#000" />
+                    <rect x="400" width="40" height="30" rx="5" fill="#c0c0c0" stroke="#000" />
+                    <rect x="450" width="40" height="30" rx="5" fill="#c0c0c0" stroke="#000" />
+<rect x="500" width="40" height="30" rx="5" fill="#c0c0c0" stroke="#000" />
+                </g>
+            </g>
+
+            <!-- Personal Intelligence System -->
+            <g>
+                <rect x="50" y="160" width="700" height="120" rx="10" fill="#e6f2ff" stroke="#000" />
+                <text x="400" y="190" text-anchor="middle" font-size="18" font-weight="bold">個人智慧系統</text>
+                <rect x="100" y="200" width="200" height="60" rx="5" fill="#b3d9ff" />
+<text x="200" y="225" text-anchor="middle" font-size="14">
+        <tspan x="200" dy="0">語義索引</tspan>
+        <tspan x="200" dy="1.2em">Semantic index</tspan>
+    </text>
+                <rect x="500" y="200" width="200" height="60" rx="5" fill="#b3d9ff" />
+    <text x="600" y="225" text-anchor="middle" font-size="14">
+        <tspan x="600" dy="0">App 意圖工具箱</tspan>
+        <tspan x="600" dy="1.2em">App Intents Toolbox</tspan>
+    </text>
+            </g>
+
+            <!-- Orchestration -->
+            <g>
+                <rect x="250" y="300" width="300" height="40" rx="10" fill="#d9d9d9" stroke="#000" />
+                <text x="400" y="325" text-anchor="middle" font-size="14">協調層 Orchestration</text>
+            </g>
+
+         <!-- On-device models and Private Cloud Compute -->
+         
+<g>
+<rect x="50" y="360" width="230" height="180" rx="10" fill="#ffe6e6" stroke="#000" />
+<!-- 設備內模型（調整大小和位置） -->
+            <rect x="50" y="360" width="230" height="180" rx="10" fill="#ffe6e6" stroke="#000" />
+            <text x="165" y="380" text-anchor="middle" font-size="18" font-weight="bold">設備內模型</text>
+            
+            <!-- 設備內模型的語言模型 -->
+            <rect x="70" y="390" width="90" height="140" rx="5" fill="#FFFFFF" />
+            <text x="115" y="410" text-anchor="middle" font-size="14" font-weight="bold">語言</text>
+            <g transform="translate(85, 420)">
+                <rect x="0" y="0" width="8" height="60" fill="#33a1ff" />
+                <rect x="18" y="0" width="8" height="60" fill="#33a1ff" />
+                <rect x="36" y="0" width="8" height="60" fill="#33a1ff" />
+                <rect x="54" y="0" width="8" height="60" fill="#33a1ff" />
+            </g>
+    
+    <!-- Updated Network Diagram for Language Model -->
+    <g transform="translate(90, 480) scale(0.5)">
+        <defs>
+            <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" style="stop-color:#4ade80;stop-opacity:1" />
+                <stop offset="100%" style="stop-color:#22d3ee;stop-opacity:1" />
+            </linearGradient>
+        </defs>
+        
+        <!-- Lines -->
+        <line x1="50" y1="25" x2="80" y2="35" stroke="url(#gradient)" stroke-width="1.5" />
+        <line x1="50" y1="25" x2="20" y2="35" stroke="url(#gradient)" stroke-width="1.5" />
+        <line x1="50" y1="25" x2="80" y2="65" stroke="url(#gradient)" stroke-width="1.5" />
+        <line x1="50" y1="25" x2="20" y2="65" stroke="url(#gradient)" stroke-width="1.5" />
+        <line x1="50" y1="25" x2="50" y2="50" stroke="url(#gradient)" stroke-width="1.5" />
+        <line x1="50" y1="25" x2="50" y2="75" stroke="url(#gradient)" stroke-width="1.5" />
+        <line x1="80" y1="35" x2="20" y2="35" stroke="url(#gradient)" stroke-width="1.5" />
+        <line x1="80" y1="35" x2="50" y2="50" stroke="url(#gradient)" stroke-width="1.5" />
+        <line x1="80" y1="35" x2="80" y2="65" stroke="url(#gradient)" stroke-width="1.5" />
+        <line x1="80" y1="35" x2="20" y2="65" stroke="url(#gradient)" stroke-width="1.5" />
+        <line x1="80" y1="35" x2="50" y2="75" stroke="url(#gradient)" stroke-width="1.5" />
+        <line x1="20" y1="35" x2="50" y2="50" stroke="url(#gradient)" stroke-width="1.5" />
+        <line x1="20" y1="35" x2="80" y2="65" stroke="url(#gradient)" stroke-width="1.5" />
+        <line x1="20" y1="35" x2="20" y2="65" stroke="url(#gradient)" stroke-width="1.5" />
+        <line x1="20" y1="35" x2="50" y2="75" stroke="url(#gradient)" stroke-width="1.5" />
+        <line x1="50" y1="50" x2="80" y2="65" stroke="url(#gradient)" stroke-width="1.5" />
+        <line x1="50" y1="50" x2="20" y2="65" stroke="url(#gradient)" stroke-width="1.5" />
+        <line x1="50" y1="50" x2="50" y2="75" stroke="url(#gradient)" stroke-width="1.5" />
+        <line x1="80" y1="65" x2="20" y2="65" stroke="url(#gradient)" stroke-width="1.5" />
+        <line x1="80" y1="65" x2="50" y2="75" stroke="url(#gradient)" stroke-width="1.5" />
+        <line x1="20" y1="65" x2="50" y2="75" stroke="url(#gradient)" stroke-width="1.5" />
+        
+        <!-- Nodes -->
+        <circle cx="50" cy="25" r="4" fill="#4ade80" />
+        <circle cx="80" cy="35" r="4" fill="#4ade80" />
+        <circle cx="20" cy="35" r="4" fill="#4ade80" />
+        <circle cx="50" cy="50" r="4" fill="#4ade80" />
+        <circle cx="80" cy="65" r="4" fill="#22d3ee" />
+        <circle cx="20" cy="65" r="4" fill="#22d3ee" />
+        <circle cx="50" cy="75" r="4" fill="#22d3ee" />
+    </g>
+    
+<!-- 設備內模型的圖片模型 -->
+            <rect x="170" y="390" width="90" height="140" rx="5" fill="#FFFFFF" />
+            <text x="215" y="410" text-anchor="middle" font-size="14" font-weight="bold">圖片</text>
+            <g transform="translate(185, 420)">
+                <rect x="0" y="0" width="8" height="60" fill="#4CAF50" />
+                <rect x="18" y="0" width="8" height="60" fill="#4CAF50" />
+                <rect x="36" y="0" width="8" height="60" fill="#4CAF50" />
+                <rect x="54" y="0" width="8" height="60" fill="#4CAF50" />
+                
+            </g>
+
+    
+    <!-- Updated Network Diagram for Image Model -->
+    <g transform="translate(190, 480) scale(0.5)">
+        <!-- Lines (reusing the gradient from Language Model) -->
+        <line x1="50" y1="25" x2="80" y2="35" stroke="url(#gradient)" stroke-width="1.5" />
+        <line x1="50" y1="25" x2="20" y2="35" stroke="url(#gradient)" stroke-width="1.5" />
+        <line x1="50" y1="25" x2="80" y2="65" stroke="url(#gradient)" stroke-width="1.5" />
+        <line x1="50" y1="25" x2="20" y2="65" stroke="url(#gradient)" stroke-width="1.5" />
+        <line x1="50" y1="25" x2="50" y2="50" stroke="url(#gradient)" stroke-width="1.5" />
+        <line x1="50" y1="25" x2="50" y2="75" stroke="url(#gradient)" stroke-width="1.5" />
+        <line x1="80" y1="35" x2="20" y2="35" stroke="url(#gradient)" stroke-width="1.5" />
+        <line x1="80" y1="35" x2="50" y2="50" stroke="url(#gradient)" stroke-width="1.5" />
+        <line x1="80" y1="35" x2="80" y2="65" stroke="url(#gradient)" stroke-width="1.5" />
+        <line x1="80" y1="35" x2="20" y2="65" stroke="url(#gradient)" stroke-width="1.5" />
+        <line x1="80" y1="35" x2="50" y2="75" stroke="url(#gradient)" stroke-width="1.5" />
+        <line x1="20" y1="35" x2="50" y2="50" stroke="url(#gradient)" stroke-width="1.5" />
+        <line x1="20" y1="35" x2="80" y2="65" stroke="url(#gradient)" stroke-width="1.5" />
+        <line x1="20" y1="35" x2="20" y2="65" stroke="url(#gradient)" stroke-width="1.5" />
+        <line x1="20" y1="35" x2="50" y2="75" stroke="url(#gradient)" stroke-width="1.5" />
+        <line x1="50" y1="50" x2="80" y2="65" stroke="url(#gradient)" stroke-width="1.5" />
+        <line x1="50" y1="50" x2="20" y2="65" stroke="url(#gradient)" stroke-width="1.5" />
+        <line x1="50" y1="50" x2="50" y2="75" stroke="url(#gradient)" stroke-width="1.5" />
+        <line x1="80" y1="65" x2="20" y2="65" stroke="url(#gradient)" stroke-width="1.5" />
+        <line x1="80" y1="65" x2="50" y2="75" stroke="url(#gradient)" stroke-width="1.5" />
+        <line x1="20" y1="65" x2="50" y2="75" stroke="url(#gradient)" stroke-width="1.5" />
+        
+        <!-- Nodes -->
+        <circle cx="50" cy="25" r="4" fill="#4ade80" />
+        <circle cx="80" cy="35" r="4" fill="#4ade80" />
+        <circle cx="20" cy="35" r="4" fill="#4ade80" />
+        <circle cx="50" cy="50" r="4" fill="#4ade80" />
+        <circle cx="80" cy="65" r="4" fill="#22d3ee" />
+        <circle cx="20" cy="65" r="4" fill="#22d3ee" />
+        <circle cx="50" cy="75" r="4" fill="#22d3ee" />
+    </g>
+    
+  <!-- Server Model -->
+<g>
+<rect x="300" y="360" width="230" height="180" rx="10" fill="#e6ffe6" stroke="#000" />
+            <text x="415" y="380" text-anchor="middle" font-size="18" font-weight="bold">伺服器模型</text>
+    
+            <!-- 伺服器模型的內部組件 -->
+            <rect x="320" y="390" width="190" height="140" rx="5" fill="#FFFFFF" />
+            <g transform="translate(330, 400)">
+                <rect x="0" y="0" width="8" height="80" fill="#33a1ff" />
+                <rect x="18" y="0" width="8" height="80" fill="#33a1ff" />
+                <rect x="36" y="0" width="8" height="80" fill="#33a1ff" />
+                <rect x="54" y="0" width="8" height="80" fill="#33a1ff" />
+                <rect x="72" y="0" width="8" height="80" fill="#33a1ff" />
+                <rect x="90" y="0" width="8" height="80" fill="#33a1ff" />
+                <rect x="108" y="0" width="8" height="80" fill="#33a1ff" />
+                <rect x="126" y="0" width="8" height="80" fill="#33a1ff" />
+                <rect x="144" y="0" width="8" height="80" fill="#33a1ff" />
+        <rect x="160" y="0" width="8" height="80" fill="#33a1ff" />
+            </g>
+    
+   <!-- Updated Network Diagram for Server Model -->
+    <g transform="translate(400, 480) scale(0.5)">
+        <defs>
+            <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" style="stop-color:#4ade80;stop-opacity:1" />
+                <stop offset="100%" style="stop-color:#22d3ee;stop-opacity:1" />
+            </linearGradient>
+        </defs>
+        
+        <!-- Lines -->
+        <line x1="30" y1="25" x2="60" y2="35" stroke="url(#gradient)" stroke-width="1.5" />
+        <line x1="30" y1="25" x2="0" y2="35" stroke="url(#gradient)" stroke-width="1.5" />
+        <line x1="30" y1="25" x2="60" y2="65" stroke="url(#gradient)" stroke-width="1.5" />
+        <line x1="30" y1="25" x2="0" y2="65" stroke="url(#gradient)" stroke-width="1.5" />
+        <line x1="30" y1="25" x2="30" y2="50" stroke="url(#gradient)" stroke-width="1.5" />
+        <line x1="30" y1="25" x2="30" y2="75" stroke="url(#gradient)" stroke-width="1.5" />
+        <line x1="60" y1="35" x2="0" y2="35" stroke="url(#gradient)" stroke-width="1.5" />
+        <line x1="60" y1="35" x2="30" y2="50" stroke="url(#gradient)" stroke-width="1.5" />
+        <line x1="60" y1="35" x2="60" y2="65" stroke="url(#gradient)" stroke-width="1.5" />
+        <line x1="60" y1="35" x2="0" y2="65" stroke="url(#gradient)" stroke-width="1.5" />
+        <line x1="60" y1="35" x2="30" y2="75" stroke="url(#gradient)" stroke-width="1.5" />
+        <line x1="0" y1="35" x2="30" y2="50" stroke="url(#gradient)" stroke-width="1.5" />
+        <line x1="0" y1="35" x2="60" y2="65" stroke="url(#gradient)" stroke-width="1.5" />
+        <line x1="0" y1="35" x2="0" y2="65" stroke="url(#gradient)" stroke-width="1.5" />
+        <line x1="0" y1="35" x2="30" y2="75" stroke="url(#gradient)" stroke-width="1.5" />
+        <line x1="30" y1="50" x2="60" y2="65" stroke="url(#gradient)" stroke-width="1.5" />
+        <line x1="30" y1="50" x2="0" y2="65" stroke="url(#gradient)" stroke-width="1.5" />
+        <line x1="30" y1="50" x2="30" y2="75" stroke="url(#gradient)" stroke-width="1.5" />
+        <line x1="60" y1="65" x2="0" y2="65" stroke="url(#gradient)" stroke-width="1.5" />
+        <line x1="60" y1="65" x2="30" y2="75" stroke="url(#gradient)" stroke-width="1.5" />
+        <line x1="0" y1="65" x2="30" y2="75" stroke="url(#gradient)" stroke-width="1.5" />
+        
+        <!-- Nodes -->
+        <circle cx="30" cy="25" r="4" fill="#4ade80" />
+        <circle cx="60" cy="35" r="4" fill="#4ade80" />
+        <circle cx="0" cy="35" r="4" fill="#4ade80" />
+        <circle cx="30" cy="50" r="4" fill="#4ade80" />
+        <circle cx="60" cy="65" r="4" fill="#22d3ee" />
+        <circle cx="0" cy="65" r="4" fill="#22d3ee" />
+        <circle cx="30" cy="75" r="4" fill="#22d3ee" /></g>
+        <!-- Apple silicon -->
+        <g>
+    <rect x="50" y="550" width="480" height="60" rx="10" fill="#f0f0f0" stroke="#000" />
+    <text x="290" y="570" text-anchor="middle" font-size="16" font-weight="bold">Apple 晶片</text>
+    <rect x="60" y="580" width="100" height="20" rx="5" fill="#d9d9d9" stroke="#000" />
+    <text x="110" y="594" text-anchor="middle" font-size="12">CPU</text>
+    <rect x="170" y="580" width="100" height="20" rx="5" fill="#d9d9d9" stroke="#000" />
+    <text x="220" y="594" text-anchor="middle" font-size="12">GPU</text>
+    <rect x="280" y="580" width="100" height="20" rx="5" fill="#d9d9d9" stroke="#000" />
+    <text x="330" y="594" text-anchor="middle" font-size="12">Neural Engine</text>
+    <rect x="390" y="580" width="130" height="20" rx="5" fill="#d9d9d9" stroke="#000" />
+    <text x="455" y="594" text-anchor="middle" font-size="12">Secure Enclave</text>
+
+        </g>
+
+    <!-- 新增 ChatGPT 組件 -->
+            <g>
+                <rect x="550" y="360" width="230" height="50" rx="10" fill="#ffd700" stroke="#000" />
+                <text x="670" y="390" text-anchor="middle" font-size="16" font-weight="bold">ChatGPT（第三方服務）</text>
+            </g>
+
+            <!-- 動畫路徑 -->
+<!-- 個人智慧系統至協調層 -->
+  <path d="M400 280 L400 300" fill="none" stroke="#0070c9" stroke-width="2" class="animation-path" />
+
+
+
+          
+<!-- 系統級體驗至個人智慧系統的線 -->
+  <path d="M600 140 L600 160" fill="none" stroke="#0070c9" stroke-width="2" class="animation-path" />
+   <path d="M200 140 L200 160" fill="none" stroke="#0070c9" stroke-width="2" class="animation-path" />
+  
+<!-- 模型至 Apple 晶片的線 -->
+            <path d="M400 540 L400 550" fill="none" stroke="#0070c9" stroke-width="2" class="animation-path" />
+              <path d="M200 540 L200 550" fill="none" stroke="#0070c9" stroke-width="2" class="animation-path" />
+              
+<!-- 從協調層到設備內模型的路徑 -->
+    <path d="M325 340 Q 280 350, 165 360" fill="none" stroke="#0070c9" stroke-width="2" class="animation-path" />
+    
+    <!-- 從協調層到伺服器模型的路徑 -->
+    <path d="M400 340 L 400 360" fill="none" stroke="#0070c9" stroke-width="2" class="animation-path" />
+    
+    <!-- 從協調層到 ChatGPT 的路徑 -->
+    <path d="M475 340 Q 520 350, 650 360" fill="none" stroke="#0070c9" stroke-width="2" class="animation-path" />             
+            
+</svg>
+    
+<div class="info-box">
+    <h3>Foundation Models 和 Adapters 說明</h3>
+<!-- Foundation Models 說明-->
+<svg viewBox="0 0 100 100" width="50" height="50">
+    <defs>
+        <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" style="stop-color:#4ade80;stop-opacity:1" />
+            <stop offset="100%" style="stop-color:#22d3ee;stop-opacity:1" />
+        </linearGradient>
+    </defs>
+        <g transform="translate(0, 20)">
+        <!-- Lines-->
+        <line x1="50" y1="25" x2="80" y2="35" stroke="url(#gradient)" stroke-width="1.5" />
+        <line x1="50" y1="25" x2="20" y2="35" stroke="url(#gradient)" stroke-width="1.5" />
+        <line x1="50" y1="25" x2="80" y2="65" stroke="url(#gradient)" stroke-width="1.5" />
+        <line x1="50" y1="25" x2="20" y2="65" stroke="url(#gradient)" stroke-width="1.5" />
+        <line x1="50" y1="25" x2="50" y2="50" stroke="url(#gradient)" stroke-width="1.5" />
+        <line x1="50" y1="25" x2="50" y2="75" stroke="url(#gradient)" stroke-width="1.5" />
+        <line x1="80" y1="35" x2="20" y2="35" stroke="url(#gradient)" stroke-width="1.5" />
+        <line x1="80" y1="35" x2="50" y2="50" stroke="url(#gradient)" stroke-width="1.5" />
+        <line x1="80" y1="35" x2="80" y2="65" stroke="url(#gradient)" stroke-width="1.5" />
+        <line x1="80" y1="35" x2="20" y2="65" stroke="url(#gradient)" stroke-width="1.5" />
+        <line x1="80" y1="35" x2="50" y2="75" stroke="url(#gradient)" stroke-width="1.5" />
+        <line x1="20" y1="35" x2="50" y2="50" stroke="url(#gradient)" stroke-width="1.5" />
+        <line x1="20" y1="35" x2="80" y2="65" stroke="url(#gradient)" stroke-width="1.5" />
+        <line x1="20" y1="35" x2="20" y2="65" stroke="url(#gradient)" stroke-width="1.5" />
+        <line x1="20" y1="35" x2="50" y2="75" stroke="url(#gradient)" stroke-width="1.5" />
+        <line x1="50" y1="50" x2="80" y2="65" stroke="url(#gradient)" stroke-width="1.5" />
+        <line x1="50" y1="50" x2="20" y2="65" stroke="url(#gradient)" stroke-width="1.5" />
+        <line x1="50" y1="50" x2="50" y2="75" stroke="url(#gradient)" stroke-width="1.5" />
+        <line x1="80" y1="65" x2="20" y2="65" stroke="url(#gradient)" stroke-width="1.5" />
+        <line x1="80" y1="65" x2="50" y2="75" stroke="url(#gradient)" stroke-width="1.5" />
+        <line x1="20" y1="65" x2="50" y2="75" stroke="url(#gradient)" stroke-width="1.5" />
+        
+        <!-- Nodes -->
+        <circle cx="50" cy="25" r="4" fill="#4ade80" />
+        <circle cx="80" cy="35" r="4" fill="#4ade80" />
+        <circle cx="20" cy="35" r="4" fill="#4ade80" />
+        <circle cx="50" cy="50" r="4" fill="#4ade80" />
+        <circle cx="80" cy="65" r="4" fill="#22d3ee" />
+        <circle cx="20" cy="65" r="4" fill="#22d3ee" />
+        <circle cx="50" cy="75" r="4" fill="#22d3ee" />
+    </g>
+
+</svg>
+    <p><strong>Foundation Models：</strong>Foundation Models 是 Apple Intelligence 的核心，是經過大規模預訓練的基礎模型。設備內模型包括語言和用於圖片生成的擴散模型兩個部分，每個約有 30 億參數，伺服器模型規模更大，運行在 Apple 的私有雲平台上，可以處理更複雜的任務。結合 Adapters 技術，Foundation Models 可靈活適應各種特定任務，同時保持通用知識和高效處理能力。</p>
+    <p>
+<svg width="140" height="30">
+      <rect x="0" y="10" width="60" height="10" fill="#33a1ff" />
+      <rect x="70" y="10" width="60" height="10" fill="#4CAF50" />
+   </svg>
+<br><strong>Adapters：</strong>小型神經網路模組，通過對預訓練的 Foundation Models 進行適應性微調而產生。可以動態加載到 Foundation Models 中，使模型能夠適應特定任務，如文本摘要、校對或生成郵件回覆等。這種方法可以靈活地載入和交換，從而使基礎模型能夠高效地處理各種特定任務。這種方法既保留了原始模型的通用知識，又實現了高效的任務特化，同時維持了模型的整體性能和記憶體使用效率。</br></p>
+</div>
+
+<div class="chatgpt-box">
+    <h4>ChatGPT 整合</h4>
+    <p>OpenAI 出品的 ChatGPT 已緊密整合至 Siri 和「書寫工具」中。主要特點：</p>
+    <ul>
+        <li>Siri 能利用 ChatGPT 來回應某些要求，包括照片或文件等相關問題。</li>
+        <li>「書寫工具」中的「編寫」功能讓使用者從零開始建立並創作原創內容。</li>
+        <li>使用者可以控制 ChatGPT 的使用時機，系統會在共享資訊前徵詢使用者同意。</li>
+        <li>無須建立帳號，所有使用者都能免費使用基本功能。</li>
+        <li>ChatGPT 訂閱戶可以連結帳號，使用付費功能。</li>
+    </ul>
+ </div>
         </div>
     </div>
+<!--以下是 Galaxy AI-->
+    <div id="GalaxyAI" class="tab-content">
+           <div class="container">
+        <h2>Galaxy AI 功能</h2>
+
+         <div class="legend">
+            <div class="legend-item">
+                資料預設處理方式：<div class="legend-color on-device-color"></div>
+                <div>On-device 處理</div>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color online-color"></div>
+                <div>Online 處理</div>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color both-color"></div>
+                <div>On-device 和 Online 處理</div>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="border: 2px solid red;"></div>
+                <div>需要 Samsung Account</div>
+            </div>
+        </div>
+
+        <div class="feature-container">
+            <div class="feature-column">
+                <div class="column-title">電話</div>
+                <div class="feature on-device account-required">文字通話</div>
+                <div class="feature on-device account-required">即時翻譯</div>
+            </div>
+            <div class="feature-column">
+                <div class="column-title">語音翻譯</div>
+                <div class="feature on-device account-required">即時翻譯對話內容</div>
+            </div>
+            <div class="feature-column">
+                <div class="column-title">三星鍵盤</div>
+                 <div class="feature on-device account-required">聊天翻譯</div>
+                <div class="feature both account-required">智慧寫手*</div>
+                <div class="feature both account-required">拼寫和文法修正*</div><h5>*英語和韓語可在裝置上處理。 <br>其他所有語言在雲端處理。</h5></br>
+            </div>
+            <div class="feature-column">
+                <div class="column-title">Samsung Notes</div>
+                <div class="feature online account-required">自動格式</div>
+                <div class="feature online account-required">摘要</div>
+                <div class="feature online account-required">校正拼音</div>
+                <div class="feature on-device account-required">翻譯</div>
+                <div class="feature online account-required">生成封面</div>
+            </div>
+            <div class="feature-column">
+                <div class="column-title">語音錄製</div>
+                <div class="feature on-device account-required">逐字稿</div>
+                <div class="feature online account-required">摘要</div>
+                <div class="feature on-device account-required">語音轉文字</div>
+            </div>
+            <div class="feature-column">
+                <div class="column-title">三星網際網路</div>
+                <div class="feature online account-required">摘要</div>
+                <div class="feature on-device account-required">翻譯</div>
+            </div>
+            <div class="feature-column">
+                <div class="column-title">相片編輯器</div>
+                <div class="feature online account-required">生成式編輯</div>
+            </div>
+            <div class="feature-column">
+                <div class="column-title">媒體瀏覽器</div>
+                <div class="feature online">照片編輯建議</div>
+                <div class="feature online">生成式慢動作</div>
+            </div>
+            <div class="feature-column">
+                <div class="column-title">桌布</div>
+                <div class="feature online">生成式桌布</div>
+                <div class="feature on-device account-required">照片情境桌布</div>
+            </div>
+            <div class="feature-column">
+                <div class="column-title">搜尋圈</div>
+                <div class="feature online">搜尋圈</div>
+            </div>
+        </div></div>
+          <div class="container">
+               <div class="description">
+            <div class="description-title"><h3>功能說明</h3></div>
+            <table class="description-table">
+                <tr>
+                    <th>Samsung 應用程式</th>
+                    <th>AI 功能</th>
+                    <th>說明</th>
+                </tr>
+                <tr>
+                    <td rowspan="2">電話</td>
+                    <td>文字通話</td>
+                    <td>不必開口就能接聽來電，語音助理將詢問對方來電目的。<br>之後便會以文字聊天形勢顯示雙方對話內容，待您輸入或輕觸回覆之後，隨即會向來電者朗讀答話內容。</br></td>
+                </tr>
+                <tr>
+                    <td>即時翻譯</td>
+                    <td>通話期間取得即時翻譯。</td>
+                </tr>
+                <tr>
+                    <td>語音翻譯</td>
+                    <td>即時翻譯對話內容</td>
+                    <td>即時翻譯對話內容，提供語音或文字輸出選項。</td>
+                </tr>
+                <tr>
+                    <td rowspan="3">三星鍵盤</td>
+                    <td>聊天翻譯</td>
+                    <td>提供訊息翻譯。</td>
+                </tr>
+                <tr>
+                    <td>智慧寫手</td>
+                    <td>改善文本內容。</td>
+                </tr>
+                <tr>
+                    <td>拼寫和文法修正</td>
+                    <td>英語和韓語可在裝置上處理，其他語言在雲端處理。</td>
+                </tr>
+                <tr>
+                    <td rowspan="5">Samsung Notes</td>
+                    <td>自動格式</td>
+                    <td>為筆記加入標點、項目符號與段落。</td>
+                </tr>
+                <tr>
+                    <td>摘要</td>
+                    <td>整理摘要，快速掌握重點。</td>
+                </tr>
+                <tr>
+                    <td>校正拼音</td>
+                    <td>校正拼寫和文法。</td>
+                </tr>
+                <tr>
+                    <td>翻譯</td>
+                    <td>翻譯筆記內的文字。</td>
+                </tr>
+                <tr>
+                    <td>生成封面</td>
+                    <td>根據內容生成封面。</td>
+                </tr>
+                <tr>
+                    <td rowspan="3">語音錄製</td>
+                    <td>逐字稿</td>
+                    <td>語音轉文字。</td>
+                </tr>
+                <tr>
+                    <td>摘要</td>
+                    <td>整理摘要。</td>
+                </tr>
+                <tr>
+                    <td>翻譯</td>
+                    <td>翻譯語音內容。</td>
+                </tr>
+                <tr>
+                    <td rowspan="2">三星網際網路</td>
+                    <td>摘要</td>
+                    <td>整理網頁內容摘要。</td>
+                </tr>
+                <tr>
+                    <td>翻譯</td>
+                    <td>翻譯網頁內容。</td>
+                </tr>
+                <tr>
+                    <td>相片編輯器</td>
+                    <td>生成式編輯</td>
+                    <td>對人物與物件進行移動、移除或調整大小來改造圖像，並生成新背景填補空缺。</td>
+                </tr>
+                <tr>
+                    <td rowspan="2">媒體瀏覽器</td>
+                    <td>照片編輯建議</td>
+                    <td>分析使用者拍攝的照片並提供如何改進影像的選項。</td>
+                </tr>
+                <tr>
+                    <td>生成式慢動作</td>
+                    <td>參照既有動作生成額外影格，流暢地放慢影片節奏，表現細緻的動態變化。</td>
+                </tr>
+                <tr>
+                    <td rowspan="2">桌布</td>
+                    <td>照片情境桌布</td>
+                    <td>依據天氣與時間變換顯示照片。</td>
+                </tr>
+                <tr>
+                    <td>生成式桌布</td>
+                    <td>從各種類別和提示中選擇和設定自己喜歡的桌布和鎖定螢幕。</td>
+                </tr>
+                <tr>
+                    <td>搜尋圈</td>
+                    <td>搜尋圈</td>
+                    <td>僅需圈選感興趣的物件，即可快速搜尋相關資訊，並可透過關鍵字設定，進一步獲得豐富、精準的內容。</td>
+                </tr>
+            </table>
+        </div></div>
+          <div class="container">
+        <div class="description">
+            <div class="description-title"><h3>支援機型</h3></div>
+            <table class="support-table">
+                <tr>
+                    <th>Samsung 應用程式</th>
+                    <th>AI 功能</th>
+                    <th>S24 系列</th>
+                    <th>S23 系列</th>
+                    <th>S23 FE</th>
+                    <th>Z Flip5 / Z Fold5</th>
+                    <th>Tab S9 (5G) 系列</th>
+                    <th>Tab S9 (Wi-Fi) 系列</th>
+                    <th>S22 系列</th>
+                    <th>Z Fold4/ Z Flip4</th>
+                    <th>Tab S8 (5G) 系列</th>
+                    <th>Tab S8 (Wi-Fi) 系列</th>
+                    <th>S21 系列</th>
+                    <th>Z Fold3/ Z Flip3</th>
+                </tr>
+                <tr>
+                    <td rowspan="2">電話</td>
+                    <td>文字通話</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td></td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>即時翻譯</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td></td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>語音翻譯</td>
+                    <td>即時翻譯對話內容</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td rowspan="3">三星鍵盤</td>
+                    <td>聊天翻譯</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>智慧寫手</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>拼寫和文法修正</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td rowspan="5">Samsung Notes</td>
+                    <td>自動格式</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>摘要</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>校正拼音</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>翻譯</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>生成封面</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td rowspan="3">語音錄製</td>
+                    <td>逐字稿</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>摘要</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>翻譯</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td rowspan="2">三星網際網路</td>
+                    <td>摘要</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>翻譯</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>相片編輯器</td>
+                    <td>生成式編輯</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td rowspan="2">媒體瀏覽器</td>
+                    <td>照片編輯建議</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>生成式慢動作</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td></td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td rowspan="2">桌布</td>
+                    <td>照片情境桌布</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>生成式桌布</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>搜尋圈</td>
+                    <td>搜尋圈</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+<div class="container">
+        <div class="source-description">
+            <div class="description-title"><h3>資料來源</h3></div>
+            <ul>
+                <li><strong>支援機型</strong>
+                    <ul>
+                        <li>Galaxy AI | 流動電話 AI 和裝置上的 AI 功能 | 三星電子 HK
+                            <a href="https://www.samsung.com/hk/galaxy-ai/" target="_blank">https://www.samsung.com/hk/galaxy-ai/</a>
+                        </li>
+                    </ul>
+                </li>
+                <li><strong>Galaxy AI 的資料處理方式</strong>
+                    <ul>
+                        <li>An overview of the Galaxy AI features on the S24 series
+                            <a href="https://www.reddit.com/r/Android/comments/1aex75z/" target="_blank">https://www.reddit.com/r/Android/comments/1aex75z/</a>
+                        </li>
+                        <li>Data processing for Galaxy AI
+                            <a href="https://docs.samsungknox.com/admin/knox-platform-for-enterprise/knox-service-plugin/configure-advanced-policies/data-processing-for-galaxy-ai/" target="_blank">https://docs.samsungknox.com/admin/knox-platform-for-enterprise/knox-service-plugin/configure-advanced-policies/data-processing-for-galaxy-ai/</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+      </div>
+
+    <script>
+        function openTab(evt, tabName) {
+            var i, tabContent, tabLinks;
+            tabContent = document.getElementsByClassName("tab-content");
+            for (i = 0; i < tabContent.length; i++) {
+                tabContent[i].style.display = "none";
+            }
+            tabLinks = document.getElementsByClassName("tablinks");
+            for (i = 0; i < tabLinks.length; i++) {
+                tabLinks[i].className = tabLinks[i].className.replace(" active", "");
+            }
+            document.getElementById(tabName).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+
+        // Open the default tab
+        document.getElementById("defaultOpen").click();
+    </script>
 </body>
 </html>
