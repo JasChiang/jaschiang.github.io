@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apple Intelligence 系統架構</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        h1, h2 {
+            color: #0070c9;
+            text-align: center;
+        }
+        .architecture-container {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            padding: 20px;
+            margin-top: 20px;
+            position: relative;
+        }
+        svg {
+            width: 100%;
+            height: auto;
+        }
+        .info-box, .chatgpt-box {
+            background-color: #f0f8ff;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 10px;
+            margin-top: 10px;
+            font-size: 14px;
+        }
+        .chatgpt-box {
+            background-color: #ffd700;
+        }
+        .info-box h4, .chatgpt-box h4 {
+            margin-top: 0;
+            color: #0070c9;
+        }
+        .feature-list {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+        .feature-item {
+            display: flex;
+            align-items: center;
+            margin: 5px;
+        }
+        .feature-item svg {
+            width: 20px;
+            height: 20px;
+            margin-right: 5px;
+        }
+        .highlight {
+            transition: opacity 0.3s ease;
+        }
+        .animation-path {
+            stroke-dasharray: 5;
+            animation: dash 20s linear infinite;
+        }
+        @keyframes dash {
+            to {
+                stroke-dashoffset: 1000;
+            }
+        }
+        .tabs {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        .tab {
+            padding: 10px 20px;
+            margin: 0 5px;
+            cursor: pointer;
+            background-color: #ddd;
+            border-radius: 5px;
+        }
+        .tab.active {
+            background-color: #0070c9;
+            color: white;
+        }
+        .tab-content {
+            display: none;
+        }
+        .tab-content.active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <h1>Apple Intelligence 系統架構</h1>
+    <div class="tabs">
+        <div class="tab active" data-tab="architecture">系統架構</div>
+        <div class="tab" data-tab="foundation-model">Foundation Model 開發過程</div>
+    </div>
+    <div class="tab-content active" id="architecture">
+        <div class="architecture-container">
+            <svg viewBox="0 0 800 1000" id="architecture-svg">
+                <!-- 系統級體驗 -->
+                <g>
+                    <rect x="50" y="20" width="700" height="120" rx="10" fill="#f0f0f0" stroke="#000" />
+                    <text x="400" y="45" text-anchor="middle" font-size="18" font-weight="bold">系統級體驗</text>
+                    
+                    <rect x="100" y="60" width="150" height="30" rx="5" fill="#d1e8ff" stroke="#000" class="highlight" data-index="0" />
+                    <text x="175" y="80" text-anchor="middle" font-size="14" font-weight="bold">Siri</text>
+                    
+                    <rect x="325" y="60" width="150" height="30" rx="5" fill="#ffe8d1" stroke="#000" class="highlight" data-index="1" />
+                    <text x="400" y="80" text-anchor="middle" font-size="14" font-weight="bold">Writing Tools</text>
+                    
+                    <rect x="550" y="60" width="150" height="30" rx="5" fill="#d1ffe8" stroke="#000" class="highlight" data-index="2" />
+                    <text x="625" y="80" text-anchor="middle" font-size="14" font-weight="bold">Image Playground</text>
+
+                    <text x="100" y="110" font-size="14" font-weight="bold">Apps</text>
+                    <rect x="150" y="95" width="500" height="30" rx="5" fill="#e0e0e0" stroke="#000" />
+                    <text x="400" y="115" text-anchor="middle" font-size="12">Messages, Mail, Notes, Photos, ...</text>
+                </g>
+
+                <!-- 個人智能系統 -->
+                <g>
+                    <rect x="50" y="160" width="700" height="120" rx="10" fill="#e6f2ff" stroke="#000" />
+                    <text x="400" y="180" text-anchor="middle" font-size="18" font-weight="bold">個人智能系統</text>
+                    <rect x="100" y="200" width="200" height="60" rx="5" fill="#b3d9ff" />
+                    <text x="200" y="235" text-anchor="middle" font-size="14">語義索引</text>
+                    <rect x="500" y="200" width="200" height="60" rx="5" fill="#b3d9ff" />
+                    <text x="600" y="235" text-anchor="middle" font-size="14">App Intents 工具箱</text>
+                </g>
+
+                <!-- 協調 -->
+                <g>
+                    <rect x="250" y="300" width="300" height="40" rx="10" fill="#d9d9d9" stroke="#000" />
+                    <text x="400" y="325" text-anchor="middle" font-size="14">協調</text>
+                </g>
+
+                <!-- 設備內模型和私有雲計算 -->
+                <g>
+                    <rect x="50" y="360" width="300" height="180" rx="10" fill="#ffe6e6" stroke="#000" />
+                    <text x="200" y="390" text-anchor="middle" font-size="18" font-weight="bold">設備內模型</text>
+                    <rect x="80" y="410" width="240" height="40" rx="5" fill="#ffb3b3" />
+                    <text x="200" y="435" text-anchor="middle" font-size="14">語言</text>
+                    <rect x="80" y="460" width="240" height="40" rx="5" fill="#ffb3b3" />
+                    <text x="200" y="485" text-anchor="middle" font-size="14">圖像</text>
+
+                    <!-- Adapters -->
+                    <g>
+                        <rect x="50" y="520" width="700" height="80" rx="10" fill="#e6e6ff" stroke="#000" />
+                        <text x="400" y="545" text-anchor="middle" font-size="16" font-weight="bold">Adapters</text>
+                        <rect x="100" y="560" width="90" height="30" rx="5" fill="#d1e8ff" stroke="#000" />
+                        <text x="145" y="580" text-anchor="middle" font-size="12">Summarization</text>
+                        <rect x="200" y="560" width="90" height="30" rx="5" fill="#d1e8ff" stroke="#000" />
+                        <text x="245" y="580" text-anchor="middle" font-size="12">Proofreading</text>
+                        <rect x="300" y="560" width="90" height="30" rx="5" fill="#d1e8ff" stroke="#000" />
+                        <text x="345" y="580" text-anchor="middle" font-size="12">Mail replies</text>
+                        <rect x="400" y="560" width="90" height="30" rx="5" fill="#d1e8ff" stroke="#000" />
+                        <text x="445" y="580" text-anchor="middle" font-size="12">Tone adjustment</text>
+                        <rect x="500" y="560" width="90" height="30" rx="5" fill="#d1e8ff" stroke="#000" />
+                        <text x="545" y="580" text-anchor="middle" font-size="12">Refining</text>
+                        <rect x="600" y="560" width="90" height="30" rx="5" fill="#d1e8ff" stroke="#000" />
+                        <text x="645" y="580" text-anchor="middle" font-size="12">Query handling</text>
+                        <rect x="700" y="560" width="90" height="30" rx="5" fill="#d1e8ff" stroke="#000" />
+                        <text x="745" y="580" text-anchor="middle" font-size="12">Friendly</text>
+                        <rect x="800" y="560" width="90" height="30" rx="5" fill="#d1e8ff" stroke="#000" />
+                        <text x="845" y="580" text-anchor="middle" font-size="12">Urgency</text>
+                    </g>
+
+                    <rect x="450" y="360" width="300" height="180" rx="10" fill="#e6ffe6" stroke="#000" />
+                    <text x="600" y="390" text-anchor="middle" font-size="18" font-weight="bold">私有雲計算</text>
+                    <rect x="480" y="410" width="240" height="90" rx="5" fill="#b3ffb3" />
+                    <text x="600" y="455" text-anchor="middle" font-size="14">伺服器模型</text>
+                </g>
+
+                <!-- Apple 晶片 -->
+                <g>
+                    <rect x="50" y="640" width="700" height="80" rx="10" fill="#f0f0f0" stroke="#000" />
+                    <text x="400" y="670" text-anchor="middle" font-size="18" font-weight="bold">Apple 晶片</text>
+                    <text x="150" y="700" font-size="14">CPU</text>
+                    <text x="300" y="700" font-size="14">GPU</text>
+                    <text x="450" y="700" font-size="14">Neural Engine</text>
+                    <text x="650" y="700" font-size="14">Secure Enclave</text>
+                </g>
+
+                <!-- ChatGPT 組件 -->
+                <g>
+                    <rect x="250" y="740" width="300" height="60" rx="10" fill="#ffd700" stroke="#000" />
+                    <text x="400" y="775" text-anchor="middle" font-size="16" font-weight="bold">ChatGPT (第三方服務)</text>
+                </g>
+
+                <!-- 動畫路徑 -->
+                <path d="M200 260 L200 300 L400 300 L400 340 L200 360" fill="none" stroke="#0070c9" stroke-width="2" class="animation-path" />
+                <path d="M600 260 L600 300 L400 300 L400 340 L600 360" fill="none" stroke="#0070c9" stroke-width="2" class="animation-path" />
+                <path d="M200 620 L200 640" fill="none" stroke="#0070c9" stroke-width="2" class="animation-path" />
+                <path d="M600 620 L600 640" fill="none" stroke="#0070c9" stroke-width="2" class="animation-path" />
+                <!-- 新增從協調到 ChatGPT 的路徑 -->
+                <path d="M400 340 L400 740" fill="none" stroke="#0070c9" stroke-width="2" stroke-dasharray="5,5" class="animation-path" />
+            </svg>
+            <div class="info-box">
+                <h4>系統架構說明</h4>
+                <p>Apple Intelligence 是一個深度整合的個人智能系統,它利用強大的生成式模型來提供各種智能功能。系統包括以下主要組件:</p>
+                <ul>
+                    <li><strong>系統級體驗:</strong> 包括 Siri、Writing Tools 和 Image Playground 等核心功能,以及各種 Apps。</li>
+                    <li><strong>個人智能系統:</strong> 包含語義索引和 App Intents 工具箱,用於理解和組織用戶的個人信息。</li>
+                    <li><strong>協調層:</strong> 負責協調各個組件之間的交互。</li>
+                    <li><strong>設備內模型:</strong> 包括語言和圖像處理模型,直接在設備上運行。設備內還包含使用 Adapters 來動態調整模型以適應特定任務。</li>
+                    <li><strong>私有雲計算:</strong> 用於處理更複雜的任務,確保用戶數據的隱私和安全。</li>
+                    <li><strong>Apple 晶片:</strong> 為整個系統提供強大的硬件支持,包括 CPU、GPU、Neural Engine 和 Secure Enclave。</li>
+                    <li><strong>ChatGPT 整合:</strong> 當設備內模型和私有雲計算無法解決問題時,系統會詢問用戶是否使用 ChatGPT 等第三方服務。</li>
+                </ul>
+            </div>
+            <div class="chatgpt-box">
+                <h4>ChatGPT 整合</h4>
+                <p>OpenAI 出品的 ChatGPT 已緊密整合至 Siri 和「書寫工具」中。主要特點：</p>
+                <ul>
+                    <li>Siri 能利用 ChatGPT 來回應某些要求,包括照片或文件等相關問題。</li>
+                    <li>「書寫工具」中的「編寫」功能讓用戶從零開始建立並創作原創內容。</li>
+                    <li>用戶可以控制 ChatGPT 的使用時機,系統會在共享資訊前徵詢用戶同意。</li>
+                    <li>無須建立帳號,所有用戶都能免費使用基本功能。</li>
+                    <li>ChatGPT 訂閱戶可以連結帳號,使用付費功能。</li>
+                </ul>
+            </div>
+        </div>
+        <div class="feature-list">
+            <div class="feature-item">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+                <span>隱私優先</span>
+            </div>
+            <div class="feature-item">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+                <span>自然語言交互</span>
+            </div>
+            <div class="feature-item">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18"></rect><line x1="7" y1="2" x2="7" y2="22"></line><line x1="17" y1="2" x2="17" y2="22"></line><line x1="2" y1="12" x2="22" y1="12"></line><line x1="2" y1="7" x2="7" y1="7"></line><line x1="2" y1="17" x2="7" y1="17"></line><line x1="17" y1="17" x2="22" y1="17"></line><line x1="17" y1="7" x2="22" y1="7"></line></svg>
+                <span>圖像生成</span>
+            </div>
+        </div>
+    </div>
+    <div class="tab-content" id="foundation-model">
+        <h2>Foundation Model 開發過程</h2>
+        <div class="architecture-container">
+            <img src="/mnt/data/image.png" alt="Foundation Model 開發過程">
+        </div>
+        <div class="info-box">
+            <h4>Foundation Model 的開發過程</h4>
+            <p>Apple Intelligence 的基礎模型由多個高性能生成式模型組成，這些模型經過專門調整，以滿足用戶的日常需求。</p>
+            <ul>
+                <li><strong>數據收集:</strong> 我們的基礎模型訓練數據來自授權數據和公開數據，並使用 AppleBot 收集。</li>
+                <li><strong>預處理:</strong> 我們在訓練數據中過濾掉個人身份信息和低質量內容。</li>
+                <li><strong>預訓練:</strong> 基礎模型在多種硬件和雲平台上進行高效訓練，使用數據並行、張量並行等技術。</li>
+                <li><strong>後訓練:</strong> 我們使用人類注釋和合成數據來進行後續訓練，並使用拒絕採樣和人類反饋增強等算法。</li>
+                <li><strong>優化:</strong> 我們應用了多種技術來優化模型的速度和效率，包括低位元表示和激活量化。</li>
+                <li><strong>適應器:</strong> 使用小型神經網絡模塊來動態調整基礎模型以適應特定任務。</li>
+            </ul>
+        </div>
+    </div>
+    <script>
+        document.querySelectorAll('.tab').forEach(tab => {
+            tab.addEventListener('click', () => {
+                document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+                document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+                tab.classList.add('active');
+                document.getElementById(tab.getAttribute('data-tab')).classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>

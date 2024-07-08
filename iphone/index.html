@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>iPhone 比較生成器</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/17.0.2/umd/react.production.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/17.0.2/umd/react-dom.production.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+        const { useState, useRef } = React;
+
+        const FeatureInput = ({ feature, onChange, onDelete }) => (
+            <div className="flex items-center space-x-2 mb-2">
+                <input
+                    type="text"
+                    value={feature.name}
+                    onChange={(e) => onChange({ ...feature, name: e.target.value })}
+                    className="flex-grow p-2 border rounded"
+                    placeholder="功能名稱"
+                />
+                <input
+                    type="text"
+                    value={feature.value}
+                    onChange={(e) => onChange({ ...feature, value: e.target.value })}
+                    className="flex-grow p-2 border rounded"
+                    placeholder="功能描述"
+                />
+                <button onClick={onDelete} className="p-2 bg-red-500 text-white rounded">刪除</button>
+            </div>
+        );
+
+        const ModelCard = ({ model, updateModel, deleteModel, commonFeatures }) => (
+            <div className="border rounded p-4 mb-4">
+                <input
+                    type="text"
+                    value={model.name}
+                    onChange={(e) => updateModel({ ...model, name: e.target.value })}
+                    className="w-full p-2 border rounded mb-2"
+                    placeholder="機型名稱"
+                />
+                <input
+                    type="text"
+                    value={model.size}
+                    onChange={(e) => updateModel({ ...model, size: e.target.value })}
+                    className="w-full p-2 border rounded mb-2"
+                    placeholder="螢幕尺寸"
+                />
+                <input
+                    type="file"
+                    onChange={(e) => {
+                        const file = e.target.files[0];
+                        const reader = new FileReader();
+                        reader.onloadend = () => updateModel({ ...model, image: reader.result });
+                        reader.readAsDataURL(file);
+                    }}
+                    className="w-full mb-2"
+                />
+                {model.image && <img src={model.image} alt={model.name} className="w-full h-40 object-cover mb-2" />}
+                <input
+                    type="text"
+                    value={model.colors}
+                    onChange={(e) => updateModel({ ...model, colors: e.target.value })}
+                    className="w-full p-2 border rounded mb-2"
+                    placeholder="顏色選項"
+                />
+                <h3 className="font-bold mb-2">特有功能：</h3>
+                {model.features.map((feature, index) => (
+                    <FeatureInput
+                        key={index}
+                        feature={feature}
+                        onChange={(updatedFeature) => {
+                            const newFeatures = [...model.features];
+                            newFeatures[index] = updatedFeature;
+                            updateModel({ ...model, features: newFeatures });
+                        }}
+                        onDelete={() => {
+                            const newFeatures = model.features.filter((_, i) => i !== index);
+                            updateModel({ ...model, features: newFeatures });
+                        }}
+                    />
+                ))}
+                <button
+                    onClick={() => updateModel({ ...model, features: [...model.features, { name: '', value: '' }] })}
+                    className="p-2 bg-green-500 text-white rounded mb-4"
+                >
+                    添加特有功能
+                </button>
+                <h3 className="font-bold mb-2">共通功能：</h3>
+                {commonFeatures.map((feature, index) => (
+                    <div key={index} className="mb-2">
+                        <strong>{feature.name}:</strong> {feature.value}
+                    </div>
+                ))}
+                <button onClick={deleteModel} className="p-2 bg-red-500 text-white rounded mt-4">刪除機型</button>
+            </div>
+        );
+
+        const ComparisonGenerator = () => {
+            const [title, setTitle] = useState('比較 iPhone 機型');
+            const [models, setModels] = useState([
+                { name: 'iPhone 15', size: '6.1 吋', image: null, colors: '', features: [] },
+                { name: 'iPhone 15 Pro', size: '6.1 吋', image: null, colors: '', features: [] },
+            ]);
+            const [commonFeatures, setCommonFeatures] = useState([]);
+            const [capacities, setCapacities] = useState(['128GB', '256GB', '512GB']);
+            const comparisonRef = useRef(null);
+
+            const addModel = () => {
+                setModels([...models, { name: '', size: '', image: null, colors: '', features: [] }]);
+            };
+
+            const updateModel = (index, updatedModel) => {
+                const newModels = [...models];
+                newModels[index] = updatedModel;
+                setModels(newModels);
+            };
+
+            const deleteModel = (index) => {
+                setModels(models.filter((_, i) => i !== index));
+            };
+
+            const updateCapacity = (index, value) => {
+                const newCapacities = [...capacities];
+                newCapacities[index] = value;
+                setCapacities(newCapacities);
+            };
+
+            const addCapacity = () => {
+                setCapacities([...capacities, '']);
+            };
+
+            const generateComparison = () => {
+                html2canvas(comparisonRef.current).then(canvas => {
+                    const link = document.createElement('a');
+                    link.download = 'iphone-comparison.png';
+                    link.href = canvas.toDataURL();
+                    link.click();
+                });
+            };
+
+            return (
+                <div className="p-6 max-w-7xl mx-auto" ref={comparisonRef}>
+                    <h1 className="text-3xl font-bold mb-6">iPhone 比較生成器</h1>
+                    
+                    <div className="mb-4">
+                        <label className="block mb-2">標題：</label>
+                        <input
+                            type="text"
+                            value={title}
+                            onChange={(e) => setTitle(e.target.value)}
+                            className="w-full p-2 border rounded"
+                        />
+                    </div>
+
+                    <div className="mb-4">
+                        <h2 className="text-2xl font-bold mb-2">共通功能</h2>
+                        {commonFeatures.map((feature, index) => (
+                            <FeatureInput
+                                key={index}
+                                feature={feature}
+                                onChange={(updatedFeature) => {
+                                    const newFeatures = [...commonFeatures];
+                                    newFeatures[index] = updatedFeature;
+                                    setCommonFeatures(newFeatures);
+                                }}
+                                onDelete={() => {
+                                    setCommonFeatures(commonFeatures.filter((_, i) => i !== index));
+                                }}
+                            />
+                        ))}
+                        <button
+                            onClick={() => setCommonFeatures([...commonFeatures, { name: '', value: '' }])}
+                            className="p-2 bg-blue-500 text-white rounded"
+                        >
+                            添加共通功能
+                        </button>
+                    </div>
+
+                    <div className="mb-4">
+                        <h2 className="text-2xl font-bold mb-2">機型比較</h2>
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                            {models.map((model, index) => (
+                                <ModelCard
+                                    key={index}
+                                    model={model}
+                                    updateModel={(updatedModel) => updateModel(index, updatedModel)}
+                                    deleteModel={() => deleteModel(index)}
+                                    commonFeatures={commonFeatures}
+                                />
+                            ))}
+                        </div>
+                        <button onClick={addModel} className="mt-4 p-2 bg-green-500 text-white rounded">
+                            添加機型
+                        </button>
+                    </div>
+
+                    <div className="mb-4">
+                        <h2 className="text-2xl font-bold mb-2">容量選項</h2>
+                        <div className="flex flex-wrap gap-2">
+                            {capacities.map((capacity, index) => (
+                                <input
+                                    key={index}
+                                    type="text"
+                                    value={capacity}
+                                    onChange={(e) => updateCapacity(index, e.target.value)}
+                                    className="p-2 border rounded"
+                                    placeholder="容量"
+                                />
+                            ))}
+                            <button onClick={addCapacity} className="p-2 border rounded">
+                                添加容量
+                            </button>
+                        </div>
+                    </div>
+
+                    <button onClick={generateComparison} className="bg-blue-500 text-white px-4 py-2 rounded">
+                        生成比較圖
+                    </button>
+                </div>
+            );
+        };
+
+        ReactDOM.render(<ComparisonGenerator />, document.getElementById('root'));
+    </script>
+</body>
+</html>
