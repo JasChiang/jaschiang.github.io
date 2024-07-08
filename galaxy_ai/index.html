@@ -123,11 +123,52 @@
         .description-table tr:hover, .support-table tr:hover {
             background-color: #f1f1f1;
         }
+        .source-description {
+            margin-top: 10px;
+            width: 80%;
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .source-description ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        .source-description li {
+            margin-bottom: 10px;
+        }
+        .source-description a {
+            color: #1a73e8;
+            text-decoration: none;
+        }
+        .source-description a:hover {
+            text-decoration: underline;
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="title">Galaxy AI 功能</div>
+         <div class="legend">
+            <div class="legend-item">
+                <div class="legend-color on-device-color"></div>
+                <div>On-device 處理</div>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color online-color"></div>
+                <div>Online 處理</div>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color both-color"></div>
+                <div>On-device 和 Online 處理</div>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="border: 2px solid red;"></div>
+                <div>需要 Samsung Account</div>
+            </div>
+        </div>
+
         <div class="feature-container">
             <div class="feature-column">
                 <div class="column-title">電話</div>
@@ -182,25 +223,7 @@
                 <div class="feature online">搜尋圈</div>
             </div>
         </div>
-        <div class="legend">
-            <div class="legend-item">
-                <div class="legend-color on-device-color"></div>
-                <div>On-device 處理</div>
-            </div>
-            <div class="legend-item">
-                <div class="legend-color online-color"></div>
-                <div>Online 處理</div>
-            </div>
-            <div class="legend-item">
-                <div class="legend-color both-color"></div>
-                <div>On-device 和 Online 處理</div>
-            </div>
-            <div class="legend-item">
-                <div class="legend-color" style="border: 2px solid red;"></div>
-                <div>需要 Samsung Account</div>
-            </div>
-        </div>
-        <div class="description">
+               <div class="description">
             <div class="description-title">功能說明</div>
             <table class="description-table">
                 <tr>
@@ -670,5 +693,30 @@
             </table>
         </div>
     </div>
-</body>
+     <div class="container">
+        <div class="source-description">
+            <div class="description-title">資料來源</div>
+            <ul>
+                <li>支援機型：
+                    <ul>
+                        <li>Galaxy AI | 流動電話 AI 和裝置上的 AI 功能 | 三星電子 HK
+                            <a href="https://www.samsung.com/hk/galaxy-ai/" target="_blank">https://www.samsung.com/hk/galaxy-ai/</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>Galaxy AI 的資料處理方式：
+                    <ul>
+                        <li>An overview of the Galaxy AI features on the S24 series
+                            <a href="https://www.reddit.com/r/Android/comments/1aex75z/" target="_blank">https://www.reddit.com/r/Android/comments/1aex75z/</a>
+                        </li>
+                        <li>Data processing for Galaxy AI
+                            <a href="https://docs.samsungknox.com/admin/knox-platform-for-enterprise/knox-service-plugin/configure-advanced-policies/data-processing-for-galaxy-ai/" target="_blank">https://docs.samsungknox.com/admin/knox-platform-for-enterprise/knox-service-plugin/configure-advanced-policies/data-processing-for-galaxy-ai/</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+   </body>
 </html>
