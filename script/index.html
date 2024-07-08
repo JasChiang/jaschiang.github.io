@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>神來點蘋分鏡腳本編輯器</title>
+    <style>
+        body { font-family: Arial, sans-serif; line-height: 1.6; padding: 20px; }
+        table { width: 100%; border-collapse: collapse; margin-bottom: 20px; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; vertical-align: top; }
+        th { background-color: #f2f2f2; }
+        textarea { width: 100%; height: 100px; }
+        input[type="text"] { width: 100%; }
+        button { padding: 10px; background-color: #4CAF50; color: white; border: none; cursor: pointer; margin-right: 10px; margin-bottom: 10px; }
+        button:hover { background-color: #45a049; }
+        .image-preview { max-width: 100%; max-height: 200px; margin-top: 10px; }
+        .saved-script { border: 1px solid #ddd; padding: 10px; margin-top: 20px; background-color: #f9f9f9; display: none; }
+        .saved-script h3 { cursor: pointer; }
+        .saved-script-content { display: none; }
+    </style>
+</head>
+<body>
+    <h1>分鏡腳本編輯器</h1>
+
+    <div id="editorContent">
+        <label for="scriptName">腳本名稱：</label>
+        <input type="text" id="scriptName" placeholder="輸入腳本名稱">
+        <table id="scriptTable">
+            <tr>
+                <th>鏡號</th>
+                <th>分鏡畫面</th>
+                <th>旁白說明</th>
+                <th>畫面說明</th>
+                <th>備註</th>
+            </tr>
+        </table>
+
+        <button onclick="addRow()">新增一行</button>
+        <button onclick="saveScript()">儲存腳本</button>
+    </div>
+
+    <div id="savedScriptsContainer"></div>
+
+    <script>
+        let rowCount = 0;
+        let scriptData = [];
+
+        function addRow() {
+            rowCount++;
+            const table = document.getElementById("scriptTable");
+            const row = table.insertRow(-1);
+            
+            const cellShot = row.insertCell(0);
+            const cellScene = row.insertCell(1);
+            const cellNarration = row.insertCell(2);
+            const cellDescription = row.insertCell(3);
+            const cellNotes = row.insertCell(4);
+
+            cellShot.innerHTML = `<input type="text" id="shot${rowCount}" placeholder="鏡號" onchange="updateScriptData(${rowCount})">`;
+            cellScene.innerHTML = `
+                <textarea id="scene${rowCount}" placeholder="分鏡畫面描述" onchange="updateScriptData(${rowCount})"></textarea>
+                <input type="file" id="image${rowCount}" accept="image/*" onchange="previewImage(${rowCount})">
+                <img id="preview${rowCount}" class="image-preview">
+            `;
+            cellNarration.innerHTML = `<textarea id="narration${rowCount}" placeholder="旁白說明" onchange="updateScriptData(${rowCount})"></textarea>`;
+            cellDescription.innerHTML = `<textarea id="description${rowCount}" placeholder="畫面說明" onchange="updateScriptData(${rowCount})"></textarea>`;
+            cellNotes.innerHTML = `<textarea id="notes${rowCount}" placeholder="備註" onchange="updateScriptData(${rowCount})"></textarea>`;
+
+            scriptData[rowCount - 1] = { shot: '', scene: '', image: '', narration: '', description: '', notes: '' };
+        }
+
+        function previewImage(rowIndex) {
+            const file = document.getElementById(`image${rowIndex}`).files[0];
+            const reader = new FileReader();
+
+            reader.onloadend = function() {
+                document.getElementById(`preview${rowIndex}`).src = reader.result;
+                scriptData[rowIndex - 1].image = reader.result;
+                updateScriptData(rowIndex);
+            }
+
+            if (file) {
+                reader.readAsDataURL(file);
+            }
+        }
+
+        function updateScriptData(rowIndex) {
+            scriptData[rowIndex - 1] = {
+                shot: document.getElementById(`shot${rowIndex}`).value,
+                scene: document.getElementById(`scene${rowIndex}`).value,
+                image: document.getElementById(`preview${rowIndex}`).src,
+                narration: document.getElementById(`narration${rowIndex}`).value,
+                description: document.getElementById(`description${rowIndex}`).value,
+                notes: document.getElementById(`notes${rowIndex}`).value
+            };
+        }
+
+        function saveScript() {
+            const scriptName = document.getElementById('scriptName').value || '未命名腳本';
+            const savedScriptsContainer = document.getElementById('savedScriptsContainer');
+            
+            const savedScript = document.createElement('div');
+            savedScript.className = 'saved-script';
+            savedScript.innerHTML = `
+                <h3 onclick="toggleContent(this)">${scriptName}</h3>
+                <div class="saved-script-content">${generateSavedScriptContent()}</div>
+                <button onclick="editScript(this)">編輯</button>
+            `;
+            savedScriptsContainer.appendChild(savedScript);
+            savedScript.style.display = 'block';
+        }
+
+        function generateSavedScriptContent() {
+            let content = `<table><tr><th>鏡號</th><th>分鏡畫面</th><th>旁白說明</th><th>畫面說明</th><th>備註</th></tr>`;
+            scriptData.forEach(row => {
+                content += `
+                <tr>
+                    <td>${row.shot}</td>
+                    <td>${row.scene}<br><img src="${row.image}" alt="分鏡畫面" class="image-preview"></td>
+                    <td>${row.narration}</td>
+                    <td>${row.description}</td>
+                    <td>${row.notes}</td>
+                </tr>`;
+            });
+            content += `</table>`;
+            return content;
+        }
+
+        function toggleContent(element) {
+            const content = element.nextElementSibling;
+            if (content.style.display === "none" || content.style.display === "") {
+                content.style.display = "block";
+            } else {
+                content.style.display = "none";
+            }
+        }
+
+        function editScript(button) {
+            const savedScriptContent = button.previousElementSibling;
+            const rows = savedScriptContent.querySelectorAll('tr');
+            scriptData = [];
+            rowCount = 0;
+            document.getElementById("scriptTable").innerHTML = '<tr><th>鏡號</th><th>分鏡畫面</th><th>旁白說明</th><th>畫面說明</th><th>備註</th></tr>';
+
+            rows.forEach((row, index) => {
+                if (index > 0) {
+                    addRow();
+                    document.getElementById(`shot${index}`).value = row.cells[0].innerText;
+                    document.getElementById(`scene${index}`).value = row.cells[1].innerText.split('\n')[0];
+                    document.getElementById(`preview${index}`).src = row.cells[1].querySelector('img').src;
+                    document.getElementById(`narration${index}`).value = row.cells[2].innerText;
+                    document.getElementById(`description${index}`).value = row.cells[3].innerText;
+                    document.getElementById(`notes${index}`).value = row.cells[4].innerText;
+                    scriptData[index - 1] = {
+                        shot: row.cells[0].innerText,
+                        scene: row.cells[1].innerText.split('\n')[0],
+                        image: row.cells[1].querySelector('img').src,
+                        narration: row.cells[2].innerText,
+                        description: row.cells[3].innerText,
+                        notes: row.cells[4].innerText
+                    };
+                }
+            });
+        }
+
+        // 初始添加一行
+        addRow();
+    </script>
+</body>
+</html>
