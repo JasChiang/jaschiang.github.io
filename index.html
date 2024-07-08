@@ -227,23 +227,35 @@
     }
 
     /* Google AI 特定樣式 */
-    .title {
-        font-size: 36px;
+    #GoogleAI .title {
+        font-size: 48px;
         font-weight: bold;
         margin: 20px 0;
         text-align: center;
-        background: linear-gradient(45deg, #4285F4, #EA4335, #FBBC05, #34A853);
+        background: linear-gradient(
+            to right,
+            #4285F4 0%,
+            #4285F4 25%,
+            #EA4335 25%, 
+            #EA4335 50%,
+            #FBBC05 50%, 
+            #FBBC05 75%,
+            #34A853 75%,
+            #34A853 100%
+            );
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
+        display: inline-block;
+        padding: 10px 20px;
     }
-    .intro, .supported-devices {
+     #GoogleAI .intro, .supported-devices {
         background: #ffffff;
         padding: 20px;
         border-radius: 10px;
         box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         margin-bottom: 20px;
-    }
+     }
     #GoogleAI .feature-container {
         display: flex;
         justify-content: space-between;
@@ -252,7 +264,7 @@
     }
     #GoogleAI .feature-column {
         flex: 1;
-        min-width: 100px;
+        min-width: 200px;
         background: #ffffff;
         padding: 20px;
         border-radius: 10px;
@@ -263,8 +275,8 @@
         font-size: 20px;
         font-weight: bold;
         margin-bottom: 15px;
-        color: #34A853;
         text-align: center;
+        padding: 10px;
     }
     #GoogleAI .feature {
         margin: 8px 0;
@@ -272,9 +284,17 @@
         border-radius: 25px;
         text-align: center;
         font-weight: bold;
-        background-color: #34A853;
         color: white;
     }
+    .blue-text { color: #4285F4; }
+    .green-text { color: #34A853; }
+    .yellow-text { color: #FBBC05; }
+    .red-text { color: #EA4335; }
+    .blue-bg { background-color: #4285F4; }
+    .green-bg { background-color: #34A853; }
+    .yellow-bg { background-color: #FBBC05; }
+    .red-bg { background-color: #EA4335; }
+    
     .section-title {
         font-size: 24px;
         font-weight: bold;
@@ -300,7 +320,7 @@
     #GoogleAI tr:nth-child(even) {
         background-color: #f8f9fa;
     }
-</style>
+    </style>
 </head>
 <body>
     <h1>Apple Intelligence | Galaxy AI | Google AI 介紹</h1>
@@ -1242,7 +1262,7 @@
       </div>
 <div id="GoogleAI" class="tab-content">
 
-  <div class="container">
+    <div class="container">
         <div class="title">Google AI</div>
 
         <!--<div class="intro">
@@ -1251,51 +1271,51 @@
 
         <div class="feature-container">
             <div class="feature-column">
-                <div class="column-title">核心 AI 功能</div>
-                <div class="feature">Gemini</div>
-                <div class="feature">Circle to Search</div>
+                <div class="column-title blue-text">圖像與創意</div>
+                <div class="feature blue-bg">Best Take | Add Me</div>
+                <div class="feature blue-bg">Studio</div>
+                <div class="feature blue-bg">Magic Editor</div>
             </div>
             <div class="feature-column">
-                <div class="column-title">圖像與創意</div>
-                <div class="feature">Add Me</div>
-                <div class="feature">Studio</div>
-                <div class="feature">魔術修圖</div>
-                <div class="feature">Best Take</div>
+                <div class="column-title green-text">智慧工具</div>
+                <div class="feature green-bg">Gemini</div>
+                <div class="feature green-bg">Circle to Search</div>
+                <div class="feature green-bg">Pixel Screenshots</div>
+                <div class="feature green-bg">Summarize in Recorder</div>
+                <div class="feature green-bg">Magic Compose</div>
             </div>
             <div class="feature-column">
-                <div class="column-title">智慧工具</div>
-                <div class="feature">Pixel Screenshots</div>
-                <div class="feature">Summarize in Recorder</div>
-                <div class="feature">Magic Compose</div>
+                <div class="column-title yellow-text">影音增強</div>
+                <div class="feature yellow-bg">Video Boost</div>
+                <div class="feature yellow-bg">Night Sight in Timelapse</div>
+                <div class="feature yellow-bg">Audio Magic Eraser</div>
+                <div class="feature yellow-bg">Photo Unblur</div>
             </div>
             <div class="feature-column">
-                <div class="column-title">影音增強</div>
-                <div class="feature">Video Boost</div>
-                <div class="feature">Night Sight in Timelapse</div>
-                <div class="feature">Audio Magic Eraser</div>
-            </div>
-            <div class="feature-column">
-                <div class="column-title">實用功能</div>
-                <div class="feature">Call Screen</div>
-                <div class="feature">Photo Unblur</div>
-                <div class="feature">Live Translate</div>
+                <div class="column-title red-text">實用功能</div>
+                <div class="feature red-bg">Call Screen</div>
+                <div class="feature red-bg">Live Translate</div>
             </div>
         </div>
+    
 
         <div class="supported-devices">
             <div class="section-title">支援機型</div>
             <p>Google AI 功能的支援範圍因機型而異：</p>
             <ul>
+                <li><strong>Best Take | Add Me：</strong>Add Me 預計將在 Pixel 9 系列上首次亮相；Best Take 支援 Pixel 8 和 Pixel 8 Pro。</li>
+                <li><strong>Studio：</strong>預計將在 Pixel 9 系列上首次亮相。</li>
+                <li><strong>Magic Editor：</strong>支援 Pixel 8 和 Pixel 8 Pro。</li>
                 <li><strong>Gemini：</strong>可在所有 Android 手機上使用。</li>
                 <li><strong>Circle to Search：</strong>支援 Pixel 6 及更新機型，以及部分相容的非 Pixel 裝置。預計將支援 Pixel Fold 和 Pixel Tablet。</li>
-                <li><strong>Add Me、Studio、Pixel Screenshots：</strong>預計將在 Pixel 9 系列上首次亮相。</li>
+                <li><strong>Pixel Screenshots：</strong>預計將在 Pixel 9 系列上首次亮相。</li>
                 <li><strong>Summarize in Recorder：</strong>支援 Pixel 8、Pixel 8 Pro 和 Pixel 8a（僅限英文）。</li>
                 <li><strong>Magic Compose：</strong>支援 Pixel 6 及更新機型。</li>
                 <li><strong>Video Boost：</strong>僅支援 Pixel 8 Pro。</li>
                 <li><strong>Night Sight in Timelapse：</strong>支援 Pixel 8 和 Pixel 8 Pro。</li>
-                <li><strong>Magic Editor、Audio Magic Eraser、Best Take：</strong>支援 Pixel 8 和 Pixel 8 Pro。</li>
-                <li><strong>Call Screen：</strong>支援所有 Pixel 機型。</li>
+                <li><strong>Audio Magic Eraser：</strong>支援 Pixel 8 和 Pixel 8 Pro。</li>
                 <li><strong>Photo Unblur：</strong>支援所有 Pixel 機型。</li>
+                <li><strong>Call Screen：</strong>支援所有 Pixel 機型。</li>
                 <li><strong>Live Translate：</strong>支援所有 Pixel 機型，但可用語言和國家可能有所不同。</li>
             </ul>
             <p>請注意，部分功能可能需要特定的硬體支援或軟體更新。具體支援情況可能會隨時間而變化。</p>
@@ -1308,20 +1328,24 @@
                 <th>說明</th>
             </tr>
             <tr>
+                <td>Best Take | Add Me</td>
+                <td>將多張相似的照片合成一張完美的團體照，確保每個人都能出現在團體照中。</td>
+            </tr>
+            <tr>
+                <td>Studio</td>
+                <td>全能型生成式 AI 圖片產生器，可用於創建貼圖和其他創意內容。</td>
+            </tr>
+            <tr>
+                <td>Magic Editor</td>
+                <td>在 Google 相簿中移動物件、改善光線、調整主體大小。</td>
+            </tr>
+            <tr>
                 <td>Gemini</td>
                 <td>Google 的內建 AI 助理，為各種任務提供智慧支援。</td>
             </tr>
             <tr>
                 <td>Circle to Search</td>
                 <td>只需在螢幕上畫圈，即可搜尋圖片、文字或影片中的任何內容。</td>
-            </tr>
-            <tr>
-                <td>Add Me</td>
-                <td>確保每個人都能出現在團體照中，可能是 Best Take 功能的升級版。</td>
-            </tr>
-            <tr>
-                <td>Studio</td>
-                <td>全能型生成式 AI 圖片產生器，可用於創建貼圖和其他創意內容。</td>
             </tr>
             <tr>
                 <td>Pixel Screenshots</td>
@@ -1344,24 +1368,16 @@
                 <td>在低光環境下錄製生動、細緻的縮時攝影影片。</td>
             </tr>
             <tr>
-                <td>Magic Editor</td>
-                <td>在 Google 相簿中移動物件、改善光線、調整主體大小。</td>
-            </tr>
-            <tr>
                 <td>Audio Magic Eraser</td>
                 <td>減少影片中令人分心的背景聲音。</td>
             </tr>
             <tr>
-                <td>Best Take</td>
-                <td>將多張相似的照片合成一張完美的團體照。</td>
+                <td>Photo Unblur</td>
+                <td>偵測並減少任何照片中的模糊和視覺雜訊。</td>
             </tr>
             <tr>
                 <td>Call Screen</td>
                 <td>自動偵測和阻擋垃圾電話，篩選來電。</td>
-            </tr>
-            <tr>
-                <td>Photo Unblur</td>
-                <td>偵測並減少任何照片中的模糊和視覺雜訊。</td>
             </tr>
             <tr>
                 <td>Live Translate</td>
