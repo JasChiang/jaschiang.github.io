@@ -581,20 +581,20 @@
   }
   
   /* Scrollbar Styles */
-  ::-webkit-scrollbar {
-    width: 12px;
+  .support-table::-webkit-scrollbar {
+    height: 6px;
   }
   
-  ::-webkit-scrollbar-track {
+  .support-table::-webkit-scrollbar-track {
     background: #f1f1f1;
   }
   
-  ::-webkit-scrollbar-thumb {
+  .support-table::-webkit-scrollbar-thumb {
     background: #888;
-    border-radius: 6px;
+    border-radius: 3px;
   }
   
-  ::-webkit-scrollbar-thumb:hover {
+  .support-table::-webkit-scrollbar-thumb:hover {
     background: #555;
   }
   
@@ -612,6 +612,9 @@
   @media (max-width: 600px) {
     .description-table, .support-table {
       font-size: 14px;
+      display: block;
+      overflow-x: auto;
+      white-space: nowrap;
     }
     .description-table th, .description-table td,
     .support-table th, .support-table td {
