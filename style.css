@@ -549,7 +549,7 @@
   }
   
   /* Print Styles */
-  /* @media print {
+  @media print {
     body {
       background-color: white;
       color: black;
@@ -565,7 +565,7 @@
       color: black;
       -webkit-text-fill-color: black;
     }
-  }*/
+  }
   
   /* Additional Utility Classes */
   .text-center { text-align: center; }
@@ -623,7 +623,7 @@
   }
   
   /* Dark Mode Support */
-  @media (prefers-color-scheme: dark) {
+  /*@media (prefers-color-scheme: dark) {
     :root {
       --background-color: #1a1a1a;
       --text-color: #e0e0e0;
@@ -669,7 +669,7 @@
     .copilot-feature-item, .copilot-spec-item {
       background-color: #3a3a3a;
     }
-  }
+  } */
   
   /* Performance Optimizations */
   .feature-icon, .copilot-feature-icon, .copilot-spec-icon {
