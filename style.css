@@ -714,8 +714,3 @@
       grid-template-columns: 1fr;
     }
   }
-   /* Galaxy AI 資料處理方式 */
-  .on-device { background-color: #ADD8E6; }
-  .online { background-color: #90EE90; }
-  .both { background: linear-gradient(90deg, #ADD8E6 50%, #90EE90 50%); }
-  .account-required { border: 2px solid red; }
