@@ -18,45 +18,6 @@
     h1, h2 {
         color: #0070c9;
     }
-    .feature-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 20px;
-        }
-        .feature-column {
-            background: #fff;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            width: 400px;
-            text-align: left;
-        }
-        .feature-icon {
-            width: 40px;
-            height: 40px;
-            margin-bottom: 10px;
-            color: #0070c9;
-        }
-        .column-title {
-            font-size: 22px;
-            font-weight: bold;
-            margin-bottom: 10px;
-            color: #555;
-            text-align: center;
-        }
-        .feature-summary {
-            font-size: 16px;
-            margin-bottom: 10px;
-        }
-        .feature-summary div {
-            margin-bottom: 10px;
-        }
-        .feature-summary i {
-            color: #0070c9;
-            margin-right: 5px;
-        }
-
     .apple-intelligence {
         font-size: 1.5em;
         font-weight: bold;
@@ -609,9 +570,7 @@
     <li><strong>ChatGPT 整合：</strong>當設備內與伺服器模型無法解決問題時，系統會詢問使用者是否使用 ChatGPT 等第三方服務。</li>
 </ul>
 </div>
-
     <div class="container">
-    
         <svg viewBox="0 0 800 650" id="architecture-svg">
             <!-- System-wide experiences -->
             <g>
@@ -881,65 +840,7 @@
     <path d="M475 340 Q 520 350, 650 360" fill="none" stroke="#0070c9" stroke-width="2" class="animation-path" />             
             
 </svg>
-
-<!--Apple Intelligence 功能-->
-
-    <div class="feature-container">
-        <div class="feature-column">
-            <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="#0070c9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-                <polyline points="14 2 14 8 20 8"></polyline>
-                <line x1="16" y1="13" x2="8" y2="13"></line>
-                <line x1="16" y1="17" x2="8" y2="17"></line>
-                <polyline points="10 9 9 9 8 9"></polyline>
-            </svg>
-            <h2 class="column-title">Writing Tools</h2>
-            <div class="feature-summary">
-                <div><i class="fas fa-pen-fancy"></i>以全新智慧工具撰寫，處處助你提升文筆。</div>
-                <div><i class="fas fa-magic"></i>由 Apple Intelligence 驅動，不論你在哪裡寫，它都能幫你找到合適的用字遣詞。</div>
-                <div><i class="fas fa-hourglass-start"></i>透過增強的語言功能，為整場演講做摘要只要幾秒。</div>
-                <div><i class="fas fa-comments"></i>從冗長的群組討論串擷取簡短版本。</div>
-                <div><i class="fas fa-bell"></i>各種通知也能排定優先順序，將不必要的干擾降到最低。</div>
-            </div>
-        </div>
-
-        <div class="feature-column">
-            <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="#0070c9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="12" cy="12" r="10"></circle>
-                <path d="M8 14s1.5 2 4 2 4-2 4-2"></path>
-                <line x1="9" y1="9" x2="9.01" y2="9"></line>
-                <line x1="15" y1="9" x2="15.01" y2="9"></line>
-            </svg>
-            <h2 class="column-title">Genmoji</h2>
-            <div class="feature-summary">
-                <div><i class="fas fa-smile"></i>開心愉悅的影像，為你而生成。</div>
-                <div><i class="fas fa-image"></i>讓你用視覺影像盡情表達自我。</div>
-                <div><i class="fas fa-palette"></i>製作你專用的趣味原創圖像，以及個人化的全新 Genmoji。</div>
-                <div><i class="fas fa-wand-magic"></i>使用「影像魔杖」功能將草圖轉成相關圖片。</div>
-                <div><i class="fas fa-sticky-note"></i>搭配筆記，相得益彰。</div>
-                <div><i class="fas fa-keyboard"></i>用鍵盤就能打造全新 Genmoji 來搭配不同對話情境。</div>
-                <div><i class="fas fa-eye"></i>輸入描述即可預覽效果，還可調整描述，直到 Genmoji 盡善盡美。</div>
-            </div>
-        </div>
-
-        <div class="feature-column">
-            <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="#0070c9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
-                <circle cx="8.5" cy="8.5" r="1.5"></circle>
-                <polyline points="21 15 16 10 5 21"></polyline>
-            </svg>
-            <h2 class="column-title">Image Playground</h2>
-            <div class="feature-summary">
-                <div><i class="fas fa-photo-video"></i>透過各 app 中的 Image Playground 體驗，眨眼之間就能製作有趣的原創影像。</div>
-                <div><i class="fas fa-lightbulb"></i>全新影像會根據描述、建議概念，甚至「照片」圖庫中的人來製作。</div>
-                <div><i class="fas fa-adjust"></i>調整風格、修改更動也很容易，方便搭配「訊息」討論串、「無邊記」白板或 Keynote 中的幻燈片使用。</div>
-                <div><i class="fas fa-paint-brush"></i>在專用的 Image Playground app 嘗試不同概念，或試用各種圖像風格，如動畫、插畫和素描。</div>
-                <div><i class="fas fa-share-alt"></i>製作自訂圖像後，在其他 app 或社群媒體上與朋友共享。</div>
-            </div>
-        </div>
-    </div>
-
-
+    
 <div class="info-box">
     <h3>Foundation Models 和 Adapters 說明</h3>
 <!-- Foundation Models 說明-->
@@ -985,8 +886,6 @@
     </g>
 
 </svg>
-
-
     <p><strong>Foundation Models：</strong>Foundation Models 是 Apple Intelligence 的核心，是經過大規模預訓練的基礎模型。設備內模型包括語言和用於圖片生成的擴散模型兩個部分，每個約有 30 億參數，伺服器模型規模更大，運行在 Apple 的私有雲平台上，可以處理更複雜的任務。結合 Adapters 技術，Foundation Models 可靈活適應各種特定任務，同時保持通用知識和高效處理能力。</p>
     <p>
 <svg width="140" height="30">
