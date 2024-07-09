@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>iOS 18 預覽 | Apple Intelligence</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        h1, h2 {
+            color: #0070c9;
+        }
+        .container {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            padding: 20px;
+            margin-top: 20px;
+            text-align: center;
+        }
+        .feature-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+        .feature-column {
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            text-align: left;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .feature-column:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+        .feature-icon {
+            width: 40px;
+            height: 40px;
+            margin-bottom: 10px;
+        }
+        .column-title {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+        .feature-summary {
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+        .feature-summary div {
+            margin-bottom: 8px;
+        }
+        .feature-summary i {
+            margin-right: 5px;
+        }
+        
+        .apple-intelligence {
+            font-size: 2.5em;
+            font-weight: bold;
+            background: linear-gradient(
+                to right,
+                #00B2FF 0%,
+                #00B2FF 23%,
+                #7B68EE 23%,
+                #DA70D6 40%,
+                #FF69B4 60%,
+                #FF6347 80%,
+                #FFA500 100%
+            );
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            color: #00B2FF;
+            display: inline-block;
+            margin-top: 0;
+            text-align: center;
+        }
+        .color-1 { color: #00B2FF; }
+        .color-2 { color: #7B68EE; }
+        .color-3 { color: #DA70D6; }
+        .color-4 { color: #FF69B4; }
+        .color-5 { color: #FF6347; }
+        .color-6 { color: #FFA500; }
+        .color-7 { color: #00B2FF; }
+        .color-8 { color: #7B68EE; }
+        .color-9 { color: #DA70D6; }
+        .color-10 { color: #FF69B4; }
+        .color-11 { color: #FF6347; }
+        .color-12 { color: #FFA500; }
+        .color-13 { color: #00B2FF; }
+        .color-14 { color: #7B68EE; }
+        .color-15 { color: #DA70D6; }
+        .color-16 { color: #FF69B4; }
+        .color-17 { color: #FF6347; }
+        
+        .compatible-devices {
+            margin-top: 30px;
+            padding: 20px;
+            background: linear-gradient(135deg, #FF9A8B, #FF6A88, #FF99AC);
+            border-radius: 8px;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        .compatible-devices::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, #84fab0, #8fd3f4);
+            clip-path: polygon(100% 0, 0% 100%, 100% 100%);
+            z-index: 1;
+        }
+        .compatible-devices h3 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 2;
+        }
+        .device-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            position: relative;
+            z-index: 2;
+        }
+        .device-list ul {
+            flex: 1;
+            min-width: 200px;
+            list-style-type: none;
+            padding-left: 0;
+            margin: 0;
+        }
+        .device-list li {
+            margin-bottom: 5px;
+            font-size: 14px;
+        }
+        .learn-more {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            color: white;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+            position: relative;
+            z-index: 2;
+        }
+        .learn-more:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+        }
+        .ai-features {
+        background-color: #f0f0f0;
+        padding: 15px;
+        border-radius: 8px;
+        margin-top: 20px;
+    }
+    .ai-features h3 {
+        color: #0070c9;
+        margin-bottom: 10px;
+    }
+    .ai-features ul {
+        list-style-type: none;
+        padding-left: 0;
+    }
+    .ai-features li {
+        margin-bottom: 5px;
+        font-weight: bold;
+    }
+    .footnote {
+        margin-top: 30px;
+        padding: 15px;
+        background-color: #f9f9f9;
+        border-radius: 8px;
+        font-size: 0.9em;
+        color: #666;
+    }
+        h1 {
+            font-size: 4em;
+            color: #333;
+            margin-bottom: 20px;
+            position: relative;
+            margin-top: 0;
+        }
+        h1::after {
+            content: "";
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, #FF9A9E 0%, #6A85B6 100%);
+            margin: 10px auto;
+        }
+        p {
+            font-size: 1.2em;
+            line-height: 1.6;
+            color: #666;
+            margin-bottom: 30px;
+        }
+        .highlight {
+            background: linear-gradient(90deg, #FF9A9E 0%, #6A85B6 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: bold;
+        }
+        .floating-icons {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+        }
+        .icon {
+            position: absolute;
+            opacity: 0.1;
+            animation: float 20s infinite linear;
+        }
+        @keyframes float {
+            0% { transform: translateY(0) rotate(0deg); }
+            100% { transform: translateY(-100vh) rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>iOS 18</h1>
+        <p>以更多方式<span class="highlight">任你自訂 iPhone</span>，和親朋好友常保聯繫，還能重溫你的珍愛時光。<br>而有了 <span class="highlight">Apple Intelligence</span>，就連日常生活的大小事也能巧妙搞定。</br></p>
+    </div>
+    <div class="container">
+        <p class="apple-intelligence">Apple Intelligence</p>
+        <div class="feature-container">
+            <div class="feature-column">
+                <svg class="feature-icon color-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                    <polyline points="14 2 14 8 20 8"></polyline>
+                    <line x1="16" y1="13" x2="8" y2="13"></line>
+                    <line x1="16" y1="17" x2="8" y2="17"></line>
+                    <polyline points="10 9 9 9 8 9"></polyline>
+                </svg>
+                <h2 class="column-title color-1">書寫工具</h2>
+                <div class="feature-summary">
+                    <div><i class="fas fa-edit color-1"></i>全新「書寫工具」助你撰寫文句、為較長的文字做摘要。</div>
+                    <div><i class="fas fa-brain color-1"></i>排定通知的優先順序，專注於重要事項。</div>
+                </div>
+            </div>
+
+            <div class="feature-column">
+                <svg class="feature-icon color-2" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                    <circle cx="8.5" cy="8.5" r="1.5"></circle>
+                    <polyline points="21 15 16 10 5 21"></polyline>
+                </svg>
+                <h2 class="column-title color-2">影像創作</h2>
+                <div class="feature-summary">
+                    <div><i class="fas fa-image color-2"></i>製作影像來表達自我。</div>
+                    <div><i class="fas fa-smile color-2"></i>設計適合對話情境的 Genmoji。</div>
+                    <div><i class="fas fa-film color-2"></i>透過回憶影片重溫美好時光。</div>
+                </div>
+            </div>
+
+            <div class="feature-column">
+                <svg class="feature-icon color-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <path d="M8 14s1.5 2 4 2 4-2 4-2"></path>
+                    <line x1="9" y1="9" x2="9.01" y2="9"></line>
+                    <line x1="15" y1="9" x2="15.01" y2="9"></line>
+                </svg>
+                <h2 class="column-title color-3">全新 Siri</h2>
+                <div class="feature-summary">
+                    <div><i class="fas fa-language color-3"></i>更豐富的語言理解力。</div>
+                    <div><i class="fas fa-user-check color-3"></i>對個人情況的充分認知。</div>
+                    <div><i class="fas fa-robot color-3"></i>比以往能力更強，更有幫助。</div>
+                </div>
+            </div>
+        </div>
+        <div class="footnote">
+            <p>* Apple Intelligence Beta 版於今年稍晚透過 iOS 18、iPadOS 18 和 macOS Sequoia 推出，適用於 Siri 和裝置語言均設為美式英文的 iPhone 15 Pro、iPhone 15 Pro Max，以及配備 M1 或更新的晶片的 iPad 與 Mac。</p>
+        </div>
+    </div>
+
+
+    <div class="container">
+        <h2>iOS 18 功能一覽</h2>
+        <div class="feature-container">
+            <div class="feature-column">
+                <svg class="feature-icon color-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                    <line x1="3" y1="9" x2="21" y2="9"></line>
+                    <line x1="9" y1="21" x2="9" y2="9"></line>
+                </svg>
+                <h2 class="column-title color-4">個人化特製</h2>
+                <div class="feature-summary">
+                    <div><i class="fas fa-th-large color-4"></i>重新排列 App 和小工具，主畫面布局由你作主。</div>
+                    <div><i class="fas fa-palette color-4"></i>App 圖像新面貌，支援深色模式和顏色調整。</div>
+                    <div><i class="fas fa-lock color-4"></i>可鎖定和隱藏 App，保護敏感資訊。</div>
+                </div>
+            </div>
+
+            <div class="feature-column">
+                <svg class="feature-icon color-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                    <line x1="3" y1="9" x2="21" y2="9"></line>
+                    <line x1="3" y1="15" x2="21" y2="15"></line>
+                </svg>
+                <h2 class="column-title color-5">控制中心大幅更新</h2>
+                <div class="feature-summary">
+                    <div><i class="fas fa-sliders-h color-5"></i>重新設計的控制中心，取用更流暢順手。</div>
+                    <div><i class="fas fa-th color-5"></i>控制項目資料庫，一目了然。</div>
+                    <div><i class="fas fa-arrows-alt color-5"></i>自訂控制項目的布局和大小。</div>
+                </div>
+            </div>
+
+            <div class="feature-column">
+                <svg class="feature-icon color-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                    <circle cx="8.5" cy="8.5" r="1.5"></circle>
+                    <polyline points="21 15 16 10 5 21"></polyline>
+                </svg>
+                <h2 class="column-title color-6">照片 App 大改版</h2>
+                <div class="feature-summary">
+                    <div><i class="fas fa-th color-6"></i>全新設計讓你的圖庫保持井然有序。</div>
+                    <div><i class="fas fa-tags color-6"></i>透過實用主題輕鬆瀏覽。</div>
+                    <div><i class="fas fa-play-circle color-6"></i>新增「輪播」功能，展示你最出色的內容。</div>
+                </div>
+            </div>
+
+            <div class="feature-column">
+                <svg class="feature-icon color-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                </svg>
+                <h2 class="column-title color-7">訊息新玩法</h2>
+                <div class="feature-summary">
+                    <div><i class="fas fa-font color-7"></i>文字動畫效果，表達更生動。</div>
+                    <div><i class="fas fa-smile color-7"></i>點按任何表情符號或貼圖來回應。</div>
+                    <div><i class="fas fa-clock color-7"></i>稍後傳送功能，預定傳訊息。</div>
+                    <div><i class="fas fa-comments color-7"></i>支援 RCS 通訊，非 iMessage 使用者體驗更豐富。</div>
+                </div>
+            </div>
+
+            <div class="feature-column">
+                <svg class="feature-icon color-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                    <polyline points="22,6 12,13 2,6"></polyline>
+                </svg>
+                <h2 class="column-title color-8">郵件智慧分類</h2>
+                <div class="feature-summary">
+                    <div><i class="fas fa-inbox color-8"></i>裝置端分類功能，讓郵件井然有序。</div>
+                    <div><i class="fas fa-star color-8"></i>「主要」類別突出顯示重要郵件。</div>
+                    <div><i class="fas fa-layer-group color-8"></i>按寄件者分類，查看摘要內容。</div>
+                </div>
+            </div>
+            <div class="feature-column">
+                <svg class="feature-icon color-9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M18 3a3 3 0 0 0-3 3v12a3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3H6a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3V6a3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3h12a3 3 0 0 0 3-3 3 3 0 0 0-3-3z"></path>
+                </svg>
+                <h2 class="column-title color-9">AirPods 新功能</h2>
+                <div class="feature-summary">
+                    <div><i class="fas fa-head-side-virus color-9"></i>免動手的 Siri 互動新招。</div>
+                    <div><i class="fas fa-microphone-alt color-9"></i>語音隔離技術提升通話品質。</div>
+                    <div><i class="fas fa-headphones-alt color-9"></i>遊戲中的個人化空間音訊體驗。</div>
+                </div>
+            </div>
+            
+            <div class="feature-column">
+                <svg class="feature-icon color-10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                    <polyline points="14 2 14 8 20 8"></polyline>
+                    <line x1="16" y1="13" x2="8" y2="13"></line>
+                    <line x1="16" y1="17" x2="8" y2="17"></line>
+                    <polyline points="10 9 9 9 8 9"></polyline>
+                </svg>
+                <h2 class="column-title color-10">備忘錄</h2>
+                <div class="feature-summary">
+                    <div><i class="fas fa-microphone color-10"></i>即時音訊逐字稿功能。</div>
+                    <div><i class="fas fa-calculator color-10"></i>直接在備忘錄中解題。</div>
+                    <div><i class="fas fa-compress-arrows-alt color-10"></i>可收合區塊，簡化長篇備忘錄。</div>
+                </div>
+            </div>
+            
+            <div class="feature-column">
+                <svg class="feature-icon color-11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 20h9"></path>
+                    <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path>
+                </svg>
+                <h2 class="column-title color-11">日誌</h2>
+                <div class="feature-summary">
+                    <div><i class="fas fa-heart color-11"></i>新 App 幫助記錄心理狀態。</div>
+                    <div><i class="fas fa-bullseye color-11"></i>追蹤日誌目標和連續記錄。</div>
+                    <div><i class="fas fa-search color-11"></i>輕鬆搜尋和排序過往條目。</div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    
+
+    <div class="compatible-devices">
+        <h3>與 iOS 18 相容的裝置</h3>
+        <div class="device-list">
+            <ul>
+                <li>iPhone 15</li>
+                <li>iPhone 15 Plus</li>
+                <li>iPhone 15 Pro</li>
+                <li>iPhone 15 Pro Max</li>
+                <li>iPhone 14</li>
+                <li>iPhone 14 Plus</li>
+                <li>iPhone 14 Pro</li>
+                <li>iPhone 14 Pro Max</li>
+            </ul>
+            <ul>
+                <li>iPhone 13</li>
+                <li>iPhone 13 mini</li>
+                <li>iPhone 13 Pro</li>
+                <li>iPhone 13 Pro Max</li>
+                <li>iPhone 12</li>
+                <li>iPhone 12 mini</li>
+                <li>iPhone 12 Pro</li>
+                <li>iPhone 12 Pro Max</li>
+            </ul>
+            <ul>
+                <li>iPhone 11</li>
+                <li>iPhone 11 Pro</li>
+                <li>iPhone 11 Pro Max</li>
+                <li>iPhone XS</li>
+                <li>iPhone XS Max</li>
+                <li>iPhone XR</li>
+                <li>iPhone SE（第 2 代或後續機型）</li>
+            </ul>
+        </div>
+        <!--<a href="#" class="learn-more">進一步了解 iPhone</a>-->
+    </div>
+</body>
+</html>
