@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>iPhone 15 比較</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            background-color: #fff;
+        }
+        .container {
+            position: relative;
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            aspect-ratio: 6 / 19; /* 设置长宽比 */
+            background-color: #fff;
+            overflow: hidden; /* 确保没有溢出 */
+        }
+        .background-layer {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #fff;
+            z-index: -1;
+        }
+        h1 {
+            color: #000;
+            text-align: center;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        .comparison-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .comparison-item {
+            text-align: center;
+            width: 23%;
+        }
+        .comparison-item .fa {
+            font-size: 48px;
+            color: #000;
+        }
+        .comparison-item h3 {
+            font-size: 16px;
+            color: #555;
+        }
+        .color-circle {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            margin: 0 5px;
+        }
+        .color-circle.pink { background-color: #FFC0CB; }
+        .color-circle.green { background-color: #00FF00; }
+        .color-circle.yellow { background-color: #FFFF00; }
+        .color-circle.blue { background-color: #0000FF; }
+        .color-circle.black { background-color: #000000; }
+        .color-circle.white { background-color: #FFFFFF; border: 1px solid #ddd; }
+        .color-circle.gray { background-color: #808080; }
+        .spec {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            border-top: 1px solid #ddd;
+            border-bottom: 1px solid #ddd;
+        }
+        .spec div {
+            width: 22%;
+            text-align: center;
+        }
+        .shared-feature {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #f4f4f4;
+            padding: 10px;
+            margin: 20px 0;
+        }
+        .shared-feature div {
+            width: 22%;
+            text-align: center;
+        }
+        .price {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            border-top: 1px solid #ddd;
+            border-bottom: 1px solid #ddd;
+        }
+        .price div {
+            width: 22%;
+            text-align: center;
+            font-weight: bold;
+            color: #0070c9;
+        }
+        .bottom-logo {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 20px;
+        }
+        .bottom-logo div {
+            width: 30%;
+            text-align: center;
+        }
+        .bottom-logo img {
+            max-width: 100%;
+            height: auto;
+        }
+        .export-button {
+            display: block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            background-color: #0070c9;
+            color: #fff;
+            text-align: center;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            font-size: 16px;
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            z-index: 1000;
+        }
+    </style>
+</head>
+<body>
+    <a class="export-button" onclick="exportToImage()">匯出成圖片</a>
+    <div class="container" id="comparison-container">
+        <div class="background-layer"></div>
+        <h1>比較 iPhone 15 機型</h1>
+        <div class="comparison-row">
+            <div class="comparison-item">
+                <i class="fas fa-mobile-alt"></i>
+                <h3>iPhone 15</h3>
+                <p>6.1 吋</p>
+            </div>
+            <div class="comparison-item">
+                <i class="fas fa-mobile-alt"></i>
+                <h3>iPhone 15 Plus</h3>
+                <p>6.7 吋</p>
+            </div>
+            <div class="comparison-item">
+                <i class="fas fa-mobile-alt"></i>
+                <h3>iPhone 15 Pro</h3>
+                <p>6.1 吋</p>
+            </div>
+            <div class="comparison-item">
+                <i class="fas fa-mobile-alt"></i>
+                <h3>iPhone 15 Pro Max</h3>
+                <p>6.7 吋</p>
+            </div>
+        </div>
+        <div class="spec">
+            <div>顏色</div>
+            <div>
+                <span class="color-circle pink"></span>
+                <span class="color-circle green"></span>
+                <span class="color-circle yellow"></span>
+                <span class="color-circle blue"></span>
+                <span class="color-circle black"></span>
+            </div>
+            <div>
+                <span class="color-circle pink"></span>
+                <span class="color-circle green"></span>
+                <span class="color-circle yellow"></span>
+                <span class="color-circle blue"></span>
+                <span class="color-circle black"></span>
+            </div>
+            <div>
+                <span class="color-circle gray"></span>
+                <span class="color-circle black"></span>
+                <span class="color-circle white"></span>
+            </div>
+            <div>
+                <span class="color-circle gray"></span>
+                <span class="color-circle black"></span>
+                <span class="color-circle white"></span>
+            </div>
+        </div>
+        <div class="spec">
+            <div>材質</div>
+            <div>鋁金屬搭配注色玻璃機背</div>
+            <div>鋁金屬搭配注色玻璃機背</div>
+            <div>鈦金屬搭配霧面質感玻璃機背</div>
+            <div>鈦金屬搭配霧面質感玻璃機背</div>
+        </div>
+        <div class="spec">
+            <div>晶片</div>
+            <div>A16</div>
+            <div>A16</div>
+            <div>A17 Pro</div>
+            <div>A17 Pro</div>
+        </div>
+        <div class="shared-feature">
+            <div><i class="fas fa-tv"></i> 超 Retina XDR 顯示器</div>
+            <div><i class="fas fa-water"></i> IP68 防塵抗水</div>
+            <div><i class="fas fa-shield-alt"></i> Face ID</div>
+            <div><i class="fas fa-mobile-alt"></i> 動態島</div>
+        </div>
+        <div class="spec">
+            <div>相機系統</div>
+            <div>雙相機系統<br>4,800 萬像素主相機</div>
+            <div>雙相機系統<br>4,800 萬像素主相機</div>
+            <div>Pro 相機系統<br>4,800 萬像素主相機</div>
+            <div>Pro 相機系統<br>4,800 萬像素主相機</div>
+        </div>
+        <div class="shared-feature">
+            <div>超高解析度照片 24MP | 48MP</div>
+            <div>新一代人像照具備焦點控制與景深控制</div>
+        </div>
+        <div class="spec">
+            <div>光學變焦選項</div>
+            <div>.5x | 1x | 2x</div>
+            <div>.5x | 1x | 2x</div>
+            <div>.5x | 1x | 2x | 3x</div>
+            <div>.5x | 1x | 2x | 5x</div>
+        </div>
+        <div class="spec">
+            <div>光學變焦範圍</div>
+            <div>4 倍光學變焦範圍</div>
+            <div>4 倍光學變焦範圍</div>
+            <div>6 倍光學變焦範圍</div>
+            <div>10 倍光學變焦範圍</div>
+        </div>
+        <div class="spec">
+            <div>USB-C 支援</div>
+            <div>USB 2</div>
+            <div>USB 2</div>
+            <div>USB 3</div>
+            <div>USB 3</div>
+        </div>
+        <div class="price">
+            <div>128GB<br>NT$29,900</div>
+            <div>128GB<br>NT$32,900</div>
+            <div>128GB<br>NT$36,900</div>
+            <div>256GB<br>NT$44,900</div>
+        </div>
+        <div class="price">
+            <div>256GB<br>NT$33,400</div>
+            <div>256GB<br>NT$36,400</div>
+            <div>256GB<br>NT$40,400</div>
+            <div>512GB<br>NT$51,900</div>
+        </div>
+        <div class="price">
+            <div>512GB<br>NT$40,400</div>
+            <div>512GB<br>NT$43,400</div>
+            <div>512GB<br>NT$47,400</div>
+            <div>1TB<br>NT$58,900</div>
+        </div>
+        <div class="price">
+            <div>-</div>
+            <div>-</div>
+            <div>1TB<br>NT$54,400</div>
+            <div>-</div>
+        </div>
+        <div class="bottom-logo">
+            <div><img src="path_to_left_logo" alt="Left Logo"></div>
+            <div><img src="path_to_center_logo" alt="Center Logo"></div>
+            <div><img src="path_to_right_logo" alt="Right Logo"></div>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script>
+        function exportToImage() {
+            html2canvas(document.getElementById('comparison-container'), {
+                backgroundColor: '#fff', // 确保背景为白色
+                useCORS: true,
+                scrollX: 0,
+                scrollY: -window.scrollY
+            }).then(function(canvas) {
+                var link = document.createElement('a');
+                link.href = canvas.toDataURL();
+                link.download = 'comparison.png';
+                link.click();
+            });
+        }
+    </script>
+</body>
+</html>
