@@ -3,394 +3,293 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>iPhone 比較圖表</title>
+    <title>iPhone 比較圖表 (可調整寬度版本)</title>
+    <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+    <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
     <style>
         body {
             font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: space-between;
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        .table-container {
+            width: 60%;
+            overflow-x: auto;
+        }
+        .editor-container {
+            width: 35%;
+            position: fixed;
+            right: 20px;
+            top: 20px;
         }
         .comparison-table {
-            width: 100%;
-            border-collapse: collapse;
+            border-collapse: separate;
+            border-spacing: 0;
             margin-top: 20px;
         }
         .comparison-table th, .comparison-table td {
             border: 1px solid #ccc;
-            padding: 10px;
-            text-align: center;
+            padding: 5px;
+            vertical-align: top;
+            white-space: normal;
+            word-wrap: break-word;
         }
         .header {
             background-color: #f5f5f5;
             font-weight: bold;
         }
-        .device-image {
-            width: 100px;
-            cursor: pointer;
-        }
-        .colors {
-            display: flex;
-            justify-content: center;
-            gap: 5px;
-        }
-        .color {
-            width: 20px;
-            height: 20px;
-            border-radius: 50%;
-        }
         .editable {
-            border: 1px dashed #ccc;
-            padding: 5px;
             cursor: pointer;
             position: relative;
-            min-height: 50px;
         }
-        .editable.editing {
-            border: 1px solid #ccc;
-            outline: none;
+        .editable p {
+            margin: 0;
         }
-        .edit-buttons {
-            position: absolute;
-            top: 5px;
-            right: 5px;
-            display: none;
+        .editable img {
+            max-width: 100%;
+            height: auto;
         }
-        .editable.editing .edit-buttons {
-            display: block;
-        }
-        #export-button, #add-row-button, #add-common-row-button, #add-two-device-row-button {
+        #add-row-button, #add-common-row-button, #add-two-device-row-button, #export-button, #toggle-width-button {
             margin-top: 20px;
             margin-right: 10px;
         }
-        tr.draggable {
+        #editor {
+            height: 400px;
+        }
+        .ql-editor img {
+            cursor: pointer;
+        }
+        #paste-button {
+            margin-top: 10px;
+        }
+        .draggable {
             cursor: move;
         }
-        .toolbar {
-            display: none;
-            position: absolute;
-            background: #f1f1f1;
-            border: 1px solid #ccc;
-            padding: 5px;
-            z-index: 1000;
+        .dragging {
+            opacity: 0.5;
         }
-        .toolbar button, .toolbar select {
-            margin-right: 5px;
+        .equal-width .comparison-table {
+            table-layout: fixed;
         }
-        .resizable-image {
-            position: absolute;
-            display: inline-block;
-            margin: 5px;
+        .equal-width .comparison-table th,
+        .equal-width .comparison-table td {
+            width: 25%;
         }
-        .resizable-image img {
-            display: block;
-            max-width: 100%;
+        #width-control {
+            width: 100%;
+            margin-top: 10px;
         }
-        .resize-handle {
-            position: absolute;
-            width: 10px;
-            height: 10px;
-            background-color: #00f;
-            right: -5px;
-            bottom: -5px;
-            cursor: se-resize;
+        .ql-align-center {
+            text-align: center;
+        }
+        .ql-align-right {
+            text-align: right;
         }
     </style>
 </head>
 <body>
-    <table class="comparison-table" id="comparison-table">
-        <tr class="header" draggable="false">
-            <th colspan="2">iPhone 15</th>
-            <th colspan="2">iPhone 15 Pro</th>
-        </tr>
-        <tr draggable="true" class="draggable">
-            <td class="editable">
-                <div>
-                    <img src="iphone15.png" alt="iPhone 15" class="device-image" id="iphone15-img">
-                </div>
-            </td>
-            <td class="editable">
-                <div>
-                    <img src="iphone15plus.png" alt="iPhone 15 Plus" class="device-image" id="iphone15plus-img">
-                </div>
-            </td>
-            <td class="editable">
-                <div>
-                    <img src="iphone15pro.png" alt="iPhone 15 Pro" class="device-image" id="iphone15pro-img">
-                </div>
-            </td>
-            <td class="editable">
-                <div>
-                    <img src="iphone15promax.png" alt="iPhone 15 Pro Max" class="device-image" id="iphone15promax-img">
-                </div>
-            </td>
-        </tr>
-        <tr draggable="true" class="draggable">
-            <td class="editable"><div>iPhone 15</div></td>
-            <td class="editable"><div>iPhone 15 Plus</div></td>
-            <td class="editable"><div>iPhone 15 Pro</div></td>
-            <td class="editable"><div>iPhone 15 Pro Max</div></td>
-        </tr>
-        <tr draggable="true" class="draggable">
-            <td class="editable"><div>6.1 吋</div></td>
-            <td class="editable"><div>6.7 吋</div></td>
-            <td class="editable"><div>6.1 吋</div></td>
-            <td class="editable"><div>6.7 吋</div></td>
-        </tr>
-        <tr draggable="true" class="draggable">
-            <td colspan="2" class="editable">
-                <div>
-                    <div class="colors">
-                        <div class="color" style="background-color: #e0e0e0;"></div>
-                        <div class="color" style="background-color: #f08080;"></div>
-                        <div class="color" style="background-color: #90ee90;"></div>
-                        <div class="color" style="background-color: #add8e6;"></div>
-                        <div class="color" style="background-color: #d3d3d3;"></div>
-                    </div>
-                </div>
-            </td>
-            <td colspan="2" class="editable">
-                <div>
-                    <div class="colors">
-                        <div class="color" style="background-color: #000;"></div>
-                        <div class="color" style="background-color: #fff;"></div>
-                        <div class="color" style="background-color: #808080;"></div>
-                        <div class="color" style="background-color: #c0c0c0;"></div>
-                        <div class="color" style="background-color: #d3d3d3;"></div>
-                    </div>
-                </div>
-            </td>
-        </tr>
-    </table>
-    <input type="file" id="image-upload" style="display: none;">
-    <button id="add-row-button">增加功能排</button>
-    <button id="add-common-row-button">增加共同功能排</button>
-    <button id="add-two-device-row-button">增加兩機共同功能排</button>
-    <button id="export-button">匯出圖片</button>
-
-    <div id="toolbar" class="toolbar">
-        <button onclick="formatText('bold')">粗體</button>
-        <button onclick="formatText('italic')">斜體</button>
-        <button onclick="formatText('underline')">底線</button>
-        <input type="color" onchange="changeColor(this.value)">
-        <button onclick="insertImage()">插入圖片</button>
+    <div class="table-container">
+        <table class="comparison-table" id="comparison-table">
+            <tr class="header">
+                <th colspan="2" class="editable" onclick="selectCell(this)">iPhone 15</th>
+                <th colspan="2" class="editable" onclick="selectCell(this)">iPhone 15 Pro</th>
+            </tr>
+            <tr class="draggable">
+                <td class="editable" onclick="selectCell(this)">iPhone 15</td>
+                <td class="editable" onclick="selectCell(this)">iPhone 15 Plus</td>
+                <td class="editable" onclick="selectCell(this)">iPhone 15 Pro</td>
+                <td class="editable" onclick="selectCell(this)">iPhone 15 Pro Max</td>
+            </tr>
+        </table>
+        <input type="range" id="width-control" min="20" max="100" value="60">
+        <button id="add-row-button">增加功能排</button>
+        <button id="add-common-row-button">增加共同功能排</button>
+        <button id="add-two-device-row-button">增加兩機共同功能排</button>
+        <button id="export-button">匯出圖片</button>
+        <button id="toggle-width-button">切換等寬/自適應</button>
+    </div>
+    
+    <div class="editor-container">
+        <div id="editor"></div>
+        <button id="paste-button">粘贴到选中单元格</button>
     </div>
 
     <script>
-        let currentEditableElement = null;
-        let currentResizableImage = null;
+        let quill;
+        let selectedCell;
+        let dragSrcEl = null;
+        let isEqualWidth = false;
 
-        function attachEditor(cell) {
-            const div = cell.querySelector('div');
-            if (!div) return;
-
-            div.addEventListener('click', (event) => {
-                if (!cell.classList.contains('editing')) {
-                    startEditing(cell);
-                }
-            });
-        }
-
-        function startEditing(cell) {
-            if (currentEditableElement) {
-                finishEditing(currentEditableElement);
-            }
-
-            currentEditableElement = cell;
-            const div = cell.querySelector('div');
-            cell.classList.add('editing');
-            div.contentEditable = 'true';
-            div.focus();
-
-            const existingButtons = cell.querySelector('.edit-buttons');
-            if (existingButtons) {
-                existingButtons.remove();
-            }
-
-            const editButtons = document.createElement('div');
-            editButtons.className = 'edit-buttons';
-            editButtons.innerHTML = '<button class="save-button">完成</button>';
-            cell.appendChild(editButtons);
-
-            editButtons.querySelector('.save-button').addEventListener('click', () => {
-                finishEditing(cell);
+        function initQuill() {
+            quill = new Quill('#editor', {
+                theme: 'snow',
+                modules: {
+                    toolbar: [
+                        ['bold', 'italic', 'underline'],
+                        ['image'],
+                        [{ 'align': ['', 'center', 'right'] }]
+                    ]
+                },
+                placeholder: '在此輸入內容...'
             });
 
-            showToolbar(cell);
-        }
-
-        function finishEditing(cell) {
-            cell.classList.remove('editing');
-            const div = cell.querySelector('div');
-            div.contentEditable = 'false';
-            const editButtons = cell.querySelector('.edit-buttons');
-            if (editButtons) {
-                editButtons.remove();
-            }
-            hideToolbar();
-            currentEditableElement = null;
-        }
-
-        function showToolbar(cell) {
-            const toolbar = document.getElementById('toolbar');
-            toolbar.style.display = 'block';
-            const rect = cell.getBoundingClientRect();
-            toolbar.style.top = `${rect.bottom + window.scrollY}px`;
-            toolbar.style.left = `${rect.left + window.scrollX}px`;
-        }
-
-        function hideToolbar() {
-            document.getElementById('toolbar').style.display = 'none';
-        }
-
-        function formatText(command) {
-            document.execCommand(command, false, null);
-        }
-
-        function changeColor(color) {
-            document.execCommand('foreColor', false, color);
-        }
-
-        function insertImage() {
-            const input = document.createElement('input');
-            input.type = 'file';
-            input.accept = 'image/*';
-            input.onchange = e => {
-                const file = e.target.files[0];
-                const reader = new FileReader();
-                reader.onload = readerEvent => {
-                    const image = new Image();
-                    image.src = readerEvent.target.result;
-                    image.onload = function() {
-                        const aspectRatio = this.width / this.height;
-                        const newWidth = 150;
-                        const newHeight = newWidth / aspectRatio;
-                        
-                        const resizableImage = document.createElement('div');
-                        resizableImage.className = 'resizable-image';
-                        resizableImage.style.position = 'absolute';
-                        resizableImage.style.width = `${newWidth}px`;
-                        resizableImage.style.height = `${newHeight}px`;
-                        resizableImage.innerHTML = `
-                            <img src="${this.src}" style="width: 100%; height: 100%; position: absolute; top: 0; left: 0; cursor: move;">
-                            <span class="resize-handle" style="position: absolute; right: -5px; bottom: -5px; width: 10px; height: 10px; background-color: blue; cursor: se-resize;"></span>
-                        `;
-                        
-                        currentEditableElement.appendChild(resizableImage);
-                        makeImageResizable(resizableImage);
-                        makeImageDraggable(resizableImage);
-                    };
-                }
-                reader.readAsDataURL(file);
-            }
-            input.click();
-        }
-
-        function makeImageDraggable(resizableImage) {
-            const img = resizableImage.querySelector('img');
-            let isDragging = false;
-            let startX, startY;
-
-            img.addEventListener('mousedown', (e) => {
-                isDragging = true;
-                startX = e.clientX - resizableImage.offsetLeft;
-                startY = e.clientY - resizableImage.offsetTop;
-                e.preventDefault();
-            });
-
-            document.addEventListener('mousemove', (e) => {
-                if (!isDragging) return;
-                const newX = e.clientX - startX;
-                const newY = e.clientY - startY;
-
-                resizableImage.style.left = `${newX}px`;
-                resizableImage.style.top = `${newY}px`;
-            });
-
-            document.addEventListener('mouseup', () => {
-                isDragging = false;
-            });
-        }
-
-        function makeImageResizable(resizableImage) {
-            const handle = resizableImage.querySelector('.resize-handle');
-            let startX, startY, startWidth, startHeight;
-
-            function initResize(e) {
-                startX = e.clientX;
-                startY = e.clientY;
-                startWidth = resizableImage.offsetWidth;
-                startHeight = resizableImage.offsetHeight;
-                document.addEventListener('mousemove', resize);
-                document.addEventListener('mouseup', stopResize);
-                e.preventDefault();
-            }
-
-            function resize(e) {
-                const width = startWidth + e.clientX - startX;
-                const height = startHeight + e.clientY - startY;
-                resizableImage.style.width = `${width}px`;
-                resizableImage.style.height = `${height}px`;
-            }
-
-            function stopResize() {
-                document.removeEventListener('mousemove', resize);
-                document.removeEventListener('mouseup', stopResize);
-            }
-
-            handle.addEventListener('mousedown', initResize);
-        }
-
-        // 處理複製貼上的圖片
-        document.addEventListener('paste', (event) => {
-            if (currentEditableElement) {
-                const items = (event.clipboardData || event.originalEvent.clipboardData).items;
-                for (let index in items) {
-                    const item = items[index];
-                    if (item.kind === 'file') {
-                        const blob = item.getAsFile();
-                        const reader = new FileReader();
-                        reader.onload = function(event) {
-                            const img = new Image();
-                            img.src = event.target.result;
-                            img.onload = function() {
-                                const aspectRatio = this.width / this.height;
-                                const newWidth = 150;
-                                const newHeight = newWidth / aspectRatio;
-                                
-                                const resizableImage = document.createElement('div');
-                                resizableImage.className = 'resizable-image';
-                                resizableImage.style.position = 'absolute';
-                                resizableImage.style.width = `${newWidth}px`;
-                                resizableImage.style.height = `${newHeight}px`;
-                                resizableImage.innerHTML = `
-                                    <img src="${this.src}" style="width: 100%; height: 100%; position: absolute; top: 0; left: 0; cursor: move;">
-                                    <span class="resize-handle" style="position: absolute; right: -5px; bottom: -5px; width: 10px; height: 10px; background-color: blue; cursor: se-resize;"></span>
-                                `;
-                                
-                                currentEditableElement.appendChild(resizableImage);
-                                makeImageResizable(resizableImage);
-                                makeImageDraggable(resizableImage);
-                            };
-                        };
-                        reader.readAsDataURL(blob);
+            quill.root.addEventListener('click', function(e) {
+                if (e.target && e.target.tagName === 'IMG') {
+                    const size = prompt('输入新的宽度（像素）:', e.target.width);
+                    if (size) {
+                        e.target.style.width = size + 'px';
                     }
                 }
-            }
-        });
-
-        document.querySelectorAll('.device-image').forEach(img => {
-            img.addEventListener('click', (event) => {
-                event.stopPropagation();
-                const input = document.getElementById('image-upload');
-                input.click();
-                input.onchange = function (event) {
-                    const file = event.target.files[0];
-                    const reader = new FileReader();
-                    reader.onload = function (e) {
-                        img.src = e.target.result;
-                    }
-                    reader.readAsDataURL(file);
-                }
             });
-        });
+        }
+
+        function selectCell(cell) {
+            if (selectedCell) {
+                selectedCell.style.outline = 'none';
+            }
+            selectedCell = cell;
+            selectedCell.style.outline = '2px solid blue';
+            quill.root.innerHTML = cell.innerHTML;
+        }
+
+        function pasteToCell() {
+            if (selectedCell) {
+                selectedCell.innerHTML = quill.root.innerHTML;
+                selectedCell.style.outline = 'none';
+
+                // 确保对齐方式正确应用
+                selectedCell.querySelectorAll('.ql-align-center').forEach(el => {
+                    el.style.textAlign = 'center';
+                });
+                selectedCell.querySelectorAll('.ql-align-right').forEach(el => {
+                    el.style.textAlign = 'right';
+                });
+
+                adjustCellSize(selectedCell);
+                adjustTableLayout();
+
+                selectedCell = null;
+                quill.root.innerHTML = '';
+            } else {
+                alert('请先选择一个单元格');
+            }
+        }
+
+        function adjustCellSize(cell) {
+            if (!isEqualWidth) {
+                cell.style.width = 'auto';
+                cell.style.height = 'auto';
+            }
+        }
+
+        function adjustTableLayout() {
+            const table = document.getElementById('comparison-table');
+            if (!isEqualWidth) {
+                table.style.width = '100%';
+                table.style.tableLayout = 'auto';
+            } else {
+                table.style.width = '100%';
+                table.style.tableLayout = 'fixed';
+            }
+
+            // 强制浏览器重新计算布局
+            table.offsetHeight;
+        }
+
+        function addNewRow(colspan) {
+            const table = document.getElementById('comparison-table');
+            const newRow = table.insertRow();
+            newRow.classList.add('draggable');
+            addDragHandlers(newRow);
+            const cellCount = colspan === 4 ? 1 : (colspan === 2 ? 2 : 4);
+            
+            for (let i = 0; i < cellCount; i++) {
+                const newCell = newRow.insertCell();
+                newCell.className = 'editable';
+                newCell.colSpan = colspan;
+                newCell.onclick = function() { selectCell(this); };
+            }
+            adjustTableLayout();
+        }
+
+        function addDragHandlers(row) {
+            row.setAttribute('draggable', true);
+            row.addEventListener('dragstart', handleDragStart, false);
+            row.addEventListener('dragenter', handleDragEnter, false);
+            row.addEventListener('dragover', handleDragOver, false);
+            row.addEventListener('dragleave', handleDragLeave, false);
+            row.addEventListener('drop', handleDrop, false);
+            row.addEventListener('dragend', handleDragEnd, false);
+        }
+
+        function handleDragStart(e) {
+            this.style.opacity = '0.4';
+            dragSrcEl = this;
+            e.dataTransfer.effectAllowed = 'move';
+            e.dataTransfer.setData('text/html', this.innerHTML);
+        }
+
+        function handleDragOver(e) {
+            if (e.preventDefault) {
+                e.preventDefault();
+            }
+            e.dataTransfer.dropEffect = 'move';
+            return false;
+        }
+
+        function handleDragEnter(e) {
+            this.classList.add('over');
+        }
+
+        function handleDragLeave(e) {
+            this.classList.remove('over');
+        }
+
+        function handleDrop(e) {
+            if (e.stopPropagation) {
+                e.stopPropagation();
+            }
+
+            if (dragSrcEl != this) {
+                dragSrcEl.innerHTML = this.innerHTML;
+                this.innerHTML = e.dataTransfer.getData('text/html');
+            }
+
+            return false;
+        }
+
+        function handleDragEnd(e) {
+            this.style.opacity = '1';
+            
+            document.querySelectorAll('.draggable').forEach(function (row) {
+                row.classList.remove('over');
+            });
+
+            adjustTableLayout();
+        }
+
+        function toggleWidth() {
+            isEqualWidth = !isEqualWidth;
+            document.body.classList.toggle('equal-width');
+            adjustTableLayout();
+            document.getElementById('toggle-width-button').textContent = 
+                isEqualWidth ? '切換到自適應寬度' : '切換到等寬';
+        }
+
+        function adjustTableWidth(value) {
+            document.querySelector('.table-container').style.width = value + '%';
+            document.querySelector('.editor-container').style.width = (95 - value) + '%';
+        }
+
+        document.getElementById('add-row-button').addEventListener('click', () => addNewRow(1));
+        document.getElementById('add-common-row-button').addEventListener('click', () => addNewRow(4));
+        document.getElementById('add-two-device-row-button').addEventListener('click', () => addNewRow(2));
+        document.getElementById('paste-button').addEventListener('click', pasteToCell);
+        document.getElementById('toggle-width-button').addEventListener('click', toggleWidth);
+        document.getElementById('width-control').addEventListener('input', (e) => adjustTableWidth(e.target.value));
 
         document.getElementById('export-button').addEventListener('click', () => {
             html2canvas(document.querySelector('table')).then(canvas => {
@@ -401,62 +300,6 @@
             });
         });
 
-        function addNewRow(colspan) {
-            const table = document.getElementById('comparison-table');
-            const newRow = table.insertRow();
-            newRow.draggable = true;
-            newRow.classList.add('draggable');
-            const cellCount = colspan === 4 ? 1 : (colspan === 2 ? 2 : 4);
-            
-            for (let i = 0; i < cellCount; i++) {
-                const newCell = newRow.insertCell();
-                newCell.className = 'editable';
-                newCell.colSpan = colspan;
-                const div = document.createElement('div');
-                div.textContent = '新功能描述';
-                newCell.appendChild(div);
-                attachEditor(newCell);
-            }
-        }
-
-        document.getElementById('add-row-button').addEventListener('click', () => addNewRow(1));
-        document.getElementById('add-common-row-button').addEventListener('click', () => addNewRow(4));
-        document.getElementById('add-two-device-row-button').addEventListener('click', () => addNewRow(2));
-
-        document.querySelectorAll('.editable').forEach(cell => {
-            attachEditor(cell);
-        });
-
-        document.addEventListener('dragstart', (event) => {
-            if (event.target.tagName === 'TR') {
-                event.dataTransfer.setData('text/plain', event.target.rowIndex);
-            }
-        });
-
-        document.addEventListener('dragover', (event) => {
-            event.preventDefault();
-        });
-
-        document.addEventListener('drop', (event) => {
-            if (event.target.tagName === 'TR' || event.target.tagName === 'TD') {
-                const table = document.getElementById('comparison-table');
-                const fromIndex = event.dataTransfer.getData('text/plain');
-                const toIndex = event.target.closest('tr').rowIndex;
-                if (fromIndex && toIndex) {
-                    const rows = Array.from(table.rows);
-                    const fromRow = rows[fromIndex];
-                    const toRow = rows[toIndex];
-                    if (fromRow && toRow) {
-                        if (fromIndex < toIndex) {
-                            toRow.parentNode.insertBefore(fromRow, toRow.nextSibling);
-                        } else {
-                            toRow.parentNode.insertBefore(fromRow, toRow);
-                        }
-                    }
-                }
-            }
-        });
-
         function loadHtml2Canvas() {
             const script = document.createElement('script');
             script.src = "https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js";
@@ -465,12 +308,11 @@
         }
 
         loadHtml2Canvas();
+        initQuill();
+        adjustTableLayout();
 
-        document.addEventListener('click', (event) => {
-            if (currentEditableElement && !currentEditableElement.contains(event.target) && !document.getElementById('toolbar').contains(event.target)) {
-                finishEditing(currentEditableElement);
-            }
-        });
+        // 为现有的行添加拖动功能
+        document.querySelectorAll('.draggable').forEach(addDragHandlers);
     </script>
 </body>
 </html>
