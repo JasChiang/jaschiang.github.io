@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>iPhone 16 比較</title>
+    <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            background-color: #fff;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            font-size: 28px;
+            margin-bottom: 30px;
+        }
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+        .model {
+            text-align: center;
+        }
+        .model img {
+            max-width: 100%;
+            height: auto;
+        }
+        .model-name {
+            font-weight: bold;
+            margin-top: 10px;
+        }
+        .color-options {
+            display: flex;
+            justify-content: center;
+            margin-top: 10px;
+        }
+        .color-circle {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            margin: 0 5px;
+            display: inline-block;
+            cursor: pointer;
+        }
+        .specs {
+            margin-top: 20px;
+        }
+        .spec-row {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin-bottom: 15px;
+            align-items: center;
+            cursor: move;
+        }
+        .spec-item {
+            text-align: center;
+        }
+        .shared-feature {
+            background-color: #f0f0f0;
+            padding: 15px;
+            text-align: center;
+            margin: 20px 0;
+        }
+        .shared-feature-4 {
+            background-color: #e0e0e0;
+            padding: 15px;
+            text-align: center;
+            margin: 20px 0;
+        }
+        .shared-feature-2 {
+            background-color: #f0f0f0;
+            padding: 15px;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin: 20px 0;
+            cursor: move;
+        }
+        .shared-feature-2 > div {
+            text-align: center;
+        }
+        .price-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin-top: 30px;
+        }
+        .price-item {
+            text-align: center;
+            font-weight: bold;
+        }
+        .button-group {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            margin: 20px 0;
+        }
+        .button-group button {
+            padding: 10px 20px;
+            background-color: #0070c9;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .editable {
+            cursor: pointer;
+            border: 1px dashed #ccc;
+            padding: 5px;
+        }
+        .editable:hover {
+            background-color: rgba(240, 240, 240, 0.5);
+        }
+        .ql-editor {
+            min-height: 100px;
+        }
+        .logo-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 40px;
+        }
+        .logo-row img {
+            max-width: 100px;
+            height: auto;
+        }
+        .spec-item img {
+            max-width: 100%;
+            height: auto;
+            cursor: nwse-resize;
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="comparison-container">
+        <h1 class="editable">比較 iPhone 16 機型</h1>
+        
+        <div class="comparison-grid">
+            <div class="model">
+                <img src="/api/placeholder/400/320" alt="iPhone 16" class="editable">
+                <div class="model-name editable">iPhone 16<br>6.1 吋</div>
+                <div class="color-options">
+                    <span class="color-circle" style="background-color: #FFB6C1;"></span>
+                    <span class="color-circle" style="background-color: #90EE90;"></span>
+                    <span class="color-circle" style="background-color: #ADD8E6;"></span>
+                    <span class="color-circle" style="background-color: #FFFFE0;"></span>
+                    <span class="color-circle" style="background-color: #000000;"></span>
+                </div>
+            </div>
+            <div class="model">
+                <img src="/api/placeholder/400/320" alt="iPhone 16 Plus" class="editable">
+                <div class="model-name editable">iPhone 16 Plus<br>6.7 吋</div>
+                <div class="color-options">
+                    <span class="color-circle" style="background-color: #FFB6C1;"></span>
+                    <span class="color-circle" style="background-color: #90EE90;"></span>
+                    <span class="color-circle" style="background-color: #ADD8E6;"></span>
+                    <span class="color-circle" style="background-color: #FFFFE0;"></span>
+                    <span class="color-circle" style="background-color: #000000;"></span>
+                </div>
+            </div>
+            <div class="model">
+                <img src="/api/placeholder/400/320" alt="iPhone 16 Pro" class="editable">
+                <div class="model-name editable">iPhone 16 Pro<br>6.1 吋</div>
+                <div class="color-options">
+                    <span class="color-circle" style="background-color: #C0C0C0;"></span>
+                    <span class="color-circle" style="background-color: #4682B4;"></span>
+                    <span class="color-circle" style="background-color: #FFFFFF;"></span>
+                    <span class="color-circle" style="background-color: #000000;"></span>
+                </div>
+            </div>
+            <div class="model">
+                <img src="/api/placeholder/400/320" alt="iPhone 16 Pro Max" class="editable">
+                <div class="model-name editable">iPhone 16 Pro Max<br>6.7 吋</div>
+                <div class="color-options">
+                    <span class="color-circle" style="background-color: #C0C0C0;"></span>
+                    <span class="color-circle" style="background-color: #4682B4;"></span>
+                    <span class="color-circle" style="background-color: #FFFFFF;"></span>
+                    <span class="color-circle" style="background-color: #000000;"></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="specs">
+            <div class="spec-row editable">
+                <div class="spec-item editable">鋁金屬搭配注色玻璃機背<br>霧面 / 光面風格</div>
+                <div class="spec-item editable">鋁金屬搭配注色玻璃機背<br>霧面 / 光面風格</div>
+                <div class="spec-item editable">鈦金屬搭配霧面質感玻璃機背<br>動作按鈕</div>
+                <div class="spec-item editable">鈦金屬搭配霧面質感玻璃機背<br>動作按鈕</div>
+            </div>
+            <div class="spec-row editable">
+                <div class="spec-item editable">A18</div>
+                <div class="spec-item editable">A18</div>
+                <div class="spec-item editable">A18 Pro</div>
+                <div class="spec-item editable">A18 Pro</div>
+            </div>
+        </div>
+
+        <div class="shared-feature editable">
+            超 Retina XDR 顯示器 | IP68 防潑抗水<br>
+            iPhone 16 Pro 支援 ProMotion 自動適應更新頻率技術與永遠顯示
+        </div>
+
+        <div class="specs">
+            <div class="spec-row editable">
+                <div class="spec-item editable">Face ID</div>
+                <div class="spec-item editable">Face ID</div>
+                <div class="spec-item editable">Face ID</div>
+                <div class="spec-item editable">Face ID</div>
+            </div>
+            <div class="spec-row editable">
+                <div class="spec-item editable">動態島<br>與 iPhone 神奇的互動方式</div>
+                <div class="spec-item editable">動態島<br>與 iPhone 神奇的互動方式</div>
+                <div class="spec-item editable">動態島<br>與 iPhone 神奇的互動方式</div>
+                <div class="spec-item editable">動態島<br>與 iPhone 神奇的互動方式</div>
+            </div>
+            <div class="spec-row editable">
+                <div class="spec-item editable">雙相機系統<br>5,000 萬像素主相機</div>
+                <div class="spec-item editable">雙相機系統<br>5,000 萬像素主相機</div>
+                <div class="spec-item editable">Pro 相機系統<br>5,000 萬像素主相機</div>
+                <div class="spec-item editable">Pro 相機系統<br>5,000 萬像素主相機</div>
+            </div>
+        </div>
+
+        <div class="shared-feature editable">
+            超高解析度照片 30MP | 60MP<br>
+            新世代人像模式具備焦點與景深控制
+        </div>
+
+        <div class="specs">
+            <div class="spec-row editable">
+                <div class="spec-item editable">.5x | 1x | 2x</div>
+                <div class="spec-item editable">.5x | 1x | 2x</div>
+                <div class="spec-item editable">.5x | 1x | 2x | 3x</div>
+                <div class="spec-item editable">.5x | 1x | 2x | 5x</div>
+            </div>
+            <div class="spec-row editable">
+                <div class="spec-item editable">4 倍光學變焦範圍</div>
+                <div class="spec-item editable">4 倍光學變焦範圍</div>
+                <div class="spec-item editable">6 倍光學變焦範圍</div>
+                <div class="spec-item editable">10 倍光學變焦範圍</div>
+            </div>
+            <div class="spec-row editable">
+                <div class="spec-item editable">USB-C<br>支援 USB 3</div>
+                <div class="spec-item editable">USB-C<br>支援 USB 3</div>
+                <div class="spec-item editable">USB-C<br>支援 USB 4</div>
+                <div class="spec-item editable">USB-C<br>支援 USB 4</div>
+            </div>
+        </div>
+
+        <div class="price-grid">
+            <div class="price-item editable">
+                128GB NT$30,900<br>
+                256GB NT$34,400<br>
+                512GB NT$41,400
+            </div>
+            <div class="price-item editable">
+                128GB NT$33,900<br>
+                256GB NT$37,400<br>
+                512GB NT$44,400
+            </div>
+            <div class="price-item editable">
+                128GB NT$37,900<br>
+                256GB NT$41,400<br>
+                512GB NT$48,400<br>
+                1TB NT$55,400
+            </div>
+            <div class="price-item editable">
+                256GB NT$45,900<br>
+                512GB NT$52,900<br>
+                1TB NT$59,900
+            </div>
+        </div>
+
+        <div class="button-group">
+            <button onclick="addFeatureRow()">新增功能格</button>
+            <button onclick="addSharedFeature4()">新增四機共同功能</button>
+            <button onclick="addSharedFeature2()">新增兩機共同功能</button>
+            <button onclick="saveContent()">保存內容</button>
+            <button onclick="exportToImage()">匯出圖片</button>
+            <button onclick="resetContent()">重設頁面</button>
+        </div>
+
+        <div class="logo-row">
+            <img src="/api/placeholder/100/50" alt="Left Logo" class="editable">
+            <img src="/api/placeholder/100/50" alt="Center Logo" class="editable">
+            <img src="/api/placeholder/100/50" alt="Right Logo" class="editable">
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.14.0/Sortable.min.js"></script>
+    <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+    <script>
+        let quill;
+
+        document.addEventListener('DOMContentLoaded', function() {
+            loadContent();
+            initializeSortable();
+            initializeEditables();
+            initializeColorPickers();
+            initializeImageUploads();
+            initializeImageResize();
+        });
+
+        function initializeSortable() {
+            const container = document.getElementById('comparison-container');
+            new Sortable(container, {
+                animation: 150,
+                draggable: ".editable",
+                handle: ".editable"
+            });
+        }
+
+        function initializeEditables() {
+            const editables = document.querySelectorAll('.editable');
+            editables.forEach(el => {
+                el.addEventListener('click', function(event) {
+                    if (event.target.tagName === 'IMG') return; // 如果點擊的是圖片，不觸發編輯
+                    if (this.querySelector('.ql-container')) return; // 如果編輯器已經存在，不要重複創建
+
+                    const content = this.innerHTML;
+                    const editor = document.createElement('div');
+                    this.innerHTML = '';
+                    this.appendChild(editor);
+
+                    quill = new Quill(editor, {
+                        theme: 'snow',
+                        modules: {
+                            toolbar: [
+                                ['bold', 'italic', 'underline'],
+                                [{ 'color': [] }, { 'background': [] }],
+                                [{ 'font': [] }],
+                                [{ 'align': [] }],
+                                ['image'],
+                                ['clean']
+                            ]
+                        }
+                    });
+
+                    quill.root.innerHTML = content;
+
+                    // 確保編輯器獲得焦點
+                    setTimeout(() => {
+                        quill.focus();
+                    }, 0);
+
+                    quill.on('text-change', () => {
+                        this.dataset.content = quill.root.innerHTML;
+                    });
+
+                    const closeButton = document.createElement('button');
+                    closeButton.textContent = '完成';
+                    closeButton.style.marginTop = '10px';
+                    closeButton.onclick = (e) => {
+                        e.stopPropagation(); // 防止事件冒泡
+                        this.innerHTML = this.dataset.content || content;
+                        saveContent();
+                    };
+                    this.appendChild(closeButton);
+
+                    // 點擊其他地方時關閉編輯器
+                    document.addEventListener('click', function closeEditor(e) {
+                        if (!el.contains(e.target)) {
+                            el.innerHTML = el.dataset.content || content;
+                            saveContent();
+                            document.removeEventListener('click', closeEditor);
+                        }
+                    });
+                });
+            });
+        }
+
+        function imageHandler() {
+            const input = document.createElement('input');
+            input.setAttribute('type', 'file');
+            input.setAttribute('accept', 'image/*');
+            input.click();
+
+            input.onchange = () => {
+                const file = input.files[0];
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = (e) => {
+                        const range = quill.getSelection(true);
+                        quill.insertEmbed(range.index, 'image', e.target.result);
+                    };
+                    reader.readAsDataURL(file);
+                }
+            };
+        }
+
+        function initializeColorPickers() {
+            const colorCircles = document.querySelectorAll('.color-circle');
+            colorCircles.forEach(circle => {
+                circle.addEventListener('click', function() {
+                    const newColor = prompt('請輸入新的顏色代碼（例如：#FF0000）：', this.style.backgroundColor);
+                    if (newColor) {
+                        this.style.backgroundColor = newColor;
+                        saveContent();
+                    }
+                });
+            });
+        }
+
+        function initializeImageUploads() {
+            const images = document.querySelectorAll('.model img, .logo-row img');
+            images.forEach(img => {
+                img.addEventListener('click', function() {
+                    const input = document.createElement('input');
+                    input.type = 'file';
+                    input.accept = 'image/*';
+                    input.onchange = e => {
+                        const file = e.target.files[0];
+                        const reader = new FileReader();
+                        reader.onload = event => {
+                            img.src = event.target.result;
+                            saveContent();
+                        };
+                        reader.readAsDataURL(file);
+                    };
+                    input.click();
+                });
+            });
+        }
+
+        function initializeImageResize() {
+            document.querySelectorAll('.spec-item img').forEach(img => {
+                img.addEventListener('mousedown', startResize);
+            });
+        }
+
+        function startResize(e) {
+            e.preventDefault();
+            window.addEventListener('mousemove', resize);
+            window.addEventListener('mouseup', stopResize);
+
+            function resize(e) {
+                const rect = e.target.getBoundingClientRect();
+                const width = e.clientX - rect.left;
+                const height = width * (e.target.naturalHeight / e.target.naturalWidth);
+                e.target.style.width = `${width}px`;
+                e.target.style.height = `${height}px`;
+            }
+
+            function stopResize() {
+                window.removeEventListener('mousemove', resize);
+                saveContent();
+            }
+        }
+
+        function addFeatureRow() {
+            const specsContainer = document.querySelector('.specs');
+            const newRow = document.createElement('div');
+            newRow.className = 'spec-row editable';
+            newRow.innerHTML = `
+                <div class="spec-item editable">新功能</div>
+                <div class="spec-item editable">新功能</div>
+                <div class="spec-item editable">新功能</div>
+                <div class="spec-item editable">新功能</div>
+            `;
+            specsContainer.appendChild(newRow);
+            initializeEditables();
+            initializeSortable();
+            saveContent();
+        }
+
+        function addSharedFeature4() {
+            const container = document.getElementById('comparison-container');
+            const newFeature = document.createElement('div');
+            newFeature.className = 'shared-feature-4 editable';
+            newFeature.innerHTML = `
+                <div class="editable">四機共同功能</div>
+                <div class="editable">四機共同功能</div>
+                <div class="editable">四機共同功能</div>
+                <div class="editable">四機共同功能</div>
+            `;
+            container.insertBefore(newFeature, container.querySelector('.button-group'));
+            initializeEditables();
+            initializeSortable();
+            saveContent();
+        }
+
+        function addSharedFeature2() {
+            const container = document.getElementById('comparison-container');
+            const newFeature = document.createElement('div');
+            newFeature.className = 'shared-feature-2';
+            newFeature.innerHTML = `
+                <div class="editable">兩機共同功能</div>
+                <div class="editable">兩機共同功能</div>
+            `;
+            container.insertBefore(newFeature, container.querySelector('.button-group'));
+            initializeEditables();
+            initializeSortable();
+            saveContent();
+        }
+
+        function saveContent() {
+            const content = document.getElementById('comparison-container').innerHTML;
+            localStorage.setItem('iphone-comparison', content);
+        }
+
+        function loadContent() {
+            const savedContent = localStorage.getItem('iphone-comparison');
+            if (savedContent) {
+                document.getElementById('comparison-container').innerHTML = savedContent;
+                initializeEditables();
+                initializeSortable();
+            }
+        }
+
+        function resetContent() {
+            localStorage.removeItem('iphone-comparison');
+            location.reload();
+        }
+
+        function exportToImage() {
+            html2canvas(document.querySelector("#comparison-container")).then(canvas => {
+                const link = document.createElement('a');
+                link.download = 'iphone-16-comparison.png';
+                link.href = canvas.toDataURL();
+                link.click();
+            });
+        }
+    </script>
+</body>
+</html>
