@@ -33,9 +33,10 @@
         .comparison-table th, .comparison-table td {
             border: 1px solid #ccc;
             padding: 5px;
-            vertical-align: top;
+            vertical-align: bottom;
             white-space: normal;
             word-wrap: break-word;
+            text-align: center;
         }
         .header {
             background-color: #f5f5f5;
@@ -51,6 +52,8 @@
         .editable img {
             max-width: 100%;
             height: auto;
+            display: block;
+            margin: 5px auto 0;
         }
         #add-row-button, #add-common-row-button, #add-two-device-row-button, #export-button, #toggle-width-button {
             margin-top: 20px;
@@ -88,6 +91,24 @@
         .ql-align-right {
             text-align: right;
         }
+        .no-border {
+            border: none !important;
+        }
+        .ql-dot {
+            width: 20px;
+            height: 20px;
+            display: inline-block;
+            border-radius: 50%;
+            margin: 0 5px;
+            box-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        #color-picker {
+            margin-top: 10px;
+        }
+        #size-slider {
+            width: 100px;
+            margin-left: 10px;
+        }
     </style>
 </head>
 <body>
@@ -114,7 +135,13 @@
     
     <div class="editor-container">
         <div id="editor"></div>
-        <button id="paste-button">粘贴到选中单元格</button>
+        <button id="paste-button" disabled>粘貼到選中單元格</button>
+        <div id="color-picker">
+            <input type="color" id="dot-color" value="#000000">
+            <input type="range" id="size-slider" min="5" max="50" value="20">
+            <span id="size-value">20px</span>
+            <button id="eyedropper">滴管</button>
+        </div>
     </div>
 
     <script>
@@ -122,19 +149,54 @@
         let selectedCell;
         let dragSrcEl = null;
         let isEqualWidth = false;
+        let isEyedropperActive = false;
 
         function initQuill() {
+            const dotButtonHandler = function() {
+                const range = this.quill.getSelection();
+                if (range) {
+                    const color = document.getElementById('dot-color').value;
+                    const size = document.getElementById('size-slider').value;
+                    this.quill.insertEmbed(range.index, 'dot', { color, size });
+                }
+            };
+
             quill = new Quill('#editor', {
                 theme: 'snow',
                 modules: {
-                    toolbar: [
-                        ['bold', 'italic', 'underline'],
-                        ['image'],
-                        [{ 'align': ['', 'center', 'right'] }]
-                    ]
+                    toolbar: {
+                        container: [
+                            [{ 'font': [] }],
+                            [{ 'size': ['small', false, 'large', 'huge'] }],
+                            [{ 'color': [] }, { 'background': [] }],
+                            ['bold', 'italic', 'underline'],
+                            ['image'],
+                            [{ 'align': ['', 'center', 'right'] }],
+                            ['dot']
+                        ],
+                        handlers: {
+                            'dot': dotButtonHandler
+                        }
+                    }
                 },
                 placeholder: '在此輸入內容...'
             });
+
+            // 註冊自定義的 dot blot
+            const Embed = Quill.import('blots/embed');
+            class DotBlot extends Embed {
+                static create(value) {
+                    let node = super.create();
+                    node.setAttribute('class', 'ql-dot');
+                    node.style.backgroundColor = value.color;
+                    node.style.width = `${value.size}px`;
+                    node.style.height = `${value.size}px`;
+                    return node;
+                }
+            }
+            DotBlot.blotName = 'dot';
+            DotBlot.tagName = 'span';
+            Quill.register(DotBlot);
 
             quill.root.addEventListener('click', function(e) {
                 if (e.target && e.target.tagName === 'IMG') {
@@ -144,37 +206,64 @@
                     }
                 }
             });
+
+            quill.on('text-change', function() {
+                document.getElementById('paste-button').disabled = false;
+            });
+        }
+
+        function makeEditable(cell) {
+            cell.classList.add('editable');
+            cell.onclick = function() { selectCell(this); };
+        }
+
+        function makeDraggable(row) {
+            row.classList.add('draggable');
+            addDragHandlers(row);
         }
 
         function selectCell(cell) {
+            if (quill.getText().trim() !== '' && selectedCell !== cell) {
+                // 如果編輯器有內容且選擇了新的單元格，則自動粘貼
+                pasteToCell(cell);
+            } else {
+                // 如果編輯器為空或選擇了同一個單元格，則只更新選擇狀態
+                updateSelectedCell(cell);
+            }
+        }
+
+        function updateSelectedCell(cell) {
             if (selectedCell) {
                 selectedCell.style.outline = 'none';
             }
             selectedCell = cell;
             selectedCell.style.outline = '2px solid blue';
             quill.root.innerHTML = cell.innerHTML;
+            document.getElementById('paste-button').disabled = true;
         }
 
-        function pasteToCell() {
-            if (selectedCell) {
-                selectedCell.innerHTML = quill.root.innerHTML;
-                selectedCell.style.outline = 'none';
+        function pasteToCell(cell = selectedCell) {
+            if (cell) {
+                cell.innerHTML = quill.root.innerHTML;
+                cell.style.outline = 'none';
 
-                // 确保对齐方式正确应用
-                selectedCell.querySelectorAll('.ql-align-center').forEach(el => {
+                cell.querySelectorAll('.ql-align-center').forEach(el => {
                     el.style.textAlign = 'center';
                 });
-                selectedCell.querySelectorAll('.ql-align-right').forEach(el => {
+                cell.querySelectorAll('.ql-align-right').forEach(el => {
                     el.style.textAlign = 'right';
                 });
 
-                adjustCellSize(selectedCell);
+                adjustCellSize(cell);
                 adjustTableLayout();
 
-                selectedCell = null;
-                quill.root.innerHTML = '';
+                // 更新選中的單元格
+                updateSelectedCell(cell);
+
+                // 清空編輯器
+                quill.setText('');
             } else {
-                alert('请先选择一个单元格');
+                alert('請先選擇一個單元格');
             }
         }
 
@@ -194,23 +283,19 @@
                 table.style.width = '100%';
                 table.style.tableLayout = 'fixed';
             }
-
-            // 强制浏览器重新计算布局
             table.offsetHeight;
         }
 
         function addNewRow(colspan) {
             const table = document.getElementById('comparison-table');
             const newRow = table.insertRow();
-            newRow.classList.add('draggable');
-            addDragHandlers(newRow);
+            makeDraggable(newRow);
             const cellCount = colspan === 4 ? 1 : (colspan === 2 ? 2 : 4);
             
             for (let i = 0; i < cellCount; i++) {
                 const newCell = newRow.insertCell();
-                newCell.className = 'editable';
+                makeEditable(newCell);
                 newCell.colSpan = colspan;
-                newCell.onclick = function() { selectCell(this); };
             }
             adjustTableLayout();
         }
@@ -256,6 +341,13 @@
             if (dragSrcEl != this) {
                 dragSrcEl.innerHTML = this.innerHTML;
                 this.innerHTML = e.dataTransfer.getData('text/html');
+
+                this.querySelectorAll('td').forEach(cell => {
+                    makeEditable(cell);
+                });
+                dragSrcEl.querySelectorAll('td').forEach(cell => {
+                    makeEditable(cell);
+                });
             }
 
             return false;
@@ -284,19 +376,36 @@
             document.querySelector('.editor-container').style.width = (95 - value) + '%';
         }
 
+        function initTable() {
+            const table = document.getElementById('comparison-table');
+            table.querySelectorAll('tr').forEach((row, index) => {
+                if (index > 0) {
+                    makeDraggable(row);
+                    row.querySelectorAll('td').forEach(cell => {
+                        makeEditable(cell);
+                    });
+                }
+            });
+        }
+
         document.getElementById('add-row-button').addEventListener('click', () => addNewRow(1));
         document.getElementById('add-common-row-button').addEventListener('click', () => addNewRow(4));
         document.getElementById('add-two-device-row-button').addEventListener('click', () => addNewRow(2));
-        document.getElementById('paste-button').addEventListener('click', pasteToCell);
+        document.getElementById('paste-button').addEventListener('click', () => pasteToCell());
         document.getElementById('toggle-width-button').addEventListener('click', toggleWidth);
         document.getElementById('width-control').addEventListener('input', (e) => adjustTableWidth(e.target.value));
 
         document.getElementById('export-button').addEventListener('click', () => {
-            html2canvas(document.querySelector('table')).then(canvas => {
+            const table = document.querySelector('table');
+            table.querySelectorAll('th, td').forEach(cell => cell.classList.add('no-border'));
+            
+            html2canvas(table).then(canvas => {
                 const link = document.createElement('a');
                 link.download = 'comparison.png';
                 link.href = canvas.toDataURL();
                 link.click();
+                
+                table.querySelectorAll('th, td').forEach(cell => cell.classList.remove('no-border'));
             });
         });
 
@@ -307,12 +416,33 @@
             document.head.appendChild(script);
         }
 
+        document.getElementById('size-slider').addEventListener('input', function() {
+            document.getElementById('size-value').textContent = this.value + 'px';
+        });
+
+        document.getElementById('eyedropper').addEventListener('click', function() {
+            isEyedropperActive = !isEyedropperActive;
+            this.textContent = isEyedropperActive ? '取消滴管' : '滴管';
+            document.body.style.cursor = isEyedropperActive ? 'crosshair' : 'default';
+        });
+
+        document.addEventListener('click', function(e) {
+            if (isEyedropperActive) {
+                const colorPicker = document.getElementById('dot-color');
+                if (e.target.classList.contains('ql-dot')) {
+                    colorPicker.value = e.target.style.backgroundColor;
+                }
+                isEyedropperActive = false;
+                document.getElementById('eyedropper').textContent = '滴管';
+                document.body.style.cursor = 'default';
+                e.preventDefault();
+            }
+        });
+
         loadHtml2Canvas();
         initQuill();
+        initTable();
         adjustTableLayout();
-
-        // 为现有的行添加拖动功能
-        document.querySelectorAll('.draggable').forEach(addDragHandlers);
     </script>
 </body>
 </html>
