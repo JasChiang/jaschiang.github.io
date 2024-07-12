@@ -203,6 +203,10 @@
     margin-right: 5px;
     border-radius: 5px;
   }
+
+  .new-feature {
+    color: #2C3E50
+  }  
   
   /* Table Styles */
   .description-table, .support-table {
