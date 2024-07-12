@@ -182,8 +182,8 @@
   .online { background-color: #90EE90; }
   .both { background: linear-gradient(90deg, #ADD8E6 50%, #90EE90 50%); }
   .account-required { border: 2px solid red; }
-  .new-feature { background-color: #2C3E50 } 
-  .new-font-feature { color: #e1e7ec }   
+  .new-feature { background-color: #F0DBE1 } 
+  .new-font-feature { color: #F0DBE1 }   
 
   /* Legend Styles */
   .legend {
