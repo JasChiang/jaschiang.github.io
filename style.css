@@ -183,7 +183,7 @@
   .both { background: linear-gradient(90deg, #ADD8E6 50%, #90EE90 50%); }
   .account-required { border: 2px solid red; }
   .new-feature { background-color: #2C3E50 } 
-  .new-font-feature { color: #2C3E50 }   
+  .new-font-feature { color: #e1e7ec }   
 
   /* Legend Styles */
   .legend {
