@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI 輔助 MV 製作：從構思到實現</title>
+    <!-- 添加 Font Awesome 庫 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        h1, h2, h3 {
+            color: #0070c9;
+        }
+        .container {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            padding: 20px;
+            margin-top: 20px;
+        }
+        .highlight {
+            background-color: #f0f8ff;
+            border-left: 4px solid #0070c9;
+            padding: 10px;
+            margin: 10px 0;
+        }
+.image-placeholder {
+    background-color: #e0e0e0;
+    border: 1px dashed #999;
+    padding: 20px;
+    text-align: center;
+    margin: 10px 0;
+    max-width: 100%; /* 確保不會超出父容器 */
+}
+
+/* 專門處理 iframe 的容器 */
+.image-placeholder.video-container {
+    position: relative;
+    padding: 0; /* 移除一般padding */
+    padding-bottom: 56.25%; /* 16:9 比例 */
+    height: 0;
+    overflow: hidden;
+}
+
+/* iframe 的樣式 */
+.image-placeholder.video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+/* 圖片的樣式 */
+.image-placeholder img {
+    max-width: 100%;
+    height: auto;
+}
+        .list-item {
+            margin-bottom: 10px;
+        }
+        .list-item::before {
+            font-family: "Font Awesome 5 Free";
+            font-weight: 900;
+            content: "\f0c8";
+            color: #0070c9;
+            display: inline-block;
+            width: 1.5em;
+            margin-left: -1.5em;
+        }
+        .process-section {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+        }
+        .process-title {
+            text-align: center;
+            color: #333;
+        }
+        .process-svg {
+            width: 100%;
+            height: auto;
+            max-width: 800px;
+        }
+        .responsive-svg-container {
+            display: inline-block;
+            position: relative;
+            width: 100%;
+            padding-bottom: 30%; /* 控制長寬比，可以根據需要調整 */
+            vertical-align: middle;
+            overflow: hidden;
+        }
+        .responsive-svg {
+            display: inline-block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        @media (max-width: 600px) {
+            .process-section {
+                padding: 10px;
+            }
+            .process-title {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1><i class="fas fa-film"></i> AI 輔助 MV 製作：從構思到實現</h1>
+        
+        <section>
+            <h2><i class="fas fa-tasks"></i> 摘要</h2>
+            <p>
+                本文記錄了一次使用 AI 工具製作音樂影片的過程，從初期構思到最終成品。。
+            </p>
+        </section>
+
+        <section class="process-section">
+            <h2 class="process-title"><i class="fas fa-project-diagram"></i> 製作流程</h2>
+            <svg class="process-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 830 60">
+                <defs>
+                    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+                        <feDropShadow dx="1" dy="1" stdDeviation="1" flood-opacity="0.2"/>
+                    </filter>
+                </defs>
+                
+                <!-- 步骤圆角矩形和文字 -->
+                <g font-family="Arial, sans-serif" font-size="14" font-weight="normal" text-anchor="middle">
+                    <rect x="10" y="10" width="120" height="40" rx="20" fill="#4a90e2" filter="url(#shadow)"/>
+                    <text x="70" y="35" fill="white">1. 準備階段</text>
+                    
+                    <rect x="145" y="10" width="120" height="40" rx="20" fill="#50e3c2" filter="url(#shadow)"/>
+                    <text x="205" y="35" fill="white">2. AI 輔助構思</text>
+                    
+                    <rect x="280" y="10" width="120" height="40" rx="20" fill="#f5a623" filter="url(#shadow)"/>
+                    <text x="340" y="35" fill="white">3. 圖像生成</text>
+                    
+                    <rect x="415" y="10" width="120" height="40" rx="20" fill="#f8e71c" filter="url(#shadow)"/>
+                    <text x="475" y="35" fill="white">4. 影片生成</text>
+                    
+                    <rect x="550" y="10" width="120" height="40" rx="20" fill="#7ed321" filter="url(#shadow)"/>
+                    <text x="610" y="35" fill="white">5. 調整結果</text>
+                    
+                    <rect x="685" y="10" width="120" height="40" rx="20" fill="#bd10e0" filter="url(#shadow)"/>
+                    <text x="745" y="35" fill="white">6. 後期製作</text>
+                </g>
+                
+                <!-- 连接线 -->
+                <path d="M130 30 H145 M265 30 H280 M400 30 H415 M535 30 H550 M670 30 H685" stroke="#ccc" stroke-width="2"/>
+            </svg>
+        </section>
+
+        <section>
+            <h2><i class="fas fa-rocket"></i> 1. 準備階段</h2>
+            <h3><i class="fas fa-music"></i> 1.1 選擇音樂</h3>
+            <p>
+                本次製作選擇了中信兄弟棒球隊周思齊的應援曲作為背景音樂，以紀念他的引退。
+            </p>
+           <div class="image-placeholder video-container">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/csBgSd7nNFY?si=t5jzcZfnVgdW2EQM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+            
+            <h3><i class="fas fa-lightbulb"></i> 1.2 AI 輔助構思</h3>
+            <p>
+                在初期構思階段，主要運用了 ChatGPT 和 Claude。具體步驟如下：
+            </p>
+            <ul>
+                <li class="list-item">向 AI 提供完整歌詞。</li>
+                <li class="list-item">說明需求是用 AI 製作 MV。</li>
+                <li class="list-item">請求 AI 協助進行歌詞分段和轉換為提示詞。</li>
+            </ul>
+            <p>
+                快速產生了分鏡靈感，為後續的視覺元素創作提供了想法來源。
+            </p>
+            <!--<div class="image-placeholder">
+                <i class="fas fa-robot fa-3x"></i><br>
+                AI 輔助構思過程截圖
+            </div>
+        </section>--!>
+
+        <section>
+            <h2><i class="fas fa-cogs"></i> 2. 製作過程</h2>
+            <h3><i class="fas fa-image"></i> 2.1 圖像生成</h3>
+            <p>
+                在圖像生成階段，主要使用了 Midjourney。而為了「角色一制性」，採用了下列參數：
+            </p>
+            <ul>
+                <li class="list-item">運用 cref 功能：這允許提供多張參考圖片，綜合多圖特徵。</li>
+                <li class="list-item">使用 "cw" 參數：控制參考強度，使生成的圖像更貼近需求。</li>
+                <li class="list-item">設置 "--cw 0"：僅參考臉部特徵時。</li>
+            </ul>
+            <div class="image-placeholder">
+ <img src="midjourney.png" alt="圖片說明">
+            </div>
+            <div class="highlight">
+                <p><strong><i class="fas fa-exclamation-triangle"></i> 遇到的挑戰：</strong></p>
+                <ul>
+                    <li class="list-item">對特定運動動作（如棒球揮棒、滑壘）的理解有限。</li>
+                    <li class="list-item">提供臉部特徵參考後，雖然能維持角色一致性，但與參考圖片的相似度不高。</li>
+                    <li class="list-item">多次嘗試和調整能無法獲得較理想成果。</li>
+                </ul>
+            </div>
+            <p>
+                為了應對這些挑戰，採取了以下策略：
+            </p>
+            <ol>
+                <li class="list-item">嘗試使用背號「16」與名字拼音「S.C.Chou」代替具體人物形象。這種方法雖然可以比較容易生成想要的結果，但有時候文字還是需要經過多次生成「抽卡」才能得到滿意的效果。</li>
+                <li class="list-item">調整提示詞，專注於捕捉整體氛圍和情感，而非精確的人物肖像。</li>
+                <li class="list-item">結合後期製作技巧來彌補 AI 生成的不足。</li>
+            </ol>
+            <!--<div class="image-placeholder">
+                <i class="fas fa-chess-knight fa-3x"></i><br>
+                圖像生成策略示例
+            </div>--!>
+
+            <h3><i class="fas fa-video"></i> 2.2 影片生成</h3>
+            <p>
+                在影片生成階段，嘗試使用了 Kling AI、海螺 AI 和 Runway 等工具。然而，這個過程也面臨了一些挑戰：
+            </p>
+            <ul>
+                <li class="list-item">AI 對特定運動動作的理解仍然有限。</li>
+                <li class="list-item">生成結果常常出現意料之外的效果。</li>
+                <li class="list-item">平台的使用成本和生成速度限制了反覆嘗試的可能性。</li>
+            </ul>
+            <div class="image-placeholder">
+ <img src="klingai.png" alt="圖片說明">
+            </div>
+                        <div class="image-placeholder">
+ <img src="runwayml.png" alt="圖片說明">
+            </div>
+                                    <div class="image-placeholder">
+ <img src="hailuoai.png" alt="圖片說明">
+            </div>
+            <p>
+                針對這些問題，調整了圖像與影像生成提示詞：
+            </p>
+            <ol>
+                <li class="list-item">主要聚焦於鏡頭移動和天空光影變化。</li>
+                <li class="list-item">減少特定動作的畫面。</li>
+            </ol>
+
+            <h3><i class="fas fa-cut"></i> 2.3 後期製作</h3>
+            <p>
+                在後期製作階段，主要使用了 CapCut 進行剪輯。這個階段的重點是：
+            </p>
+            <ul>
+                <li class="list-item">通過剪輯技巧彌補 AI 生成內容的不足。</li>
+                <li class="list-item">運用裁切、轉場、特效動畫等方式，盡量改善視覺效果。</li>
+            </ul>
+            <div class="image-placeholder">
+ <img src="hailuoai.png" alt="圖片說明">
+            </div>
+        </section>
+
+        <section>
+            <h2><i class="fas fa-forward"></i> 3. 未來展望與改進計劃</h2>
+            <p>
+                基於這次的製作經驗，制定了以下改進計劃：
+            </p>
+            <ol>
+                <li class="list-item">使用配備 PC 上先進行初步圖像生成和驗證，以減少對線上服務的依賴。</li>
+                <li class="list-item">目前進度：開始使用 SimpleSDXL 進行 PC 圖像生成的嘗試。</li>
+                <li class="list-item">提高精確度：計劃使用 fluxgym 等自行訓練 LoRA 或用 IP-Adapter 等工具提高角色生成的精確度。</li>
+            </ol>
+        </section>
+
+        <section>
+            <h2><i class="fas fa-clipboard-check"></i> 4. 結論</h2>
+            <h3><i class="fas fa-thumbs-up"></i> 4.1 AI 輔助創作的優勢</h3>
+            <ul>
+                <li class="list-item">輔助思考，幫助推敲和視覺化創作概念。</li>
+                <li class="list-item">提供多樣化的創意可能性。</li>
+            </ul>
+            <h3><i class="fas fa-exclamation-triangle"></i> 4.2 面臨的挑戰</h3>
+            <ul>
+                <li class="list-item">線上服務使用過程中的成本控制。</li>
+                <li class="list-item">特定題材（如運動動作）的準確生成。</li>
+            </ul>
+        </section>
+
+        <section>
+            <h3><i class="fas fa-user-graduate"></i> 4.3 其他調整方向</h3>
+            <ol>
+                <li class="list-item"><i class="fas fa-search"></i> 研究類似題材：查看市面上是否有人製作類似內容，選擇適合的工具。</li>
+                <li class="list-item"><i class="fas fa-gift"></i> 善用免費額度：對於新題材，先利用免費額度進行試錯。</li>
+                <li class="list-item"><i class="fas fa-coins"></i> 注意成本控制：留意付費服務的額度使用，不要過於追求完美生成。</li>
+                <li class="list-item"><i class="fas fa-cut"></i> 重視後期製作：善用剪輯工具、特效、裁切或轉場來彌補生成結果的不足。</li>
+                <li class="list-item"><i class="fas fa-balance-scale"></i> 平衡 AI 和人工創意：認識到 AI 工具的局限性，適時介入人工創意。</li>
+            </ol>
+        </section>
+
+        <p class="highlight">
+            <i class="fas fa-lightbulb"></i> 藉由運用 AI 工具，結合人工創意和後期製作技巧
+        </p>
+        
+        <p>
+            <em><i class="fas fa-info-circle"></i> 註：本文是在 AI 助理 Claude 的引導下完成的，記錄了一次使用 AI 工具製作音樂影片的過程回顧。</em>
+        </p>
+    </div>
+</body>
+</html>
