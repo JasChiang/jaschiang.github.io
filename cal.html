@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>資源最佳化計算器</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/javascript-lp-solver/0.4.24/solver.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .input-group {
+            margin-bottom: 15px;
+        }
+        .input-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        .input-group input {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        #result {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 4px;
+            background-color: #f9f9f9;
+        }
+        .result-item {
+            margin: 5px 0;
+        }
+        .error {
+            color: red;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>資源最佳化計算器</h1>
+        
+        <div class="input-group">
+            <label for="resourceA">A 資源數量:</label>
+            <input type="number" id="resourceA" min="0" value="0">
+        </div>
+        
+        <div class="input-group">
+            <label for="resourceB">B 資源數量:</label>
+            <input type="number" id="resourceB" min="0" value="0">
+        </div>
+        
+        <div class="input-group">
+            <label for="resourceC">C 資源數量:</label>
+            <input type="number" id="resourceC" min="0" value="0">
+        </div>
+        
+        <div class="input-group">
+            <label for="resourceD">D 資源數量:</label>
+            <input type="number" id="resourceD" min="0" value="0">
+        </div>
+        
+        <button onclick="calculate()">計算最佳解</button>
+        
+        <div id="result"></div>
+    </div>
+
+    <script>
+        function calculate() {
+            // 獲取輸入值
+            const a = parseInt(document.getElementById('resourceA').value) || 0;
+            const b = parseInt(document.getElementById('resourceB').value) || 0;
+            const c = parseInt(document.getElementById('resourceC').value) || 0;
+            const d = parseInt(document.getElementById('resourceD').value) || 0;
+
+            // 驗證輸入
+            if (a < 0 || b < 0 || c < 0 || d < 0) {
+                document.getElementById('result').innerHTML = '<div class="error">錯誤：資源數量不能為負數</div>';
+                return;
+            }
+
+            // 建立線性規劃模型
+            const model = {
+                optimize: "points",
+                opType: "max",
+                constraints: {
+                    resourceA: { max: a },
+                    resourceB: { max: b },
+                    resourceC: { max: c },
+                    resourceD: { max: d },
+                },
+                variables: {
+                    // 組合1 (A3+B3+C3+D3) = 30分
+                    combo1: {
+                        points: 30,
+                        resourceA: 3,
+                        resourceB: 3,
+                        resourceC: 3,
+                        resourceD: 3,
+                    },
+                    // 組合2 (A2+B2+C2+D2) = 18分
+                    combo2: {
+                        points: 18,
+                        resourceA: 2,
+                        resourceB: 2,
+                        resourceC: 2,
+                        resourceD: 2,
+                    },
+                    // 組合3 (A1+B1+C1+D1) = 8分
+                    combo3: {
+                        points: 8,
+                        resourceA: 1,
+                        resourceB: 1,
+                        resourceC: 1,
+                        resourceD: 1,
+                    },
+                    // 組合4 (A1+D1) = 5分
+                    combo4: {
+                        points: 5,
+                        resourceA: 1,
+                        resourceD: 1,
+                    },
+                    // 組合5 (A1+C2) = 8分
+                    combo5: {
+                        points: 8,
+                        resourceA: 1,
+                        resourceC: 2,
+                    },
+                    // 組合6 (D1+B2) = 8分
+                    combo6: {
+                        points: 8,
+                        resourceD: 1,
+                        resourceB: 2,
+                    },
+                    // A資源10個換30分
+                    a10: {
+                        points: 30,
+                        resourceA: 10,
+                    },
+                    // B資源10個換30分
+                    b10: {
+                        points: 30,
+                        resourceB: 10,
+                    },
+                    // C資源10個換30分
+                    c10: {
+                        points: 30,
+                        resourceC: 10,
+                    },
+                    // D資源10個換30分
+                    d10: {
+                        points: 30,
+                        resourceD: 10,
+                    },
+                    // A資源4個換10分
+                    a4: {
+                        points: 10,
+                        resourceA: 4,
+                    },
+                    // B資源4個換10分
+                    b4: {
+                        points: 10,
+                        resourceB: 4,
+                    },
+                    // C資源4個換10分
+                    c4: {
+                        points: 10,
+                        resourceC: 4,
+                    },
+                    // D資源4個換10分
+                    d4: {
+                        points: 10,
+                        resourceD: 4,
+                    },
+                    // A資源1個換1分
+                    a1: {
+                        points: 1,
+                        resourceA: 1,
+                    },
+                    // B資源1個換1分
+                    b1: {
+                        points: 1,
+                        resourceB: 1,
+                    },
+                    // C資源1個換1分
+                    c1: {
+                        points: 1,
+                        resourceC: 1,
+                    },
+                    // D資源1個換1分
+                    d1: {
+                        points: 1,
+                        resourceD: 1,
+                    },
+                },
+                ints: {
+                    combo1: 1,
+                    combo2: 1,
+                    combo3: 1,
+                    combo4: 1,
+                    combo5: 1,
+                    combo6: 1,
+                    a10: 1,
+                    b10: 1,
+                    c10: 1,
+                    d10: 1,
+                    a4: 1,
+                    b4: 1,
+                    c4: 1,
+                    d4: 1,
+                    a1: 1,
+                    b1: 1,
+                    c1: 1,
+                    d1: 1,
+                }
+            };
+
+            // 解決問題
+            const solution = solver.Solve(model);
+            
+            // 顯示結果
+            let resultHtml = '<h2>計算結果：</h2>';
+            resultHtml += `<div class="result-item">總分：${Math.floor(solution.result)}</div>`;
+            
+            // 顯示使用的組合
+            const combinations = {
+                combo1: '組合1 (A3+B3+C3+D3)',
+                combo2: '組合2 (A2+B2+C2+D2)',
+                combo3: '組合3 (A1+B1+C1+D1)',
+                combo4: '組合4 (A1+D1)',
+                combo5: '組合5 (A1+C2)',
+                combo6: '組合6 (D1+B2)',
+                a10: 'A資源10個換30分',
+                b10: 'B資源10個換30分',
+                c10: 'C資源10個換30分',
+                d10: 'D資源10個換30分',
+                a4: 'A資源4個換10分',
+                b4: 'B資源4個換10分',
+                c4: 'C資源4個換10分',
+                d4: 'D資源4個換10分',
+                a1: 'A資源1個換1分',
+                b1: 'B資源1個換1分',
+                c1: 'C資源1個換1分',
+                d1: 'D資源1個換1分'
+            };
+
+            for (const [key, value] of Object.entries(solution)) {
+                if (combinations[key] && value > 0) {
+                    resultHtml += `<div class="result-item">${combinations[key]}: ${Math.floor(value)}</div>`;
+                }
+            }
+
+            document.getElementById('result').innerHTML = resultHtml;
+        }
+    </script>
+</body>
+</html>
