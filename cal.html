@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>資源最佳化計算器</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/javascript-lp-solver/0.4.24/solver.js"></script>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -85,169 +84,164 @@
             <input type="number" id="resourceD" min="0" value="0">
         </div>
         
-        <button onclick="calculate()">計算最佳解</button>
+        <button onclick="calculateOptimal()">計算最佳解</button>
         
         <div id="result"></div>
     </div>
 
     <script>
-        function calculate() {
-            // 獲取輸入值
-            const a = parseInt(document.getElementById('resourceA').value) || 0;
-            const b = parseInt(document.getElementById('resourceB').value) || 0;
-            const c = parseInt(document.getElementById('resourceC').value) || 0;
-            const d = parseInt(document.getElementById('resourceD').value) || 0;
-
-            // 驗證輸入
+        function getMaxPoints(resources, memo = new Map(), path = new Map()) {
+            const [a, b, c, d] = resources;
+            
+            // Base case: if any resource is negative, return invalid result
             if (a < 0 || b < 0 || c < 0 || d < 0) {
-                document.getElementById('result').innerHTML = '<div class="error">錯誤：資源數量不能為負數</div>';
-                return;
+                return { points: -1, solution: {} };
+            }
+            
+            const key = `${a},${b},${c},${d}`;
+            if (memo.has(key)) {
+                return { points: memo.get(key), solution: path.get(key) };
+            }
+            
+            let bestPoints = 0;
+            let bestSolution = {};
+            
+            // Try all possible combinations
+            const combinations = [
+                // 組合1: A3+B3+C3+D3 = 30分
+                {
+                    resources: [3, 3, 3, 3],
+                    points: 30,
+                    name: 'combo1'
+                },
+                // 組合2: A2+B2+C2+D2 = 18分
+                {
+                    resources: [2, 2, 2, 2],
+                    points: 18,
+                    name: 'combo2'
+                },
+                // 組合3: A1+B1+C1+D1 = 8分
+                {
+                    resources: [1, 1, 1, 1],
+                    points: 8,
+                    name: 'combo3'
+                },
+                // 組合4: A1+D1 = 5分
+                {
+                    resources: [1, 0, 0, 1],
+                    points: 5,
+                    name: 'combo4'
+                },
+                // 組合5: A1+C2 = 8分
+                {
+                    resources: [1, 0, 2, 0],
+                    points: 8,
+                    name: 'combo5'
+                },
+                // 組合6: D1+B2 = 8分
+                {
+                    resources: [0, 2, 0, 1],
+                    points: 8,
+                    name: 'combo6'
+                }
+            ];
+
+            // Try each combination
+            for (const combo of combinations) {
+                const remaining = resources.map((r, i) => r - combo.resources[i]);
+                const result = getMaxPoints(remaining, memo, path);
+                
+                if (result.points >= 0) {
+                    const totalPoints = combo.points + result.points;
+                    if (totalPoints > bestPoints) {
+                        bestPoints = totalPoints;
+                        bestSolution = { ...result.solution };
+                        bestSolution[combo.name] = (bestSolution[combo.name] || 0) + 1;
+                    }
+                }
             }
 
-            // 建立線性規劃模型
-            const model = {
-                optimize: "points",
-                opType: "max",
-                constraints: {
-                    resourceA: { max: a },
-                    resourceB: { max: b },
-                    resourceC: { max: c },
-                    resourceD: { max: d },
-                },
-                variables: {
-                    // 組合1 (A3+B3+C3+D3) = 30分
-                    combo1: {
-                        points: 30,
-                        resourceA: 3,
-                        resourceB: 3,
-                        resourceC: 3,
-                        resourceD: 3,
-                    },
-                    // 組合2 (A2+B2+C2+D2) = 18分
-                    combo2: {
-                        points: 18,
-                        resourceA: 2,
-                        resourceB: 2,
-                        resourceC: 2,
-                        resourceD: 2,
-                    },
-                    // 組合3 (A1+B1+C1+D1) = 8分
-                    combo3: {
-                        points: 8,
-                        resourceA: 1,
-                        resourceB: 1,
-                        resourceC: 1,
-                        resourceD: 1,
-                    },
-                    // 組合4 (A1+D1) = 5分
-                    combo4: {
-                        points: 5,
-                        resourceA: 1,
-                        resourceD: 1,
-                    },
-                    // 組合5 (A1+C2) = 8分
-                    combo5: {
-                        points: 8,
-                        resourceA: 1,
-                        resourceC: 2,
-                    },
-                    // 組合6 (D1+B2) = 8分
-                    combo6: {
-                        points: 8,
-                        resourceD: 1,
-                        resourceB: 2,
-                    },
-                    // A資源10個換30分
-                    a10: {
-                        points: 30,
-                        resourceA: 10,
-                    },
-                    // B資源10個換30分
-                    b10: {
-                        points: 30,
-                        resourceB: 10,
-                    },
-                    // C資源10個換30分
-                    c10: {
-                        points: 30,
-                        resourceC: 10,
-                    },
-                    // D資源10個換30分
-                    d10: {
-                        points: 30,
-                        resourceD: 10,
-                    },
-                    // A資源4個換10分
-                    a4: {
-                        points: 10,
-                        resourceA: 4,
-                    },
-                    // B資源4個換10分
-                    b4: {
-                        points: 10,
-                        resourceB: 4,
-                    },
-                    // C資源4個換10分
-                    c4: {
-                        points: 10,
-                        resourceC: 4,
-                    },
-                    // D資源4個換10分
-                    d4: {
-                        points: 10,
-                        resourceD: 4,
-                    },
-                    // A資源1個換1分
-                    a1: {
-                        points: 1,
-                        resourceA: 1,
-                    },
-                    // B資源1個換1分
-                    b1: {
-                        points: 1,
-                        resourceB: 1,
-                    },
-                    // C資源1個換1分
-                    c1: {
-                        points: 1,
-                        resourceC: 1,
-                    },
-                    // D資源1個換1分
-                    d1: {
-                        points: 1,
-                        resourceD: 1,
-                    },
-                },
-                ints: {
-                    combo1: 1,
-                    combo2: 1,
-                    combo3: 1,
-                    combo4: 1,
-                    combo5: 1,
-                    combo6: 1,
-                    a10: 1,
-                    b10: 1,
-                    c10: 1,
-                    d10: 1,
-                    a4: 1,
-                    b4: 1,
-                    c4: 1,
-                    d4: 1,
-                    a1: 1,
-                    b1: 1,
-                    c1: 1,
-                    d1: 1,
+            // Try converting 10 resources
+            for (let i = 0; i < 4; i++) {
+                if (resources[i] >= 10) {
+                    const remaining = [...resources];
+                    remaining[i] -= 10;
+                    const result = getMaxPoints(remaining, memo, path);
+                    
+                    if (result.points >= 0) {
+                        const totalPoints = 30 + result.points;
+                        if (totalPoints > bestPoints) {
+                            bestPoints = totalPoints;
+                            bestSolution = { ...result.solution };
+                            const key = ['a10', 'b10', 'c10', 'd10'][i];
+                            bestSolution[key] = (bestSolution[key] || 0) + 1;
+                        }
+                    }
                 }
-            };
+            }
 
-            // 解決問題
-            const solution = solver.Solve(model);
-            
+            // Try converting 4 resources
+            for (let i = 0; i < 4; i++) {
+                if (resources[i] >= 4) {
+                    const remaining = [...resources];
+                    remaining[i] -= 4;
+                    const result = getMaxPoints(remaining, memo, path);
+                    
+                    if (result.points >= 0) {
+                        const totalPoints = 10 + result.points;
+                        if (totalPoints > bestPoints) {
+                            bestPoints = totalPoints;
+                            bestSolution = { ...result.solution };
+                            const key = ['a4', 'b4', 'c4', 'd4'][i];
+                            bestSolution[key] = (bestSolution[key] || 0) + 1;
+                        }
+                    }
+                }
+            }
+
+            // Convert remaining individual resources
+            for (let i = 0; i < 4; i++) {
+                if (resources[i] > 0) {
+                    const remaining = [...resources];
+                    remaining[i] -= 1;
+                    const result = getMaxPoints(remaining, memo, path);
+                    
+                    if (result.points >= 0) {
+                        const totalPoints = 1 + result.points;
+                        if (totalPoints > bestPoints) {
+                            bestPoints = totalPoints;
+                            bestSolution = { ...result.solution };
+                            const key = ['a1', 'b1', 'c1', 'd1'][i];
+                            bestSolution[key] = (bestSolution[key] || 0) + 1;
+                        }
+                    }
+                }
+            }
+
+            // Base case: no resources left
+            if (resources.every(r => r === 0)) {
+                bestPoints = 0;
+                bestSolution = {};
+            }
+
+            memo.set(key, bestPoints);
+            path.set(key, bestSolution);
+            return { points: bestPoints, solution: bestSolution };
+        }
+
+        function calculateOptimal() {
+            // 獲取輸入值
+            const a = Math.max(0, parseInt(document.getElementById('resourceA').value) || 0);
+            const b = Math.max(0, parseInt(document.getElementById('resourceB').value) || 0);
+            const c = Math.max(0, parseInt(document.getElementById('resourceC').value) || 0);
+            const d = Math.max(0, parseInt(document.getElementById('resourceD').value) || 0);
+
+            const result = getMaxPoints([a, b, c, d]);
+
             // 顯示結果
             let resultHtml = '<h2>計算結果：</h2>';
-            resultHtml += `<div class="result-item">總分：${Math.floor(solution.result)}</div>`;
-            
-            // 顯示使用的組合
+            resultHtml += `<div class="result-item">總分：${result.points}</div>`;
+
             const combinations = {
                 combo1: '組合1 (A3+B3+C3+D3)',
                 combo2: '組合2 (A2+B2+C2+D2)',
@@ -269,9 +263,9 @@
                 d1: 'D資源1個換1分'
             };
 
-            for (const [key, value] of Object.entries(solution)) {
-                if (combinations[key] && value > 0) {
-                    resultHtml += `<div class="result-item">${combinations[key]}: ${Math.floor(value)}</div>`;
+            for (const [key, value] of Object.entries(combinations)) {
+                if (result.solution[key] > 0) {
+                    resultHtml += `<div class="result-item">${value}: ${result.solution[key]}</div>`;
                 }
             }
 
