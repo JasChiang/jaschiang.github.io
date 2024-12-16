@@ -1,43 +1,66 @@
-import React, { useState } from 'react';
-import { Phone, Settings, Shield, Clock, Users, ArrowRight } from 'lucide-react';
+import { Settings, Shield, Clock, ArrowRight } from 'lucide-react';
+import { FormEvent, useState } from 'react';
 
 const NetworkLanding = () => {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
 
-  const correctPassword = 'your-secret-password'; // 你可以修改這個密碼
-
-  const handleLogin = (e) => {
+  const handleLogin = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    // 這裡可以設定你的密碼
+    const correctPassword = 'your-password-here';
+    
     if (password === correctPassword) {
-      setIsAuthenticated(true);
+      setIsLoggedIn(true);
       setError('');
     } else {
       setError('密碼錯誤');
     }
   };
 
-  if (!isAuthenticated) {
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    console.log('Form submitted');
+  };
+
+  if (!isLoggedIn) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gray-100">
-        <div className="max-w-md w-full bg-white p-8 rounded-lg shadow-md">
-          <h2 className="text-2xl font-bold text-center mb-6">請輸入密碼查看內容</h2>
-          <form onSubmit={handleLogin} className="space-y-4">
-            <input
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              className="w-full p-3 border rounded-lg"
-              placeholder="請輸入密碼"
-            />
-            {error && <p className="text-red-500 text-sm">{error}</p>}
-            <button 
-              type="submit"
-              className="w-full bg-blue-500 text-white py-3 rounded-lg hover:bg-blue-600"
-            >
-              確認
-            </button>
+      <div className="min-h-screen bg-gray-100 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-md w-full space-y-8">
+          <div>
+            <h2 className="mt-6 text-center text-3xl font-bold text-gray-900">
+              請輸入密碼以查看內容
+            </h2>
+          </div>
+          <form className="mt-8 space-y-6" onSubmit={handleLogin}>
+            <div className="rounded-md shadow-sm -space-y-px">
+              <div>
+                <input
+                  type="password"
+                  required
+                  className="appearance-none rounded relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm"
+                  placeholder="請輸入密碼"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                />
+              </div>
+            </div>
+
+            {error && (
+              <div className="text-red-500 text-sm text-center">
+                {error}
+              </div>
+            )}
+
+            <div>
+              <button
+                type="submit"
+                className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+              >
+                進入
+              </button>
+            </div>
           </form>
         </div>
       </div>
@@ -138,33 +161,41 @@ const NetworkLanding = () => {
         <div className="max-w-6xl mx-auto px-4">
           <h2 className="text-3xl font-bold text-center mb-12">立即預約專人服務</h2>
           <div className="max-w-lg mx-auto">
-            <form className="space-y-4">
+            <form onSubmit={handleSubmit} className="space-y-4">
               <input
                 type="text"
                 placeholder="公司名稱"
                 className="w-full p-3 border rounded-lg"
+                required
               />
               <input
                 type="text"
                 placeholder="聯絡人姓名"
                 className="w-full p-3 border rounded-lg"
+                required
               />
               <input
                 type="tel"
                 placeholder="聯絡電話"
                 className="w-full p-3 border rounded-lg"
+                required
               />
               <input
                 type="email"
                 placeholder="電子郵件"
                 className="w-full p-3 border rounded-lg"
+                required
               />
               <textarea
                 placeholder="需求說明"
-                rows="4"
+                rows={4}
                 className="w-full p-3 border rounded-lg"
+                required
               ></textarea>
-              <button className="w-full bg-blue-500 text-white py-3 rounded-lg hover:bg-blue-600">
+              <button 
+                type="submit"
+                className="w-full bg-blue-500 text-white py-3 rounded-lg hover:bg-blue-600"
+              >
                 送出諮詢
               </button>
             </form>
