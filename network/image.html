@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>圖片原始尺寸</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+        }
+        .image-info {
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+        .image-container img {
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="image-info">
+        原始尺寸：<span id="dimensions"></span>
+    </div>
+    <div class="image-container">
+        <img src="main.jpg" alt="圖片" id="mainImage">
+    </div>
+
+    <script>
+        const img = document.getElementById('mainImage');
+        
+        img.onload = function() {
+            document.getElementById('dimensions').textContent = 
+                img.naturalWidth + ' × ' + img.naturalHeight + ' 像素';
+        };
+    </script>
+</body>
+</html>
