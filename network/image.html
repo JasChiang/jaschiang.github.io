@@ -3,38 +3,150 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>圖片原始尺寸</title>
+    <title>Banner 展示</title>
     <style>
         body {
             margin: 0;
             padding: 20px;
             font-family: Arial, sans-serif;
         }
+        .page {
+            display: none;
+        }
+        .page.active {
+            display: block;
+        }
         .image-info {
             margin-bottom: 10px;
             font-size: 16px;
+        }
+        .image-container {
+            text-align: center;
+            margin-bottom: 20px;
         }
         .image-container img {
             max-width: 100%;
             height: auto;
         }
+        .banner-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+        .nav-buttons {
+            text-align: center;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+        .nav-button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 0 5px;
+        }
+        .nav-button:hover {
+            background-color: #0056b3;
+        }
+        .nav-button.active {
+            background-color: #0056b3;
+        }
     </style>
 </head>
 <body>
-    <div class="image-info">
-        原始尺寸：<span id="dimensions"></span>
+    <div class="nav-buttons">
+        <button class="nav-button active" onclick="showPage('main')">Landing Page</button>
+        <button class="nav-button" onclick="showPage('others')">EC 輪播 Banner</button>
     </div>
-    <div class="image-container">
-        <img src="main.jpg" alt="圖片" id="mainImage">
+
+    <!-- 主要 Banner 頁面 -->
+    <div id="mainPage" class="page active">
+        <div class="image-info">
+            原始尺寸：<span id="mainDimensions"></span>
+        </div>
+        <div class="image-container">
+            <img src="main.jpg" alt="主圖片" id="mainImage">
+        </div>
+    </div>
+
+    <!-- 其他 Banner 頁面 -->
+    <div id="othersPage" class="page">
+        <div class="banner-grid" id="bannerGrid">
+            <!-- Banner 1 -->
+            <div class="image-container">
+                <img src="480x910_cloud.jpg" alt="Banner 1" class="banner-image">
+                <div class="image-info">原始尺寸：<span class="dimensions"></span></div>
+            </div>
+            <!-- Banner 2 -->
+            <div class="image-container">
+                <img src="778x385_cloud.jpg" alt="Banner 2" class="banner-image">
+                <div class="image-info">原始尺寸：<span class="dimensions"></span></div>
+            </div>
+            <!-- Banner 3 -->
+            <div class="image-container">
+                <img src="1024x508_cloud.jpg" alt="Banner 3" class="banner-image">
+                <div class="image-info">原始尺寸：<span class="dimensions"></span></div>
+            </div>
+            <!-- Banner 4 -->
+            <div class="image-container">
+                <img src="480x910_fit.jpg" alt="Banner 4" class="banner-image">
+                <div class="image-info">原始尺寸：<span class="dimensions"></span></div>
+            </div>
+            <!-- Banner 5 -->
+            <div class="image-container">
+                <img src="778x385_fit.jpg" alt="Banner 4" class="banner-image">
+                <div class="image-info">原始尺寸：<span class="dimensions"></span></div>
+            </div>
+            <!-- Banner 6 -->
+            <div class="image-container">
+                <img src="1024x508_fit.jpg" alt="Banner 4" class="banner-image">
+                <div class="image-info">原始尺寸：<span class="dimensions"></span></div>
+            </div>
+                                    
+        </div>
     </div>
 
     <script>
-        const img = document.getElementById('mainImage');
-        
-        img.onload = function() {
-            document.getElementById('dimensions').textContent = 
-                img.naturalWidth + ' × ' + img.naturalHeight + ' 像素';
+        // 切換頁面的函數
+        function showPage(pageId) {
+            // 隱藏所有頁面
+            document.querySelectorAll('.page').forEach(page => {
+                page.classList.remove('active');
+            });
+            
+            // 取消所有按鈕的活動狀態
+            document.querySelectorAll('.nav-button').forEach(button => {
+                button.classList.remove('active');
+            });
+            
+            // 顯示選擇的頁面
+            if (pageId === 'main') {
+                document.getElementById('mainPage').classList.add('active');
+                document.querySelector('button[onclick="showPage(\'main\')"]').classList.add('active');
+            } else {
+                document.getElementById('othersPage').classList.add('active');
+                document.querySelector('button[onclick="showPage(\'others\')"]').classList.add('active');
+            }
+        }
+
+        // 更新主圖片尺寸
+        const mainImage = document.getElementById('mainImage');
+        mainImage.onload = function() {
+            document.getElementById('mainDimensions').textContent = 
+                this.naturalWidth + ' × ' + this.naturalHeight + ' 像素';
         };
+
+        // 更新其他 Banner 尺寸
+        document.querySelectorAll('.banner-image').forEach(img => {
+            img.onload = function() {
+                const dimensions = this.parentNode.querySelector('.dimensions');
+                dimensions.textContent = 
+                    this.naturalWidth + ' × ' + this.naturalHeight + ' 像素';
+            };
+        });
     </script>
 </body>
 </html>
