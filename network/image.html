@@ -225,8 +225,11 @@
         const JSONBIN_API_URL = `https://api.jsonbin.io/v3/b/${JSONBIN_BIN_ID}`;
         const JSONBIN_API_KEY = '$2a$10$GICnzUpuLOl/9Whyw4CXvOvmN4rqteR1jO7T863mP4V8TJSGjj/Ce';
 
-        // Map to store annotations
+        // Global variables
         const annotations = new Map();
+        let currentContainer = null;
+        let currentAnnotationPos = null;
+        let isSyncing = false;
 
         // 顯示載入中遮罩
         function showLoading() {
