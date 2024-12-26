@@ -118,12 +118,13 @@
         }
         .annotation-form {
             display: none;
-            position: absolute;
+            position: fixed;
             background-color: white;
             border: 1px solid #ccc;
             padding: 10px;
             border-radius: 5px;
-            z-index: 3;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
         }
         .annotation-form textarea {
             width: 200px;
@@ -256,6 +257,9 @@
         async function loadAnnotationsFromServer() {
             try {
                 showLoading();
+                // 保存當前滾動位置
+                const scrollPosition = window.scrollY;
+
                 const response = await fetch(JSONBIN_API_URL, {
                     headers: {
                         'X-Master-Key': JSONBIN_API_KEY,
@@ -298,6 +302,8 @@
                 });
 
                 showSyncStatus('標註已同步');
+                // 恢復滾動位置
+                window.scrollTo(0, scrollPosition);
             } catch (error) {
                 console.error('Error loading annotations:', error);
                 showSyncStatus('載入標註失敗', true);
@@ -417,6 +423,10 @@
 
         // 處理圖片點擊
         function handleImageClick(event, container) {
+            // 防止事件預設行為和冒泡
+            event.preventDefault();
+            event.stopPropagation();
+            
             if (event.target.tagName === 'IMG') {
                 const rect = container.getBoundingClientRect();
                 const x = ((event.clientX - rect.left) / container.offsetWidth) * 100;
@@ -454,6 +464,9 @@
             
             if (isNaN(x) || isNaN(y)) return;
 
+            // 保存當前滾動位置
+            const scrollPosition = window.scrollY;
+
             createAnnotationPoint(currentContainer, x, y, text);
             form.style.display = 'none';
             currentContainer = null;
@@ -461,6 +474,8 @@
             // 立即同步到伺服器
             saveAnnotationsToServer().then(() => {
                 showSyncStatus('標註已同步', false);
+                // 恢復滾動位置
+                window.scrollTo(0, scrollPosition);
             }).catch(error => {
                 showSyncStatus('同步失敗: ' + error.message, true);
             });
