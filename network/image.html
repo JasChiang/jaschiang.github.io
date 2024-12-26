@@ -281,7 +281,7 @@
                 // Load new annotations
                 Object.entries(data).forEach(([key, annotationList]) => {
                     let container;
-                    if (key === 'main') {
+                    if (key === 'main.jpg') {
                         container = document.querySelector('#mainPage .image-container');
                     } else {
                         const img = document.querySelector(`img[src="${key}"]`);
@@ -429,6 +429,9 @@
                 form.setAttribute('data-x', x);
                 form.setAttribute('data-y', y);
                 
+                // 保存當前的 container
+                currentContainer = container;
+                
                 const textarea = document.getElementById('annotationText');
                 textarea.value = '';
                 textarea.focus();
@@ -438,7 +441,7 @@
         // 保存標註
         function saveAnnotation() {
             const form = document.getElementById('annotationForm');
-            if (!form) return;
+            if (!form || !currentContainer) return;
 
             const textarea = document.getElementById('annotationText');
             if (!textarea) return;
@@ -451,12 +454,9 @@
             
             if (isNaN(x) || isNaN(y)) return;
 
-            const container = form.closest('.image-container') || 
-                            document.querySelector('.image-container');
-            if (!container) return;
-
-            createAnnotationPoint(container, x, y, text);
+            createAnnotationPoint(currentContainer, x, y, text);
             form.style.display = 'none';
+            currentContainer = null;
             
             // 立即同步到伺服器
             saveAnnotationsToServer().then(() => {
@@ -491,6 +491,9 @@
                 document.getElementById('othersPage').classList.add('active');
                 document.querySelector('button[onclick="showPage(\'others\')"]').classList.add('active');
             }
+
+            // 切換頁面時重新載入標註
+            loadAnnotationsFromServer();
         }
 
         // 更新圖片尺寸顯示
