@@ -415,18 +415,55 @@
             }
         }
 
+        // 處理圖片點擊
+        function handleImageClick(event, container) {
+            if (event.target.tagName === 'IMG') {
+                const rect = container.getBoundingClientRect();
+                const x = ((event.clientX - rect.left) / container.offsetWidth) * 100;
+                const y = ((event.clientY - rect.top) / container.offsetHeight) * 100;
+                
+                const form = document.getElementById('annotationForm');
+                form.style.display = 'block';
+                form.style.left = (event.clientX + 10) + 'px';
+                form.style.top = (event.clientY + 10) + 'px';
+                form.setAttribute('data-x', x);
+                form.setAttribute('data-y', y);
+                
+                const textarea = document.getElementById('annotationText');
+                textarea.value = '';
+                textarea.focus();
+            }
+        }
+
         // 保存標註
         function saveAnnotation() {
-            const text = document.getElementById('annotationText').value.trim();
-            if (text && currentContainer && currentAnnotationPos) {
-                createAnnotationPoint(
-                    currentContainer, 
-                    currentAnnotationPos.x, 
-                    currentAnnotationPos.y, 
-                    text
-                );
-            }
-            cancelAnnotation();
+            const form = document.getElementById('annotationForm');
+            if (!form) return;
+
+            const textarea = document.getElementById('annotationText');
+            if (!textarea) return;
+
+            const text = textarea.value.trim();
+            if (!text) return;
+            
+            const x = parseFloat(form.getAttribute('data-x'));
+            const y = parseFloat(form.getAttribute('data-y'));
+            
+            if (isNaN(x) || isNaN(y)) return;
+
+            const container = form.closest('.image-container') || 
+                            document.querySelector('.image-container');
+            if (!container) return;
+
+            createAnnotationPoint(container, x, y, text);
+            form.style.display = 'none';
+            
+            // 立即同步到伺服器
+            saveAnnotationsToServer().then(() => {
+                showSyncStatus('標註已同步', false);
+            }).catch(error => {
+                showSyncStatus('同步失敗: ' + error.message, true);
+            });
         }
 
         // 取消標註
@@ -435,26 +472,6 @@
             form.style.display = 'none';
             currentContainer = null;
             currentAnnotationPos = null;
-        }
-
-        // 處理圖片點擊
-        function handleImageClick(event, container) {
-            if (event.target.tagName === 'IMG') {
-                const rect = container.getBoundingClientRect();
-                const x = ((event.clientX - rect.left) / container.offsetWidth) * 100;
-                const y = ((event.clientY - rect.top) / container.offsetHeight) * 100;
-                
-                currentContainer = container;
-                currentAnnotationPos = { x, y };
-                
-                const form = document.getElementById('annotationForm');
-                form.style.display = 'block';
-                form.style.left = (event.clientX + 10) + 'px';
-                form.style.top = (event.clientY + 10) + 'px';
-                
-                document.getElementById('annotationText').value = '';
-                document.getElementById('annotationText').focus();
-            }
         }
 
         // 切換頁面
