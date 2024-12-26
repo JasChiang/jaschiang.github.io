@@ -23,6 +23,7 @@
         .image-container {
             text-align: center;
             margin-bottom: 20px;
+            position: relative;
         }
         .image-container img {
             max-width: 100%;
@@ -54,9 +55,112 @@
         .nav-button.active {
             background-color: #0056b3;
         }
+        .loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+        .loading-spinner {
+            width: 50px;
+            height: 50px;
+            border: 5px solid #f3f3f3;
+            border-top: 5px solid #3498db;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .sync-status {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            padding: 10px;
+            border-radius: 5px;
+            display: none;
+            z-index: 1000;
+        }
+        .sync-status.success {
+            background-color: #4CAF50;
+            color: white;
+        }
+        .sync-status.error {
+            background-color: #f44336;
+            color: white;
+        }
+        .annotation-point {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: red;
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            cursor: pointer;
+            z-index: 2;
+        }
+        .annotation-content {
+            position: absolute;
+            background-color: white;
+            border: 1px solid #ccc;
+            padding: 10px;
+            border-radius: 5px;
+            z-index: 3;
+            min-width: 200px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        .annotation-form {
+            display: none;
+            position: absolute;
+            background-color: white;
+            border: 1px solid #ccc;
+            padding: 10px;
+            border-radius: 5px;
+            z-index: 3;
+        }
+        .annotation-form textarea {
+            width: 200px;
+            height: 100px;
+            margin-bottom: 10px;
+        }
+        .annotation-form button {
+            margin: 0 5px;
+        }
+        .delete-annotation {
+            color: red;
+            cursor: pointer;
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            width: 20px;
+            height: 20px;
+            line-height: 20px;
+            text-align: center;
+            background-color: #ff4444;
+            color: white;
+            border-radius: 50%;
+        }
+        .delete-annotation:hover {
+            background-color: #cc0000;
+        }
     </style>
 </head>
 <body>
+    <!-- Loading 遮罩 -->
+    <div class="loading-overlay">
+        <div class="loading-spinner"></div>
+    </div>
+
+    <!-- 同步狀態提示 -->
+    <div class="sync-status"></div>
+
     <div class="nav-buttons">
         <button class="nav-button active" onclick="showPage('main')">Landing Page</button>
         <button class="nav-button" onclick="showPage('others')">EC 輪播 Banner</button>
@@ -67,7 +171,7 @@
         <div class="image-info">
             原始尺寸：<span id="mainDimensions"></span>
         </div>
-        <div class="image-container">
+        <div class="image-container" onclick="handleImageClick(event, this)">
             <img src="main.jpg" alt="主圖片" id="mainImage">
         </div>
     </div>
@@ -76,53 +180,290 @@
     <div id="othersPage" class="page">
         <div class="banner-grid" id="bannerGrid">
             <!-- Banner 1 -->
-            <div class="image-container">
+            <div class="image-container" onclick="handleImageClick(event, this)">
                 <img src="480x910_cloud.jpg" alt="Banner 1" class="banner-image">
                 <div class="image-info">原始尺寸：<span class="dimensions"></span></div>
             </div>
             <!-- Banner 2 -->
-            <div class="image-container">
+            <div class="image-container" onclick="handleImageClick(event, this)">
                 <img src="778x385_cloud.jpg" alt="Banner 2" class="banner-image">
                 <div class="image-info">原始尺寸：<span class="dimensions"></span></div>
             </div>
             <!-- Banner 3 -->
-            <div class="image-container">
+            <div class="image-container" onclick="handleImageClick(event, this)">
                 <img src="1024x508_cloud.jpg" alt="Banner 3" class="banner-image">
                 <div class="image-info">原始尺寸：<span class="dimensions"></span></div>
             </div>
             <!-- Banner 4 -->
-            <div class="image-container">
+            <div class="image-container" onclick="handleImageClick(event, this)">
                 <img src="480x910_fit.jpg" alt="Banner 4" class="banner-image">
                 <div class="image-info">原始尺寸：<span class="dimensions"></span></div>
             </div>
             <!-- Banner 5 -->
-            <div class="image-container">
-                <img src="778x385_fit.jpg" alt="Banner 4" class="banner-image">
+            <div class="image-container" onclick="handleImageClick(event, this)">
+                <img src="778x385_fit.jpg" alt="Banner 5" class="banner-image">
                 <div class="image-info">原始尺寸：<span class="dimensions"></span></div>
             </div>
             <!-- Banner 6 -->
-            <div class="image-container">
-                <img src="1024x508_fit.jpg" alt="Banner 4" class="banner-image">
+            <div class="image-container" onclick="handleImageClick(event, this)">
+                <img src="1024x508_fit.jpg" alt="Banner 6" class="banner-image">
                 <div class="image-info">原始尺寸：<span class="dimensions"></span></div>
             </div>
-                                    
         </div>
     </div>
 
+    <!-- 標註表單 -->
+    <div id="annotationForm" class="annotation-form">
+        <textarea id="annotationText" placeholder="請輸入標註內容"></textarea>
+        <button onclick="saveAnnotation()">保存</button>
+        <button onclick="cancelAnnotation()">取消</button>
+    </div>
+
     <script>
-        // 切換頁面的函數
+        // JSONbin.io configuration
+        const JSONBIN_BIN_ID = '676d4747ad19ca34f8e11e63';
+        const JSONBIN_API_URL = `https://api.jsonbin.io/v3/b/${JSONBIN_BIN_ID}`;
+        const JSONBIN_API_KEY = '$2a$10$GICnzUpuLOl/9Whyw4CXvOvmN4rqteR1jO7T863mP4V8TJSGjj/Ce';
+
+        // Map to store annotations
+        const annotations = new Map();
+
+        // 顯示載入中遮罩
+        function showLoading() {
+            document.querySelector('.loading-overlay').style.display = 'flex';
+        }
+
+        // 隱藏載入中遮罩
+        function hideLoading() {
+            document.querySelector('.loading-overlay').style.display = 'none';
+        }
+
+        // 顯示同步狀態
+        function showSyncStatus(message, isError = false) {
+            const status = document.querySelector('.sync-status');
+            status.textContent = message;
+            status.className = 'sync-status ' + (isError ? 'error' : 'success');
+            status.style.display = 'block';
+            setTimeout(() => {
+                status.style.display = 'none';
+            }, 3000);
+        }
+
+        // 從 JSONbin 載入標註
+        async function loadAnnotationsFromServer() {
+            try {
+                showLoading();
+                const response = await fetch(JSONBIN_API_URL, {
+                    headers: {
+                        'X-Master-Key': JSONBIN_API_KEY,
+                        'X-Bin-Meta': 'false'
+                    }
+                });
+
+                if (!response.ok) {
+                    throw new Error(`Failed to load annotations: ${response.status}`);
+                }
+
+                const data = await response.json();
+
+                // Clear existing annotations
+                annotations.forEach((annotationList, container) => {
+                    annotationList.forEach(a => {
+                        container.removeChild(a.point);
+                        container.removeChild(a.content);
+                    });
+                });
+                annotations.clear();
+
+                // Load new annotations
+                Object.entries(data).forEach(([key, annotationList]) => {
+                    let container;
+                    if (key === 'main') {
+                        container = document.querySelector('#mainPage .image-container');
+                    } else {
+                        const img = document.querySelector(`img[src="${key}"]`);
+                        if (img) {
+                            container = img.parentElement;
+                        }
+                    }
+                    
+                    if (container) {
+                        annotationList.forEach(anno => {
+                            createAnnotationPoint(container, anno.x, anno.y, anno.text, false);
+                        });
+                    }
+                });
+
+                showSyncStatus('標註已同步');
+            } catch (error) {
+                console.error('Error loading annotations:', error);
+                showSyncStatus('載入標註失敗', true);
+            } finally {
+                hideLoading();
+            }
+        }
+
+        // 保存標註到 JSONbin
+        async function saveAnnotationsToServer() {
+            if (isSyncing) return;
+            isSyncing = true;
+
+            try {
+                const data = {};
+                annotations.forEach((annotationList, container) => {
+                    const key = container.querySelector('img').src.split('/').pop();
+                    data[key] = annotationList.map(a => ({
+                        x: a.x,
+                        y: a.y,
+                        text: a.text
+                    }));
+                });
+
+                const response = await fetch(JSONBIN_API_URL, {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-Master-Key': JSONBIN_API_KEY
+                    },
+                    body: JSON.stringify(data)
+                });
+
+                if (!response.ok) {
+                    throw new Error('Failed to save annotations');
+                }
+
+                showSyncStatus('標註已儲存');
+            } catch (error) {
+                console.error('Error saving annotations:', error);
+                showSyncStatus('儲存標註失敗', true);
+            } finally {
+                isSyncing = false;
+            }
+        }
+
+        // 建立標註點
+        function createAnnotationPoint(container, x, y, text, shouldSync = true) {
+            const point = document.createElement('div');
+            point.className = 'annotation-point';
+            point.style.left = x + '%';
+            point.style.top = y + '%';
+            
+            const content = document.createElement('div');
+            content.className = 'annotation-content';
+            content.style.display = 'none';
+            content.innerHTML = text + '<span class="delete-annotation" onclick="deleteAnnotation(this)">×</span>';
+            
+            point.addEventListener('click', (e) => {
+                e.stopPropagation();
+                document.querySelectorAll('.annotation-content').forEach(cont => {
+                    if (cont !== content) {
+                        cont.style.display = 'none';
+                    }
+                });
+                content.style.display = content.style.display === 'none' ? 'block' : 'none';
+            });
+            
+            document.addEventListener('click', (e) => {
+                if (!point.contains(e.target) && !content.contains(e.target)) {
+                    content.style.display = 'none';
+                }
+            });
+            
+            container.appendChild(point);
+            container.appendChild(content);
+            
+            content.style.left = (x + 2) + '%';
+            content.style.top = (y + 2) + '%';
+            
+            if (!annotations.has(container)) {
+                annotations.set(container, []);
+            }
+            annotations.get(container).push({
+                x: x,
+                y: y,
+                text: text,
+                point: point,
+                content: content
+            });
+            
+            if (shouldSync) {
+                saveAnnotationsToServer();
+            }
+            
+            return { point, content };
+        }
+
+        // 刪除標註
+        function deleteAnnotation(deleteButton) {
+            const content = deleteButton.parentElement;
+            const container = content.parentElement;
+            const annotationsList = annotations.get(container);
+            
+            if (annotationsList) {
+                const index = annotationsList.findIndex(a => a.content === content);
+                if (index !== -1) {
+                    const annotation = annotationsList[index];
+                    container.removeChild(annotation.point);
+                    container.removeChild(annotation.content);
+                    annotationsList.splice(index, 1);
+                    
+                    saveAnnotationsToServer();
+                }
+            }
+        }
+
+        // 保存標註
+        function saveAnnotation() {
+            const text = document.getElementById('annotationText').value.trim();
+            if (text && currentContainer && currentAnnotationPos) {
+                createAnnotationPoint(
+                    currentContainer, 
+                    currentAnnotationPos.x, 
+                    currentAnnotationPos.y, 
+                    text
+                );
+            }
+            cancelAnnotation();
+        }
+
+        // 取消標註
+        function cancelAnnotation() {
+            const form = document.getElementById('annotationForm');
+            form.style.display = 'none';
+            currentContainer = null;
+            currentAnnotationPos = null;
+        }
+
+        // 處理圖片點擊
+        function handleImageClick(event, container) {
+            if (event.target.tagName === 'IMG') {
+                const rect = container.getBoundingClientRect();
+                const x = ((event.clientX - rect.left) / container.offsetWidth) * 100;
+                const y = ((event.clientY - rect.top) / container.offsetHeight) * 100;
+                
+                currentContainer = container;
+                currentAnnotationPos = { x, y };
+                
+                const form = document.getElementById('annotationForm');
+                form.style.display = 'block';
+                form.style.left = (event.clientX + 10) + 'px';
+                form.style.top = (event.clientY + 10) + 'px';
+                
+                document.getElementById('annotationText').value = '';
+                document.getElementById('annotationText').focus();
+            }
+        }
+
+        // 切換頁面
         function showPage(pageId) {
-            // 隱藏所有頁面
             document.querySelectorAll('.page').forEach(page => {
                 page.classList.remove('active');
             });
             
-            // 取消所有按鈕的活動狀態
             document.querySelectorAll('.nav-button').forEach(button => {
                 button.classList.remove('active');
             });
             
-            // 顯示選擇的頁面
             if (pageId === 'main') {
                 document.getElementById('mainPage').classList.add('active');
                 document.querySelector('button[onclick="showPage(\'main\')"]').classList.add('active');
@@ -132,14 +473,13 @@
             }
         }
 
-        // 更新主圖片尺寸
+        // 更新圖片尺寸顯示
         const mainImage = document.getElementById('mainImage');
         mainImage.onload = function() {
             document.getElementById('mainDimensions').textContent = 
                 this.naturalWidth + ' × ' + this.naturalHeight + ' 像素';
         };
 
-        // 更新其他 Banner 尺寸
         document.querySelectorAll('.banner-image').forEach(img => {
             img.onload = function() {
                 const dimensions = this.parentNode.querySelector('.dimensions');
@@ -147,6 +487,16 @@
                     this.naturalWidth + ' × ' + this.naturalHeight + ' 像素';
             };
         });
+
+        // 初始化：載入儲存的標註
+        window.onload = function() {
+            loadAnnotationsFromServer();
+        };
+
+        // 定期同步：每 30 秒檢查一次更新
+        setInterval(() => {
+            loadAnnotationsFromServer();
+        }, 30000);
     </script>
 </body>
 </html>
