@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>如何使用大型語言模型 (LLMs)</title>
+    <!-- TailwindCSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Mermaid.js -->
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10.6.1/dist/mermaid.min.js"></script>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+        .transcript-section {
+            transition: all 0.3s ease;
+        }
+        .transcript-section:hover {
+            transform: scale(1.01);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+        .quote-box {
+            border-left: 4px solid #3b82f6;
+            background-color: #f3f4f6;
+        }
+        .feature-card {
+            transition: transform 0.3s ease;
+        }
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+        .prompt-example {
+            background-color: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 0.5rem;
+        }
+        .mermaid {
+            background-color: white;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+            margin: 1rem 0;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <header class="bg-white shadow-sm sticky top-0 z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+            <h1 class="text-3xl font-bold text-gray-900">如何使用大型語言模型 (LLMs)</h1>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div class="bg-white shadow overflow-hidden sm:rounded-lg mb-8">
+            <div class="px-4 py-5 sm:px-6">
+                <h2 class="text-xl font-semibold text-gray-900">影片內容摘要</h2>
+                <p class="mt-1 max-w-2xl text-sm text-gray-500">本內容摘自 Andrej Karpathy 的 YouTube 影片「How I use LLMs」</p>
+                <div class="mt-2">
+                    <a href="https://www.youtube.com/watch?v=EWvNQjAaOHw" target="_blank" class="inline-flex items-center text-blue-600 hover:text-blue-800">
+                        <i class="fab fa-youtube mr-2 text-red-600"></i>觀看原始影片
+                    </a>
+                </div>
+            </div>
+            <div class="border-t border-gray-200 px-4 py-5 sm:px-6">
+                <p class="text-gray-700 mb-4">本影片探討大型語言模型（如 ChatGPT）的實際應用，展示各種設定選項，並分享如何在生活和工作中運用這些工具。</p>
+                <div class="quote-box p-4 mb-4">
+                    <p class="italic text-gray-700">「在前一個影片中，Andrej 深入探討了 LLMs 的基本原理，包括這些模型如何訓練以及它們的認知或心理學。而在這個影片中，他探討這些工具的更多實際應用，展示許多例子，介紹所有不同的設置，並展示他如何使用這些工具，以及觀眾如何在自己的生活和工作中使用它們。」</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <!-- 主要內容區塊 -->
+            <section class="transcript-section bg-white shadow overflow-hidden sm:rounded-lg p-6">
+                <h2 class="text-xl font-semibold text-gray-900 mb-4"><i class="fas fa-robot mr-2 text-blue-500"></i>大型語言模型生態系統</h2>
+                <p class="text-gray-700 mb-3">ChatGPT 由 OpenAI 開發並於 2022 年推出，是第一個讓人們能夠通過文本界面與大型語言模型對話的工具，迅速在網路上走紅。</p>
+                <p class="text-gray-700 mb-3">如今在 2025 年，生態系統已經發展壯大，除了 ChatGPT 這個「元老級」產品外，還有許多其他類似的應用：</p>
+                
+                <!-- LLM 生態系統心智圖 -->
+                <div class="mb-6">
+                    <h3 class="font-medium text-gray-900 mb-2">LLM 生態系統概覽</h3>
+                    <div class="mermaid">
+                        mindmap
+                          root((LLM 生態系統))
+                            美國公司
+                              OpenAI
+                                ChatGPT
+                                DALL-E
+                                GPT-4
+                              Google
+                                Gemini
+                                Bard
+                              Microsoft
+                                Copilot
+                                Bing AI
+                              Anthropic
+                                Claude
+                              xAI
+                                Grok
+                            歐洲公司
+                              Mistral AI
+                                LChat
+                                Mistral-7B
+                            亞洲公司
+                              百度
+                                文心一言
+                              DeepSeek
+                              智譜 AI
+                            應用類型
+                              聊天機器人
+                              程式輔助
+                              圖像生成
+                              語音助手
+                    </div>
+                </div>
+                
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
+                    <div class="feature-card bg-blue-50 p-4 rounded-lg">
+                        <h3 class="font-medium text-blue-700"><i class="fab fa-google mr-2"></i>Google Gemini</h3>
+                        <p class="text-sm text-gray-600">Google 的大型語言模型，整合於搜索和其他 Google 服務</p>
+                    </div>
+                    <div class="feature-card bg-blue-50 p-4 rounded-lg">
+                        <h3 class="font-medium text-blue-700"><i class="fab fa-microsoft mr-2"></i>Microsoft Copilot</h3>
+                        <p class="text-sm text-gray-600">微軟的 AI 助手，整合於 Windows 和 Office 應用</p>
+                    </div>
+                    <div class="feature-card bg-blue-50 p-4 rounded-lg">
+                        <h3 class="font-medium text-blue-700"><i class="fab fa-facebook mr-2"></i>Meta 的產品</h3>
+                        <p class="text-sm text-gray-600">Meta 推出的 AI 助手，整合於其社交媒體平台</p>
+                    </div>
+                    <div class="feature-card bg-blue-50 p-4 rounded-lg">
+                        <h3 class="font-medium text-blue-700"><i class="fas fa-atom mr-2"></i>Anthropic Claude</h3>
+                        <p class="text-sm text-gray-600">以安全和有幫助的回應著稱的 AI 助手</p>
+                    </div>
+                </div>
+                <p class="text-gray-700 mb-3">其他值得關注的模型還包括：</p>
+                <ul class="list-disc pl-5 text-gray-700 mb-4">
+                    <li>Elon Musk 的 xAI 公司推出的 Grok</li>
+                    <li>中國的 DeepSeek</li>
+                    <li>法國的 Mistral 推出的 LChat</li>
+                </ul>
+                <p class="text-gray-700 mb-3">雖然 ChatGPT 作為最早的產品功能最豐富，但其他平台也提供了獨特的體驗和功能。</p>
+            </section>
+
+            <section class="transcript-section bg-white shadow overflow-hidden sm:rounded-lg p-6">
+                <h2 class="text-xl font-semibold text-gray-900 mb-4"><i class="fas fa-cogs mr-2 text-blue-500"></i>LLM 工作原理</h2>
+                <p class="text-gray-700 mb-3">大型語言模型將文本分解為稱為「tokens」的小文本塊。當使用者與模型對話時，實際上是在構建一個一維的 token 序列。</p>
+                
+                <!-- LLM 工作流程圖 -->
+                <div class="mb-4">
+                    <h3 class="font-medium text-gray-900 mb-2">LLM 處理流程</h3>
+                    <div class="mermaid">
+                        flowchart TD
+                            A[使用者輸入文本] -->|分詞處理| B[文本轉換為tokens]
+                            B --> C[模型處理tokens]
+                            C -->|預測下一個token| D[生成回應tokens]
+                            D --> E[tokens轉換為文本]
+                            E --> F[顯示給使用者]
+                            
+                            subgraph 模型處理過程
+                            G[注意力機制] --> H[上下文理解]
+                            H --> I[知識提取]
+                            I --> J[回應生成]
+                            end
+                            
+                            C --- G
+                    </div>
+                </div>
+                
+                <div class="bg-gray-100 p-4 rounded-lg mb-4">
+                    <p class="text-sm text-gray-700">例如，"How are you" 這個短語會被分解成多個 tokens，而模型會基於前面的 tokens 預測下一個 token。</p>
+                </div>
+                <p class="text-gray-700 mb-3">模型的訓練包括兩個主要階段：</p>
+                <ol class="list-decimal pl-5 text-gray-700 mb-4">
+                    <li class="mb-2"><strong>預訓練階段</strong>：將互聯網上的文本分解為 tokens，並壓縮成一個「概率性 zip 文件」，學習預測序列中的下一個 token</li>
+                    <li><strong>後訓練階段</strong>：通過強化學習進行調整，使模型產生更有幫助、準確、無害的回應</li>
+                </ol>
+                <p class="text-gray-700 mb-3">模型的訓練使用了大量的計算資源和人類反饋，OpenAI 等公司僱用了標註員來評估模型的回應質量。</p>
+            </section>
+
+            <section class="transcript-section bg-white shadow overflow-hidden sm:rounded-lg p-6">
+                <h2 class="text-xl font-semibold text-gray-900 mb-4"><i class="fas fa-sliders-h mr-2 text-blue-500"></i>模型設置與選項</h2>
+                <p class="text-gray-700 mb-3">使用 LLM 時，有幾個重要設置可以調整：</p>
+                
+                <!-- 溫度設置視覺化 -->
+                <div class="mb-4">
+                    <h3 class="font-medium text-gray-900 mb-2">溫度參數影響</h3>
+                    <div class="mermaid">
+                        graph LR
+                            A[溫度參數] --> B[低溫度 0-0.3]
+                            A --> C[中溫度 0.3-0.7]
+                            A --> D[高溫度 0.7-1.0]
+                            
+                            B --> E[確定性高]
+                            B --> F[重複性強]
+                            B --> G[創造性低]
+                            
+                            C --> H[平衡狀態]
+                            
+                            D --> I[多樣性高]
+                            D --> J[創造性強]
+                            D --> K[可能偏離主題]
+                            
+                            style A fill:#f96,stroke:#333,stroke-width:2px
+                            style B fill:#9cf,stroke:#333
+                            style C fill:#9cf,stroke:#333
+                            style D fill:#9cf,stroke:#333
+                    </div>
+                </div>
+                
+                <div class="grid grid-cols-1 gap-4 mb-4">
+                    <div class="bg-white border border-gray-200 rounded-lg p-4">
+                        <h3 class="font-medium text-gray-900 mb-2">溫度 (Temperature)</h3>
+                        <p class="text-gray-700 mb-2">控制模型回應的隨機性和創造性：</p>
+                        <ul class="list-disc pl-5 text-gray-700">
+                            <li>低溫度（0-0.3）：回應更確定、一致和可預測</li>
+                            <li>中溫度（0.3-0.7）：平衡創造性和一致性</li>
+                            <li>高溫度（0.7-1.0）：回應更多樣化、創造性但可能不太相關</li>
+                        </ul>
+                    </div>
+                    <div class="bg-white border border-gray-200 rounded-lg p-4">
+                        <h3 class="font-medium text-gray-900 mb-2">模型選擇</h3>
+                        <p class="text-gray-700 mb-2">不同模型有不同的能力和特點：</p>
+                        <ul class="list-disc pl-5 text-gray-700">
+                            <li>GPT-4：最強大的模型，但成本較高</li>
+                            <li>GPT-3.5：更快速、成本更低，適合大多數日常任務</li>
+                            <li>專業模型：針對特定任務（如編程、創意寫作）優化的模型</li>
+                        </ul>
+                    </div>
+                </div>
+                <p class="text-gray-700">付費訂閱（如 ChatGPT Plus）提供更多優勢：更快的回應時間、優先使用新功能、更高的消息限制，以及使用最新模型的能力。</p>
+            </section>
+
+            <section class="transcript-section bg-white shadow overflow-hidden sm:rounded-lg p-6">
+                <h2 class="text-xl font-semibold text-gray-900 mb-4"><i class="fas fa-lightbulb mr-2 text-blue-500"></i>提示詞技巧 (Prompting)</h2>
+                <p class="text-gray-700 mb-3">有效的提示詞是獲得良好回應的關鍵：</p>
+                
+                <!-- 提示詞技巧圖表 -->
+                <div class="mb-4">
+                    <h3 class="font-medium text-gray-900 mb-2">提示詞結構與技巧</h3>
+                    <div class="mermaid">
+                        graph TD
+                            A[提示詞設計] --> B[角色設定]
+                            A --> C[任務描述]
+                            A --> D[格式要求]
+                            A --> E[背景資訊]
+                            A --> F[範例提供]
+                            
+                            B --> G[專家角色]
+                            B --> H[特定身份]
+                            
+                            C --> I[明確目標]
+                            C --> J[步驟拆分]
+                            
+                            D --> K[輸出格式]
+                            D --> L[長度限制]
+                            
+                            style A fill:#f9f,stroke:#333,stroke-width:2px
+                            style B fill:#bbf,stroke:#333
+                            style C fill:#bbf,stroke:#333
+                            style D fill:#bbf,stroke:#333
+                            style E fill:#bbf,stroke:#333
+                            style F fill:#bbf,stroke:#333
+                    </div>
+                </div>
+                
+                <div class="prompt-example p-4 mb-4">
+                    <h3 class="font-medium text-gray-900 mb-2">基本提示詞結構</h3>
+                    <ol class="list-decimal pl-5 text-gray-700">
+                        <li>明確指定任務或問題</li>
+                        <li>提供必要的背景信息</li>
+                        <li>指定所需的輸出格式</li>
+                        <li>設定角色或專業領域（如適用）</li>
+                    </ol>
+                </div>
+                <div class="prompt-example p-4 mb-4">
+                    <h3 class="font-medium text-gray-900 mb-2">提示詞範例</h3>
+                    <div class="bg-gray-100 p-3 rounded text-sm font-mono mb-2">
+                        "你是一位經驗豐富的數學教師。請解釋微積分中的導數概念，使用簡單的語言和日常生活的例子，適合高中生理解。包含一個簡短的定義、關鍵性質和 2-3 個應用例子。"
+                    </div>
+                    <p class="text-xs text-gray-600">這個提示詞明確了角色、主題、目標受眾、所需內容和格式。</p>
+                </div>
+                <p class="text-gray-700 mb-3">提高提示詞效果的技巧：</p>
+                <ul class="list-disc pl-5 text-gray-700">
+                    <li>使用清晰、具體的指示</li>
+                    <li>分步驟要求複雜任務</li>
+                    <li>要求模型解釋其思考過程</li>
+                    <li>迭代改進提示詞</li>
+                </ul>
+            </section>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
+            <section class="transcript-section bg-white shadow overflow-hidden sm:rounded-lg p-6">
+                <h2 class="text-xl font-semibold text-gray-900 mb-4"><i class="fas fa-tools mr-2 text-blue-500"></i>進階功能</h2>
+                <p class="text-gray-700 mb-3">現代 LLM 應用提供多種進階功能：</p>
+                
+                <!-- LLM 整合能力圖表 -->
+                <div class="mb-4">
+                    <h3 class="font-medium text-gray-900 mb-2">LLM 整合能力</h3>
+                    <div class="mermaid">
+                        graph TB
+                            A[大型語言模型] --> B[網頁搜索]
+                            A --> C[文件處理]
+                            A --> D[圖像處理]
+                            A --> E[語音處理]
+                            A --> F[代碼執行]
+                            
+                            B --> G[即時資訊]
+                            B --> H[網頁摘要]
+                            
+                            C --> I[PDF解析]
+                            C --> J[表格分析]
+                            
+                            D --> K[圖像生成]
+                            D --> L[圖像識別]
+                            
+                            E --> M[語音轉文字]
+                            E --> N[文字轉語音]
+                            
+                            F --> O[沙盒環境]
+                            F --> P[代碼評估]
+                            
+                            style A fill:#f96,stroke:#333,stroke-width:2px
+                    </div>
+                </div>
+                
+                <div class="grid grid-cols-1 gap-4">
+                    <div class="bg-white border border-gray-200 rounded-lg p-4">
+                        <h3 class="font-medium text-gray-900 mb-2"><i class="fas fa-search mr-2 text-blue-500"></i>網頁搜索與最新資訊</h3>
+                        <p class="text-gray-700">許多 LLM 現在可以連接到網絡，獲取最新信息。例如，使用者可以詢問「今天股市開盤了嗎？」或「最近的世界新聞」，模型會搜索並提供最新資訊。</p>
+                    </div>
+                    <div class="bg-white border border-gray-200 rounded-lg p-4">
+                        <h3 class="font-medium text-gray-900 mb-2"><i class="fas fa-file-upload mr-2 text-blue-500"></i>文件上傳與分析</h3>
+                        <p class="text-gray-700">使用者可以上傳 PDF、文檔、表格等文件，讓 LLM 分析內容、提取信息或回答相關問題。這對於研究、數據分析和文檔摘要特別有用。</p>
+                    </div>
+                    <div class="bg-white border border-gray-200 rounded-lg p-4">
+                        <h3 class="font-medium text-gray-900 mb-2"><i class="fas fa-image mr-2 text-blue-500"></i>圖像生成與處理</h3>
+                        <p class="text-gray-700">許多平台現在整合了圖像生成功能，使用者可以描述想要的圖像，AI 會創建它。同時，也可以上傳圖像並讓 AI 分析或描述其內容。</p>
+                    </div>
+                    <div class="bg-white border border-gray-200 rounded-lg p-4">
+                        <h3 class="font-medium text-gray-900 mb-2"><i class="fas fa-microphone mr-2 text-blue-500"></i>語音轉文字功能</h3>
+                        <p class="text-gray-700">許多應用支持語音輸入，讓使用者可以直接對 AI 說話，而不必打字。這使得在行走、開車或雙手忙碌時使用 AI 變得更加方便。</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="transcript-section bg-white shadow overflow-hidden sm:rounded-lg p-6">
+                <h2 class="text-xl font-semibold text-gray-900 mb-4"><i class="fas fa-laptop-code mr-2 text-blue-500"></i>實際應用案例</h2>
+                
+                <!-- 應用案例圖表 -->
+                <div class="mb-4">
+                    <h3 class="font-medium text-gray-900 mb-2">LLM 應用領域</h3>
+                    <div class="mermaid">
+                        pie
+                            title LLM 常見應用分布
+                            "內容創作" : 25
+                            "程式開發" : 20
+                            "學習輔助" : 15
+                            "資料分析" : 15
+                            "翻譯與語言" : 10
+                            "創意設計" : 10
+                            "其他應用" : 5
+                    </div>
+                </div>
+                
+                <div class="mb-4">
+                    <h3 class="font-medium text-gray-900 mb-2">數學問題解決</h3>
+                    <p class="text-gray-700 mb-2">LLM 可以幫助解決複雜的數學問題，並解釋解題過程：</p>
+                    <div class="bg-gray-100 p-3 rounded text-sm mb-2">
+                        <p class="font-medium">問題：計算 3x² + 2x - 5 = 0 的解</p>
+                        <p>LLM 會使用二次方程式公式解題，並展示每一步驟</p>
+                    </div>
+                </div>
+                <div class="mb-4">
+                    <h3 class="font-medium text-gray-900 mb-2">數據分析與組織</h3>
+                    <p class="text-gray-700 mb-2">LLM 可以幫助整理和分析數據：</p>
+                    <div class="bg-gray-100 p-3 rounded text-sm mb-2">
+                        <p>提供一組公司估值數據，LLM 可以創建表格、計算增長率，並提供視覺化建議</p>
+                    </div>
+                </div>
+                <div class="mb-4">
+                    <h3 class="font-medium text-gray-900 mb-2">編程輔助</h3>
+                    <p class="text-gray-700 mb-2">LLM 在編程方面特別有用：</p>
+                    <ul class="list-disc pl-5 text-gray-700">
+                        <li>生成代碼</li>
+                        <li>解釋現有代碼</li>
+                        <li>調試問題</li>
+                        <li>提供最佳實踐建議</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="font-medium text-gray-900 mb-2">語言學習</h3>
+                    <p class="text-gray-700 mb-2">LLM 是學習新語言的絕佳工具：</p>
+                    <ul class="list-disc pl-5 text-gray-700">
+                        <li>提供翻譯和解釋</li>
+                        <li>糾正語法錯誤</li>
+                        <li>創建練習和對話場景</li>
+                        <li>解釋文化背景和用法</li>
+                    </ul>
+                </div>
+            </section>
+        </div>
+
+        <div class="bg-white shadow overflow-hidden sm:rounded-lg mt-8 p-6">
+            <h2 class="text-xl font-semibold text-gray-900 mb-4">結論與建議</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+                <div class="bg-gradient-to-r from-blue-50 to-indigo-50 p-4 rounded-lg border border-blue-100">
+                    <h3 class="font-medium text-blue-700 mb-2"><i class="fas fa-balance-scale mr-2"></i>平衡使用</h3>
+                    <p class="text-gray-700">大型語言模型是強大的工具，但最佳使用方式是將其視為協作夥伴，而非完全依賴它們。結合 AI 與自身的知識和判斷力。</p>
+                </div>
+                <div class="bg-gradient-to-r from-green-50 to-teal-50 p-4 rounded-lg border border-green-100">
+                    <h3 class="font-medium text-green-700 mb-2"><i class="fas fa-check-double mr-2"></i>驗證信息</h3>
+                    <p class="text-gray-700">在使用這些工具時，重要的是了解它們的限制，並在需要時驗證其提供的信息，特別是對於關鍵或敏感的主題。</p>
+                </div>
+                <div class="bg-gradient-to-r from-purple-50 to-pink-50 p-4 rounded-lg border border-purple-100">
+                    <h3 class="font-medium text-purple-700 mb-2"><i class="fas fa-brain mr-2"></i>持續學習</h3>
+                    <p class="text-gray-700">LLM 技術正在快速發展。保持好奇心，嘗試新功能，並定期更新提示詞技巧，以充分利用這些工具。</p>
+                </div>
+            </div>
+            <div class="quote-box p-4">
+                <p class="italic text-gray-700 text-center">「與 LLM 協作可以顯著提高工作效率和創造力。無論是編寫代碼、分析數據、學習新概念還是創作內容，這些工具都能成為日常工作流程中不可或缺的一部分。」</p>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <p class="text-center"> 2025 如何使用大型語言模型 | 根據 Andrej Karpathy 的影片內容製作</p>
+            <p class="text-center mt-2 text-gray-400 text-sm">最後更新：2025 年 3 月 19 日</p>
+        </div>
+    </footer>
+
+    <script>
+        // 初始化 Mermaid
+        mermaid.initialize({
+            startOnLoad: true,
+            theme: 'default',
+            securityLevel: 'loose',
+            fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif'
+        });
+        
+        // 添加滾動動畫效果
+        document.addEventListener('DOMContentLoaded', function() {
+            const sections = document.querySelectorAll('.transcript-section');
+            
+            function fadeInOnScroll() {
+                sections.forEach(section => {
+                    const sectionTop = section.getBoundingClientRect().top;
+                    const windowHeight = window.innerHeight;
+                    
+                    if (sectionTop < windowHeight * 0.8) {
+                        section.style.opacity = '1';
+                    }
+                });
+            }
+            
+            // 初始設置
+            sections.forEach(section => {
+                section.style.opacity = '0';
+                section.style.transition = 'opacity 0.5s ease-in-out';
+            });
+            
+            // 監聽滾動事件
+            window.addEventListener('scroll', fadeInOnScroll);
+            
+            // 初始調用以顯示首屏內容
+            fadeInOnScroll();
+        });
+    </script>
+</body>
+</html>
