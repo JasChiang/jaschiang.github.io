@@ -1,0 +1,947 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>大型語言模型 (LLM) 應用與功能概覽</title>
+    <!-- TailwindCSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom styles -->
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            200: '#bae6fd',
+                            300: '#7dd3fc',
+                            400: '#38bdf8',
+                            500: '#0ea5e9',
+                            600: '#0284c7',
+                            700: '#0369a1',
+                            800: '#075985',
+                            900: '#0c4a6e',
+                        },
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.5s ease-in-out',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                    },
+                },
+            },
+        };
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        /* 滾動條樣式 */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        
+        .dark ::-webkit-scrollbar-track {
+            background: #1a1a1a;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: #c1c1c1;
+            border-radius: 4px;
+        }
+        
+        .dark ::-webkit-scrollbar-thumb {
+            background: #4a4a4a;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: #a1a1a1;
+        }
+        
+        .dark ::-webkit-scrollbar-thumb:hover {
+            background: #5a5a5a;
+        }
+        
+        /* 平滑滾動 */
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        /* 卡片懸停效果 */
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        .dark .card-hover:hover {
+            box-shadow: 0 10px 25px -5px rgba(255, 255, 255, 0.05), 0 10px 10px -5px rgba(255, 255, 255, 0.02);
+        }
+        
+        /* 按鈕懸停效果 */
+        .btn-hover {
+            transition: all 0.2s ease;
+        }
+        
+        .btn-hover:hover {
+            transform: scale(1.05);
+        }
+        
+        /* 內容淡入效果 */
+        .fade-in {
+            animation: fadeIn 0.8s ease-in-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-900 dark:bg-gray-900 dark:text-gray-100 transition-colors duration-200">
+    <!-- 頂部導航 -->
+    <header class="sticky top-0 z-50 bg-white/80 dark:bg-gray-800/80 backdrop-blur-md border-b border-gray-200 dark:border-gray-700">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex items-center space-x-2">
+                    <i class="fas fa-robot text-primary-600 dark:text-primary-400 text-2xl"></i>
+                    <h1 class="text-xl font-semibold">LLM 應用概覽</h1>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <nav class="hidden md:flex space-x-6">
+                        <a href="#intro" class="text-gray-600 hover:text-primary-600 dark:text-gray-300 dark:hover:text-primary-400 transition-colors">引言</a>
+                        <a href="#ecosystem" class="text-gray-600 hover:text-primary-600 dark:text-gray-300 dark:hover:text-primary-400 transition-colors">生態系統</a>
+                        <a href="#understanding" class="text-gray-600 hover:text-primary-600 dark:text-gray-300 dark:hover:text-primary-400 transition-colors">理解本質</a>
+                        <a href="#advanced" class="text-gray-600 hover:text-primary-600 dark:text-gray-300 dark:hover:text-primary-400 transition-colors">進階功能</a>
+                        <a href="#conclusion" class="text-gray-600 hover:text-primary-600 dark:text-gray-300 dark:hover:text-primary-400 transition-colors">結論</a>
+                    </nav>
+                    <button id="theme-toggle" class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
+                        <i class="fas fa-moon dark:hidden"></i>
+                        <i class="fas fa-sun hidden dark:block"></i>
+                    </button>
+                    <button id="mobile-menu-button" class="md:hidden p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+            <!-- 移動端選單 -->
+            <div id="mobile-menu" class="md:hidden hidden pb-4">
+                <nav class="flex flex-col space-y-3">
+                    <a href="#intro" class="text-gray-600 hover:text-primary-600 dark:text-gray-300 dark:hover:text-primary-400 transition-colors">引言</a>
+                    <a href="#ecosystem" class="text-gray-600 hover:text-primary-600 dark:text-gray-300 dark:hover:text-primary-400 transition-colors">生態系統</a>
+                    <a href="#understanding" class="text-gray-600 hover:text-primary-600 dark:text-gray-300 dark:hover:text-primary-400 transition-colors">理解本質</a>
+                    <a href="#advanced" class="text-gray-600 hover:text-primary-600 dark:text-gray-300 dark:hover:text-primary-400 transition-colors">進階功能</a>
+                    <a href="#conclusion" class="text-gray-600 hover:text-primary-600 dark:text-gray-300 dark:hover:text-primary-400 transition-colors">結論</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- 主要內容 -->
+    <main class="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <!-- 英雄區塊 -->
+        <section class="py-12 md:py-20 text-center">
+            <div class="max-w-4xl mx-auto">
+                <h1 class="text-4xl md:text-5xl font-bold mb-6 fade-in">大型語言模型 (LLM)<br>應用與功能概覽</h1>
+                <p class="text-xl md:text-2xl text-gray-600 dark:text-gray-400 mb-10 fade-in">探索現代 AI 語言模型的實用應用、平台比較與進階功能</p>
+                <div class="flex flex-wrap justify-center gap-4 fade-in">
+                    <a href="#ecosystem" class="btn-hover bg-primary-600 hover:bg-primary-700 text-white px-6 py-3 rounded-lg font-medium shadow-lg shadow-primary-600/20 dark:shadow-primary-600/10">
+                        <i class="fas fa-globe-asia mr-2"></i>探索生態系統
+                    </a>
+                    <a href="#advanced" class="btn-hover bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-700 px-6 py-3 rounded-lg font-medium shadow-lg">
+                        <i class="fas fa-rocket mr-2"></i>進階功能
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- 引言部分 -->
+        <section id="intro" class="py-12 scroll-mt-20">
+            <div class="max-w-4xl mx-auto">
+                <div class="flex items-center mb-6">
+                    <div class="bg-primary-600 dark:bg-primary-500 h-8 w-1 mr-4 rounded-full"></div>
+                    <h2 class="text-3xl font-bold">引言</h2>
+                </div>
+                <div class="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-xl dark:shadow-gray-900/30 fade-in">
+                    <p class="text-lg mb-4">本次簡報旨在回顧 YouTube 頻道「How I use LLMs」系列影片中關於大型語言模型 (LLM) 的實用應用、不同平台的比較，以及各種進階功能和使用技巧。影片講者首先簡要回顧了 LLM 的底層原理和認知機制，接著重點介紹了如何在日常生活中和工作中有效地利用這些工具。</p>
+                    <div class="flex items-center mt-6 p-4 bg-gray-50 dark:bg-gray-700/50 rounded-xl">
+                        <i class="fas fa-lightbulb text-yellow-500 text-2xl mr-4"></i>
+                        <p class="text-gray-700 dark:text-gray-300">大型語言模型已從實驗室技術發展成為日常生活和工作中的實用工具，了解其能力和限制對於有效使用至關重要。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 生態系統部分 -->
+        <section id="ecosystem" class="py-12 scroll-mt-20">
+            <div class="max-w-4xl mx-auto">
+                <div class="flex items-center mb-6">
+                    <div class="bg-primary-600 dark:bg-primary-500 h-8 w-1 mr-4 rounded-full"></div>
+                    <h2 class="text-3xl font-bold">LLM 生態系統與基礎操作</h2>
+                </div>
+                
+                <!-- ChatGPT 起源 -->
+                <div class="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-xl dark:shadow-gray-900/30 mb-8 fade-in">
+                    <h3 class="text-2xl font-semibold mb-4">ChatGPT 的起源與發展</h3>
+                    <p class="mb-4">ChatGPT 由 OpenAI 開發，於 2022 年部署，是第一個讓大眾能透過文字介面與大型語言模型互動的工具，並迅速在網路上爆紅。</p>
+                    <div class="p-4 border-l-4 border-primary-500 bg-primary-50 dark:bg-gray-700/50 dark:border-primary-400 rounded-r-lg my-4">
+                        <p class="italic text-gray-700 dark:text-gray-300">「所以這是在 2022 年第一次人們可以實際上只是像透過文字介面與大型語言模型對話，這件事在網路上瘋傳。」</p>
+                    </div>
+                    <p class="mb-4">儘管 ChatGPT 是開創者，但到了 2025 年，類似的應用程式和更豐富的生態系統已經出現。講者認為 ChatGPT 是「Original Gangster incumbent」，是最受歡迎且功能最豐富的平台，但也承認其他「clone」產品在某些方面提供了獨特的體驗。</p>
+                </div>
+                
+                <!-- 主要平台 -->
+                <div class="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-xl dark:shadow-gray-900/30 mb-8 fade-in">
+                    <h3 class="text-2xl font-semibold mb-4">主要的 LLM 平台</h3>
+                    <p class="mb-6">除了 OpenAI 的 ChatGPT，主要的競爭者包括：</p>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                        <!-- 大型科技公司 -->
+                        <div class="card-hover bg-gray-50 dark:bg-gray-700/50 p-5 rounded-xl">
+                            <h4 class="text-xl font-medium mb-3 flex items-center">
+                                <i class="fas fa-building text-blue-500 mr-3"></i>
+                                大型科技公司
+                            </h4>
+                            <ul class="space-y-2 pl-6 list-disc">
+                                <li>Google 的 Gemini (原 Bard)</li>
+                                <li>Meta 的 Llama 系列模型</li>
+                                <li>Microsoft 的 Copilot</li>
+                            </ul>
+                        </div>
+                        
+                        <!-- 新創公司 -->
+                        <div class="card-hover bg-gray-50 dark:bg-gray-700/50 p-5 rounded-xl">
+                            <h4 class="text-xl font-medium mb-3 flex items-center">
+                                <i class="fas fa-rocket text-purple-500 mr-3"></i>
+                                新創公司
+                            </h4>
+                            <ul class="space-y-2 pl-6 list-disc">
+                                <li>Anthropic 的 Claude</li>
+                                <li>Elon Musk 的 xAI 的 Grok</li>
+                                <li>中國的 DeepSeek</li>
+                                <li>法國的 Mistral</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 追蹤 LLM 資源 -->
+                <div class="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-xl dark:shadow-gray-900/30 mb-8 fade-in">
+                    <h3 class="text-2xl font-semibold mb-4">追蹤 LLM 的資源</h3>
+                    <p class="mb-4">講者推薦了兩個排行榜以追蹤不同 LLM 的表現：</p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-4">
+                        <div class="card-hover border border-gray-200 dark:border-gray-700 p-5 rounded-xl">
+                            <h4 class="text-xl font-medium mb-2">Chatbot Arena</h4>
+                            <p>提供基於使用者投票的 Elo 評分系統，幫助了解不同模型的實際使用體驗。</p>
+                        </div>
+                        <div class="card-hover border border-gray-200 dark:border-gray-700 p-5 rounded-xl">
+                            <h4 class="text-xl font-medium mb-2">SCALE 的 SEAL Leaderboard</h4>
+                            <p>提供基於各種評估指標的排名，更專注於技術性能評估。</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 基本互動 -->
+                <div class="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-xl dark:shadow-gray-900/30 mb-8 fade-in">
+                    <h3 class="text-2xl font-semibold mb-4">與 LLM 的基本互動</h3>
+                    <div class="flex flex-col md:flex-row gap-8">
+                        <div class="flex-1">
+                            <h4 class="text-xl font-medium mb-3">文字輸入與輸出</h4>
+                            <p class="mb-4">與 LLM 最基本的互動方式是提供文字輸入 (使用者查詢)，並接收文字回應。例如，詢問 LLM 創作一首關於作為大型語言模型的俳句。</p>
+                            <div class="p-4 border-l-4 border-primary-500 bg-primary-50 dark:bg-gray-700/50 dark:border-primary-400 rounded-r-lg my-4">
+                                <p class="italic text-gray-700 dark:text-gray-300">「最基本與語言模型的互動形式是我們給它文字，然後我們得到一些典型的文字回覆。」</p>
+                            </div>
+                        </div>
+                        <div class="flex-1">
+                            <div class="bg-gray-100 dark:bg-gray-700 p-4 rounded-xl">
+                                <div class="flex items-start mb-4">
+                                    <div class="bg-gray-200 dark:bg-gray-600 p-3 rounded-lg max-w-xs md:max-w-md">
+                                        <p class="text-gray-800 dark:text-gray-200">請寫一首關於你作為語言模型的俳句</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start justify-end">
+                                    <div class="bg-primary-100 dark:bg-primary-900/30 p-3 rounded-lg max-w-xs md:max-w-md">
+                                        <p class="text-gray-800 dark:text-gray-200">
+                                            數位思維流<br>
+                                            文字間尋找模式<br>
+                                            知識無邊界
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Token 概念 -->
+                <div class="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-xl dark:shadow-gray-900/30 mb-8 fade-in">
+                    <h3 class="text-2xl font-semibold mb-4">Token 的概念</h3>
+                    <p class="mb-4">LLM 的語言單位使用者查詢和模型回應在底層都被分解成稱為「token」的小文本塊。</p>
+                    <div class="overflow-x-auto bg-gray-100 dark:bg-gray-700 p-4 rounded-xl mb-4">
+                        <div class="inline-flex flex-wrap gap-2">
+                            <span class="bg-blue-100 dark:bg-blue-900/50 px-2 py-1 rounded-full text-blue-800 dark:text-blue-200 text-sm">請</span>
+                            <span class="bg-blue-100 dark:bg-blue-900/50 px-2 py-1 rounded-full text-blue-800 dark:text-blue-200 text-sm">寫</span>
+                            <span class="bg-blue-100 dark:bg-blue-900/50 px-2 py-1 rounded-full text-blue-800 dark:text-blue-200 text-sm">一</span>
+                            <span class="bg-blue-100 dark:bg-blue-900/50 px-2 py-1 rounded-full text-blue-800 dark:text-blue-200 text-sm">首</span>
+                            <span class="bg-blue-100 dark:bg-blue-900/50 px-2 py-1 rounded-full text-blue-800 dark:text-blue-200 text-sm">關於</span>
+                            <span class="bg-blue-100 dark:bg-blue-900/50 px-2 py-1 rounded-full text-blue-800 dark:text-blue-200 text-sm">你</span>
+                            <span class="bg-blue-100 dark:bg-blue-900/50 px-2 py-1 rounded-full text-blue-800 dark:text-blue-200 text-sm">作為</span>
+                            <span class="bg-blue-100 dark:bg-blue-900/50 px-2 py-1 rounded-full text-blue-800 dark:text-blue-200 text-sm">語言</span>
+                            <span class="bg-blue-100 dark:bg-blue-900/50 px-2 py-1 rounded-full text-blue-800 dark:text-blue-200 text-sm">模型</span>
+                            <span class="bg-blue-100 dark:bg-blue-900/50 px-2 py-1 rounded-full text-blue-800 dark:text-blue-200 text-sm">的</span>
+                            <span class="bg-blue-100 dark:bg-blue-900/50 px-2 py-1 rounded-full text-blue-800 dark:text-blue-200 text-sm">俳句</span>
+                        </div>
+                    </div>
+                    <p class="mb-4">一個 15 個 token 的使用者查詢可能會產生一個 19 個 token 的模型回應。</p>
+                </div>
+                
+                <!-- Context Window -->
+                <div class="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-xl dark:shadow-gray-900/30 fade-in">
+                    <h3 class="text-2xl font-semibold mb-4">Context Window</h3>
+                    <div class="flex flex-col md:flex-row gap-6">
+                        <div class="flex-1">
+                            <p class="mb-4">LLM 的工作記憶體每次點擊「New Chat」都會清除 token window，重置對話。</p>
+                            <p class="mb-4">Context window 可以被視為對話的「工作記憶體」，模型可以直接存取其中包含的所有 token。</p>
+                            <p>使用者和模型輪流將 token 寫入這個 token 流，直到模型發出一個表示完成的特殊 token。</p>
+                        </div>
+                        <div class="flex-1">
+                            <div class="bg-gray-100 dark:bg-gray-700 p-4 rounded-xl">
+                                <div class="flex justify-center mb-2">
+                                    <span class="bg-green-100 dark:bg-green-900/50 px-3 py-1 rounded-full text-green-800 dark:text-green-200 text-sm">Context Window</span>
+                                </div>
+                                <div class="border border-dashed border-gray-300 dark:border-gray-600 p-3 rounded-lg">
+                                    <div class="flex items-start mb-3">
+                                        <div class="bg-gray-200 dark:bg-gray-600 p-2 rounded text-sm max-w-xs">
+                                            <span class="text-gray-500 dark:text-gray-400 text-xs">使用者:</span>
+                                            <p class="text-gray-800 dark:text-gray-200">你好，請介紹自己</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-start justify-end mb-3">
+                                        <div class="bg-primary-100 dark:bg-primary-900/30 p-2 rounded text-sm max-w-xs">
+                                            <span class="text-gray-500 dark:text-gray-400 text-xs">助理:</span>
+                                            <p class="text-gray-800 dark:text-gray-200">我是一個大型語言模型...</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-start">
+                                        <div class="bg-gray-200 dark:bg-gray-600 p-2 rounded text-sm max-w-xs">
+                                            <span class="text-gray-500 dark:text-gray-400 text-xs">使用者:</span>
+                                            <p class="text-gray-800 dark:text-gray-200">你能記得我之前問了什麼嗎？</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 理解 LLM 的本質與能力 -->
+        <section id="understanding" class="py-12 scroll-mt-20">
+            <div class="max-w-4xl mx-auto">
+                <div class="flex items-center mb-6">
+                    <div class="bg-primary-600 dark:bg-primary-500 h-8 w-1 mr-4 rounded-full"></div>
+                    <h2 class="text-3xl font-bold">理解 LLM 的本質與能力</h2>
+                </div>
+                
+                <!-- LLM 的訓練過程 -->
+                <div class="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-xl dark:shadow-gray-900/30 mb-8 fade-in">
+                    <h3 class="text-2xl font-semibold mb-4">LLM 的訓練過程</h3>
+                    <p class="mb-4">LLM 的訓練包含兩個主要階段：</p>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                        <!-- 預訓練 -->
+                        <div class="card-hover bg-gray-50 dark:bg-gray-700/50 p-5 rounded-xl">
+                            <h4 class="text-xl font-medium mb-3 flex items-center">
+                                <i class="fas fa-database text-indigo-500 mr-3"></i>
+                                Pre-training (預訓練)
+                            </h4>
+                            <p>模型讀取大量的網際網路文本，並學習預測序列中的下一個 token，從而獲得廣泛的世界知識。這個過程非常昂貴且耗時，因此不常進行。</p>
+                        </div>
+                        
+                        <!-- 後訓練 -->
+                        <div class="card-hover bg-gray-50 dark:bg-gray-700/50 p-5 rounded-xl">
+                            <h4 class="text-xl font-medium mb-3 flex items-center">
+                                <i class="fas fa-sliders-h text-green-500 mr-3"></i>
+                                Post-training (後訓練)
+                            </h4>
+                            <p>模型使用人類創建的對話資料集進行微調，使其具有助理的 Persona 和回應用戶查詢的能力。</p>
+                        </div>
+                    </div>
+                    
+                    <div class="p-4 border-l-4 border-primary-500 bg-primary-50 dark:bg-gray-700/50 dark:border-primary-400 rounded-r-lg my-4">
+                        <p class="italic text-gray-700 dark:text-gray-300">「預訓練階段有點像是把整個網際網路切成 token，然後把它壓縮成一個單一的有點像是 zip 檔案的東西。」</p>
+                    </div>
+                    
+                    <p>預訓練的成本很高，導致模型存在「knowledge cutoff」，即它們的知識僅限於訓練數據截止的時間點。</p>
+                </div>
+                
+                <!-- LLM 的本質 -->
+                <div class="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-xl dark:shadow-gray-900/30 mb-8 fade-in">
+                    <h3 class="text-2xl font-semibold mb-4">LLM 的本質：一個龐大的機率性知識庫</h3>
+                    
+                    <div class="flex flex-col md:flex-row gap-8">
+                        <div class="flex-1">
+                            <p class="mb-4">講者將 LLM 比喻為一個包含數兆參數的「1 TB zip 檔案」，它試圖預測序列中的下一個 token。</p>
+                            <p class="mb-4">這個「zip 檔案」本身不包含計算器、網路瀏覽器等工具，它是一個自給自足的實體。</p>
+                        </div>
+                        <div class="flex-1">
+                            <div class="bg-gray-100 dark:bg-gray-700 p-4 rounded-xl">
+                                <div class="flex justify-center mb-2">
+                                    <span class="bg-purple-100 dark:bg-purple-900/50 px-3 py-1 rounded-full text-purple-800 dark:text-purple-200 text-sm">ChatGPT 自我介紹</span>
+                                </div>
+                                <div class="p-4 text-gray-800 dark:text-gray-200 text-sm">
+                                    <p class="mb-2">「嗨，我是 ChatGPT，我是一個 1 TB 的 zip 檔案。」</p>
+                                    <p class="mb-2">「我的知識來自大約六個月前我完整閱讀的網際網路，我只模糊地記得。」</p>
+                                    <p>「我的個性是由 OpenAI 的人工標註者透過範例程式設計出來的。」</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- LLM 的適用場景與注意事項 -->
+                <div class="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-xl dark:shadow-gray-900/30 mb-8 fade-in">
+                    <h3 class="text-2xl font-semibold mb-4">LLM 的適用場景與注意事項</h3>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                        <!-- 適用場景 -->
+                        <div class="card-hover bg-green-50 dark:bg-green-900/20 p-5 rounded-xl border-l-4 border-green-500 dark:border-green-600">
+                            <h4 class="text-xl font-medium mb-3 text-green-700 dark:text-green-400">適用場景</h4>
+                            <p class="mb-3">LLM 在處理非最新、網路上頻繁出現的知識型查詢時通常表現良好，例如：</p>
+                            <ul class="space-y-2 pl-6 list-disc">
+                                <li>咖啡因含量</li>
+                                <li>常見藥物成分</li>
+                                <li>歷史事件</li>
+                                <li>科學概念</li>
+                            </ul>
+                        </div>
+                        
+                        <!-- 注意事項 -->
+                        <div class="card-hover bg-red-50 dark:bg-red-900/20 p-5 rounded-xl border-l-4 border-red-500 dark:border-red-600">
+                            <h4 class="text-xl font-medium mb-3 text-red-700 dark:text-red-400">注意事項</h4>
+                            <p class="mb-3">使用者不應完全信任 LLM 的回答，尤其是在以下情況：</p>
+                            <ul class="space-y-2 pl-6 list-disc">
+                                <li>高風險決策</li>
+                                <li>需要最新資訊的查詢</li>
+                                <li>專業領域的具體建議</li>
+                                <li>法律或醫療諮詢</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="p-4 border-l-4 border-yellow-500 bg-yellow-50 dark:bg-yellow-900/20 dark:border-yellow-600 rounded-r-lg my-4">
+                        <p class="italic text-gray-700 dark:text-gray-300">「我並不保證這個答案是正確的，這只是它對網際網路的模糊回憶。」</p>
+                    </div>
+                </div>
+                
+                <!-- 使用 LLM 的最佳實踐 -->
+                <div class="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-xl dark:shadow-gray-900/30 fade-in">
+                    <h3 class="text-2xl font-semibold mb-4">使用 LLM 的最佳實踐</h3>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <!-- 切換主題時開啟新聊天 -->
+                        <div class="card-hover bg-gray-50 dark:bg-gray-700/50 p-5 rounded-xl">
+                            <div class="flex justify-center mb-4">
+                                <div class="bg-blue-100 dark:bg-blue-900/30 p-3 rounded-full">
+                                    <i class="fas fa-sync-alt text-blue-600 dark:text-blue-400 text-xl"></i>
+                                </div>
+                            </div>
+                            <h4 class="text-lg font-medium mb-2 text-center">切換主題時開啟新聊天</h4>
+                            <p class="text-center text-gray-600 dark:text-gray-400">清除不相關的 token，提高模型效率和準確性，並降低成本。</p>
+                        </div>
+                        
+                        <!-- 留意使用的模型 -->
+                        <div class="card-hover bg-gray-50 dark:bg-gray-700/50 p-5 rounded-xl">
+                            <div class="flex justify-center mb-4">
+                                <div class="bg-purple-100 dark:bg-purple-900/30 p-3 rounded-full">
+                                    <i class="fas fa-microchip text-purple-600 dark:text-purple-400 text-xl"></i>
+                                </div>
+                            </div>
+                            <h4 class="text-lg font-medium mb-2 text-center">留意使用的模型</h4>
+                            <p class="text-center text-gray-600 dark:text-gray-400">不同的模型具有不同的能力和價格。較大的模型通常更智能，但成本也更高。</p>
+                        </div>
+                        
+                        <!-- 驗證重要資訊 -->
+                        <div class="card-hover bg-gray-50 dark:bg-gray-700/50 p-5 rounded-xl">
+                            <div class="flex justify-center mb-4">
+                                <div class="bg-green-100 dark:bg-green-900/30 p-3 rounded-full">
+                                    <i class="fas fa-check-double text-green-600 dark:text-green-400 text-xl"></i>
+                                </div>
+                            </div>
+                            <h4 class="text-lg font-medium mb-2 text-center">驗證重要資訊</h4>
+                            <p class="text-center text-gray-600 dark:text-gray-400">對於重要決策，始終查閱原始資料進行驗證，不要完全依賴 LLM 的回答。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 進階功能與應用 -->
+        <section id="advanced" class="py-12 scroll-mt-20">
+            <div class="max-w-4xl mx-auto">
+                <div class="flex items-center mb-6">
+                    <div class="bg-primary-600 dark:bg-primary-500 h-8 w-1 mr-4 rounded-full"></div>
+                    <h2 class="text-3xl font-bold">進階功能與應用</h2>
+                </div>
+                
+                <!-- 思考模型 -->
+                <div class="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-xl dark:shadow-gray-900/30 mb-8 fade-in">
+                    <h3 class="text-2xl font-semibold mb-4">思考模型 (Thinking Models)</h3>
+                    <p class="mb-4">透過強化學習 (Reinforcement Learning) 進行額外調整的模型，它們在解決複雜問題（如數學、程式碼）時能進行更深入的「思考」，類似人類的內心獨白。</p>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                        <!-- 思考模型的特點 -->
+                        <div>
+                            <h4 class="text-xl font-medium mb-3 flex items-center">
+                                <i class="fas fa-brain text-purple-500 mr-3"></i>
+                                思考模型的特點
+                            </h4>
+                            <ul class="space-y-2 pl-6 list-disc">
+                                <li>嘗試不同的想法、回溯、重新審視假設</li>
+                                <li>花費更長的時間（生成大量 token）</li>
+                                <li>在困難問題上通常能獲得更高的準確性</li>
+                                <li>適合數學、編程等需要邏輯推理的任務</li>
+                            </ul>
+                        </div>
+                        <!-- 思考模型的例子 -->
+                        <div>
+                            <h4 class="text-xl font-medium mb-3 flex items-center">
+                                <i class="fas fa-list-alt text-blue-500 mr-3"></i>
+                                思考模型的例子
+                            </h4>
+                            <ul class="space-y-2 pl-6 list-disc">
+                                <li>OpenAI 的 o1、o3 系列模型（如 o1 Pro mode）</li>
+                                <li>Anthropic 的 Claude 3.7 的「Extended」模式</li>
+                                <li>Grok 的「Think」模式</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-gray-50 dark:bg-gray-700/50 p-4 rounded-xl">
+                        <div class="flex items-center mb-2">
+                            <i class="fas fa-lightbulb text-yellow-500 mr-2"></i>
+                            <h4 class="text-lg font-medium">實際應用案例</h4>
+                        </div>
+                        <p>講者分享了自己在程式碼除錯時使用 GPT-4o (非思考模型) 和 o1 Pro (思考模型) 的比較，後者成功解決了問題。他也展示了 Claude、Gemini 和 Grok 在同一程式碼問題上的表現。</p>
+                    </div>
+                </div>
+                
+                <!-- 工具使用 -->
+                <div class="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-xl dark:shadow-gray-900/30 mb-8 fade-in">
+                    <h3 class="text-2xl font-semibold mb-4">工具使用 (Tool Use)</h3>
+                    <p class="mb-4">模型能夠發出特殊 token，觸發 LLM 應用程式執行外部工具，例如網路搜尋。</p>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                        <!-- 網路搜尋 -->
+                        <div class="card-hover bg-gray-50 dark:bg-gray-700/50 p-5 rounded-xl">
+                            <h4 class="text-xl font-medium mb-3 flex items-center">
+                                <i class="fas fa-search text-blue-500 mr-3"></i>
+                                網路搜尋
+                            </h4>
+                            <p class="mb-3">模型可以根據用戶的查詢自動進行網路搜尋，訪問網頁內容，並將相關資訊納入 context window。</p>
+                            <div class="bg-blue-50 dark:bg-blue-900/20 p-3 rounded-lg text-sm">
+                                <p class="italic">案例：詢問白蓮花第三季播出時間，模型能透過網路搜尋獲取最新資訊。</p>
+                            </div>
+                        </div>
+                        
+                        <!-- 深度研究 -->
+                        <div class="card-hover bg-gray-50 dark:bg-gray-700/50 p-5 rounded-xl">
+                            <h4 class="text-xl font-medium mb-3 flex items-center">
+                                <i class="fas fa-microscope text-green-500 mr-3"></i>
+                                深度研究 (Deep Research)
+                            </h4>
+                            <p class="mb-3">結合了長時間的網路搜尋和深入思考，通常需要付費訂閱。</p>
+                            <div class="bg-green-50 dark:bg-green-900/20 p-3 rounded-lg text-sm">
+                                <p class="italic">案例：查詢 Bryan Johnson 的長壽配方成分 C AKG，模型能生成類似客製化研究報告的結果。</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-center justify-center my-6">
+                        <div class="w-1/2 h-px bg-gray-200 dark:bg-gray-700"></div>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <!-- 文件上傳與分析 -->
+                        <div class="card-hover bg-gray-50 dark:bg-gray-700/50 p-5 rounded-xl">
+                            <h4 class="text-xl font-medium mb-3 flex items-center">
+                                <i class="fas fa-file-upload text-indigo-500 mr-3"></i>
+                                文件上傳與分析
+                            </h4>
+                            <p class="mb-3">使用者可以上傳 PDF、文本文件等，讓 LLM 分析其中的內容並回答相關問題。</p>
+                            <div class="bg-indigo-50 dark:bg-indigo-900/20 p-3 rounded-lg text-sm">
+                                <p class="italic">推薦用途：閱讀書籍章節，幫助理解、總結和提問，提高閱讀效率和理解力。</p>
+                            </div>
+                        </div>
+                        
+                        <!-- 程式碼執行與分析 -->
+                        <div class="card-hover bg-gray-50 dark:bg-gray-700/50 p-5 rounded-xl">
+                            <h4 class="text-xl font-medium mb-3 flex items-center">
+                                <i class="fas fa-code text-red-500 mr-3"></i>
+                                程式碼執行與分析
+                            </h4>
+                            <p class="mb-3">LLM 能夠生成並執行程式碼（通常是 Python），解決數學問題、分析數據、繪製圖表等。</p>
+                            <div class="bg-red-50 dark:bg-red-900/20 p-3 rounded-lg text-sm">
+                                <p class="italic">功能：Python 直譯器、進階資料分析（上傳 CSV 檔案進行分析）、Cloud Artifacts（Claude 獨有）</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 多模態互動 -->
+                <div class="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-xl dark:shadow-gray-900/30 mb-8 fade-in">
+                    <h3 class="text-2xl font-semibold mb-4">多模態互動：語音、影像、影片</h3>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                        <!-- 語音互動 -->
+                        <div class="card-hover bg-gray-50 dark:bg-gray-700/50 p-5 rounded-xl">
+                            <div class="flex justify-center mb-4">
+                                <div class="bg-purple-100 dark:bg-purple-900/30 p-3 rounded-full">
+                                    <i class="fas fa-microphone text-purple-600 dark:text-purple-400 text-xl"></i>
+                                </div>
+                            </div>
+                            <h4 class="text-lg font-medium mb-2 text-center">語音輸入與輸出</h4>
+                            <p class="text-sm text-center text-gray-600 dark:text-gray-400 mb-3">模型可以接收語音輸入並以語音回應，實現更自然的對話體驗。</p>
+                            <div class="text-xs bg-gray-100 dark:bg-gray-600 p-2 rounded">
+                                <p class="mb-1"><span class="font-semibold">Fake Audio：</span>使用 STT 和 TTS 模型間接實現</p>
+                                <p><span class="font-semibold">True Audio：</span>直接在語言模型內部處理音訊 token</p>
+                            </div>
+                        </div>
+                        
+                        <!-- 影像互動 -->
+                        <div class="card-hover bg-gray-50 dark:bg-gray-700/50 p-5 rounded-xl">
+                            <div class="flex justify-center mb-4">
+                                <div class="bg-blue-100 dark:bg-blue-900/30 p-3 rounded-full">
+                                    <i class="fas fa-image text-blue-600 dark:text-blue-400 text-xl"></i>
+                                </div>
+                            </div>
+                            <h4 class="text-lg font-medium mb-2 text-center">影像輸入與分析</h4>
+                            <p class="text-sm text-center text-gray-600 dark:text-gray-400 mb-3">使用者可以上傳圖片，讓 LLM 識別內容並回答相關問題。</p>
+                            <div class="text-xs bg-gray-100 dark:bg-gray-600 p-2 rounded">
+                                <p class="mb-1"><span class="font-semibold">應用場景：</span>分析營養標示、血液檢驗報告</p>
+                                <p><span class="font-semibold">影像生成：</span>如 DALL-E 3 可根據文字提示生成圖像</p>
+                            </div>
+                        </div>
+                        
+                        <!-- 影片互動 -->
+                        <div class="card-hover bg-gray-50 dark:bg-gray-700/50 p-5 rounded-xl">
+                            <div class="flex justify-center mb-4">
+                                <div class="bg-red-100 dark:bg-red-900/30 p-3 rounded-full">
+                                    <i class="fas fa-video text-red-600 dark:text-red-400 text-xl"></i>
+                                </div>
+                            </div>
+                            <h4 class="text-lg font-medium mb-2 text-center">影片理解與生成</h4>
+                            <p class="text-sm text-center text-gray-600 dark:text-gray-400 mb-3">模型可以通過手機鏡頭即時「觀看」影片內容並進行對話。</p>
+                            <div class="text-xs bg-gray-100 dark:bg-gray-600 p-2 rounded">
+                                <p class="mb-1"><span class="font-semibold">影片理解：</span>識別畫面中的物品並回答問題</p>
+                                <p><span class="font-semibold">影片生成：</span>專門的 AI 影片生成模型如 V2A</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-gray-50 dark:bg-gray-700/50 p-4 rounded-xl">
+                        <div class="flex items-center mb-2">
+                            <i class="fas fa-lightbulb text-yellow-500 mr-2"></i>
+                            <h4 class="text-lg font-medium">多模態互動的價值</h4>
+                        </div>
+                        <p>多模態互動大幅擴展了 LLM 的應用場景，使其能夠處理更多類型的資訊和任務。例如，使用者可以拍攝不熟悉的物品、文檔或情境，讓 LLM 提供即時解釋和建議，實現更自然、更直觀的人機互動體驗。</p>
+                    </div>
+                </div>
+                
+                <!-- 生活品質功能 -->
+                <div class="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-xl dark:shadow-gray-900/30 fade-in">
+                    <h3 class="text-2xl font-semibold mb-4">生活品質功能</h3>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <!-- ChatGPT Memory -->
+                        <div class="card-hover bg-gray-50 dark:bg-gray-700/50 p-5 rounded-xl">
+                            <div class="flex justify-center mb-4">
+                                <div class="bg-indigo-100 dark:bg-indigo-900/30 p-3 rounded-full">
+                                    <i class="fas fa-memory text-indigo-600 dark:text-indigo-400 text-xl"></i>
+                                </div>
+                            </div>
+                            <h4 class="text-lg font-medium mb-2 text-center">ChatGPT Memory</h4>
+                            <p class="text-sm text-center text-gray-600 dark:text-gray-400">模型能夠記住跨對話的資訊，隨著時間的推移更好地理解使用者的偏好和背景。使用者可以查看和管理模型的記憶。</p>
+                        </div>
+                        
+                        <!-- Custom Instructions -->
+                        <div class="card-hover bg-gray-50 dark:bg-gray-700/50 p-5 rounded-xl">
+                            <div class="flex justify-center mb-4">
+                                <div class="bg-green-100 dark:bg-green-900/30 p-3 rounded-full">
+                                    <i class="fas fa-sliders-h text-green-600 dark:text-green-400 text-xl"></i>
+                                </div>
+                            </div>
+                            <h4 class="text-lg font-medium mb-2 text-center">Custom Instructions</h4>
+                            <p class="text-sm text-center text-gray-600 dark:text-gray-400">使用者可以在設定中設定模型的個性偏好和行為方式，例如指定回覆的風格、提供的資訊類型等。</p>
+                        </div>
+                        
+                        <!-- Custom GPTs -->
+                        <div class="card-hover bg-gray-50 dark:bg-gray-700/50 p-5 rounded-xl">
+                            <div class="flex justify-center mb-4">
+                                <div class="bg-blue-100 dark:bg-blue-900/30 p-3 rounded-full">
+                                    <i class="fas fa-robot text-blue-600 dark:text-blue-400 text-xl"></i>
+                                </div>
+                            </div>
+                            <h4 class="text-lg font-medium mb-2 text-center">Custom GPTs</h4>
+                            <p class="text-sm text-center text-gray-600 dark:text-gray-400">使用者可以創建基於特定提示和知識庫的客製化模型，專門用於執行特定任務，例如語言學習工具、圖片 OCR 和翻譯等。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 結論與未來展望 -->
+        <section id="conclusion" class="py-12 scroll-mt-20">
+            <div class="max-w-4xl mx-auto">
+                <div class="flex items-center mb-6">
+                    <div class="bg-primary-600 dark:bg-primary-500 h-8 w-1 mr-4 rounded-full"></div>
+                    <h2 class="text-3xl font-bold">結論與未來展望</h2>
+                </div>
+                
+                <!-- 總結 -->
+                <div class="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-xl dark:shadow-gray-900/30 mb-8 fade-in">
+                    <h3 class="text-2xl font-semibold mb-4">LLM 的關鍵價值</h3>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                        <!-- 左側：價值點 -->
+                        <div>
+                            <div class="mb-5">
+                                <h4 class="text-xl font-medium mb-3 flex items-center">
+                                    <i class="fas fa-lightbulb text-yellow-500 mr-3"></i>
+                                    知識獲取效率
+                                </h4>
+                                <p class="mb-4">LLM 能夠快速提供資訊，節省搜尋和閱讀時間，特別是在需要從多個來源整合知識時。</p>
+                            </div>
+                            
+                            <div class="mb-5">
+                                <h4 class="text-xl font-medium mb-3 flex items-center">
+                                    <i class="fas fa-brain text-purple-500 mr-3"></i>
+                                    思維擴展
+                                </h4>
+                                <p class="mb-4">通過與 LLM 對話，可以獲得新的視角和想法，幫助突破思維限制，激發創造力。</p>
+                            </div>
+                            
+                            <div>
+                                <h4 class="text-xl font-medium mb-3 flex items-center">
+                                    <i class="fas fa-tasks text-blue-500 mr-3"></i>
+                                    工作效率提升
+                                </h4>
+                                <p class="mb-4">LLM 可以自動化許多重複性工作，如文案撰寫、程式碼生成、資料整理等，讓人類專注於更有價值的任務。</p>
+                            </div>
+                        </div>
+                        
+                        <!-- 右側：使用建議 -->
+                        <div class="bg-gray-50 dark:bg-gray-700/50 p-5 rounded-xl">
+                            <h4 class="text-xl font-medium mb-3 flex items-center">
+                                <i class="fas fa-star text-orange-500 mr-3"></i>
+                                有效使用 LLM 的建議
+                            </h4>
+                            
+                            <ul class="space-y-3 pl-6 list-disc">
+                                <li>
+                                    <span class="font-medium">明確目標</span>
+                                    <p class="text-sm text-gray-600 dark:text-gray-400">清楚知道你想要從 LLM 獲得什麼，提供具體的指示和上下文。</p>
+                                </li>
+                                <li>
+                                    <span class="font-medium">迭代提問</span>
+                                    <p class="text-sm text-gray-600 dark:text-gray-400">通過多輪對話逐步完善結果，而不是期望一次性得到完美答案。</p>
+                                </li>
+                                <li>
+                                    <span class="font-medium">批判性思考</span>
+                                    <p class="text-sm text-gray-600 dark:text-gray-400">始終保持批判思維，驗證 LLM 提供的資訊，特別是在專業或關鍵領域。</p>
+                                </li>
+                                <li>
+                                    <span class="font-medium">持續學習</span>
+                                    <p class="text-sm text-gray-600 dark:text-gray-400">關注 LLM 技術的最新發展，嘗試新功能和使用方法。</p>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 未來展望 -->
+                <div class="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-xl dark:shadow-gray-900/30 fade-in">
+                    <h3 class="text-2xl font-semibold mb-4">未來展望</h3>
+                    
+                    <div class="mb-6">
+                        <p class="mb-4">LLM 技術正在快速發展，未來可能會出現以下趨勢和變化：</p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                            <!-- 模型能力提升 -->
+                            <div class="card-hover bg-gray-50 dark:bg-gray-700/50 p-4 rounded-xl">
+                                <div class="flex justify-center mb-3">
+                                    <div class="bg-blue-100 dark:bg-blue-900/30 p-2 rounded-full">
+                                        <i class="fas fa-chart-line text-blue-600 dark:text-blue-400 text-lg"></i>
+                                    </div>
+                                </div>
+                                <h4 class="text-lg font-medium mb-2 text-center">模型能力提升</h4>
+                                <p class="text-sm text-center text-gray-600 dark:text-gray-400">更強的推理能力、更長的上下文窗口、更精確的知識</p>
+                            </div>
+                            
+                            <!-- 多模態整合 -->
+                            <div class="card-hover bg-gray-50 dark:bg-gray-700/50 p-4 rounded-xl">
+                                <div class="flex justify-center mb-3">
+                                    <div class="bg-purple-100 dark:bg-purple-900/30 p-2 rounded-full">
+                                        <i class="fas fa-layer-group text-purple-600 dark:text-purple-400 text-lg"></i>
+                                    </div>
+                                </div>
+                                <h4 class="text-lg font-medium mb-2 text-center">多模態整合</h4>
+                                <p class="text-sm text-center text-gray-600 dark:text-gray-400">更深入的視覺理解、音訊處理和跨模態推理能力</p>
+                            </div>
+                            
+                            <!-- 個人化與隱私 -->
+                            <div class="card-hover bg-gray-50 dark:bg-gray-700/50 p-4 rounded-xl">
+                                <div class="flex justify-center mb-3">
+                                    <div class="bg-green-100 dark:bg-green-900/30 p-2 rounded-full">
+                                        <i class="fas fa-user-shield text-green-600 dark:text-green-400 text-lg"></i>
+                                    </div>
+                                </div>
+                                <h4 class="text-lg font-medium mb-2 text-center">個人化與隱私</h4>
+                                <p class="text-sm text-center text-gray-600 dark:text-gray-400">本地運行的模型、更強的隱私保護和個人化適應能力</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 結語 -->
+                    <div class="bg-gray-50 dark:bg-gray-700/50 p-5 rounded-xl">
+                        <div class="flex items-center mb-3">
+                            <i class="fas fa-quote-left text-2xl text-primary-500 mr-3"></i>
+                            <h4 class="text-xl font-medium">最終思考</h4>
+                        </div>
+                        <p class="mb-3">LLM 技術正在重塑我們與資訊和知識互動的方式。它不僅是一種工具，更是一種思維擴展器，能夠幫助我們更有效地解決問題、學習新知識和創造價值。</p>
+                        <p>然而，重要的是要記住，LLM 是輔助工具而非替代品。最佳的結果往往來自人類智慧與 AI 能力的結合，讓兩者互相補充，發揮各自的優勢。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 頁腳 -->
+    <footer class="bg-gray-100 dark:bg-gray-900 py-8 border-t border-gray-200 dark:border-gray-800">
+        <div class="max-w-4xl mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <p class="text-gray-600 dark:text-gray-400 text-sm">&copy; 2023 LLM 應用與功能概覽</p>
+                </div>
+                <div class="flex space-x-6">
+                    <a href="#intro" class="text-gray-600 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-500 transition-colors">回到頂部</a>
+                    <a href="#ecosystem" class="text-gray-600 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-500 transition-colors">生態系統</a>
+                    <a href="#nature" class="text-gray-600 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-500 transition-colors">本質理解</a>
+                    <a href="#advanced" class="text-gray-600 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-500 transition-colors">進階功能</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 深色/淺色模式切換按鈕 -->
+    <button id="theme-toggle" class="fixed bottom-6 right-6 p-3 bg-white dark:bg-gray-800 rounded-full shadow-lg dark:shadow-gray-900/30 z-50 transition-transform hover:scale-110">
+        <i id="theme-icon" class="fas fa-moon text-gray-800 dark:text-yellow-300"></i>
+    </button>
+
+    <!-- JavaScript -->
+    <script>
+        // 深色/淺色模式切換
+        const themeToggle = document.getElementById('theme-toggle');
+        const themeIcon = document.getElementById('theme-icon');
+        const html = document.documentElement;
+        
+        // 檢查系統偏好
+        const prefersDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        
+        // 初始化主題（預設跟隨系統設定）
+        if (prefersDarkMode) {
+            html.classList.add('dark');
+            themeIcon.classList.remove('fa-moon');
+            themeIcon.classList.add('fa-sun');
+        }
+        
+        // 切換主題
+        themeToggle.addEventListener('click', () => {
+            html.classList.toggle('dark');
+            
+            if (html.classList.contains('dark')) {
+                themeIcon.classList.remove('fa-moon');
+                themeIcon.classList.add('fa-sun');
+            } else {
+                themeIcon.classList.remove('fa-sun');
+                themeIcon.classList.add('fa-moon');
+            }
+        });
+        
+        // 平滑滾動
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80, // 考慮固定導航欄的高度
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // 淡入動畫
+        const fadeElements = document.querySelectorAll('.fade-in');
+        
+        const fadeInObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+        
+        fadeElements.forEach(element => {
+            element.style.opacity = '0';
+            element.style.transform = 'translateY(20px)';
+            element.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            fadeInObserver.observe(element);
+        });
+        
+        // 卡片懸停效果
+        const cardHoverElements = document.querySelectorAll('.card-hover');
+        
+        cardHoverElements.forEach(card => {
+            card.style.transition = 'transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease';
+            
+            card.addEventListener('mouseenter', () => {
+                card.style.transform = 'translateY(-5px)';
+                card.style.boxShadow = '0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)';
+                card.style.borderColor = 'rgba(79, 70, 229, 0.5)';
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'translateY(0)';
+                card.style.boxShadow = '';
+                card.style.borderColor = '';
+            });
+        });
+    </script>
+</body>
+</html>
