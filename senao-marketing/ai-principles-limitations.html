@@ -41,6 +41,37 @@
             margin: 1.5rem 0;
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
         }
+        .monkey-typing {
+          animation: typing 3s steps(40) infinite;
+          white-space: nowrap;
+          overflow: hidden;
+          border-right: 3px solid;
+          font-family: monospace;
+        }
+        @keyframes typing {
+          from { width: 0 }
+          to { width: 24ch }
+        }
+        .ai-comparison {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 2rem;
+          margin: 3rem 0;
+          padding: 2rem;
+          background: #f8f9fa;
+          border-radius: 1rem;
+        }
+        .comparison-card {
+          padding: 2rem;
+          text-align: center;
+          border-radius: 0.5rem;
+        }
+        .free-version {
+          border: 2px solid #ff6b6b;
+        }
+        .paid-version {
+          border: 2px solid #4dabf7;
+        }
     </style>
     <!-- Mermaid JS for flowcharts and diagrams -->
     <script src="https://cdn.jsdelivr.net/npm/mermaid@10.6.1/dist/mermaid.min.js"></script>
@@ -210,6 +241,28 @@
                         <i class="fas fa-comment-dollar text-amber-500 mt-1 mr-2"></i>
                         <span>俗話說：只付得起香蕉，就只能請到猴子；猴子拿著打字機或許能敲出莎士比亞，但得花上幾世紀。付費訂閱就像用合理薪資請到優秀員工，一點小錢就能節省大量時間。</span>
                     </p>
+                </div>
+                
+                <div class="ai-comparison">
+                  <div class="comparison-card free-version">
+                    <div style="font-size: 4rem">🐒</div>
+                    <div class="monkey-typing">免費版：無限等待中...</div>
+                    <ul style="text-align: left; margin-top: 1rem">
+                      <li>基礎模型版本</li>
+                      <li>回應速度較慢</li>
+                      <li>功能有限</li>
+                    </ul>
+                  </div>
+
+                  <div class="comparison-card paid-version">
+                    <div style="font-size: 4rem">👩💻</div>
+                    <h3 style="color: #4dabf7">專業版即時響應</h3>
+                    <ul style="text-align: left; margin-top: 1rem">
+                      <li>最新模型版本</li>
+                      <li>優先處理速度</li>
+                      <li>進階功能解鎖</li>
+                    </ul>
+                  </div>
                 </div>
             </div>
         </div>
