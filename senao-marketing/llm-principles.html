@@ -8,6 +8,8 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Mermaid.js -->
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10.6.1/dist/mermaid.min.js"></script>
     <style>
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
@@ -21,6 +23,12 @@
         }
         .concept-card {
             border-left: 4px solid rgb(181, 181, 182);
+        }
+        .highlight-text {
+            background: linear-gradient(120deg, rgba(0, 144, 212, 0.2), rgba(0, 144, 212, 0.2));
+            background-repeat: no-repeat;
+            background-size: 100% 40%;
+            background-position: 0 90%;
         }
         :root {
             --senao-deep-blue: rgb(0, 80, 151);    /* Pantone 294 C */
@@ -57,56 +65,188 @@
             </div>
             <div class="border-t border-gray-200 px-4 py-5 sm:px-6">
                 <div class="prose max-w-none text-gray-700">
-                    <p class="mb-4">本附錄將深入探討大型語言模型（LLMs）的基本原理、架構和運作方式。雖然這些技術細節對日常使用並非必要，但了解它們可以幫助您更好地理解這些工具的能力和局限性，從而更有效地利用它們。</p>
+                    <p class="mb-4">本附錄將深入探討大型語言模型（LLMs）的基本原理、架構和運作方式。了解這些技術細節可以幫助您更好地理解這些工具的能力和局限性，從而更有效地利用它們。</p>
                     <p>無論您是對 AI 技術感興趣，還是希望更深入地了解您正在使用的工具，這裡的內容將為您提供清晰易懂的技術解釋。</p>
                 </div>
             </div>
         </div>
 
-        <!-- 大型語言模型概述 -->
+        <!-- 大型語言模型工作流程 -->
+        <div class="bg-white shadow overflow-hidden sm:rounded-lg mb-8 p-6">
+            <h2 class="text-xl font-semibold text-gray-900 mb-4">大型語言模型工作流程</h2>
+            <div class="flex justify-center mb-6">
+                <div class="bg-blue-50 p-6 rounded-lg w-full max-w-4xl">
+                    <div class="flex flex-col items-center">
+                        <!-- 水平流程圖 -->
+                        <div class="w-full flex flex-row justify-between items-center mb-6">
+                            <div class="bg-white p-4 rounded-lg shadow-md mb-0 w-1/4 text-center">
+                                <div class="bg-blue-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-2">
+                                    <i class="fas fa-keyboard text-blue-600 text-xl"></i>
+                                </div>
+                                <h3 class="font-medium text-gray-900">1. 使用者輸入</h3>
+                                <p class="text-sm text-gray-600">提供提示詞或問題</p>
+                            </div>
+                            <div class="text-blue-500">
+                                <i class="fas fa-arrow-right text-xl"></i>
+                            </div>
+                            <div class="bg-white p-4 rounded-lg shadow-md mb-0 w-1/4 text-center">
+                                <div class="bg-purple-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-2">
+                                    <i class="fas fa-microchip text-purple-600 text-xl"></i>
+                                </div>
+                                <h3 class="font-medium text-gray-900">2. 模型處理</h3>
+                                <p class="text-sm text-gray-600">分析文字並產生回應</p>
+                            </div>
+                            <div class="text-blue-500">
+                                <i class="fas fa-arrow-right text-xl"></i>
+                            </div>
+                            <div class="bg-white p-4 rounded-lg shadow-md w-1/4 text-center">
+                                <div class="bg-green-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-2">
+                                    <i class="fas fa-comment-dots text-green-600 text-xl"></i>
+                                </div>
+                                <h3 class="font-medium text-gray-900">3. 產生回應</h3>
+                                <p class="text-sm text-gray-600">提供相關且有用的輸出</p>
+                            </div>
+                        </div>
+                        <!-- 說明文字 -->
+                        <div class="bg-white p-4 rounded-lg shadow-md w-full">
+                            <p class="text-gray-700 text-sm">大型語言模型（LLM）透過分析大量文字資料進行訓練，使其能夠理解和產生人類語言。當您輸入提示詞時，模型會分析您的輸入，根據其訓練資料預測最合適的回應，然後產生文字輸出。整個過程是即時的，使 AI 能夠進行流暢的對話互動。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 大型語言模型的核心技術 -->
         <div class="content-section bg-white shadow overflow-hidden sm:rounded-lg p-6 mb-8">
             <h2 class="text-xl font-semibold text-gray-900 mb-4">
-                <i class="fas fa-brain mr-2 text-[rgb(181,181,182)]"></i>大型語言模型概述
+                <i class="fas fa-microchip mr-2 text-[rgb(0,80,151)]"></i>大型語言模型的核心技術
             </h2>
             <div class="prose max-w-none text-gray-700">
-                <p class="mb-4">大型語言模型（Large Language Models，簡稱 LLMs）是一類能夠理解、生成和操作人類語言的人工智能系統。這些模型透過處理和分析大量文本數據來「學習」語言的模式、規則和關聯性。</p>
+                <p class="mb-4">大型語言模型的核心架構中，常提及「Transformer 模型」。這個架構的獨特之處在於它能同時處理句子中的所有詞語，理解詞語之間的關聯性，即使這些詞語在句子中相隔很遠。這使得 LLMs 能夠更深入地理解上下文，並產生更自然、更符合語境的回應。</p>
                 
-                <h3 class="text-lg font-medium mb-3">什麼是 LLMs？</h3>
-                <p class="mb-4">LLMs 是基於深度學習技術的神經網絡，它們被設計用來預測和生成文本。與早期的 AI 系統不同，LLMs 不是基於預定規則運作，而是通過分析大量數據來識別模式並生成回應。</p>
-                
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-                    <div class="concept-card bg-gray-50 p-4 rounded-r-lg pl-6">
-                        <h3 class="font-medium text-gray-800 mb-2">訓練數據</h3>
-                        <p class="text-gray-700">LLMs 透過分析網頁、書籍、文章、社交媒體內容等數十億頁文本進行訓練，從而學習語言和知識。</p>
-                    </div>
-                    
-                    <div class="concept-card bg-gray-50 p-4 rounded-r-lg pl-6">
-                        <h3 class="font-medium text-gray-800 mb-2">參數量</h3>
-                        <p class="text-gray-700">現代 LLMs 通常有數十億到數萬億參數，這些參數是模型在訓練過程中學習和調整的數值。</p>
+                <!-- LLM 工作流程圖 -->
+                <div class="mb-6">
+                    <h3 class="text-lg font-medium text-gray-900 mb-3">LLM 處理流程</h3>
+                    <div class="mermaid">
+                        flowchart LR
+                            A[使用者輸入文字] -->|分詞處理| B[文字轉換為tokens]
+                            B --> C[模型處理tokens]
+                            C -->|預測下一個token| D[產生回應tokens]
+                            D --> E[tokens轉換為文字]
+                            E --> F[顯示給使用者]
+                            
+                            subgraph 模型處理過程
+                            G[注意力機制] --> H[上下文理解]
+                            H --> I[知識提取]
+                            I --> J[回應產生]
+                            end
+                            
+                            C --- G
                     </div>
                 </div>
                 
-                <h3 class="text-lg font-medium mb-3">LLMs 的發展歷程</h3>
-                <p class="mb-4">大型語言模型的發展經歷了幾個關鍵階段：</p>
+                <p class="mb-4">LLMs 的強大能力來自於其接受的「訓練」。透過分析大量的文字資料，模型學習各種語言模式和上下文關係。這使得它們能夠執行多種行銷任務，例如：</p>
+                <ul class="list-disc pl-5 text-gray-700 mb-4">
+                    <li class="mb-2">為內容和行銷活動構思想法</li>
+                    <li class="mb-2">撰寫不同行銷管道所需的文案</li>
+                    <li class="mb-2">總結來自各種來源的資訊</li>
+                    <li class="mb-2">提供視覺內容和設計的建議</li>
+                    <li>將文字翻譯成不同的語言</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Tokens 解析 -->
+        <div class="content-section bg-white shadow overflow-hidden sm:rounded-lg p-6 mb-8">
+            <h2 class="text-xl font-semibold text-gray-900 mb-4">
+                <i class="fas fa-puzzle-piece mr-2 text-[rgb(250,193,9)]"></i>Tokens 解析
+            </h2>
+            <div class="prose max-w-none text-gray-700">
+                <p class="mb-4">Tokens 是大型語言模型處理文字的基本單位。了解 tokens 的概念對於有效使用 AI 工具非常重要。</p>
                 
+                <!-- Tokens 視覺化 -->
                 <div class="bg-gray-50 p-6 rounded-lg mb-6">
-                    <ol class="list-decimal pl-6">
-                        <li class="mb-3">
-                            <span class="font-medium">早期語言模型（2000 年代初）</span>：基於統計方法的簡單模型，如 n-gram 模型，能夠完成基本的語言任務。
+                    <h3 class="text-lg font-medium text-gray-900 mb-3">Tokens 視覺化示例</h3>
+                    <div class="flex flex-col items-center">
+                        <div class="w-full max-w-3xl bg-white p-4 rounded-lg shadow-sm mb-4">
+                            <div class="flex flex-wrap justify-center gap-2">
+                                <div class="bg-blue-100 px-3 py-2 rounded-lg text-blue-800 text-sm font-medium">Hello</div>
+                                <div class="bg-blue-100 px-3 py-2 rounded-lg text-blue-800 text-sm font-medium">world</div>
+                                <div class="bg-blue-100 px-3 py-2 rounded-lg text-blue-800 text-sm font-medium">!</div>
+                            </div>
+                        </div>
+                        <div class="w-full max-w-3xl bg-white p-4 rounded-lg shadow-sm">
+                            <div class="flex flex-wrap justify-center gap-2">
+                                <div class="bg-green-100 px-3 py-2 rounded-lg text-green-800 text-sm font-medium">你</div>
+                                <div class="bg-green-100 px-3 py-2 rounded-lg text-green-800 text-sm font-medium">好</div>
+                                <div class="bg-green-100 px-3 py-2 rounded-lg text-green-800 text-sm font-medium">世</div>
+                                <div class="bg-green-100 px-3 py-2 rounded-lg text-green-800 text-sm font-medium">界</div>
+                                <div class="bg-green-100 px-3 py-2 rounded-lg text-green-800 text-sm font-medium">！</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-center mt-4 text-sm text-gray-600">
+                        <p>英文單詞通常被分割為完整的 tokens，而中文字符通常每個字符都是單獨的 token</p>
+                    </div>
+                </div>
+                
+                <h3 class="text-lg font-medium mb-3">什麼是 Tokens？</h3>
+                <p class="mb-4">Tokens 是文字被分割成的小片段，可能是單詞、部分單詞或標點符號。大型語言模型不直接處理原始文字，而是將文字轉換為 tokens 序列進行處理。</p>
+                
+                <div class="bg-yellow-50 p-6 rounded-lg mb-6">
+                    <h3 class="font-medium text-yellow-800 mb-3">Tokens 的重要性</h3>
+                    <ul class="list-disc pl-6 text-gray-700">
+                        <li class="mb-2">
+                            <span class="font-medium">模型輸入/輸出的計量單位</span>：API 使用 tokens 計費，了解 tokens 可以幫助控制成本。
                         </li>
-                        <li class="mb-3">
-                            <span class="font-medium">深度學習革命（2010 年代初）</span>：引入遞歸神經網絡（RNN）和長短期記憶網絡（LSTM），提升了語言理解能力。
+                        <li class="mb-2">
+                            <span class="font-medium">上下文窗口限制</span>：模型能處理的最大 tokens 數量決定了它能「記住」的對話長度。
                         </li>
-                        <li class="mb-3">
-                            <span class="font-medium">Transformer 架構（2017）</span>：Google 研究人員提出的 Transformer 架構成為現代 LLMs 的基礎，實現了更有效的平行處理和長文本理解。
-                        </li>
-                        <li class="mb-3">
-                            <span class="font-medium">預訓練與微調（2018-2020）</span>：如 BERT 和 GPT 系列的模型採用了預訓練和微調的方法，大幅提升了效能。
+                        <li class="mb-2">
+                            <span class="font-medium">處理效率</span>：tokens 數量影響模型處理速度和資源消耗。
                         </li>
                         <li>
-                            <span class="font-medium">超大型模型（2020 至今）</span>：如 GPT-4、Claude 和 Gemini 等模型達到前所未有的規模和能力，能夠執行複雜的語言理解和生成任務。
+                            <span class="font-medium">多語言處理</span>：不同語言的 tokens 化方式不同，影響模型處理不同語言的效率。
                         </li>
-                    </ol>
+                    </ul>
+                </div>
+                
+                <!-- Tokens 處理流程視覺化 -->
+                <div class="mb-6">
+                    <h3 class="text-lg font-medium text-gray-900 mb-3">Tokens 處理流程</h3>
+                    <div class="mermaid">
+                        flowchart LR
+                            A["原始文字\n'Hello world'"] --> B["分詞處理"]
+                            B --> C["Tokens序列\n['Hello', 'world']"]
+                            C --> D["轉換為數字ID\n[15496, 2159]"]
+                            D --> E["模型處理"]
+                            E --> F["生成回應Tokens"]
+                            F --> G["轉換回文字"]
+                    </div>
+                </div>
+                
+                <h3 class="text-lg font-medium mb-3">Tokens 計算示例</h3>
+                <p class="mb-4">不同的文字內容會被轉換為不同數量的 tokens：</p>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                    <div class="bg-white border border-gray-200 p-4 rounded-lg shadow-sm">
+                        <h4 class="font-medium text-gray-900 mb-2">英文文字</h4>
+                        <p class="text-gray-700 mb-2">"Hello world"</p>
+                        <p class="text-sm text-gray-500">約 2 個 tokens</p>
+                    </div>
+                    
+                    <div class="bg-white border border-gray-200 p-4 rounded-lg shadow-sm">
+                        <h4 class="font-medium text-gray-900 mb-2">中文文字</h4>
+                        <p class="text-gray-700 mb-2">"你好世界"</p>
+                        <p class="text-sm text-gray-500">約 4 個 tokens</p>
+                    </div>
+                </div>
+                
+                <p class="mb-4">一般而言，英文中一個 token 大約等於 4 個字符或 0.75 個單詞。中文和其他非拉丁字母語言通常每個字符需要更多 tokens。</p>
+                
+                <div class="bg-blue-50 p-4 rounded-lg my-4">
+                    <h3 class="text-lg font-medium text-blue-800 mb-2">技術小知識</h3>
+                    <p class="text-blue-700">當您使用 AI 工具時，系統會自動處理 tokens 轉換，您無需手動執行這一步驟。但了解 tokens 的概念可以幫助您更有效地使用這些工具，特別是在處理長文本或需要控制成本時。</p>
                 </div>
             </div>
         </div>
@@ -117,171 +257,107 @@
                 <i class="fas fa-cogs mr-2 text-[rgb(0,144,212)]"></i>Transformer 架構解析
             </h2>
             <div class="prose max-w-none text-gray-700">
-                <p class="mb-4">Transformer 是現代大型語言模型的核心架構，由 Google 研究團隊在 2017 年的論文「Attention Is All You Need」中提出。這種架構摒棄了之前流行的遞歸神經網絡（RNN），採用了一種稱為「自注意力機制」（Self-Attention）的方法，使得模型能夠更有效地處理長文本和捕捉單詞之間的關係。</p>
+                <p class="mb-4">Transformer 是現代大型語言模型的核心架構，它讓 AI 能夠理解人類語言並產生回應。想像一下，Transformer 就像是一個能夠閱讀整段文字，並同時理解所有單詞之間關係的超級大腦。</p>
                 
-                <div class="bg-blue-50 p-6 rounded-lg mb-6">
-                    <h3 class="font-medium text-blue-800 mb-3">Transformer 架構的關鍵組件</h3>
-                    <ul class="list-disc pl-6 text-blue-700">
-                        <li class="mb-2">
-                            <span class="font-medium">自注意力機制</span>：允許模型在處理文本時關注相關單詞，不論它們在句子中的距離有多遠。
-                        </li>
-                        <li class="mb-2">
-                            <span class="font-medium">多頭注意力</span>：使模型能夠同時關注不同的語言特徵和模式。
-                        </li>
-                        <li class="mb-2">
-                            <span class="font-medium">位置編碼</span>：提供單詞在句子中位置的信息，彌補了 Transformer 無法自然捕捉序列順序的缺陷。
-                        </li>
-                        <li class="mb-2">
-                            <span class="font-medium">前饋神經網絡</span>：處理注意力層的輸出，進一步轉換特徵表示。
-                        </li>
-                        <li>
-                            <span class="font-medium">層標準化和殘差連接</span>：幫助穩定訓練過程並減輕梯度消失問題。
-                        </li>
-                    </ul>
-                </div>
-                
-                <h3 class="text-lg font-medium mb-3">自注意力機制的工作原理</h3>
-                <p class="mb-6">自注意力機制是 Transformer 架構的核心，它使模型能夠分析文本中單詞之間的關係：</p>
-                
+                <!-- 簡化的 Transformer 架構視覺化 -->
                 <div class="bg-gray-50 p-6 rounded-lg mb-6">
-                    <ol class="list-decimal pl-6">
-                        <li class="mb-2">每個單詞被轉換為三個向量：查詢(Query)、鍵(Key)和值(Value)</li>
-                        <li class="mb-2">模型計算每個單詞的查詢向量與所有單詞的鍵向量的相似度</li>
-                        <li class="mb-2">這些相似度決定了其他單詞對當前單詞的影響權重</li>
-                        <li>最後，這些權重用於計算值向量的加權總和，生成輸出表示</li>
-                    </ol>
-                </div>
-                
-                <p class="mb-4">這一機制允許模型在處理某個單詞時，關注與其最相關的其他單詞，無論它們在文本中的位置如何。這使得 Transformer 特別擅長處理需要長距離依賴關係的語言任務。</p>
-            </div>
-        </div>
-
-        <!-- 模型能力與未來發展 -->
-        <div class="content-section bg-white shadow overflow-hidden sm:rounded-lg p-6 mb-8">
-            <h2 class="text-xl font-semibold text-gray-900 mb-4">
-                <i class="fas fa-rocket mr-2 text-[rgb(250,193,9)]"></i>模型能力與未來發展
-            </h2>
-            <div class="prose max-w-none text-gray-700">
-                <p class="mb-4">現代 LLMs 展現出越來越強大的能力，但仍然面臨著許多挑戰和局限。了解這些能力和界限對於有效利用這些工具至關重要。</p>
-                
-                <h3 class="text-lg font-medium mb-3">當前 LLMs 的能力</h3>
-                
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-                    <div class="border border-gray-200 p-4 rounded-lg">
-                        <h4 class="font-medium text-gray-900 mb-2">語言理解與生成</h4>
-                        <p class="text-sm text-gray-700">理解複雜指令，生成連貫且上下文相關的回應，模仿各種寫作風格。</p>
-                    </div>
-                    
-                    <div class="border border-gray-200 p-4 rounded-lg">
-                        <h4 class="font-medium text-gray-900 mb-2">知識應用</h4>
-                        <p class="text-sm text-gray-700">從訓練數據中提取和應用廣泛的知識，回答各類問題。</p>
-                    </div>
-                    
-                    <div class="border border-gray-200 p-4 rounded-lg">
-                        <h4 class="font-medium text-gray-900 mb-2">模式識別</h4>
-                        <p class="text-sm text-gray-700">識別語言中的模式，包括語法結構、風格特徵和主題關聯。</p>
-                    </div>
-                    
-                    <div class="border border-gray-200 p-4 rounded-lg">
-                        <h4 class="font-medium text-gray-900 mb-2">多模態整合</h4>
-                        <p class="text-sm text-gray-700">最新的模型能夠處理和生成文本、圖像，甚至簡單的代碼。</p>
+                    <h3 class="text-lg font-medium text-gray-900 mb-3 text-center">Transformer 如何工作？</h3>
+                    <div class="flex justify-center">
+                        <div class="bg-white p-6 rounded-lg shadow-md w-full max-w-3xl">
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
+                                <div class="bg-blue-50 p-4 rounded-lg">
+                                    <div class="bg-blue-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-3">
+                                        <i class="fas fa-eye text-blue-600 text-xl"></i>
+                                    </div>
+                                    <h4 class="font-medium text-gray-900 mb-2">1. 注意力機制</h4>
+                                    <p class="text-sm text-gray-600">AI 能夠「看到」句子中所有單詞，並理解它們之間的關係</p>
+                                </div>
+                                <div class="bg-green-50 p-4 rounded-lg">
+                                    <div class="bg-green-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-3">
+                                        <i class="fas fa-brain text-green-600 text-xl"></i>
+                                    </div>
+                                    <h4 class="font-medium text-gray-900 mb-2">2. 處理資訊</h4>
+                                    <p class="text-sm text-gray-600">AI 同時處理所有資訊，而不是一個單詞接一個單詞</p>
+                                </div>
+                                <div class="bg-purple-50 p-4 rounded-lg">
+                                    <div class="bg-purple-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-3">
+                                        <i class="fas fa-comment-dots text-purple-600 text-xl"></i>
+                                    </div>
+                                    <h4 class="font-medium text-gray-900 mb-2">3. 產生回應</h4>
+                                    <p class="text-sm text-gray-600">AI 根據理解的內容，一個單詞接一個單詞地產生回應</p>
+                                </div>
+                            </div>
+                            <div class="mt-6 text-center text-gray-700">
+                                <p>Transformer 的強大之處在於它能夠「記住」句子中的每個單詞，並理解它們如何相互關聯，即使單詞之間相隔很遠。</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 
-                <h3 class="text-lg font-medium mb-3">當前的局限性</h3>
-                
+                <!-- 簡化的自注意力機制說明 -->
                 <div class="bg-yellow-50 p-6 rounded-lg mb-6">
-                    <ul class="list-disc pl-6 text-yellow-700">
-                        <li class="mb-2">
-                            <span class="font-medium">知識截止點</span>：大多數模型僅具備訓練數據截止日期之前的知識。
-                        </li>
-                        <li class="mb-2">
-                            <span class="font-medium">幻覺生成</span>：可能生成表面上合理但實際上不準確的內容。
-                        </li>
-                        <li class="mb-2">
-                            <span class="font-medium">理解限制</span>：雖然可以模仿理解，但缺乏真正的世界理解和因果推理。
-                        </li>
-                        <li class="mb-2">
-                            <span class="font-medium">上下文窗口</span>：能夠處理的文本長度有限，雖然這一限制正在逐步擴展。
-                        </li>
-                        <li>
-                            <span class="font-medium">偏見反映</span>：可能反映訓練數據中存在的偏見和刻板印象。
-                        </li>
-                    </ul>
+                    <h3 class="text-lg font-medium text-yellow-800 mb-3">自注意力機制：Transformer 的超能力</h3>
+                    <p class="mb-4">自注意力機制是 Transformer 最重要的部分，它讓 AI 能夠同時「看到」並理解句子中所有單詞之間的關係。</p>
+                    
+                    <div class="bg-white p-4 rounded-lg shadow-sm mb-4">
+                        <p class="mb-2 font-medium">舉個例子：</p>
+                        <p class="mb-4">在句子「小明喜歡他的狗，因為<span class="underline">牠</span>很可愛」中，</p>
+                        <ul class="list-disc pl-6 mb-4">
+                            <li>傳統 AI 可能難以理解「牠」指的是「狗」</li>
+                            <li>但有了自注意力機制，Transformer 能夠「看到」「牠」和「狗」之間的關係</li>
+                        </ul>
+                        <p>這就是為什麼現代 AI 能夠產生更流暢、更有意義的回應。</p>
+                    </div>
                 </div>
                 
-                <h3 class="text-lg font-medium mb-3">未來發展趨勢</h3>
-                <p class="mb-4">LLMs 技術正在快速發展，以下是一些可能的未來發展方向：</p>
+                <!-- 編碼器-解碼器簡化說明 -->
+                <div class="bg-blue-50 p-6 rounded-lg mb-6">
+                    <h3 class="text-lg font-medium text-blue-800 mb-3">Transformer 的兩個主要部分</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="bg-white p-4 rounded-lg shadow-sm">
+                            <div class="flex items-center mb-3">
+                                <div class="bg-blue-100 rounded-full w-10 h-10 flex items-center justify-center mr-3">
+                                    <i class="fas fa-book text-blue-600"></i>
+                                </div>
+                                <h4 class="font-medium text-gray-900">編碼器 (Encoder)</h4>
+                            </div>
+                            <p class="text-gray-600">負責「閱讀」和「理解」輸入的文字，就像人類閱讀一段文字並理解其含義。</p>
+                        </div>
+                        <div class="bg-white p-4 rounded-lg shadow-sm">
+                            <div class="flex items-center mb-3">
+                                <div class="bg-green-100 rounded-full w-10 h-10 flex items-center justify-center mr-3">
+                                    <i class="fas fa-pen text-green-600"></i>
+                                </div>
+                                <h4 class="font-medium text-gray-900">解碼器 (Decoder)</h4>
+                            </div>
+                            <p class="text-gray-600">負責「寫出」回應，根據編碼器的理解，一個單詞接一個單詞地產生文字。</p>
+                        </div>
+                    </div>
+                </div>
                 
-                <div class="bg-gray-50 p-6 rounded-lg">
-                    <ul class="list-disc pl-6">
-                        <li class="mb-2">
-                            <span class="font-medium">更強大的多模態能力</span>：未來的模型將更好地整合文本、圖像、音頻和視頻。
-                        </li>
-                        <li class="mb-2">
-                            <span class="font-medium">增強推理能力</span>：改進模型的邏輯推理和因果關係理解。
-                        </li>
-                        <li class="mb-2">
-                            <span class="font-medium">更長的上下文窗口</span>：能夠處理更長的文本和對話歷史。
-                        </li>
-                        <li class="mb-2">
-                            <span class="font-medium">更高效的訓練和推理</span>：開發更節能和計算效率更高的模型。
-                        </li>
-                        <li class="mb-2">
-                            <span class="font-medium">持續學習能力</span>：模型能夠在部署後持續學習和適應新信息。
-                        </li>
-                        <li>
-                            <span class="font-medium">安全性和可控性提升</span>：更好地控制模型輸出，減少有害內容和偏見。
-                        </li>
+                <div class="bg-indigo-50 p-6 rounded-lg">
+                    <h3 class="text-lg font-medium text-indigo-800 mb-3">為什麼 Transformer 如此重要？</h3>
+                    <ul class="list-disc pl-6 text-gray-700">
+                        <li class="mb-2">它讓 AI 能夠理解長文本中的上下文關係</li>
+                        <li class="mb-2">它能夠處理不同語言和各種類型的文本</li>
+                        <li class="mb-2">它是 ChatGPT、Claude 等現代 AI 的核心技術</li>
+                        <li>它徹底改變了 AI 與人類互動的方式</li>
                     </ul>
                 </div>
             </div>
         </div>
 
-        <!-- 延伸閱讀資源 -->
+        <!-- 單元小結 -->
         <div class="bg-white shadow overflow-hidden sm:rounded-lg p-6">
-            <h2 class="text-xl font-semibold text-[rgb(0,80,151)] mb-4">延伸閱讀資源</h2>
-            <div class="space-y-6 text-gray-700">
-                <p>如果您想更深入地了解 LLMs 和 AI 技術，以下是一些值得推薦的資源：</p>
-                
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div class="border border-gray-200 p-4 rounded-lg">
-                        <h3 class="font-medium text-gray-900 mb-2">入門資源</h3>
-                        <ul class="list-disc pl-6 text-sm">
-                            <li class="mb-1">「人工智能：一種現代方法」（Stuart Russell 和 Peter Norvig）</li>
-                            <li class="mb-1">「深度學習」（Ian Goodfellow, Yoshua Bengio 和 Aaron Courville）</li>
-                            <li>「動手學深度學習」在線教程（d2l.ai）</li>
-                        </ul>
-                    </div>
-                    
-                    <div class="border border-gray-200 p-4 rounded-lg">
-                        <h3 class="font-medium text-gray-900 mb-2">技術論文</h3>
-                        <ul class="list-disc pl-6 text-sm">
-                            <li class="mb-1">「Attention Is All You Need」（Transformer 架構的原始論文）</li>
-                            <li class="mb-1">「Language Models are Few-Shot Learners」（GPT-3 論文）</li>
-                            <li>「Training language models to follow instructions with human feedback」（InstructGPT 論文）</li>
-                        </ul>
-                    </div>
-                    
-                    <div class="border border-gray-200 p-4 rounded-lg">
-                        <h3 class="font-medium text-gray-900 mb-2">線上課程</h3>
-                        <ul class="list-disc pl-6 text-sm">
-                            <li class="mb-1">Stanford CS224N: Natural Language Processing with Deep Learning</li>
-                            <li class="mb-1">DeepLearning.AI 的「Deep Learning Specialization」</li>
-                            <li>Fast.ai 的「Practical Deep Learning for Coders」</li>
-                        </ul>
-                    </div>
-                    
-                    <div class="border border-gray-200 p-4 rounded-lg">
-                        <h3 class="font-medium text-gray-900 mb-2">博客和網站</h3>
-                        <ul class="list-disc pl-6 text-sm">
-                            <li class="mb-1">Hugging Face 的 blog 和文檔</li>
-                            <li class="mb-1">OpenAI 和 Anthropic 的研究博客</li>
-                            <li>「The Gradient」和「Distill.pub」等 AI 研究刊物</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
+            <h2 class="text-xl font-semibold text-gray-900 mb-4">單元小結</h2>
+            <p class="text-gray-700 mb-3">在這個單元中，我們了解了：</p>
+            <ul class="list-disc pl-5 text-gray-700 mb-4">
+                <li class="mb-2">大型語言模型的工作流程：從使用者輸入到模型處理再到產生回應的完整過程</li>
+                <li class="mb-2">LLM 的核心技術：Transformer 架構及其處理文字的方式</li>
+                <li class="mb-2">Tokens 的概念：AI 處理文字的基本單位及其重要性</li>
+                <li>Transformer 架構的關鍵組件：自注意力機制如何使模型理解文字間的關聯</li>
+            </ul>
+            <p class="text-gray-700">這些知識將幫助您更好地理解 AI 工具的運作方式，從而更有效地利用它們進行行銷工作。</p>
         </div>
     </main>
 
@@ -289,20 +365,36 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex flex-col md:flex-row justify-between items-center">
                 <div class="mb-4 md:mb-0">
-                    <p>&copy; 2025 行銷初學者的 AI 教學</p>
+                    <p class="text-sm"> 2025 神腦國際企業股份有限公司. 版權所有.</p>
                 </div>
-                <div class="flex space-x-6">
-                    <a href="ai-marketing-credits.html" class="text-[rgb(203,211,0)] hover:text-white">製作說明與來源</a>
-                    <a href="index.html" class="text-[rgb(203,211,0)] hover:text-white">回到首頁</a>
+                <div class="flex space-x-4">
+                    <a href="#" class="text-white hover:text-[rgb(203,211,0)]">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="#" class="text-white hover:text-[rgb(203,211,0)]">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="#" class="text-white hover:text-[rgb(203,211,0)]">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="#" class="text-white hover:text-[rgb(203,211,0)]">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
                 </div>
             </div>
         </div>
     </footer>
 
     <script>
-        // JavaScript for any interactive elements can be added here
         document.addEventListener('DOMContentLoaded', function() {
-            console.log('Page loaded successfully');
+            mermaid.initialize({
+                startOnLoad: true,
+                theme: 'neutral',
+                flowchart: {
+                    useMaxWidth: true,
+                    htmlLabels: true
+                }
+            });
         });
     </script>
 </body>
