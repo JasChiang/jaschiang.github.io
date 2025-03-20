@@ -22,34 +22,35 @@
             box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
         }
         .highlight-text {
-            background: linear-gradient(120deg, rgba(129, 140, 248, 0.2), rgba(129, 140, 248, 0.2));
+            background: linear-gradient(120deg, rgba(0, 144, 212, 0.2), rgba(0, 144, 212, 0.2));
             background-repeat: no-repeat;
             background-size: 100% 40%;
             background-position: 0 90%;
         }
         .quote-box {
-            border-left: 4px solid #3b82f6;
+            border-left: 4px solid rgb(0, 80, 151);
             background-color: #f3f4f6;
         }
-        .mermaid {
-            background-color: white;
-            padding: 1rem;
-            border-radius: 0.5rem;
-            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
-            margin: 1rem 0;
+        :root {
+            --senao-deep-blue: rgb(0, 80, 151);    /* Pantone 294 C */
+            --senao-green: rgb(203, 211, 0);       /* Pantone 390 C */
+            --senao-blue: rgb(0, 144, 212);        /* Pantone 2925 C */
+            --senao-yellow: rgb(250, 193, 9);      /* Pantone 1235 C */
+            --senao-pink: rgb(230, 72, 148);       /* Pantone 225 C */
+            --senao-silver: rgb(181, 181, 182);    /* Pantone 877C */
         }
     </style>
 </head>
 <body class="bg-gray-50">
-    <header class="bg-white shadow-sm sticky top-0 z-10">
+    <header class="bg-[rgb(0,80,151)] shadow-sm sticky top-0 z-10">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
             <div class="flex justify-between items-center">
-                <h1 class="text-3xl font-bold text-gray-900">ChatGPT 與 Claude 基本原理</h1>
+                <h1 class="text-3xl font-bold text-white">ChatGPT 與 Claude 基本原理</h1>
                 <div class="flex space-x-4">
-                    <a href="ai-marketing-course.html" class="text-blue-600 hover:text-blue-800 flex items-center">
-                        <i class="fas fa-arrow-left mr-2"></i>返回課程
+                    <a href="ai-marketing-course.html" class="text-[rgb(203,211,0)] hover:text-white flex items-center">
+                        <i class="fas fa-arrow-left mr-2"></i>回到課程
                     </a>
-                    <a href="index.html" class="text-blue-600 hover:text-blue-800 flex items-center">
+                    <a href="index.html" class="text-[rgb(203,211,0)] hover:text-white flex items-center">
                         <i class="fas fa-home mr-2"></i>回到首頁
                     </a>
                 </div>
@@ -123,7 +124,7 @@
         <div class="space-y-8">
             <section id="llm-basics" class="content-section bg-white shadow overflow-hidden sm:rounded-lg p-6">
                 <h2 class="text-xl font-semibold text-gray-900 mb-4">
-                    <i class="fas fa-microchip mr-2 text-purple-500"></i>大型語言模型的核心技術
+                    <i class="fas fa-microchip mr-2 text-[rgb(0,80,151)]"></i>大型語言模型的核心技術
                 </h2>
                 <p class="text-gray-700 mb-3">這些模型的核心架構中，常提及「Transformer 模型」。這個架構的獨特之處在於它能同時處理句子中的所有詞語，理解詞語之間的關聯性，即使這些詞語在句子中相隔很遠。這使得 LLMs 能夠更深入地理解上下文，並產生更自然、更符合語境的回應。</p>
                 
@@ -165,7 +166,7 @@
 
             <section id="token-explanation" class="content-section bg-white shadow overflow-hidden sm:rounded-lg p-6">
                 <h2 class="text-xl font-semibold text-gray-900 mb-4">
-                    <i class="fas fa-puzzle-piece mr-2 text-green-500"></i>理解 Tokens：LLM 的基本單位
+                    <i class="fas fa-puzzle-piece mr-2 text-[rgb(203,211,0)]"></i>理解 Tokens：LLM 的基本單位
                 </h2>
                 <p class="text-gray-700 mb-3">大型語言模型將文字分解為稱為「tokens」的小文字塊。當使用者與模型對話時，實際上是在構建一個一維的 token 序列。</p>
                 
@@ -210,7 +211,7 @@
 
             <section id="transformer-architecture" class="content-section bg-white shadow overflow-hidden sm:rounded-lg p-6">
                 <h2 class="text-xl font-semibold text-gray-900 mb-4">
-                    <i class="fas fa-network-wired mr-2 text-blue-500"></i>Transformer 模型架構
+                    <i class="fas fa-network-wired mr-2 text-[rgb(0,144,212)]"></i>Transformer 模型架構
                 </h2>
                 <p class="text-gray-700 mb-6">ChatGPT 和 Claude 都基於 Transformer 架構，這是一種革命性的深度學習架構，特別適合處理序列數據（如文字）。以下是 Transformer 架構的關鍵組件：</p>
                 
@@ -270,7 +271,7 @@
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                     <div class="bg-white p-4 rounded-lg border border-gray-200 shadow-sm">
                         <div class="flex items-center mb-2">
-                            <i class="fas fa-lock text-blue-500 mr-2"></i>
+                            <i class="fas fa-lock text-[rgb(0,80,151)] mr-2"></i>
                             <h3 class="font-medium text-gray-900">自注意力機制</h3>
                         </div>
                         <p class="text-sm text-gray-600">允許模型同時關注輸入序列的所有位置</p>
@@ -287,7 +288,7 @@
 
             <section id="chatgpt-claude-comparison" class="content-section bg-white shadow overflow-hidden sm:rounded-lg p-6">
                 <h2 class="text-xl font-semibold text-gray-900 mb-4">
-                    <i class="fas fa-balance-scale mr-2 text-indigo-500"></i>ChatGPT 與 Claude 的比較
+                    <i class="fas fa-balance-scale mr-2 text-[rgb(230,72,148)]"></i>ChatGPT 與 Claude 的比較
                 </h2>
                 <p class="text-gray-700 mb-3">雖然 ChatGPT 和 Claude 都是基於大型語言模型的 AI 助手，但它們在某些方面有所不同。了解這些差異有助於根據特定需求選擇最合適的工具。</p>
                 
@@ -345,7 +346,7 @@
 
             <section id="marketing-capabilities" class="content-section bg-white shadow overflow-hidden sm:rounded-lg p-6">
                 <h2 class="text-xl font-semibold text-gray-900 mb-4">
-                    <i class="fas fa-bullhorn mr-2 text-red-500"></i>在行銷中的核心能力
+                    <i class="fas fa-bullhorn mr-2 text-[rgb(250,193,9)]"></i>在行銷中的核心能力
                 </h2>
                 <p class="text-gray-700 mb-3">大型語言模型在行銷領域展現出多種實用能力，以下是一些核心功能：</p>
                 
@@ -426,15 +427,18 @@
         </div>
     </main>
 
-    <footer class="bg-gray-800 text-white py-8">
+    <footer class="bg-[rgb(0,80,151)] text-white py-8">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center">
-                <p>&copy; 2025 行銷初學者的 AI 教學</p>
                 <div class="flex space-x-4">
-                    <a href="ai-marketing-course.html" class="text-blue-300 hover:text-blue-100">返回課程</a>
-                    <a href="ai-marketing-credits.html" class="text-blue-300 hover:text-blue-100">製作說明</a>
-                    <a href="index.html" class="text-blue-300 hover:text-blue-100">回到首頁</a>
+                    <a href="ai-marketing-course.html" class="text-[rgb(203,211,0)] hover:text-white flex items-center">
+                        <i class="fas fa-arrow-left mr-2"></i>回到課程
+                    </a>
+                    <a href="index.html" class="text-[rgb(203,211,0)] hover:text-white flex items-center">
+                        <i class="fas fa-home mr-2"></i>回到首頁
+                    </a>
                 </div>
+                <p class="text-sm">&copy; 2025 行銷初學者的 AI 教學</p>
             </div>
         </div>
     </footer>

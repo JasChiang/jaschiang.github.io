@@ -20,32 +20,35 @@
             box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
         }
         .highlight-text {
-            background: linear-gradient(120deg, rgba(129, 140, 248, 0.2), rgba(129, 140, 248, 0.2));
+            background: linear-gradient(120deg, rgba(0, 144, 212, 0.2), rgba(0, 144, 212, 0.2));
             background-repeat: no-repeat;
             background-size: 100% 40%;
             background-position: 0 90%;
         }
         .quote-box {
-            border-left: 4px solid #3b82f6;
+            border-left: 4px solid rgb(0, 80, 151);
             background-color: #f3f4f6;
         }
-        .example-box {
-            border: 1px solid #e5e7eb;
-            border-radius: 0.5rem;
-            background-color: #f9fafb;
+        :root {
+            --senao-deep-blue: rgb(0, 80, 151);    /* Pantone 294 C */
+            --senao-green: rgb(203, 211, 0);       /* Pantone 390 C */
+            --senao-blue: rgb(0, 144, 212);        /* Pantone 2925 C */
+            --senao-yellow: rgb(250, 193, 9);      /* Pantone 1235 C */
+            --senao-pink: rgb(230, 72, 148);       /* Pantone 225 C */
+            --senao-silver: rgb(181, 181, 182);    /* Pantone 877C */
         }
     </style>
 </head>
 <body class="bg-gray-50">
-    <header class="bg-white shadow-sm sticky top-0 z-10">
+    <header class="bg-[rgb(0,80,151)] shadow-sm sticky top-0 z-10">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
             <div class="flex justify-between items-center">
-                <h1 class="text-3xl font-bold text-gray-900">行銷職能中的實際應用</h1>
+                <h1 class="text-3xl font-bold text-white">行銷職能中的實際應用</h1>
                 <div class="flex space-x-4">
-                    <a href="ai-marketing-course.html" class="text-blue-600 hover:text-blue-800 flex items-center">
-                        <i class="fas fa-arrow-left mr-2"></i>返回課程
+                    <a href="ai-marketing-course.html" class="text-[rgb(203,211,0)] hover:text-white flex items-center">
+                        <i class="fas fa-arrow-left mr-2"></i>回到課程
                     </a>
-                    <a href="index.html" class="text-blue-600 hover:text-blue-800 flex items-center">
+                    <a href="index.html" class="text-[rgb(203,211,0)] hover:text-white flex items-center">
                         <i class="fas fa-home mr-2"></i>回到首頁
                     </a>
                 </div>
@@ -70,7 +73,7 @@
                         <tr class="hover:bg-gray-50">
                             <td class="py-3 px-4 border-b">
                                 <div class="flex items-center">
-                                    <i class="fas fa-pencil-alt text-blue-500 mr-2"></i>
+                                    <i class="fas fa-pencil-alt text-[rgb(0,80,151)] mr-2"></i>
                                     <span class="font-medium">內容創作</span>
                                 </div>
                             </td>
@@ -124,7 +127,7 @@
                         <tr class="hover:bg-gray-50">
                             <td class="py-3 px-4 border-b">
                                 <div class="flex items-center">
-                                    <i class="fas fa-users text-red-500 mr-2"></i>
+                                    <i class="fas fa-users text-[rgb(203,211,0)] mr-2"></i>
                                     <span class="font-medium">客戶服務</span>
                                 </div>
                             </td>
@@ -178,7 +181,7 @@
                         <tr class="hover:bg-gray-50">
                             <td class="py-3 px-4 border-b">
                                 <div class="flex items-center">
-                                    <i class="fas fa-search text-purple-500 mr-2"></i>
+                                    <i class="fas fa-search text-[rgb(0,144,212)] mr-2"></i>
                                     <span class="font-medium">SEO 優化</span>
                                 </div>
                             </td>
@@ -218,8 +221,8 @@
                             <div class="flex flex-col md:flex-row justify-between items-center mb-8">
                                 <!-- 步驟 1: 策略規劃 -->
                                 <div class="bg-white p-4 rounded-lg shadow-md mb-4 md:mb-0 md:w-1/5 text-center">
-                                    <div class="bg-blue-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-2">
-                                        <i class="fas fa-lightbulb text-blue-600 text-xl"></i>
+                                    <div class="bg-[rgb(0,80,151)] bg-opacity-10 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-2">
+                                        <i class="fas fa-lightbulb text-[rgb(0,80,151)] text-xl"></i>
                                     </div>
                                     <h3 class="font-medium text-gray-900">1. 策略規劃</h3>
                                     <p class="text-xs text-gray-600 mt-1">AI 協助分析市場趨勢和競爭對手</p>
@@ -316,7 +319,7 @@
         <div class="space-y-8">
             <section id="content-creation" class="content-section bg-white shadow overflow-hidden sm:rounded-lg p-6">
                 <h2 class="text-xl font-semibold text-gray-900 mb-4">
-                    <i class="fas fa-pen-fancy mr-2 text-purple-500"></i>內容創作與文案撰寫
+                    <i class="fas fa-pen-fancy mr-2 text-[rgb(0,80,151)]"></i>內容創作與文案撰寫
                 </h2>
                 <p class="text-gray-700 mb-3">內容創作是 AI 工具最常見且最強大的應用領域之一。ChatGPT 與 Claude 可以協助行銷人員快速產生各種類型的內容，從部落格文章到產品描述，從社群媒體貼文到電子郵件主旨列。</p>
                 
@@ -386,12 +389,12 @@
                     </div>
                 </div>
                 
-                <p class="text-gray-700">透過 AI 輔助內容創作，行銷人員可以將更多精力放在策略思考和創意發想上，而將繁瑣的文字產生工作交給 AI 處理。不過，人類編輯仍然是必要的，以確保內容符合品牌調性、事實正確性和創意獨特性。</p>
+                <p class="text-gray-700">透過 AI 輔助內容創作，行銷人員可以將更多精力放在策略思考和創意發想上，而將繁瑣的文字產生工作交給 AI 處理。不過，人類的創意思考、策略規劃和最終審核仍然不可或缺。AI 應被視為強大的輔助工具，而非完全替代人類行銷專業人員的解決方案。</p>
             </section>
 
             <section id="social-media" class="content-section bg-white shadow overflow-hidden sm:rounded-lg p-6">
                 <h2 class="text-xl font-semibold text-gray-900 mb-4">
-                    <i class="fas fa-hashtag mr-2 text-blue-500"></i>社群媒體管理
+                    <i class="fas fa-hashtag mr-2 text-[rgb(203,211,0)]"></i>社群媒體管理
                 </h2>
                 <p class="text-gray-700 mb-3">社群媒體行銷需要持續產出大量內容，同時還要保持創意和互動性。AI 工具可以在多個方面協助社群媒體管理者提升效率：</p>
                 
@@ -457,7 +460,7 @@
 
             <section id="email-marketing" class="content-section bg-white shadow overflow-hidden sm:rounded-lg p-6">
                 <h2 class="text-xl font-semibold text-gray-900 mb-4">
-                    <i class="fas fa-envelope mr-2 text-green-500"></i>電子郵件行銷
+                    <i class="fas fa-envelope mr-2 text-[rgb(0,144,212)]"></i>電子郵件行銷
                 </h2>
                 <p class="text-gray-700 mb-3">電子郵件行銷仍然是最有效的數位行銷渠道之一，而 AI 工具可以顯著提升電子郵件活動的效率和效果：</p>
                 
@@ -550,15 +553,18 @@
         </div>
     </main>
 
-    <footer class="bg-gray-800 text-white py-8">
+    <footer class="bg-[rgb(0,80,151)] text-white py-8">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center">
-                <p>&copy; 2025 行銷初學者的 AI 教學</p>
                 <div class="flex space-x-4">
-                    <a href="ai-marketing-course.html" class="text-blue-300 hover:text-blue-100">返回課程</a>
-                    <a href="ai-marketing-credits.html" class="text-blue-300 hover:text-blue-100">製作說明</a>
-                    <a href="index.html" class="text-blue-300 hover:text-blue-100">回到首頁</a>
+                    <a href="ai-marketing-course.html" class="text-[rgb(203,211,0)] hover:text-white flex items-center">
+                        <i class="fas fa-arrow-left mr-2"></i>回到課程
+                    </a>
+                    <a href="index.html" class="text-[rgb(203,211,0)] hover:text-white flex items-center">
+                        <i class="fas fa-home mr-2"></i>回到首頁
+                    </a>
                 </div>
+                <p class="text-sm">&copy; 2025 行銷初學者的 AI 教學</p>
             </div>
         </div>
     </footer>

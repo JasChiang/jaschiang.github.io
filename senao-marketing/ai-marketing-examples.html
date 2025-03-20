@@ -20,20 +20,28 @@
             box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
         }
         .case-study {
-            border-left: 4px solid #3b82f6;
+            border-left: 4px solid rgb(0, 80, 151);
+        }
+        :root {
+            --senao-deep-blue: rgb(0, 80, 151);    /* Pantone 294 C */
+            --senao-green: rgb(203, 211, 0);       /* Pantone 390 C */
+            --senao-blue: rgb(0, 144, 212);        /* Pantone 2925 C */
+            --senao-yellow: rgb(250, 193, 9);      /* Pantone 1235 C */
+            --senao-pink: rgb(230, 72, 148);       /* Pantone 225 C */
+            --senao-silver: rgb(181, 181, 182);    /* Pantone 877C */
         }
     </style>
 </head>
 <body class="bg-gray-50">
-    <header class="bg-white shadow-sm sticky top-0 z-10">
+    <header class="bg-[rgb(0,80,151)] shadow-sm sticky top-0 z-10">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
             <div class="flex justify-between items-center">
-                <h1 class="text-3xl font-bold text-gray-900">案例研究與實例</h1>
+                <h1 class="text-3xl font-bold text-white">案例研究與實例</h1>
                 <div class="flex space-x-4">
-                    <a href="ai-marketing-course.html" class="text-blue-600 hover:text-blue-800 flex items-center">
-                        <i class="fas fa-arrow-left mr-2"></i>返回課程
+                    <a href="ai-marketing-course.html" class="text-[rgb(203,211,0)] hover:text-white flex items-center">
+                        <i class="fas fa-arrow-left mr-2"></i>回到課程
                     </a>
-                    <a href="index.html" class="text-blue-600 hover:text-blue-800 flex items-center">
+                    <a href="index.html" class="text-[rgb(203,211,0)] hover:text-white flex items-center">
                         <i class="fas fa-home mr-2"></i>回到首頁
                     </a>
                 </div>
@@ -44,8 +52,8 @@
     <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div class="bg-white shadow overflow-hidden sm:rounded-lg mb-8">
             <div class="px-4 py-5 sm:px-6">
-                <h2 class="text-xl font-semibold text-gray-900">實際案例與成功故事</h2>
-                <p class="mt-1 max-w-2xl text-sm text-gray-500">探索行銷團隊如何成功運用 AI 工具提升效率與創造力</p>
+                <h2 class="text-xl font-semibold text-[rgb(0,80,151)]">實際案例與成功故事</h2>
+                <p class="mt-1 max-w-2xl text-sm text-[rgb(0,144,212)]">探索行銷團隊如何成功運用 AI 工具提升效率與創造力</p>
             </div>
             <div class="border-t border-gray-200 px-4 py-5 sm:px-6">
                 <p class="text-gray-700 mb-4">理論知識固然重要，但真實案例往往能提供更直觀的啟發。本單元將展示幾個行銷團隊成功運用 ChatGPT 與 Claude 的案例，從內容創作到社群媒體管理，從市場研究到客戶服務，這些案例涵蓋了行銷的各個層面。</p>
@@ -56,7 +64,7 @@
         <div class="space-y-8">
             <section id="case-study-1" class="content-section bg-white shadow overflow-hidden sm:rounded-lg p-6">
                 <h2 class="text-xl font-semibold text-gray-900 mb-4">
-                    <i class="fas fa-briefcase mr-2 text-blue-500"></i>案例一：電子商務品牌的內容策略革新
+                    <i class="fas fa-briefcase mr-2 text-[rgb(0,80,151)]"></i>案例一：電子商務品牌的內容策略革新
                 </h2>
                 
                 <div class="case-study bg-blue-50 p-4 rounded-lg mb-6">
@@ -118,7 +126,7 @@
 
             <section id="case-study-2" class="content-section bg-white shadow overflow-hidden sm:rounded-lg p-6">
                 <h2 class="text-xl font-semibold text-gray-900 mb-4">
-                    <i class="fas fa-bullhorn mr-2 text-green-500"></i>案例二：B2B 科技公司的社群媒體轉型
+                    <i class="fas fa-bullhorn mr-2 text-[rgb(203,211,0)]"></i>案例二：B2B 科技公司的社群媒體轉型
                 </h2>
                 
                 <div class="case-study bg-green-50 p-4 rounded-lg mb-6">
@@ -181,7 +189,7 @@
 
             <section id="case-study-3" class="content-section bg-white shadow overflow-hidden sm:rounded-lg p-6">
                 <h2 class="text-xl font-semibold text-gray-900 mb-4">
-                    <i class="fas fa-envelope-open-text mr-2 text-purple-500"></i>案例三：旅遊品牌的個人化電子郵件行銷
+                    <i class="fas fa-envelope-open-text mr-2 text-[rgb(0,144,212)]"></i>案例三：旅遊品牌的個人化電子郵件行銷
                 </h2>
                 
                 <div class="case-study bg-purple-50 p-4 rounded-lg mb-6">
@@ -250,7 +258,7 @@
         </div>
 
         <div class="bg-white shadow overflow-hidden sm:rounded-lg mt-8 p-6">
-            <h2 class="text-xl font-semibold text-gray-900 mb-4">案例研究關鍵啟示</h2>
+            <h2 class="text-xl font-semibold text-[rgb(0,80,151)] mb-4">案例研究關鍵啟示</h2>
             <p class="text-gray-700 mb-3">從這些案例中，我們可以總結出幾個關鍵啟示：</p>
             <ul class="list-disc pl-5 text-gray-700 mb-4">
                 <li class="mb-2"><strong>人機協作：</strong>最成功的案例都是人類和 AI 協同工作的結果，而非完全依賴 AI</li>
@@ -258,6 +266,28 @@
                 <li class="mb-2"><strong>持續學習：</strong>不斷優化提示詞和方法，根據結果進行調整</li>
                 <li><strong>策略先行：</strong>AI 是實現策略目標的工具，而非策略本身</li>
             </ul>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="bg-[rgb(0,80,151)] bg-opacity-5 p-4 rounded-lg">
+                    <h3 class="font-medium text-[rgb(0,80,151)] mb-2">策略性應用</h3>
+                    <p class="text-sm text-gray-700">AI 工具應該根據具體目標和需求來選擇和應用，而不是盲目追隨趨勢。</p>
+                </div>
+                
+                <div class="bg-[rgb(203,211,0)] bg-opacity-5 p-4 rounded-lg">
+                    <h3 class="font-medium text-[rgb(0,80,151)] mb-2">人機協作</h3>
+                    <p class="text-sm text-gray-700">最佳結果來自於 AI 與人類專業知識的結合，而不是完全依賴 AI。</p>
+                </div>
+                
+                <div class="bg-[rgb(0,144,212)] bg-opacity-5 p-4 rounded-lg">
+                    <h3 class="font-medium text-[rgb(0,80,151)] mb-2">持續優化</h3>
+                    <p class="text-sm text-gray-700">透過數據分析和用戶反饋不斷改進 AI 使用策略和提示詞。</p>
+                </div>
+                
+                <div class="bg-[rgb(250,193,9)] bg-opacity-5 p-4 rounded-lg">
+                    <h3 class="font-medium text-[rgb(0,80,151)] mb-2">規模化效益</h3>
+                    <p class="text-sm text-gray-700">AI 工具能夠幫助團隊實現工作流程的規模化，同時保持內容品質。</p>
+                </div>
+            </div>
             
             <div class="bg-yellow-50 p-4 rounded-lg my-4">
                 <h3 class="text-lg font-medium text-yellow-800 mb-2">實施建議</h3>
@@ -277,14 +307,18 @@
         </div>
     </main>
 
-    <footer class="bg-gray-800 text-white py-8">
+    <footer class="bg-[rgb(0,80,151)] text-white py-8">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center">
-                <p>&copy; 2025 行銷初學者的 AI 教學</p>
                 <div class="flex space-x-4">
-                    <a href="ai-marketing-course.html" class="text-blue-300 hover:text-blue-100">返回課程</a>
-                    <a href="index.html" class="text-blue-300 hover:text-blue-100">回到首頁</a>
+                    <a href="ai-marketing-course.html" class="text-[rgb(203,211,0)] hover:text-white flex items-center">
+                        <i class="fas fa-arrow-left mr-2"></i>回到課程
+                    </a>
+                    <a href="index.html" class="text-[rgb(203,211,0)] hover:text-white flex items-center">
+                        <i class="fas fa-home mr-2"></i>回到首頁
+                    </a>
                 </div>
+                <p class="text-sm">&copy; 2025 行銷初學者的 AI 教學</p>
             </div>
         </div>
     </footer>
