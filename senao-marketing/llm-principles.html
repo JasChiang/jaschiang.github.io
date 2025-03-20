@@ -122,37 +122,72 @@
                 <i class="fas fa-microchip mr-2 text-[rgb(0,80,151)]"></i>大型語言模型的核心技術
             </h2>
             <div class="prose max-w-none text-gray-700">
-                <p class="mb-4">大型語言模型的核心架構中，常提及「Transformer 模型」。這個架構的獨特之處在於它能同時處理句子中的所有詞語，理解詞語之間的關聯性，即使這些詞語在句子中相隔很遠。這使得 LLMs 能夠更深入地理解上下文，並產生更自然、更符合語境的回應。</p>
+                <p class="mb-4">大型語言模型（LLM）如 ChatGPT 和 Claude 的強大能力來自於幾項關鍵技術。讓我們用簡單的方式來理解它們：</p>
                 
-                <!-- LLM 工作流程圖 -->
-                <div class="mb-6">
-                    <h3 class="text-lg font-medium text-gray-900 mb-3">LLM 處理流程</h3>
-                    <div class="mermaid">
-                        flowchart LR
-                            A[使用者輸入文字] -->|分詞處理| B[文字轉換為tokens]
-                            B --> C[模型處理tokens]
-                            C -->|預測下一個token| D[產生回應tokens]
-                            D --> E[tokens轉換為文字]
-                            E --> F[顯示給使用者]
-                            
-                            subgraph 模型處理過程
-                            G[注意力機制] --> H[上下文理解]
-                            H --> I[知識提取]
-                            I --> J[回應產生]
-                            end
-                            
-                            C --- G
+                <!-- 簡化的核心技術說明 -->
+                <div class="bg-gray-50 p-6 rounded-lg mb-6">
+                    <h3 class="text-lg font-medium text-gray-900 mb-3 text-center">大型語言模型如何運作？</h3>
+                    <div class="flex justify-center">
+                        <div class="bg-white p-6 rounded-lg shadow-md w-full max-w-3xl">
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
+                                <div class="bg-blue-50 p-4 rounded-lg">
+                                    <div class="bg-blue-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-3">
+                                        <i class="fas fa-book text-blue-600 text-xl"></i>
+                                    </div>
+                                    <h4 class="font-medium text-gray-900 mb-2">1. 大量學習</h4>
+                                    <p class="text-sm text-gray-600">AI 透過閱讀網路上的大量文字來學習語言模式</p>
+                                </div>
+                                <div class="bg-purple-50 p-4 rounded-lg">
+                                    <div class="bg-purple-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-3">
+                                        <i class="fas fa-brain text-purple-600 text-xl"></i>
+                                    </div>
+                                    <h4 class="font-medium text-gray-900 mb-2">2. 預測能力</h4>
+                                    <p class="text-sm text-gray-600">AI 學會預測「下一個詞」最可能是什麼</p>
+                                </div>
+                                <div class="bg-green-50 p-4 rounded-lg">
+                                    <div class="bg-green-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-3">
+                                        <i class="fas fa-sync-alt text-green-600 text-xl"></i>
+                                    </div>
+                                    <h4 class="font-medium text-gray-900 mb-2">3. 不斷改進</h4>
+                                    <p class="text-sm text-gray-600">透過人類反饋，AI 學會產生更有用的回應</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 
-                <p class="mb-4">LLMs 的強大能力來自於其接受的「訓練」。透過分析大量的文字資料，模型學習各種語言模式和上下文關係。這使得它們能夠執行多種行銷任務，例如：</p>
-                <ul class="list-disc pl-5 text-gray-700 mb-4">
-                    <li class="mb-2">為內容和行銷活動構思想法</li>
-                    <li class="mb-2">撰寫不同行銷管道所需的文案</li>
-                    <li class="mb-2">總結來自各種來源的資訊</li>
-                    <li class="mb-2">提供視覺內容和設計的建議</li>
-                    <li>將文字翻譯成不同的語言</li>
-                </ul>
+                <div class="bg-yellow-50 p-6 rounded-lg mb-6">
+                    <h3 class="text-lg font-medium text-yellow-800 mb-3">大型語言模型的關鍵特點</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="bg-white p-4 rounded-lg shadow-sm">
+                            <h4 class="font-medium text-gray-900 mb-2">理解上下文</h4>
+                            <p class="text-gray-600">AI 能夠「記住」對話中之前的內容，讓對話更自然流暢</p>
+                        </div>
+                        <div class="bg-white p-4 rounded-lg shadow-sm">
+                            <h4 class="font-medium text-gray-900 mb-2">多語言能力</h4>
+                            <p class="text-gray-600">AI 能夠理解並生成多種語言的文字</p>
+                        </div>
+                        <div class="bg-white p-4 rounded-lg shadow-sm">
+                            <h4 class="font-medium text-gray-900 mb-2">知識豐富</h4>
+                            <p class="text-gray-600">AI 在訓練過程中學習了大量的事實和資訊</p>
+                        </div>
+                        <div class="bg-white p-4 rounded-lg shadow-sm">
+                            <h4 class="font-medium text-gray-900 mb-2">創意能力</h4>
+                            <p class="text-gray-600">AI 能夠生成創意內容，如故事、詩歌或行銷文案</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-blue-50 p-6 rounded-lg">
+                    <h3 class="text-lg font-medium text-blue-800 mb-3">為什麼這些技術如此重要？</h3>
+                    <p class="mb-4">這些技術讓 AI 能夠：</p>
+                    <ul class="list-disc pl-6 text-gray-700">
+                        <li class="mb-2">像人類一樣理解並回應問題</li>
+                        <li class="mb-2">幫助撰寫各種類型的文字內容</li>
+                        <li class="mb-2">協助翻譯和總結長文本</li>
+                        <li>提供有用的建議和解決方案</li>
+                    </ul>
+                </div>
             </div>
         </div>
 
@@ -162,91 +197,110 @@
                 <i class="fas fa-puzzle-piece mr-2 text-[rgb(250,193,9)]"></i>Tokens 解析
             </h2>
             <div class="prose max-w-none text-gray-700">
-                <p class="mb-4">Tokens 是大型語言模型處理文字的基本單位。了解 tokens 的概念對於有效使用 AI 工具非常重要。</p>
+                <p class="mb-4">Tokens 是大型語言模型處理文字的基本單位。簡單來說，就是 AI 將文字切成小塊來處理的方式。</p>
                 
                 <!-- Tokens 視覺化 -->
                 <div class="bg-gray-50 p-6 rounded-lg mb-6">
-                    <h3 class="text-lg font-medium text-gray-900 mb-3">Tokens 視覺化示例</h3>
+                    <h3 class="text-lg font-medium text-gray-900 mb-3 text-center">Tokens 是什麼？想像文字拼圖</h3>
                     <div class="flex flex-col items-center">
                         <div class="w-full max-w-3xl bg-white p-4 rounded-lg shadow-sm mb-4">
+                            <p class="text-center mb-3 text-gray-700">當你輸入「我喜歡吃蘋果」，AI 會將它分解為：</p>
                             <div class="flex flex-wrap justify-center gap-2">
-                                <div class="bg-blue-100 px-3 py-2 rounded-lg text-blue-800 text-sm font-medium">Hello</div>
-                                <div class="bg-blue-100 px-3 py-2 rounded-lg text-blue-800 text-sm font-medium">world</div>
-                                <div class="bg-blue-100 px-3 py-2 rounded-lg text-blue-800 text-sm font-medium">!</div>
+                                <div class="bg-blue-100 px-3 py-2 rounded-lg text-blue-800 text-sm font-medium">我</div>
+                                <div class="bg-blue-100 px-3 py-2 rounded-lg text-blue-800 text-sm font-medium">喜歡</div>
+                                <div class="bg-blue-100 px-3 py-2 rounded-lg text-blue-800 text-sm font-medium">吃</div>
+                                <div class="bg-blue-100 px-3 py-2 rounded-lg text-blue-800 text-sm font-medium">蘋果</div>
                             </div>
                         </div>
                         <div class="w-full max-w-3xl bg-white p-4 rounded-lg shadow-sm">
+                            <p class="text-center mb-3 text-gray-700">英文則可能是：「I like to eat apples」分解為：</p>
                             <div class="flex flex-wrap justify-center gap-2">
-                                <div class="bg-green-100 px-3 py-2 rounded-lg text-green-800 text-sm font-medium">你</div>
-                                <div class="bg-green-100 px-3 py-2 rounded-lg text-green-800 text-sm font-medium">好</div>
-                                <div class="bg-green-100 px-3 py-2 rounded-lg text-green-800 text-sm font-medium">世</div>
-                                <div class="bg-green-100 px-3 py-2 rounded-lg text-green-800 text-sm font-medium">界</div>
-                                <div class="bg-green-100 px-3 py-2 rounded-lg text-green-800 text-sm font-medium">！</div>
+                                <div class="bg-green-100 px-3 py-2 rounded-lg text-green-800 text-sm font-medium">I</div>
+                                <div class="bg-green-100 px-3 py-2 rounded-lg text-green-800 text-sm font-medium">like</div>
+                                <div class="bg-green-100 px-3 py-2 rounded-lg text-green-800 text-sm font-medium">to</div>
+                                <div class="bg-green-100 px-3 py-2 rounded-lg text-green-800 text-sm font-medium">eat</div>
+                                <div class="bg-green-100 px-3 py-2 rounded-lg text-green-800 text-sm font-medium">apples</div>
                             </div>
                         </div>
                     </div>
-                    <div class="text-center mt-4 text-sm text-gray-600">
-                        <p>英文單詞通常被分割為完整的 tokens，而中文字符通常每個字符都是單獨的 token</p>
-                    </div>
                 </div>
-                
-                <h3 class="text-lg font-medium mb-3">什麼是 Tokens？</h3>
-                <p class="mb-4">Tokens 是文字被分割成的小片段，可能是單詞、部分單詞或標點符號。大型語言模型不直接處理原始文字，而是將文字轉換為 tokens 序列進行處理。</p>
                 
                 <div class="bg-yellow-50 p-6 rounded-lg mb-6">
-                    <h3 class="font-medium text-yellow-800 mb-3">Tokens 的重要性</h3>
+                    <h3 class="text-lg font-medium text-yellow-800 mb-3">為什麼 Tokens 很重要？</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="bg-white p-4 rounded-lg shadow-sm">
+                            <div class="flex items-center mb-2">
+                                <div class="bg-yellow-100 rounded-full w-10 h-10 flex items-center justify-center mr-3">
+                                    <i class="fas fa-coins text-yellow-600"></i>
+                                </div>
+                                <h4 class="font-medium text-gray-900">計費單位</h4>
+                            </div>
+                            <p class="text-gray-600">使用 AI 服務時，費用通常是按 tokens 數量計算的</p>
+                        </div>
+                        <div class="bg-white p-4 rounded-lg shadow-sm">
+                            <div class="flex items-center mb-2">
+                                <div class="bg-yellow-100 rounded-full w-10 h-10 flex items-center justify-center mr-3">
+                                    <i class="fas fa-ruler text-yellow-600"></i>
+                                </div>
+                                <h4 class="font-medium text-gray-900">長度限制</h4>
+                            </div>
+                            <p class="text-gray-600">AI 能處理的文字長度是以 tokens 為單位限制的</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Tokens 處理流程簡化 -->
+                <div class="bg-blue-50 p-6 rounded-lg mb-6">
+                    <h3 class="text-lg font-medium text-blue-800 mb-3 text-center">AI 如何處理 Tokens？</h3>
+                    <div class="flex justify-center">
+                        <div class="bg-white p-4 rounded-lg shadow-md w-full max-w-3xl">
+                            <div class="flex flex-col md:flex-row justify-between items-center">
+                                <div class="text-center mb-4 md:mb-0">
+                                    <div class="bg-blue-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-2">
+                                        <i class="fas fa-font text-blue-600 text-xl"></i>
+                                    </div>
+                                    <p class="text-sm font-medium">1. 文字拆分</p>
+                                </div>
+                                <div class="hidden md:block text-blue-500">
+                                    <i class="fas fa-arrow-right text-xl"></i>
+                                </div>
+                                <div class="block md:hidden text-blue-500 my-2">
+                                    <i class="fas fa-arrow-down text-xl"></i>
+                                </div>
+                                <div class="text-center mb-4 md:mb-0">
+                                    <div class="bg-purple-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-2">
+                                        <i class="fas fa-hashtag text-purple-600 text-xl"></i>
+                                    </div>
+                                    <p class="text-sm font-medium">2. 轉換為數字</p>
+                                </div>
+                                <div class="hidden md:block text-blue-500">
+                                    <i class="fas fa-arrow-right text-xl"></i>
+                                </div>
+                                <div class="block md:hidden text-blue-500 my-2">
+                                    <i class="fas fa-arrow-down text-xl"></i>
+                                </div>
+                                <div class="text-center">
+                                    <div class="bg-green-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-2">
+                                        <i class="fas fa-cogs text-green-600 text-xl"></i>
+                                    </div>
+                                    <p class="text-sm font-medium">3. AI 處理</p>
+                                </div>
+                            </div>
+                            <div class="mt-4 text-center text-sm text-gray-600">
+                                <p>AI 將文字拆分為 tokens，轉換為數字，然後進行處理。這就像是 AI 的「閱讀」方式。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-indigo-50 p-6 rounded-lg">
+                    <h3 class="text-lg font-medium text-indigo-800 mb-3">實用小知識</h3>
                     <ul class="list-disc pl-6 text-gray-700">
-                        <li class="mb-2">
-                            <span class="font-medium">模型輸入/輸出的計量單位</span>：API 使用 tokens 計費，了解 tokens 可以幫助控制成本。
-                        </li>
-                        <li class="mb-2">
-                            <span class="font-medium">上下文窗口限制</span>：模型能處理的最大 tokens 數量決定了它能「記住」的對話長度。
-                        </li>
-                        <li class="mb-2">
-                            <span class="font-medium">處理效率</span>：tokens 數量影響模型處理速度和資源消耗。
-                        </li>
-                        <li>
-                            <span class="font-medium">多語言處理</span>：不同語言的 tokens 化方式不同，影響模型處理不同語言的效率。
-                        </li>
+                        <li class="mb-2">英文中，1 個 token 大約等於 4 個字符或 0.75 個單詞</li>
+                        <li class="mb-2">中文和其他非拉丁字母語言，通常每個字符就是 1 個 token</li>
+                        <li class="mb-2">使用 AI 時，較短的提示詞可以節省成本</li>
+                        <li>如果需要處理長文本，可以考慮分段處理</li>
                     </ul>
-                </div>
-                
-                <!-- Tokens 處理流程視覺化 -->
-                <div class="mb-6">
-                    <h3 class="text-lg font-medium text-gray-900 mb-3">Tokens 處理流程</h3>
-                    <div class="mermaid">
-                        flowchart LR
-                            A["原始文字\n'Hello world'"] --> B["分詞處理"]
-                            B --> C["Tokens序列\n['Hello', 'world']"]
-                            C --> D["轉換為數字ID\n[15496, 2159]"]
-                            D --> E["模型處理"]
-                            E --> F["生成回應Tokens"]
-                            F --> G["轉換回文字"]
-                    </div>
-                </div>
-                
-                <h3 class="text-lg font-medium mb-3">Tokens 計算示例</h3>
-                <p class="mb-4">不同的文字內容會被轉換為不同數量的 tokens：</p>
-                
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-                    <div class="bg-white border border-gray-200 p-4 rounded-lg shadow-sm">
-                        <h4 class="font-medium text-gray-900 mb-2">英文文字</h4>
-                        <p class="text-gray-700 mb-2">"Hello world"</p>
-                        <p class="text-sm text-gray-500">約 2 個 tokens</p>
-                    </div>
-                    
-                    <div class="bg-white border border-gray-200 p-4 rounded-lg shadow-sm">
-                        <h4 class="font-medium text-gray-900 mb-2">中文文字</h4>
-                        <p class="text-gray-700 mb-2">"你好世界"</p>
-                        <p class="text-sm text-gray-500">約 4 個 tokens</p>
-                    </div>
-                </div>
-                
-                <p class="mb-4">一般而言，英文中一個 token 大約等於 4 個字符或 0.75 個單詞。中文和其他非拉丁字母語言通常每個字符需要更多 tokens。</p>
-                
-                <div class="bg-blue-50 p-4 rounded-lg my-4">
-                    <h3 class="text-lg font-medium text-blue-800 mb-2">技術小知識</h3>
-                    <p class="text-blue-700">當您使用 AI 工具時，系統會自動處理 tokens 轉換，您無需手動執行這一步驟。但了解 tokens 的概念可以幫助您更有效地使用這些工具，特別是在處理長文本或需要控制成本時。</p>
                 </div>
             </div>
         </div>
