@@ -216,7 +216,138 @@
             <div class="prose max-w-none text-gray-700">
                 <p class="mb-4">但 AI 的技術再強大，若你沒有好奇心與主動性，它就只是個閒置的工具。你要有好奇心跟行動力去探索、了解它能幫助你什麼。比如快速生成文章草稿、推敲文字用法、或進行頭腦風暴來發想行銷文案。</p>
                 
+                <!-- 新增視覺化：好奇心與 AI 的關係 -->
+                <div class="bg-gradient-to-r from-purple-50 to-blue-50 p-6 rounded-lg mb-6">
+                    <h3 class="text-lg font-medium text-gray-900 mb-4 text-center">好奇心是 AI 應用的關鍵</h3>
+                    
+                    <div class="flex flex-col md:flex-row gap-6 items-center justify-center mb-4">
+                        <!-- 左側：沒有好奇心的情況 -->
+                        <div class="bg-white p-4 rounded-lg shadow-sm flex-1 max-w-xs">
+                            <div class="flex justify-center mb-3">
+                                <div class="relative">
+                                    <i class="fas fa-robot text-4xl text-gray-300"></i>
+                                    <i class="fas fa-times-circle text-xl text-red-500 absolute -top-2 -right-2"></i>
+                                </div>
+                            </div>
+                            <h4 class="text-center text-red-600 font-medium mb-2">沒有好奇心</h4>
+                            <ul class="text-sm text-gray-600 space-y-2">
+                                <li class="flex items-start">
+                                    <i class="fas fa-times-circle text-red-500 mt-1 mr-2"></i>
+                                    <span>AI 工具閒置不用</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-times-circle text-red-500 mt-1 mr-2"></i>
+                                    <span>無法發掘潛在用途</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-times-circle text-red-500 mt-1 mr-2"></i>
+                                    <span>工作效率未提升</span>
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <!-- 中間箭頭 -->
+                        <div class="hidden md:flex items-center justify-center">
+                            <i class="fas fa-arrow-right text-blue-400 text-xl"></i>
+                        </div>
+                        
+                        <!-- 右側：有好奇心的情況 -->
+                        <div class="bg-white p-4 rounded-lg shadow-sm flex-1 max-w-xs">
+                            <div class="flex justify-center mb-3">
+                                <div class="relative">
+                                    <i class="fas fa-robot text-4xl text-blue-500"></i>
+                                    <i class="fas fa-lightbulb text-xl text-yellow-400 absolute -top-2 -right-2"></i>
+                                </div>
+                            </div>
+                            <h4 class="text-center text-green-600 font-medium mb-2">充滿好奇心</h4>
+                            <ul class="text-sm text-gray-600 space-y-2">
+                                <li class="flex items-start">
+                                    <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                                    <span>探索 AI 工具新功能</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                                    <span>發現創新應用方式</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                                    <span>大幅提升工作效率</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
                 <p class="mb-4">以提升工作效率為例。我現在最常使用的 AI 服務就是 Claude。運用 Claude Pro 訂閱方案其專案（Projects）功能，我可以提供我過往的口白腳本、文章內容，根據單元別設定專屬專案。爾後，我只要發想題材或提供資料，即可讓專案們為我生成具備我行文風格的初稿。例如臨時需要一篇產品介紹文章的時候就很有用處。平常也讓我能將更多的時間分配到尋找與發想題材上。</p>
+                
+                <!-- 新增視覺化：Claude Pro 工作流程 -->
+                <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+                    <h3 class="text-lg font-medium text-gray-900 mb-3 text-center">Claude Pro 專案功能應用示例</h3>
+                    
+                    <div class="flex flex-wrap justify-center gap-2 mb-4">
+                        <span class="bg-purple-100 text-purple-800 text-xs font-medium px-2.5 py-0.5 rounded">提升效率</span>
+                        <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded">保持一致風格</span>
+                        <span class="bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded">節省時間</span>
+                        <span class="bg-yellow-100 text-yellow-800 text-xs font-medium px-2.5 py-0.5 rounded">專注創意</span>
+                    </div>
+                    
+                    <div class="relative">
+                        <!-- 時間軸 -->
+                        <div class="hidden md:block absolute left-1/2 top-0 bottom-0 w-0.5 bg-gray-200 transform -translate-x-1/2"></div>
+                        
+                        <!-- 步驟 1：設定專案 -->
+                        <div class="flex flex-col md:flex-row items-center mb-8">
+                            <div class="md:w-1/2 mb-4 md:mb-0 md:pr-8 text-right">
+                                <h4 class="font-medium text-gray-900">1. 設定專案</h4>
+                                <p class="text-sm text-gray-600">提供過往的口白腳本、文章內容，根據單元別設定專屬專案</p>
+                            </div>
+                            <div class="md:w-1/2 md:pl-8 flex justify-start">
+                                <div class="bg-blue-100 p-2 rounded-full z-10">
+                                    <i class="fas fa-folder-plus text-blue-600"></i>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- 步驟 2：發想題材 -->
+                        <div class="flex flex-col md:flex-row items-center mb-8">
+                            <div class="md:w-1/2 mb-4 md:mb-0 md:pr-8 flex justify-end order-1 md:order-none">
+                                <div class="bg-purple-100 p-2 rounded-full z-10">
+                                    <i class="fas fa-lightbulb text-purple-600"></i>
+                                </div>
+                            </div>
+                            <div class="md:w-1/2 md:pl-8 text-left">
+                                <h4 class="font-medium text-gray-900">2. 發想題材</h4>
+                                <p class="text-sm text-gray-600">專注於創意發想和尋找新題材，而非文字撰寫</p>
+                            </div>
+                        </div>
+                        
+                        <!-- 步驟 3：AI 生成初稿 -->
+                        <div class="flex flex-col md:flex-row items-center mb-8">
+                            <div class="md:w-1/2 mb-4 md:mb-0 md:pr-8 text-right">
+                                <h4 class="font-medium text-gray-900">3. AI 生成初稿</h4>
+                                <p class="text-sm text-gray-600">讓專案為你生成具備你行文風格的初稿</p>
+                            </div>
+                            <div class="md:w-1/2 md:pl-8 flex justify-start">
+                                <div class="bg-green-100 p-2 rounded-full z-10">
+                                    <i class="fas fa-robot text-green-600"></i>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- 步驟 4：應用成果 -->
+                        <div class="flex flex-col md:flex-row items-center">
+                            <div class="md:w-1/2 mb-4 md:mb-0 md:pr-8 flex justify-end order-1 md:order-none">
+                                <div class="bg-amber-100 p-2 rounded-full z-10">
+                                    <i class="fas fa-check-circle text-amber-600"></i>
+                                </div>
+                            </div>
+                            <div class="md:w-1/2 md:pl-8 text-left">
+                                <h4 class="font-medium text-gray-900">4. 應用成果</h4>
+                                <p class="text-sm text-gray-600">快速獲得產品介紹文章，節省時間並保持一致的風格</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 
                 <!-- AI 工作流程圖 (橫版) -->
                 <div class="diagram-container">
