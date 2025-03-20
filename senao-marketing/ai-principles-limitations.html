@@ -33,7 +33,17 @@
             --senao-pink: rgb(230, 72, 148);       /* Pantone 225 C */
             --senao-silver: rgb(181, 181, 182);    /* Pantone 877C */
         }
+        /* 新增的樣式 */
+        .diagram-container {
+            background-color: white;
+            border-radius: 0.5rem;
+            padding: 1rem;
+            margin: 1.5rem 0;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
     </style>
+    <!-- Mermaid JS for flowcharts and diagrams -->
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10.6.1/dist/mermaid.min.js"></script>
 </head>
 <body class="bg-gray-50">
     <header class="bg-[rgb(0,80,151)] shadow-sm sticky top-0 z-10">
@@ -71,32 +81,51 @@
                 <i class="fas fa-microchip mr-2 text-[rgb(0,144,212)]"></i>AI 工具的基本原理
             </h2>
             <div class="prose max-w-none text-gray-700">
-                <h3 class="text-lg font-medium mb-3">什麼是大型語言模型 (LLMs)</h3>
-                <p class="mb-4">大型語言模型是透過大量文本資料訓練出來的 AI 系統，能夠理解和生成類似人類的語言。這些模型通過分析文字之間的關聯性來學習語言模式和知識。</p>
+                <p class="mb-4">LLM 的本質是一種基於大量文本訓練的語言系統，像「語言接龍」的進階版。它雖然因為訓練資料有截止日期而無法提供最新資訊，卻能不知疲倦地與你討論、推敲問題。但也因為其「接龍」特性，若涉及知識性內容，記得查核重要資訊，避免被誤導。</p>
                 
-                <h3 class="text-lg font-medium mb-3">ChatGPT 與 Claude 的運作方式</h3>
-                <p class="mb-4">ChatGPT 和 Claude 等大型語言模型透過預測下一個最可能出現的詞彙來生成回應。它們不是簡單地記憶或搜尋答案，而是根據訓練數據產生流暢且相關的回應。</p>
-                
-                <div class="bg-gray-50 p-6 rounded-lg mb-6">
-                    <h4 class="font-medium mb-3">LLMs 的核心特性：</h4>
-                    <ul class="list-disc pl-6">
-                        <li class="mb-2">預測能力：預測序列中下一個可能的詞彙</li>
-                        <li class="mb-2">理解上下文：能夠把握對話或查詢的脈絡</li>
-                        <li class="mb-2">知識擷取：從訓練數據中提取和應用知識</li>
-                        <li>模式識別：辨識語言、風格和結構模式</li>
-                    </ul>
+                <!-- LLM 運作流程視覺化 -->
+                <div class="bg-gray-50 p-4 rounded-lg mt-4 mb-4">
+                    <h3 class="font-medium text-gray-800 mb-3">LLM 如何預測下一個詞</h3>
+                    <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+                        <div class="bg-white p-3 rounded-lg border border-gray-200 flex-1 text-center">
+                            <p class="text-gray-500 text-sm">輸入</p>
+                            <p class="font-medium">今天天氣真</p>
+                        </div>
+                        <div class="hidden md:block text-gray-400">
+                            <i class="fas fa-arrow-right text-xl"></i>
+                        </div>
+                        <div class="block md:hidden text-gray-400">
+                            <i class="fas fa-arrow-down text-xl"></i>
+                        </div>
+                        <div class="bg-white p-3 rounded-lg border border-gray-200 flex-1">
+                            <p class="text-gray-500 text-sm text-center">可能的預測</p>
+                            <div class="grid grid-cols-2 gap-2 mt-2">
+                                <div class="bg-blue-50 p-2 rounded text-center">
+                                    <span class="text-blue-700">好</span>
+                                    <span class="text-xs text-gray-500">65%</span>
+                                </div>
+                                <div class="bg-green-50 p-2 rounded text-center">
+                                    <span class="text-green-700">熱</span>
+                                    <span class="text-xs text-gray-500">20%</span>
+                                </div>
+                                <div class="bg-yellow-50 p-2 rounded text-center">
+                                    <span class="text-yellow-700">冷</span>
+                                    <span class="text-xs text-gray-500">10%</span>
+                                </div>
+                                <div class="bg-purple-50 p-2 rounded text-center">
+                                    <span class="text-purple-700">舒適</span>
+                                    <span class="text-xs text-gray-500">5%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div class="bg-blue-50 p-4 rounded-lg">
-                        <h4 class="font-medium text-blue-800 mb-2">訓練數據</h4>
-                        <p class="text-blue-700">這些模型通過分析網頁、書籍、文章等數十億頁的文本進行訓練，學習人類語言的模式和世界知識。</p>
-                    </div>
-                    
-                    <div class="bg-blue-50 p-4 rounded-lg">
-                        <h4 class="font-medium text-blue-800 mb-2">參數量</h4>
-                        <p class="text-blue-700">大型語言模型擁有數十億到數萬億個參數，這使它們能夠捕捉複雜的語言關係和知識。</p>
-                    </div>
+                <div class="bg-indigo-50 p-4 rounded-lg mt-4">
+                    <p class="text-indigo-800 flex items-start">
+                        <i class="fas fa-lightbulb text-yellow-500 mt-1 mr-2"></i>
+                        <span>LLM 就像一個經過大量文本訓練的語言系統，能夠預測下一個詞彙應該是什麼，從而生成連貫的文本。</span>
+                    </p>
                 </div>
             </div>
         </div>
@@ -104,43 +133,83 @@
         <!-- AI 的侷限與注意事項 -->
         <div class="content-section bg-white shadow overflow-hidden sm:rounded-lg p-6 mb-8">
             <h2 class="text-xl font-semibold text-gray-900 mb-4">
-                <i class="fas fa-exclamation-triangle mr-2 text-[rgb(250,193,9)]"></i>AI 的侷限與注意事項
+                <i class="fas fa-exclamation-triangle mr-2 text-[rgb(250,193,9)]"></i>為什麼要使用 AI？好奇心最重要
             </h2>
             <div class="prose max-w-none text-gray-700">
-                <p class="mb-4">雖然 AI 工具強大，但它們也有明顯的限制和局限性。了解這些局限有助於您更合理地設定期望並有效使用這些工具。</p>
+                <p class="mb-4">但 AI 的技術再強大，若你沒有好奇心與主動性，它就只是個閒置的工具。你要有好奇心跟行動力去探索、了解它能幫助你什麼。比如快速生成文章草稿、推敲文字用法、或進行頭腦風暴來發想行銷文案。</p>
                 
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-                    <div class="warning-card bg-yellow-50 p-4 rounded-r-lg pl-6">
-                        <h3 class="font-medium text-yellow-800 mb-2">幻覺 (Hallucinations)</h3>
-                        <p class="text-yellow-700">AI 可能會產生看似可信但實際上不正確的內容。這是因為它們在預測文本時，並不總是能正確區分事實與非事實。</p>
-                    </div>
-                    
-                    <div class="warning-card bg-yellow-50 p-4 rounded-r-lg pl-6">
-                        <h3 class="font-medium text-yellow-800 mb-2">知識截止點</h3>
-                        <p class="text-yellow-700">大多數 AI 模型的訓練數據有截止日期，之後的事件和資訊它們可能不了解。</p>
+                <p class="mb-4">以提升工作效率為例。我現在最常使用的 AI 服務就是 Claude。運用 Claude Pro 訂閱方案其專案（Projects）功能，我可以提供我過往的口白腳本、文章內容，根據單元別設定專屬專案。爾後，我只要發想題材或提供資料，即可讓專案們為我生成具備我行文風格的初稿。例如臨時需要一篇產品介紹文章的時候就很有用處。平常也讓我能將更多的時間分配到尋找與發想題材上。</p>
+                
+                <!-- AI 工作流程圖 (橫版) -->
+                <div class="diagram-container">
+                    <h3 class="text-lg font-medium text-gray-900 mb-3">AI 輔助工作流程</h3>
+                    <div class="mermaid">
+                    flowchart LR
+                        A[發現問題/需求] --> B[選擇合適的 AI 工具]
+                        B --> C[提供明確指示/資料]
+                        C --> D[AI 生成初步結果]
+                        D --> E{結果滿意?}
+                        E -->|否| F[調整提示或指示]
+                        F -->|重試| C
+                        E -->|是| G[人工審核與修改]
+                        G --> H[最終成果]
+                        style A fill:#d0f0fd,stroke:#333,stroke-width:1px
+                        style B fill:#d0f0fd,stroke:#333,stroke-width:1px
+                        style C fill:#d0f0fd,stroke:#333,stroke-width:1px
+                        style D fill:#d0f0fd,stroke:#333,stroke-width:1px
+                        style E fill:#ffe2e2,stroke:#333,stroke-width:1px
+                        style F fill:#ffe2e2,stroke:#333,stroke-width:1px
+                        style G fill:#d8f3dc,stroke:#333,stroke-width:1px
+                        style H fill:#d8f3dc,stroke:#333,stroke-width:1px
                     </div>
                 </div>
                 
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-                    <div class="warning-card bg-yellow-50 p-4 rounded-r-lg pl-6">
-                        <h3 class="font-medium text-yellow-800 mb-2">上下文理解限制</h3>
-                        <p class="text-yellow-700">AI 可能無法完全理解複雜的上下文或含蓄的指示，尤其是在多輪對話中。</p>
-                    </div>
-                    
-                    <div class="warning-card bg-yellow-50 p-4 rounded-r-lg pl-6">
-                        <h3 class="font-medium text-yellow-800 mb-2">創意思維有限</h3>
-                        <p class="text-yellow-700">雖然 AI 能產生創意內容，但難以提供真正原創的策略思考或突破性想法。</p>
+                <p class="mb-4">而這也延伸出了兩件事：「我該付費訂閱 AI 嗎？」以及「有了 AI，人的角色變成了什麼」。</p>
+                
+                <h3 class="text-lg font-medium mb-3">我該付費訂閱 AI 嗎？</h3>
+                <!-- 替換文字為比較表格 -->
+                <div class="bg-white p-4 rounded-lg border border-gray-200 mb-4">
+                    <h4 class="font-medium text-gray-800 mb-3">免費版 vs 付費版比較</h4>
+                    <div class="overflow-x-auto">
+                        <table class="min-w-full divide-y divide-gray-200">
+                            <thead>
+                                <tr>
+                                    <th class="px-4 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">比較項目</th>
+                                    <th class="px-4 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">免費版</th>
+                                    <th class="px-4 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">付費版</th>
+                                </tr>
+                            </thead>
+                            <tbody class="bg-white divide-y divide-gray-200">
+                                <tr>
+                                    <td class="px-4 py-3 whitespace-nowrap text-sm font-medium text-gray-900">使用額度</td>
+                                    <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-500">有限制，容易用完</td>
+                                    <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-500">更高額度，較少受限</td>
+                                </tr>
+                                <tr>
+                                    <td class="px-4 py-3 whitespace-nowrap text-sm font-medium text-gray-900">模型版本</td>
+                                    <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-500">通常是較舊版本</td>
+                                    <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-500">最新、最強大的模型</td>
+                                </tr>
+                                <tr>
+                                    <td class="px-4 py-3 whitespace-nowrap text-sm font-medium text-gray-900">專屬功能</td>
+                                    <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-500">基本功能</td>
+                                    <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-500">專案管理、更多進階功能</td>
+                                </tr>
+                                <tr>
+                                    <td class="px-4 py-3 whitespace-nowrap text-sm font-medium text-gray-900">回應速度</td>
+                                    <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-500">高峰期可能較慢</td>
+                                    <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-500">優先處理，回應更快</td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
                 
-                <div class="bg-red-50 p-6 rounded-lg mb-6">
-                    <h3 class="font-medium text-red-800 mb-3">重要注意事項</h3>
-                    <ul class="list-disc pl-6 text-red-700">
-                        <li class="mb-2">不要將 AI 生成的資訊視為絕對真實，始終進行事實核查</li>
-                        <li class="mb-2">避免共享敏感或機密資訊</li>
-                        <li class="mb-2">認識到 AI 生成的內容可能缺乏獨特的創意視角</li>
-                        <li>AI 無法完全理解特定企業或行業的複雜脈絡</li>
-                    </ul>
+                <div class="bg-amber-50 p-4 rounded-lg mb-4">
+                    <p class="text-amber-800 flex items-start">
+                        <i class="fas fa-comment-dollar text-amber-500 mt-1 mr-2"></i>
+                        <span>俗話說：只付得起香蕉，就只能請到猴子；猴子拿著打字機或許能敲出莎士比亞，但得花上幾世紀。付費訂閱就像用合理薪資請到優秀員工，一點小錢就能節省大量時間。</span>
+                    </p>
                 </div>
             </div>
         </div>
@@ -148,80 +217,111 @@
         <!-- 有效使用的心法與技巧 -->
         <div class="content-section bg-white shadow overflow-hidden sm:rounded-lg p-6 mb-8">
             <h2 class="text-xl font-semibold text-gray-900 mb-4">
-                <i class="fas fa-lightbulb mr-2 text-[rgb(203,211,0)]"></i>有效使用的心法與技巧
+                <i class="fas fa-lightbulb mr-2 text-[rgb(203,211,0)]"></i>AI 能做什麼？使用者該扮演什麼角色？
             </h2>
             <div class="prose max-w-none text-gray-700">
-                <p class="mb-4">掌握以下技巧和心法，能夠大幅提升您使用 AI 工具的效率和效果。</p>
+                <!-- 替換文字為角色圖表 -->
+                <div class="diagram-container mb-4">
+                    <h3 class="text-lg font-medium text-gray-900 mb-3">人機協作模式</h3>
+                    <div class="mermaid">
+                    graph LR
+                        User[使用者<br>策展人/編輯] -->|提供指示| AI[AI<br>創作者]
+                        AI -->|生成內容| Review[內容審核]
+                        Review -->|需要修改| User
+                        Review -->|滿意| Final[最終成果]
+                        style User fill:#f9d5e5,stroke:#333,stroke-width:1px
+                        style AI fill:#d0f0fd,stroke:#333,stroke-width:1px
+                        style Review fill:#ffe2e2,stroke:#333,stroke-width:1px
+                        style Final fill:#d8f3dc,stroke:#333,stroke-width:1px
+                    </div>
+                </div>
                 
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-                    <div class="tip-card bg-blue-50 p-4 rounded-r-lg pl-6">
-                        <h3 class="font-medium text-blue-800 mb-2">提供明確指示</h3>
-                        <p class="text-blue-700">清晰、具體且詳細的提示能夠顯著提高 AI 回應的質量。指定格式、風格、長度和受眾。</p>
+                <!-- 使用情境圖示 -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+                    <div class="bg-gradient-to-br from-blue-50 to-indigo-50 p-4 rounded-lg shadow-sm">
+                        <div class="flex items-center mb-2">
+                            <div class="bg-blue-100 p-2 rounded-full mr-3">
+                                <i class="fas fa-pen-nib text-blue-600"></i>
+                            </div>
+                            <h4 class="text-base font-medium text-blue-800 md:text-center">內容創作</h4>
+                        </div>
+                        <p class="text-sm text-blue-700 md:text-center">行銷文案、社群貼文、產品介紹</p>
                     </div>
                     
-                    <div class="tip-card bg-blue-50 p-4 rounded-r-lg pl-6">
-                        <h3 class="font-medium text-blue-800 mb-2">迭代改進</h3>
-                        <p class="text-blue-700">將 AI 使用視為對話過程，根據初始結果提供反饋，逐步調整和改進輸出。</p>
-                    </div>
-                </div>
-                
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-                    <div class="tip-card bg-blue-50 p-4 rounded-r-lg pl-6">
-                        <h3 class="font-medium text-blue-800 mb-2">分解複雜任務</h3>
-                        <p class="text-blue-700">將複雜問題分解為較小的子任務，逐一處理，然後整合結果。</p>
+                    <div class="bg-gradient-to-br from-green-50 to-teal-50 p-4 rounded-lg shadow-sm">
+                        <div class="flex items-center mb-2">
+                            <div class="bg-green-100 p-2 rounded-full mr-3">
+                                <i class="fas fa-tasks text-green-600"></i>
+                            </div>
+                            <h4 class="text-base font-medium text-green-800 md:text-center">資料整理</h4>
+                        </div>
+                        <p class="text-sm text-green-700 md:text-center">會議記錄、資料摘要、重點整理</p>
                     </div>
                     
-                    <div class="tip-card bg-blue-50 p-4 rounded-r-lg pl-6">
-                        <h3 class="font-medium text-blue-800 mb-2">提供參考示例</h3>
-                        <p class="text-blue-700">向 AI 提供您期望的輸出類型的示例，幫助它更好地理解您的期望。</p>
+                    <div class="bg-gradient-to-br from-purple-50 to-pink-50 p-4 rounded-lg shadow-sm">
+                        <div class="flex items-center mb-2">
+                            <div class="bg-purple-100 p-2 rounded-full mr-3">
+                                <i class="fas fa-lightbulb text-purple-600"></i>
+                            </div>
+                            <h4 class="text-base font-medium text-purple-800 md:text-center">創意發想</h4>
+                        </div>
+                        <p class="text-sm text-purple-700 md:text-center">頭腦風暴、視覺設計建議、簡報製作</p>
                     </div>
                 </div>
                 
-                <div class="bg-green-50 p-6 rounded-lg mb-6">
-                    <h3 class="font-medium text-green-800 mb-3">行銷應用的最佳實踐</h3>
-                    <ul class="list-disc pl-6 text-green-700">
-                        <li class="mb-2">將 AI 視為協作夥伴而非替代品</li>
-                        <li class="mb-2">保持人工審核和編輯所有 AI 生成的內容</li>
-                        <li class="mb-2">使用 AI 進行起草和頭腦風暴，但由人類做最終決策</li>
-                        <li class="mb-2">持續學習和實驗不同的提示方法</li>
-                        <li>透過不同的角度和方法詢問同一個問題，獲取多樣視角</li>
-                    </ul>
+                <div class="bg-blue-50 p-4 rounded-lg mb-4">
+                    <p class="text-blue-800 flex items-start">
+                        <i class="fas fa-info-circle text-blue-500 mt-1 mr-2"></i>
+                        <span>注意：AI 生成的內容常有「AI 味」，例如條列式、點列式，文末總結等「癖好」。對外發布前，建議微調文字減少機械感，或使用能模仿你文風的 AI 服務。</span>
+                    </p>
                 </div>
                 
-                <div class="bg-gray-100 p-6 rounded-lg">
-                    <h3 class="font-medium mb-3">提示詞工程的關鍵元素</h3>
-                    <ul class="list-none space-y-4">
-                        <li class="flex items-start">
-                            <span class="bg-[rgb(0,80,151)] text-white rounded-full w-6 h-6 flex items-center justify-center mr-3 flex-shrink-0">1</span>
-                            <div>
-                                <span class="font-medium">角色設定</span>：告訴 AI 它應該以什麼角色或專業身份回應
+                <h3 class="text-lg font-medium mb-3">如何開始使用 AI？</h3>
+                <p class="mb-4">若不知從何下手，可以先從解決工作或生活中的具體問題開始。</p>
+                
+                <!-- 開始使用 AI 的步驟 -->
+                <div class="relative mt-4 mb-6">
+                    <div class="absolute left-0 top-0 h-full w-0.5 bg-gradient-to-b from-purple-300 to-blue-300 ml-6 md:hidden"></div>
+                    
+                    <div class="flex flex-col md:flex-row gap-4">
+                        <div class="relative flex items-start mb-4 md:mb-0 md:flex-1">
+                            <div class="flex-shrink-0 bg-gradient-to-r from-purple-400 to-purple-500 h-12 w-12 rounded-full flex items-center justify-center shadow-md z-10">
+                                <span class="text-white font-bold">1</span>
                             </div>
-                        </li>
-                        <li class="flex items-start">
-                            <span class="bg-[rgb(0,80,151)] text-white rounded-full w-6 h-6 flex items-center justify-center mr-3 flex-shrink-0">2</span>
-                            <div>
-                                <span class="font-medium">背景資訊</span>：提供相關的背景或上下文
+                            <div class="ml-6 md:ml-0 md:mt-14">
+                                <h4 class="text-base font-medium text-purple-800 md:text-center">發現問題</h4>
+                                <p class="text-sm text-gray-600 md:text-center">找出你工作中的痛點和挑戰</p>
                             </div>
-                        </li>
-                        <li class="flex items-start">
-                            <span class="bg-[rgb(0,80,151)] text-white rounded-full w-6 h-6 flex items-center justify-center mr-3 flex-shrink-0">3</span>
-                            <div>
-                                <span class="font-medium">明確任務</span>：清楚說明您希望完成的任務
+                        </div>
+                        
+                        <div class="hidden md:block text-gray-400">
+                            <i class="fas fa-arrow-right text-xl mt-6"></i>
+                        </div>
+                        
+                        <div class="relative flex items-start mb-4 md:mb-0 md:flex-1">
+                            <div class="flex-shrink-0 bg-gradient-to-r from-blue-400 to-blue-500 h-12 w-12 rounded-full flex items-center justify-center shadow-md z-10">
+                                <span class="text-white font-bold">2</span>
                             </div>
-                        </li>
-                        <li class="flex items-start">
-                            <span class="bg-[rgb(0,80,151)] text-white rounded-full w-6 h-6 flex items-center justify-center mr-3 flex-shrink-0">4</span>
-                            <div>
-                                <span class="font-medium">具體格式</span>：指定所需的輸出格式和結構
+                            <div class="ml-6 md:ml-0 md:mt-14">
+                                <h4 class="text-base font-medium text-blue-800 md:text-center">選擇工具</h4>
+                                <p class="text-sm text-gray-600 md:text-center">挑選適合的 AI 服務和功能</p>
                             </div>
-                        </li>
-                        <li class="flex items-start">
-                            <span class="bg-[rgb(0,80,151)] text-white rounded-full w-6 h-6 flex items-center justify-center mr-3 flex-shrink-0">5</span>
-                            <div>
-                                <span class="font-medium">評估標準</span>：說明如何評判成功的回應
+                        </div>
+                        
+                        <div class="hidden md:block text-gray-400">
+                            <i class="fas fa-arrow-right text-xl mt-6"></i>
+                        </div>
+                        
+                        <div class="relative flex items-start md:flex-1">
+                            <div class="flex-shrink-0 bg-gradient-to-r from-green-400 to-green-500 h-12 w-12 rounded-full flex items-center justify-center shadow-md z-10">
+                                <span class="text-white font-bold">3</span>
                             </div>
-                        </li>
-                    </ul>
+                            <div class="ml-6 md:ml-0 md:mt-14">
+                                <h4 class="text-base font-medium text-green-800 md:text-center">實際應用</h4>
+                                <p class="text-sm text-gray-600 md:text-center">提供明確指示，審核並調整結果</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
