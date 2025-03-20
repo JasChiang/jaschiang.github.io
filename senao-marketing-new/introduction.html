@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>前言：個人 AI 使用經驗 | 神腦國際行銷部 AI 教學</title>
+    <!-- TailwindCSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+        .content-section {
+            transition: all 0.3s ease;
+        }
+        .content-section:hover {
+            transform: scale(1.01);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+        .highlight-text {
+            background: linear-gradient(120deg, rgba(0, 144, 212, 0.2), rgba(0, 144, 212, 0.2));
+            background-repeat: no-repeat;
+            background-size: 100% 40%;
+            background-position: 0 90%;
+        }
+        .quote-box {
+            border-left: 4px solid rgb(0, 80, 151);
+            background-color: #f3f4f6;
+        }
+        :root {
+            --senao-deep-blue: rgb(0, 80, 151);    /* Pantone 294 C */
+            --senao-green: rgb(203, 211, 0);       /* Pantone 390 C */
+            --senao-blue: rgb(0, 144, 212);        /* Pantone 2925 C */
+            --senao-yellow: rgb(250, 193, 9);      /* Pantone 1235 C */
+            --senao-pink: rgb(230, 72, 148);       /* Pantone 225 C */
+            --senao-silver: rgb(181, 181, 182);    /* Pantone 877C */
+        }
+        /* 頁面載入動畫 */
+        .loader-wrapper {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.9);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease-in-out;
+        }
+        
+        .loader {
+            border: 5px solid #f3f3f3;
+            border-top: 5px solid var(--senao-blue);
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- 頁面載入動畫 -->
+    <div class="loader-wrapper" id="loader">
+        <div class="loader"></div>
+    </div>
+
+    <header class="bg-[rgb(0,80,151)] shadow-sm sticky top-0 z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+            <div class="flex justify-between items-center">
+                <h1 class="text-3xl font-bold text-white">前言：個人 AI 使用經驗</h1>
+                <div class="flex space-x-4">
+                    <a href="index.html" class="text-[rgb(203,211,0)] hover:text-white flex items-center">
+                        <i class="fas fa-home mr-2"></i>回到首頁
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div class="bg-white shadow overflow-hidden sm:rounded-lg mb-8">
+            <div class="px-4 py-5 sm:px-6">
+                <h2 class="text-xl font-semibold text-gray-900">前言：以個人經驗為出發點</h2>
+                <p class="mt-1 max-w-2xl text-sm text-gray-500">分享我的 AI 使用歷程與心得</p>
+            </div>
+            <div class="border-t border-gray-200 px-4 py-5 sm:px-6">
+                <p class="text-gray-700 mb-4">因為不知道各位使用 AI 的深入程度，我想以我個人經驗為出發點，分享我是如何開始接觸並逐步整合 AI 工具到日常工作中的。從最初的好奇探索，到現在將 AI 視為不可或缺的工作夥伴，這段歷程或許能為正在起步的您提供一些參考。</p>
+                <p class="text-gray-700">在接下來的內容中，我將分享我的 AI 使用經驗、為什麼要使用 AI，以及初學者如何上手等話題。希望這些內容能幫助您更快地理解並應用 AI 工具，提升工作效率與創意表現。</p>
+            </div>
+        </div>
+
+        <div class="space-y-8">
+            <section id="personal-experience" class="content-section bg-white shadow overflow-hidden sm:rounded-lg p-6">
+                <h2 class="text-xl font-semibold text-gray-900 mb-4">
+                    <i class="fas fa-user-circle mr-2 text-[rgb(0,80,151)]"></i>我的 AI 使用經驗
+                </h2>
+                <p class="text-gray-700 mb-3">我第一次接觸大型語言模型（LLM，Large Language Model）是在 2022 年底 ChatGPT 亮相時。當時，不同於一些人僅將它視為「聊天機器人」或「另一個 Google」，我一開始就試著探索它能如何解決我的工作問題、提升工作效率。</p>
+                
+                <p class="text-gray-700 mb-3">最初，我嘗試使用 ChatGPT 來：</p>
+                <ul class="list-disc list-inside text-gray-700 mb-4 pl-4">
+                    <li class="mb-2">快速生成初步的文案草稿，然後再進行修改</li>
+                    <li class="mb-2">幫助我翻譯和潤飾文本</li>
+                </ul>
+                
+                <p class="text-gray-700 mb-3">隨著 AI 技術的演進，我也開始使用 ChatGPT 以外的服務，並且</p>
+                <ul class="list-disc list-inside text-gray-700 mb-4 pl-4">
+                    <li class="mb-2">使用 AI 服務來協助進行腦力激盪、推敲想法</li>
+                    <li class="mb-2">協助編輯和改進行銷文案</li>
+                    <li class="mb-2">解決程式碼相關的問題</li>
+                    <li class="mb-2">協助整理會議記錄和筆記</li>
+                     <li class="mb-2">生成可用於簡報的內容排版與數據視覺化建議</li>
+                    <li class="mb-2">搜集與整理特定議題的資料</li>
+                </ul>
+                
+                <div class="bg-blue-50 p-4 rounded-lg my-6">
+                    <h3 class="text-lg font-medium text-blue-800 mb-2">持續學習與探索的重要性</h3>
+                    <p class="text-blue-700">但 AI 的技術再強大，若你沒有好奇心與主動性，它就只是個閒置的工具。你要有好奇心跟行動力去探索、了解它能幫助你什麼。比如快速生成文章草稿、推敲文字用法、或進行腦力激盪來構思想法。也可以利用空閑時間來嘗試各種 AI 使用技巧、吸收 AI 資訊或是使用新的 AI 服務、軟體。</p>
+                </div>
+            </section>
+
+            <section id="why-use-ai" class="content-section bg-white shadow overflow-hidden sm:rounded-lg p-6">
+                <h2 class="text-xl font-semibold text-gray-900 mb-4">
+                    <i class="fas fa-question-circle mr-2 text-[rgb(0,144,212)]"></i>為什麼要使用 AI？
+                </h2>
+                <p class="text-gray-700 mb-3">自從 ChatGPT 面世以來，AI 這個議題越來越受關注。每隔數月甚至於數日就有新的 AI 工具誕生。有些人可能會想「我有需要用 AI 嗎？」或是「我想用 AI 但是我不知道該如何上手」、「我該付費訂閱 AI 嗎？」。</p>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 my-6">
+                    <div class="bg-white border border-gray-200 rounded-lg shadow-sm p-5">
+                        <div class="flex items-center mb-3">
+                            <div class="flex-shrink-0 bg-[rgb(0,80,151)] text-white rounded-full p-2">
+                                <i class="fas fa-tachometer-alt"></i>
+                            </div>
+                            <h3 class="ml-3 text-lg font-medium text-gray-900">提升工作效率</h3>
+                        </div>
+                        <p class="text-gray-700">AI 能夠快速處理大量資訊，生成初稿，節省繁瑣工作的時間。例如，撰寫初步文案、整理資料、翻譯文本等任務，都能透過 AI 顯著提速。</p>
+                    </div>
+                    
+                    <div class="bg-white border border-gray-200 rounded-lg shadow-sm p-5">
+                        <div class="flex items-center mb-3">
+                            <div class="flex-shrink-0 bg-[rgb(203,211,0)] text-white rounded-full p-2">
+                                <i class="fas fa-lightbulb"></i>
+                            </div>
+                            <h3 class="ml-3 text-lg font-medium text-gray-900">激發創意思考</h3>
+                        </div>
+                        <p class="text-gray-700">當面臨創意瓶頸時，AI 可以提供多角度的思考和建議，幫助突破固有思維模式。這不是取代人類創意，而是提供更多可能性讓我們選擇。</p>
+                    </div>
+                    
+                    <div class="bg-white border border-gray-200 rounded-lg shadow-sm p-5">
+                        <div class="flex items-center mb-3">
+                            <div class="flex-shrink-0 bg-[rgb(0,144,212)] text-white rounded-full p-2">
+                                <i class="fas fa-people-arrows"></i>
+                            </div>
+                            <h3 class="ml-3 text-lg font-medium text-gray-900">填補技能差距</h3>
+                        </div>
+                        <p class="text-gray-700">AI 可以協助我們在不擅長的領域取得更好的結果。例如，不精通設計的行銷人員可以獲得視覺設計建議，或是獲得特定領域的專業知識支援。</p>
+                    </div>
+                    
+                    <div class="bg-white border border-gray-200 rounded-lg shadow-sm p-5">
+                        <div class="flex items-center mb-3">
+                            <div class="flex-shrink-0 bg-[rgb(250,193,9)] text-white rounded-full p-2">
+                                <i class="fas fa-chart-line"></i>
+                            </div>
+                            <h3 class="ml-3 text-lg font-medium text-gray-900">保持競爭優勢</h3>
+                        </div>
+                        <p class="text-gray-700">當競爭對手都在使用 AI 提升效率和創意時，我們不能落後。熟練運用 AI 工具不僅讓我們跟上行業步伐，更能在這場技術革命中脫穎而出。</p>
+                    </div>
+                </div>
+                
+                <div class="quote-box p-4 pl-6 my-6">
+                    <p class="italic text-gray-700">"AI 的最大價值不是取代人類，而是讓我們能夠專注於更具創造性、更有價值的工作。讓 AI 處理重複性的任務，我們則負責做出關鍵決策和創意思考。"</p>
+                </div>
+            </section>
+
+            <section id="human-role" class="content-section bg-white shadow overflow-hidden sm:rounded-lg p-6">
+                <h2 class="text-xl font-semibold text-gray-900 mb-4">
+                    <i class="fas fa-users mr-2 text-[rgb(0,144,212)]"></i>AI 能做什麼？使用者該扮演什麼角色？
+                </h2>
+                <p class="text-gray-700 mb-3">AI 是強大的創造工具，但它不是萬能的。使用者就像策展人（Curator）或編輯（Editor），負責給予明確指示與最後把關；AI 則是創作者（Creator），根據你的需求生成內容。</p>
+                <p class="text-gray-700 mb-3">你給的指示越具體，AI 的產出就越符合期待。就像在職場上與他人合作，你提供給對方的指示越明確具體，對方也越容易給你期望中的成果一樣，做事才會順暢。不過 AI 服務在額度許可下不知勞累，你只需多加練習就能在不耗費情緒成本的情況下，取得良好的成果。</p>
+                
+                <!-- 使用者與 AI 協作關係圖 -->
+                <div class="my-8 p-4 bg-gray-50 rounded-lg shadow-inner">
+                    <h4 class="text-lg font-medium text-gray-900 mb-4 text-center">使用者與 AI 的協作關係</h4>
+                    <div class="flex flex-col md:flex-row justify-center items-center">
+                        <!-- 使用者角色 -->
+                        <div class="w-full md:w-2/5 p-4 bg-[rgb(0,80,151)] bg-opacity-10 rounded-lg">
+                            <h5 class="font-medium text-[rgb(0,80,151)] text-center mb-3">
+                                <i class="fas fa-user text-[rgb(0,80,151)] mr-2"></i>使用者角色
+                            </h5>
+                            <ul class="text-[rgb(0,80,151)] space-y-2">
+                                <li class="flex items-start">
+                                    <i class="fas fa-check-circle text-[rgb(0,80,151)] mt-1 mr-2"></i>
+                                    <span>提供明確的指示和需求</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check-circle text-[rgb(0,80,151)] mt-1 mr-2"></i>
+                                    <span>提供必要的背景資訊</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check-circle text-[rgb(0,80,151)] mt-1 mr-2"></i>
+                                    <span>審核和編輯 AI 生成的內容</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check-circle text-[rgb(0,80,151)] mt-1 mr-2"></i>
+                                    <span>提供回饋以改進輸出</span>
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <!-- 中間箭頭 -->
+                        <div class="py-4 md:py-0 md:px-4 flex md:flex-col justify-center items-center">
+                            <div class="transform rotate-90 md:rotate-0">
+                                <i class="fas fa-exchange-alt text-gray-500 text-xl"></i>
+                            </div>
+                            <div class="mx-2 md:mx-0 md:my-2 text-gray-500 text-sm">協作關係</div>
+                            <div class="transform rotate-90 md:rotate-0">
+                                <i class="fas fa-exchange-alt text-gray-500 text-xl"></i>
+                            </div>
+                        </div>
+                        
+                        <!-- AI 角色 -->
+                        <div class="w-full md:w-2/5 p-4 bg-[rgb(0,144,212)] bg-opacity-10 rounded-lg">
+                            <h5 class="font-medium text-[rgb(0,144,212)] text-center mb-3">
+                                <i class="fas fa-robot text-[rgb(0,144,212)] mr-2"></i>AI 角色
+                            </h5>
+                            <ul class="text-[rgb(0,144,212)] space-y-2">
+                                <li class="flex items-start">
+                                    <i class="fas fa-check-circle text-[rgb(0,144,212)] mt-1 mr-2"></i>
+                                    <span>根據指示生成內容</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check-circle text-[rgb(0,144,212)] mt-1 mr-2"></i>
+                                    <span>提供創意和多種選擇</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check-circle text-[rgb(0,144,212)] mt-1 mr-2"></i>
+                                    <span>處理重複性和耗時的任務</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check-circle text-[rgb(0,144,212)] mt-1 mr-2"></i>
+                                    <span>根據回饋進行調整</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="quote-box p-4 my-4">
+                    <p class="italic text-gray-700">要注意，AI 生成的內容常有「AI 味」，例如 AI 會習慣使用條列式、點列式，文末會有總結，或特定主題有固定開頭等等「慣性」。對外發布前，建議使用者可以微調文字，減少機械感。或者是使用可以上傳檔案的 AI 服務，讓 AI 模仿你的文風，能更快地產出宛如你親手寫的內容。</p>
+                </div>
+            </section>
+
+            <section id="getting-started" class="content-section bg-white shadow overflow-hidden sm:rounded-lg p-6">
+                <h2 class="text-xl font-semibold text-gray-900 mb-4">
+                    <i class="fas fa-rocket mr-2 text-[rgb(230,72,148)]"></i>初學者如何上手？
+                </h2>
+                <p class="text-gray-700 mb-4">如果您是 AI 工具的初學者，以下是我的一些建議，幫助您更快地上手並獲得實際價值：</p>
+                
+                <!-- AI 上手步驟流程圖 -->
+                <div class="my-8 bg-gray-50 rounded-lg shadow-inner p-6">
+                    <h3 class="text-lg font-medium text-gray-900 mb-6 text-center">AI 上手四步驟</h3>
+                    <div class="flex flex-col md:flex-row justify-between items-start space-y-6 md:space-y-0 md:space-x-4">
+                        <!-- 步驟 1 -->
+                        <div class="bg-white rounded-lg shadow p-5 text-center w-full md:w-1/4 relative">
+                            <div class="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-[rgb(0,80,151)] text-white w-8 h-8 rounded-full flex items-center justify-center text-lg font-bold">1</div>
+                            <h4 class="font-medium text-[rgb(0,80,151)] mt-3 mb-2">選擇一個工具開始</h4>
+                            <p class="text-sm text-gray-600">從 ChatGPT 或 Claude 等免費且容易使用的工具開始</p>
+                        </div>
+                        
+                        <div class="hidden md:block text-gray-400 self-center">
+                            <i class="fas fa-arrow-right"></i>
+                        </div>
+                        
+                        <!-- 步驟 2 -->
+                        <div class="bg-white rounded-lg shadow p-5 text-center w-full md:w-1/4 relative">
+                            <div class="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-[rgb(0,144,212)] text-white w-8 h-8 rounded-full flex items-center justify-center text-lg font-bold">2</div>
+                            <h4 class="font-medium text-[rgb(0,144,212)] mt-3 mb-2">從小問題開始</h4>
+                            <p class="text-sm text-gray-600">先解決日常工作中的小問題，累積使用經驗和信心</p>
+                        </div>
+                        
+                        <div class="hidden md:block text-gray-400 self-center">
+                            <i class="fas fa-arrow-right"></i>
+                        </div>
+                        
+                        <!-- 步驟 3 -->
+                        <div class="bg-white rounded-lg shadow p-5 text-center w-full md:w-1/4 relative">
+                            <div class="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-[rgb(203,211,0)] text-white w-8 h-8 rounded-full flex items-center justify-center text-lg font-bold">3</div>
+                            <h4 class="font-medium text-[rgb(203,211,0)] mt-3 mb-2">改善提示詞</h4>
+                            <p class="text-sm text-gray-600">學習如何撰寫更有效的提示詞，獲得更精確的結果</p>
+                        </div>
+                        
+                        <div class="hidden md:block text-gray-400 self-center">
+                            <i class="fas fa-arrow-right"></i>
+                        </div>
+                        
+                        <!-- 步驟 4 -->
+                        <div class="bg-white rounded-lg shadow p-5 text-center w-full md:w-1/4 relative">
+                            <div class="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-[rgb(230,72,148)] text-white w-8 h-8 rounded-full flex items-center justify-center text-lg font-bold">4</div>
+                            <h4 class="font-medium text-[rgb(230,72,148)] mt-3 mb-2">整合到工作流程</h4>
+                            <p class="text-sm text-gray-600">將 AI 工具逐步整合到日常工作流程中，建立習慣</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <h3 class="text-lg font-medium text-gray-900 mt-8 mb-3">常見誤解</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                    <div class="bg-red-50 p-4 rounded-lg">
+                        <h4 class="font-medium text-red-800 mb-2"><i class="fas fa-exclamation-triangle mr-2 text-red-600"></i>過度依賴</h4>
+                        <p class="text-gray-700">不要完全依賴 AI 生成的內容。AI 可能會產生錯誤的資訊，所以一定要親自檢查和驗證。</p>
+                    </div>
+                    <div class="bg-red-50 p-4 rounded-lg">
+                        <h4 class="font-medium text-red-800 mb-2"><i class="fas fa-exclamation-triangle mr-2 text-red-600"></i>提示詞過於簡單</h4>
+                        <p class="text-gray-700">過於簡單的提示詞會得到泛泛的回應。可以試著補充足夠的背景和具體指示。</p>
+                    </div>
+                    <div class="bg-red-50 p-4 rounded-lg">
+                        <h4 class="font-medium text-red-800 mb-2"><i class="fas fa-exclamation-triangle mr-2 text-red-600"></i>保持批判性思考</h4>
+                        <p class="text-gray-700">對 AI 生成的內容要保持批判性思考，不要因為它看起來專業就全盤接受。</p>
+                    </div>
+                    <div class="bg-red-50 p-4 rounded-lg">
+                        <h4 class="font-medium text-red-800 mb-2"><i class="fas fa-exclamation-triangle mr-2 text-red-600"></i>忽略學習曲線</h4>
+                        <p class="text-gray-700">有效使用 AI 需要時間和練習。不要期望立即成為專家，給自己學習的空間。可以試著拿生活或工作中碰到的問題來嘗試。</p>
+                    </div>
+                </div>
+                
+
+                
+                <p class="text-gray-700 mt-6">AI 是輔助工具。最好的結果往往來自人類創意和判斷力與 AI 效率和能力的結合。除了要保持開放的心態，願意學習和持續實驗，也同時要記得這項技術當下的侷限性，並保持懷疑態度。</p>
+            </section>
+            <section id="subscription" class="content-section bg-white shadow overflow-hidden sm:rounded-lg p-6">
+                <h2 class="text-xl font-semibold text-gray-900 mb-4">
+                    <i class="fas fa-credit-card mr-2 text-[rgb(203,211,0)]"></i>我該付費訂閱 AI 嗎？
+                </h2>
+                <p class="text-gray-700 mb-3">如果經濟能力許可，我會建議最好是付費使用 AI 服務。雖然 LLM 原則上不會疲累，但有些情況下，它也容易給你胡言亂語的結果。</p>
+                
+                <div class="bg-yellow-50 p-4 rounded-lg my-4">
+                    <h3 class="text-lg font-medium text-yellow-800 mb-2">免費版的常見問題</h3>
+                    <ul class="list-disc pl-5 text-yellow-700">
+                        <li class="mb-2"><strong>對話太長</strong>：LLM 在回答你的問題的時候，會去參考該對話前面的訊息。所以如果碰到類似鬼打牆的情況，可以試著重開一個新對話來詢問。</li>
+                        <li><strong>額度用光了</strong>：雖然現在很多 LLM 服務都有提供免費使用，但基本上都有「額度」上的限制，而且往往也不能使用最新的功能或者是模型。</li>
+                    </ul>
+                </div>
+                
+                <p class="text-gray-700 mb-3">付費版不僅提供更高額度，還能使用更強大的模型，甚至還有更方便的訂閱專屬功能。俗話說：只付得起香蕉，就只能請到猴子；猴子拿著打字機或許能敲出莎士比亞，但得花上幾世紀。付費訂閱就像用合理薪資請到優秀員工，一點小錢就能節省大量時間。</p>
+            </section>
+
+        </div>
+
+        <div class="bg-white shadow overflow-hidden sm:rounded-lg mt-8 p-6">
+            <h2 class="text-xl font-semibold text-gray-900 mb-4">單元小結</h2>
+            <p class="text-gray-700 mb-3">在這個單元中，我們瞭解了：</p>
+            <ul class="list-disc list-inside text-gray-700 mb-4 pl-4">
+                <li class="mb-2">個人使用 AI 的經驗與歷程</li>
+                <li class="mb-2">為什麼我們應該將 AI 整合到行銷工作中</li>
+                <li class="mb-2">初學者如何開始使用 AI 並避免常見誤解</li>
+                <li class="mb-2">人類與 AI 之間的協力合作關係</li>
+            </ul>
+            <p class="text-gray-700">在下一個單元中，我們將通過一系列實際案例，展示 AI 如何幫助解決行銷工作中的各種挑戰。</p>
+            
+            <div class="flex justify-between mt-6">
+                <div></div>
+                <a href="case-studies.html" class="inline-flex items-center text-blue-600 hover:text-blue-800">
+                    下一單元：案例展示
+                    <i class="fas fa-arrow-right ml-2"></i>
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-[rgb(0,80,151)] text-white py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center">
+                <p>© 2025 神腦國際行銷部 AI 教學</p>
+                <div class="flex space-x-4">
+                    <a href="credits.html" class="text-[rgb(203,211,0)] hover:text-white">製作說明與來源</a>
+                    <a href="index.html" class="text-[rgb(203,211,0)] hover:text-white">回到首頁</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // 頁面載入動畫
+        window.addEventListener('load', function() {
+            const loader = document.getElementById('loader');
+            setTimeout(function() {
+                loader.style.opacity = '0';
+                setTimeout(function() {
+                    loader.style.display = 'none';
+                }, 500);
+            }, 500);
+        });
+    </script>
+</body>
+</html>

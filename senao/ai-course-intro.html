@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI 在行銷領域的入門 - 神腦國際 AI 教學課程</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link href="https://unpkg.com/aos@next/dist/aos.css" rel="stylesheet">
+    <style>
+        .gradient-bg {
+            background: linear-gradient(120deg, #f0f4f8 0%, #d1e3f6 100%);
+        }
+        .header-bg {
+            background: linear-gradient(180deg, #0057a8 0%, #0068cc 100%);
+            padding: 1.5rem 0;
+        }
+        .content-section {
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background-color: white;
+            border-radius: 0.5rem;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+        .workflow-container {
+            display: grid;
+            grid-template-columns: repeat(1, 1fr);
+            gap: 1rem;
+        }
+        @media (min-width: 768px) {
+            .workflow-container {
+                grid-template-columns: repeat(4, 1fr);
+            }
+            .workflow-item:not(:last-child)::after {
+                content: '';
+                position: absolute;
+                top: 2.5rem;
+                right: -1rem;
+                width: 2rem;
+                height: 2px;
+                background-color: #e2e8f0;
+            }
+        }
+        .workflow-item {
+            position: relative;
+            padding: 1rem;
+            text-align: center;
+            background-color: #f8fafc;
+            border-radius: 0.5rem;
+            border: 1px solid #e2e8f0;
+        }
+        .workflow-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 3rem;
+            height: 3rem;
+            border-radius: 50%;
+            margin-bottom: 0.75rem;
+            font-size: 1.25rem;
+        }
+        .collaboration-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+        @media (min-width: 768px) {
+            .collaboration-container {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+        .collaboration-card {
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            border: 1px solid #e2e8f0;
+        }
+        .collaboration-card ul {
+            margin-top: 1rem;
+        }
+        .collaboration-card li {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 0.75rem;
+        }
+        .collaboration-card li i {
+            margin-top: 0.25rem;
+            margin-right: 0.75rem;
+            flex-shrink: 0;
+        }
+        .steps-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1rem;
+        }
+        @media (min-width: 768px) {
+            .steps-container {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+        .step-card {
+            padding: 1.25rem;
+            border-radius: 0.5rem;
+            border: 1px solid #e2e8f0;
+            background-color: #f8fafc;
+            position: relative;
+        }
+        .step-number {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 2rem;
+            height: 2rem;
+            border-radius: 50%;
+            margin-bottom: 0.75rem;
+            font-weight: bold;
+        }
+        .example-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+        @media (min-width: 768px) {
+            .example-container {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+        .example-card {
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            border: 1px solid #e2e8f0;
+            background-color: #f8fafc;
+        }
+    </style>
+</head>
+<body class="font-sans text-gray-800 bg-gray-50">
+    <!-- 頂部導航欄 -->
+    <nav class="bg-[#0057a8] text-white py-3">
+        <div class="container mx-auto px-4 flex justify-between items-center">
+            <h1 class="text-xl font-bold">AI 在行銷領域的入門</h1>
+            <div class="flex items-center space-x-4">
+                <a href="index.html" class="text-white hover:text-yellow-300 flex items-center">
+                    <i class="fas fa-arrow-left mr-1"></i>
+                    返回課程
+                </a>
+                <a href="index.html" class="text-white hover:text-yellow-300 flex items-center">
+                    <i class="fas fa-home mr-1"></i>
+                    回到首頁
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 主要內容 -->
+    <main class="container mx-auto px-4 py-6">
+        <!-- 前言內容 -->
+        <section class="content-section">
+            <h2 class="text-xl font-bold mb-4">人工智慧在行銷領域的應用</h2>
+            <p class="text-gray-600 mb-2">瞭解 AI 如何重塑行銷環境，以及為何行銷人員需要掌握 AI 工具</p>
+            
+            <div class="mt-4">
+                <p class="mb-4">現今的行銷環境變化快速，人工智慧（AI）已成為一股不可忽視的力量，正以前所未有的速度重塑行銷的各個層面。無論是提升工作效率、激發創意，或是實現更精準的個人化行銷，AI 都展現了巨大的潛力。</p>
+                
+                <p class="mb-4">本次的部教育訓練將聚焦於兩款功能強大且容易上手的 AI 工具：ChatGPT 與 Claude。這兩者皆屬於大型語言模型（LLMs）的服務，能夠理解並產生近似人類的文字。若您已能夠透過免費的 ChatGPT，本次課程將更深入地探討如何將這些工具應用於日常行銷工作中，即使是初學者也能快速上手。</p>
+                
+                <p class="mb-4">在接下來的課程中，我們將介紹 ChatGPT 與 Claude 的基本概念，並針對行銷部門各個職能的需求，提供具體的應用範例與操作技巧。透過本次訓練，期望能幫助各位掌握 AI 的力量，將其轉化為提升工作效率、激發創新思維的得力助手。</p>
+            </div>
+        </section>
+
+        <!-- 為何要使用 AI？初學者該如何上手？ -->
+        <section class="content-section">
+            <h2 class="text-xl font-bold mb-4">為何要使用 AI？初學者該如何上手？</h2>
+            
+            <p class="mb-4">自從 ChatGPT 面世以來，AI 話題無疑越來越受關注，每個數月甚至數週就有新的 AI 工具誕生。有些人可能會想「我有需要用 AI 嗎？」或是「我想用 AI 但是我不知道該如何上手」。今天我想來分享一下我個人的 AI 使用經驗。</p>
+            
+            <h3 class="text-lg font-semibold mt-6 mb-3">大型語言模型是什麼？</h3>
+            
+            <p class="mb-4">我第一次認識到「大型語言模型」（LLM，Large Language Model）是在 2022 年 12 月 ChatGPT 亮相時。當時，不同於一些人僅僅將之視為「聊天機器人」或是另一種「Google」，我已經在嘗試它能為我解決工作上的哪些問題、提升工作效率。</p>
+            
+            <p class="mb-4">LLM 的本質是一種基於大量文本訓練的語言系統，像「語言模型」的進階版。它能預測因為訓練資料有許多日期而無法提供最新資訊，部分被抹除。大型語言模型，也稱為 LLM，是非常大規模的深度學習模型，經過大數量的訓練。底層的 Transformer 是一組神經網路，包含一個編碼器和一個具有自注意力機制的解碼器。編碼器和解碼器從一段文本序列中提取含義，並理解其中單詞和短語之間的關係。</p>
+        </section>
+
+        <!-- 大型語言模型工作流程 -->
+        <section class="content-section">
+            <h2 class="text-xl font-bold mb-4">大型語言模型工作流程</h2>
+            
+            <div class="workflow-container mt-6">
+                <div class="workflow-item">
+                    <div class="workflow-icon bg-blue-100 text-blue-600">
+                        <i class="fas fa-database"></i>
+                    </div>
+                    <h3 class="font-semibold mb-2">數據收集</h3>
+                    <p class="text-sm text-gray-600">網頁、書籍、文章等大量文本</p>
+                </div>
+                
+                <div class="workflow-item">
+                    <div class="workflow-icon bg-purple-100 text-purple-600">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3 class="font-semibold mb-2">預訓練</h3>
+                    <p class="text-sm text-gray-600">模型學習語言結構和知識</p>
+                </div>
+                
+                <div class="workflow-item">
+                    <div class="workflow-icon bg-green-100 text-green-600">
+                        <i class="fas fa-sliders-h"></i>
+                    </div>
+                    <h3 class="font-semibold mb-2">微調</h3>
+                    <p class="text-sm text-gray-600">針對特定任務優化模型</p>
+                </div>
+                
+                <div class="workflow-item">
+                    <div class="workflow-icon bg-red-100 text-red-600">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <h3 class="font-semibold mb-2">部署應用</h3>
+                    <p class="text-sm text-gray-600">如 ChatGPT、Claude 等服務</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 個人使用經驗分享 -->
+        <section class="content-section">
+            <h2 class="text-xl font-bold mb-4">個人使用經驗分享</h2>
+            
+            <p class="mb-4">目前我最常使用的是來自 Anthropic 的 Claude，並且有使用付費訂閱的 Claude Pro 服務。一個月只要 $20 美元，我就可以透過 Claude 的 Projects 功能以及模型，根據我過往的文本內容為我編寫拍攝腳本以及文章的初稿。甚至，還能透過 Artifacts 功能，為我以視覺化的方式建議簡報上的文字與數據可以如何排版。</p>
+            
+            <div class="example-container mt-6">
+                <div class="example-card">
+                    <h3 class="font-semibold mb-3 text-blue-700">
+                        <i class="fas fa-file-alt mr-2"></i>文案初稿
+                    </h3>
+                    <!-- 示意圖位置 -->
+                    <div class="bg-gray-100 p-4 text-center text-gray-400 rounded-lg mb-4">
+                        [文案初稿示意圖]
+                    </div>
+                    <p class="text-gray-700">Claude 可根據過往內容自動產生行銷文案、社群貼文、產品描述等初稿，大幅節省寫作時間。</p>
+                </div>
+                
+                <div class="example-card">
+                    <h3 class="font-semibold mb-3 text-blue-700">
+                        <i class="fas fa-chart-bar mr-2"></i>簡報排版建議
+                    </h3>
+                    <!-- 示意圖位置 -->
+                    <div class="bg-gray-100 p-4 text-center text-gray-400 rounded-lg mb-4">
+                        [簡報排版建議示意圖]
+                    </div>
+                    <p class="text-gray-700">透過 Artifacts 功能，Claude 能提供視覺化的簡報排版建議，包括文字與圖表的最佳呈現方式。</p>
+                </div>
+            </div>
+            
+            <p class="mt-4">甚至是製作出各位現在看到的網頁。接下來會為各位介紹更多的 AI 使用案例。</p>
+        </section>
+
+        <!-- 使用者與 AI 協作關係 -->
+        <section class="content-section">
+            <h2 class="text-xl font-bold mb-4">使用者與 AI 協作關係</h2>
+            
+            <div class="collaboration-container mt-4">
+                <div class="collaboration-card bg-purple-50">
+                    <h3 class="text-lg font-semibold text-purple-700 flex items-center">
+                        <i class="fas fa-user mr-2"></i>使用者角色
+                    </h3>
+                    <ul class="text-gray-700">
+                        <li>
+                            <i class="fas fa-lightbulb text-purple-500"></i>
+                            <span>提供明確指示和目標</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-info-circle text-purple-500"></i>
+                            <span>提供必要的背景資訊和上下文</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-check-circle text-purple-500"></i>
+                            <span>審核和編輯 AI 產生的內容</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-comment-dots text-purple-500"></i>
+                            <span>提供反饋以改進輸出結果</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-star text-purple-500"></i>
+                            <span>做出最終決策和判斷</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="collaboration-card bg-blue-50">
+                    <h3 class="text-lg font-semibold text-blue-700 flex items-center">
+                        <i class="fas fa-robot mr-2"></i>AI 角色
+                    </h3>
+                    <ul class="text-gray-700">
+                        <li>
+                            <i class="fas fa-file-alt text-blue-500"></i>
+                            <span>產生內容初稿和創意建議</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-palette text-blue-500"></i>
+                            <span>提供多種創意選擇和方向</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-tasks text-blue-500"></i>
+                            <span>處理重複性和耗時的任務</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-search text-blue-500"></i>
+                            <span>協助研究和資訊整理</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-sync-alt text-blue-500"></i>
+                            <span>根據反饋快速調整和優化</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- AI 上手步驟 -->
+        <section class="content-section">
+            <h2 class="text-xl font-bold mb-4">AI 上手步驟</h2>
+            
+            <div class="steps-container mt-4">
+                <div class="step-card">
+                    <div class="step-number bg-blue-600 text-white">1</div>
+                    <h3 class="font-semibold mb-2">選擇合適工具</h3>
+                    <p class="text-sm text-gray-700">根據任務需求和預算選擇適合的 AI 工具，如 ChatGPT、Claude 或其他專業工具</p>
+                </div>
+                
+                <div class="step-card">
+                    <div class="step-number bg-blue-600 text-white">2</div>
+                    <h3 class="font-semibold mb-2">確定具體問題</h3>
+                    <p class="text-sm text-gray-700">明確定義你希望 AI 協助解決的具體問題或任務，越具體越好</p>
+                </div>
+                
+                <div class="step-card">
+                    <div class="step-number bg-blue-600 text-white">3</div>
+                    <h3 class="font-semibold mb-2">撰寫明確提示</h3>
+                    <p class="text-sm text-gray-700">提供清晰、詳細的指示和必要的背景資訊，幫助 AI 理解你的需求</p>
+                </div>
+                
+                <div class="step-card">
+                    <div class="step-number bg-blue-600 text-white">4</div>
+                    <h3 class="font-semibold mb-2">迭代優化</h3>
+                    <p class="text-sm text-gray-700">根據 AI 的回應提供反饋，不斷調整提示和要求，直到獲得滿意結果</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 下一步學習 -->
+        <section class="content-section text-center">
+            <h2 class="text-xl font-bold mb-4">接下來的學習</h2>
+            <p class="mb-6">在接下來的章節中，我們將深入探討更多 AI 在行銷領域的應用案例，以及如何有效地整合這些工具到您的工作流程中。</p>
+            
+            <div class="flex justify-center">
+                <a href="#" class="bg-blue-600 text-white px-6 py-2 rounded-md font-medium hover:bg-blue-700 transition duration-300 inline-flex items-center">
+                    前往下一章
+                    <i class="fas fa-arrow-right ml-2"></i>
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <!-- 頁腳 -->
+    <footer class="bg-gray-800 text-white py-4">
+        <div class="container mx-auto px-4 text-center">
+            <p>&copy; 2025 神腦國際 AI 教學課程. 版權所有.</p>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 800,
+            once: true
+        });
+    </script>
+</body>
+</html>

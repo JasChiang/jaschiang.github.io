@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>附錄二：LLMs 原理 | 行銷初學者的 AI 教學</title>
+    <!-- TailwindCSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+        .content-section {
+            transition: all 0.3s ease;
+        }
+        .content-section:hover {
+            transform: scale(1.01);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+        .concept-card {
+            border-left: 4px solid rgb(181, 181, 182);
+        }
+        :root {
+            --senao-deep-blue: rgb(0, 80, 151);    /* Pantone 294 C */
+            --senao-green: rgb(203, 211, 0);       /* Pantone 390 C */
+            --senao-blue: rgb(0, 144, 212);        /* Pantone 2925 C */
+            --senao-yellow: rgb(250, 193, 9);      /* Pantone 1235 C */
+            --senao-pink: rgb(230, 72, 148);       /* Pantone 225 C */
+            --senao-silver: rgb(181, 181, 182);    /* Pantone 877C */
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <header class="bg-[rgb(0,80,151)] shadow-sm sticky top-0 z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+            <div class="flex justify-between items-center">
+                <h1 class="text-3xl font-bold text-white">附錄二：LLMs 原理</h1>
+                <div class="flex space-x-4">
+                    <a href="ai-marketing-course.html" class="text-[rgb(203,211,0)] hover:text-white flex items-center">
+                        <i class="fas fa-arrow-left mr-2"></i>回到課程
+                    </a>
+                    <a href="index.html" class="text-[rgb(203,211,0)] hover:text-white flex items-center">
+                        <i class="fas fa-home mr-2"></i>回到首頁
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div class="bg-white shadow overflow-hidden sm:rounded-lg mb-8">
+            <div class="px-4 py-5 sm:px-6">
+                <h2 class="text-xl font-semibold text-[rgb(0,80,151)]">大型語言模型的技術原理</h2>
+                <p class="mt-1 max-w-2xl text-sm text-[rgb(0,144,212)]">了解 AI 背後的技術與運作方式</p>
+            </div>
+            <div class="border-t border-gray-200 px-4 py-5 sm:px-6">
+                <div class="prose max-w-none text-gray-700">
+                    <p class="mb-4">本附錄將深入探討大型語言模型（LLMs）的基本原理、架構和運作方式。雖然這些技術細節對日常使用並非必要，但了解它們可以幫助您更好地理解這些工具的能力和局限性，從而更有效地利用它們。</p>
+                    <p>無論您是對 AI 技術感興趣，還是希望更深入地了解您正在使用的工具，這裡的內容將為您提供清晰易懂的技術解釋。</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 大型語言模型概述 -->
+        <div class="content-section bg-white shadow overflow-hidden sm:rounded-lg p-6 mb-8">
+            <h2 class="text-xl font-semibold text-gray-900 mb-4">
+                <i class="fas fa-brain mr-2 text-[rgb(181,181,182)]"></i>大型語言模型概述
+            </h2>
+            <div class="prose max-w-none text-gray-700">
+                <p class="mb-4">大型語言模型（Large Language Models，簡稱 LLMs）是一類能夠理解、生成和操作人類語言的人工智能系統。這些模型透過處理和分析大量文本數據來「學習」語言的模式、規則和關聯性。</p>
+                
+                <h3 class="text-lg font-medium mb-3">什麼是 LLMs？</h3>
+                <p class="mb-4">LLMs 是基於深度學習技術的神經網絡，它們被設計用來預測和生成文本。與早期的 AI 系統不同，LLMs 不是基於預定規則運作，而是通過分析大量數據來識別模式並生成回應。</p>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                    <div class="concept-card bg-gray-50 p-4 rounded-r-lg pl-6">
+                        <h3 class="font-medium text-gray-800 mb-2">訓練數據</h3>
+                        <p class="text-gray-700">LLMs 透過分析網頁、書籍、文章、社交媒體內容等數十億頁文本進行訓練，從而學習語言和知識。</p>
+                    </div>
+                    
+                    <div class="concept-card bg-gray-50 p-4 rounded-r-lg pl-6">
+                        <h3 class="font-medium text-gray-800 mb-2">參數量</h3>
+                        <p class="text-gray-700">現代 LLMs 通常有數十億到數萬億參數，這些參數是模型在訓練過程中學習和調整的數值。</p>
+                    </div>
+                </div>
+                
+                <h3 class="text-lg font-medium mb-3">LLMs 的發展歷程</h3>
+                <p class="mb-4">大型語言模型的發展經歷了幾個關鍵階段：</p>
+                
+                <div class="bg-gray-50 p-6 rounded-lg mb-6">
+                    <ol class="list-decimal pl-6">
+                        <li class="mb-3">
+                            <span class="font-medium">早期語言模型（2000 年代初）</span>：基於統計方法的簡單模型，如 n-gram 模型，能夠完成基本的語言任務。
+                        </li>
+                        <li class="mb-3">
+                            <span class="font-medium">深度學習革命（2010 年代初）</span>：引入遞歸神經網絡（RNN）和長短期記憶網絡（LSTM），提升了語言理解能力。
+                        </li>
+                        <li class="mb-3">
+                            <span class="font-medium">Transformer 架構（2017）</span>：Google 研究人員提出的 Transformer 架構成為現代 LLMs 的基礎，實現了更有效的平行處理和長文本理解。
+                        </li>
+                        <li class="mb-3">
+                            <span class="font-medium">預訓練與微調（2018-2020）</span>：如 BERT 和 GPT 系列的模型採用了預訓練和微調的方法，大幅提升了效能。
+                        </li>
+                        <li>
+                            <span class="font-medium">超大型模型（2020 至今）</span>：如 GPT-4、Claude 和 Gemini 等模型達到前所未有的規模和能力，能夠執行複雜的語言理解和生成任務。
+                        </li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+
+        <!-- Transformer 架構解析 -->
+        <div class="content-section bg-white shadow overflow-hidden sm:rounded-lg p-6 mb-8">
+            <h2 class="text-xl font-semibold text-gray-900 mb-4">
+                <i class="fas fa-cogs mr-2 text-[rgb(0,144,212)]"></i>Transformer 架構解析
+            </h2>
+            <div class="prose max-w-none text-gray-700">
+                <p class="mb-4">Transformer 是現代大型語言模型的核心架構，由 Google 研究團隊在 2017 年的論文「Attention Is All You Need」中提出。這種架構摒棄了之前流行的遞歸神經網絡（RNN），採用了一種稱為「自注意力機制」（Self-Attention）的方法，使得模型能夠更有效地處理長文本和捕捉單詞之間的關係。</p>
+                
+                <div class="bg-blue-50 p-6 rounded-lg mb-6">
+                    <h3 class="font-medium text-blue-800 mb-3">Transformer 架構的關鍵組件</h3>
+                    <ul class="list-disc pl-6 text-blue-700">
+                        <li class="mb-2">
+                            <span class="font-medium">自注意力機制</span>：允許模型在處理文本時關注相關單詞，不論它們在句子中的距離有多遠。
+                        </li>
+                        <li class="mb-2">
+                            <span class="font-medium">多頭注意力</span>：使模型能夠同時關注不同的語言特徵和模式。
+                        </li>
+                        <li class="mb-2">
+                            <span class="font-medium">位置編碼</span>：提供單詞在句子中位置的信息，彌補了 Transformer 無法自然捕捉序列順序的缺陷。
+                        </li>
+                        <li class="mb-2">
+                            <span class="font-medium">前饋神經網絡</span>：處理注意力層的輸出，進一步轉換特徵表示。
+                        </li>
+                        <li>
+                            <span class="font-medium">層標準化和殘差連接</span>：幫助穩定訓練過程並減輕梯度消失問題。
+                        </li>
+                    </ul>
+                </div>
+                
+                <h3 class="text-lg font-medium mb-3">自注意力機制的工作原理</h3>
+                <p class="mb-6">自注意力機制是 Transformer 架構的核心，它使模型能夠分析文本中單詞之間的關係：</p>
+                
+                <div class="bg-gray-50 p-6 rounded-lg mb-6">
+                    <ol class="list-decimal pl-6">
+                        <li class="mb-2">每個單詞被轉換為三個向量：查詢(Query)、鍵(Key)和值(Value)</li>
+                        <li class="mb-2">模型計算每個單詞的查詢向量與所有單詞的鍵向量的相似度</li>
+                        <li class="mb-2">這些相似度決定了其他單詞對當前單詞的影響權重</li>
+                        <li>最後，這些權重用於計算值向量的加權總和，生成輸出表示</li>
+                    </ol>
+                </div>
+                
+                <p class="mb-4">這一機制允許模型在處理某個單詞時，關注與其最相關的其他單詞，無論它們在文本中的位置如何。這使得 Transformer 特別擅長處理需要長距離依賴關係的語言任務。</p>
+            </div>
+        </div>
+
+        <!-- 模型能力與未來發展 -->
+        <div class="content-section bg-white shadow overflow-hidden sm:rounded-lg p-6 mb-8">
+            <h2 class="text-xl font-semibold text-gray-900 mb-4">
+                <i class="fas fa-rocket mr-2 text-[rgb(250,193,9)]"></i>模型能力與未來發展
+            </h2>
+            <div class="prose max-w-none text-gray-700">
+                <p class="mb-4">現代 LLMs 展現出越來越強大的能力，但仍然面臨著許多挑戰和局限。了解這些能力和界限對於有效利用這些工具至關重要。</p>
+                
+                <h3 class="text-lg font-medium mb-3">當前 LLMs 的能力</h3>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                    <div class="border border-gray-200 p-4 rounded-lg">
+                        <h4 class="font-medium text-gray-900 mb-2">語言理解與生成</h4>
+                        <p class="text-sm text-gray-700">理解複雜指令，生成連貫且上下文相關的回應，模仿各種寫作風格。</p>
+                    </div>
+                    
+                    <div class="border border-gray-200 p-4 rounded-lg">
+                        <h4 class="font-medium text-gray-900 mb-2">知識應用</h4>
+                        <p class="text-sm text-gray-700">從訓練數據中提取和應用廣泛的知識，回答各類問題。</p>
+                    </div>
+                    
+                    <div class="border border-gray-200 p-4 rounded-lg">
+                        <h4 class="font-medium text-gray-900 mb-2">模式識別</h4>
+                        <p class="text-sm text-gray-700">識別語言中的模式，包括語法結構、風格特徵和主題關聯。</p>
+                    </div>
+                    
+                    <div class="border border-gray-200 p-4 rounded-lg">
+                        <h4 class="font-medium text-gray-900 mb-2">多模態整合</h4>
+                        <p class="text-sm text-gray-700">最新的模型能夠處理和生成文本、圖像，甚至簡單的代碼。</p>
+                    </div>
+                </div>
+                
+                <h3 class="text-lg font-medium mb-3">當前的局限性</h3>
+                
+                <div class="bg-yellow-50 p-6 rounded-lg mb-6">
+                    <ul class="list-disc pl-6 text-yellow-700">
+                        <li class="mb-2">
+                            <span class="font-medium">知識截止點</span>：大多數模型僅具備訓練數據截止日期之前的知識。
+                        </li>
+                        <li class="mb-2">
+                            <span class="font-medium">幻覺生成</span>：可能生成表面上合理但實際上不準確的內容。
+                        </li>
+                        <li class="mb-2">
+                            <span class="font-medium">理解限制</span>：雖然可以模仿理解，但缺乏真正的世界理解和因果推理。
+                        </li>
+                        <li class="mb-2">
+                            <span class="font-medium">上下文窗口</span>：能夠處理的文本長度有限，雖然這一限制正在逐步擴展。
+                        </li>
+                        <li>
+                            <span class="font-medium">偏見反映</span>：可能反映訓練數據中存在的偏見和刻板印象。
+                        </li>
+                    </ul>
+                </div>
+                
+                <h3 class="text-lg font-medium mb-3">未來發展趨勢</h3>
+                <p class="mb-4">LLMs 技術正在快速發展，以下是一些可能的未來發展方向：</p>
+                
+                <div class="bg-gray-50 p-6 rounded-lg">
+                    <ul class="list-disc pl-6">
+                        <li class="mb-2">
+                            <span class="font-medium">更強大的多模態能力</span>：未來的模型將更好地整合文本、圖像、音頻和視頻。
+                        </li>
+                        <li class="mb-2">
+                            <span class="font-medium">增強推理能力</span>：改進模型的邏輯推理和因果關係理解。
+                        </li>
+                        <li class="mb-2">
+                            <span class="font-medium">更長的上下文窗口</span>：能夠處理更長的文本和對話歷史。
+                        </li>
+                        <li class="mb-2">
+                            <span class="font-medium">更高效的訓練和推理</span>：開發更節能和計算效率更高的模型。
+                        </li>
+                        <li class="mb-2">
+                            <span class="font-medium">持續學習能力</span>：模型能夠在部署後持續學習和適應新信息。
+                        </li>
+                        <li>
+                            <span class="font-medium">安全性和可控性提升</span>：更好地控制模型輸出，減少有害內容和偏見。
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- 延伸閱讀資源 -->
+        <div class="bg-white shadow overflow-hidden sm:rounded-lg p-6">
+            <h2 class="text-xl font-semibold text-[rgb(0,80,151)] mb-4">延伸閱讀資源</h2>
+            <div class="space-y-6 text-gray-700">
+                <p>如果您想更深入地了解 LLMs 和 AI 技術，以下是一些值得推薦的資源：</p>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="border border-gray-200 p-4 rounded-lg">
+                        <h3 class="font-medium text-gray-900 mb-2">入門資源</h3>
+                        <ul class="list-disc pl-6 text-sm">
+                            <li class="mb-1">「人工智能：一種現代方法」（Stuart Russell 和 Peter Norvig）</li>
+                            <li class="mb-1">「深度學習」（Ian Goodfellow, Yoshua Bengio 和 Aaron Courville）</li>
+                            <li>「動手學深度學習」在線教程（d2l.ai）</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="border border-gray-200 p-4 rounded-lg">
+                        <h3 class="font-medium text-gray-900 mb-2">技術論文</h3>
+                        <ul class="list-disc pl-6 text-sm">
+                            <li class="mb-1">「Attention Is All You Need」（Transformer 架構的原始論文）</li>
+                            <li class="mb-1">「Language Models are Few-Shot Learners」（GPT-3 論文）</li>
+                            <li>「Training language models to follow instructions with human feedback」（InstructGPT 論文）</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="border border-gray-200 p-4 rounded-lg">
+                        <h3 class="font-medium text-gray-900 mb-2">線上課程</h3>
+                        <ul class="list-disc pl-6 text-sm">
+                            <li class="mb-1">Stanford CS224N: Natural Language Processing with Deep Learning</li>
+                            <li class="mb-1">DeepLearning.AI 的「Deep Learning Specialization」</li>
+                            <li>Fast.ai 的「Practical Deep Learning for Coders」</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="border border-gray-200 p-4 rounded-lg">
+                        <h3 class="font-medium text-gray-900 mb-2">博客和網站</h3>
+                        <ul class="list-disc pl-6 text-sm">
+                            <li class="mb-1">Hugging Face 的 blog 和文檔</li>
+                            <li class="mb-1">OpenAI 和 Anthropic 的研究博客</li>
+                            <li>「The Gradient」和「Distill.pub」等 AI 研究刊物</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-[rgb(0,80,151)] text-white py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <p>&copy; 2025 行銷初學者的 AI 教學</p>
+                </div>
+                <div class="flex space-x-6">
+                    <a href="ai-marketing-credits.html" class="text-[rgb(203,211,0)] hover:text-white">製作說明與來源</a>
+                    <a href="index.html" class="text-[rgb(203,211,0)] hover:text-white">回到首頁</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // JavaScript for any interactive elements can be added here
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('Page loaded successfully');
+        });
+    </script>
+</body>
+</html>

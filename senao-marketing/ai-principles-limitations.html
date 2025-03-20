@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第二章：AI 的原理、侷限與使用心法 | 行銷初學者的 AI 教學</title>
+    <!-- TailwindCSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+        .content-section {
+            transition: all 0.3s ease;
+        }
+        .content-section:hover {
+            transform: scale(1.01);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+        .warning-card {
+            border-left: 4px solid rgb(250, 193, 9);
+        }
+        .tip-card {
+            border-left: 4px solid rgb(0, 144, 212);
+        }
+        :root {
+            --senao-deep-blue: rgb(0, 80, 151);    /* Pantone 294 C */
+            --senao-green: rgb(203, 211, 0);       /* Pantone 390 C */
+            --senao-blue: rgb(0, 144, 212);        /* Pantone 2925 C */
+            --senao-yellow: rgb(250, 193, 9);      /* Pantone 1235 C */
+            --senao-pink: rgb(230, 72, 148);       /* Pantone 225 C */
+            --senao-silver: rgb(181, 181, 182);    /* Pantone 877C */
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <header class="bg-[rgb(0,80,151)] shadow-sm sticky top-0 z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+            <div class="flex justify-between items-center">
+                <h1 class="text-3xl font-bold text-white">第二章：AI 的原理、侷限與使用心法</h1>
+                <div class="flex space-x-4">
+                    <a href="ai-marketing-course.html" class="text-[rgb(203,211,0)] hover:text-white flex items-center">
+                        <i class="fas fa-arrow-left mr-2"></i>回到課程
+                    </a>
+                    <a href="index.html" class="text-[rgb(203,211,0)] hover:text-white flex items-center">
+                        <i class="fas fa-home mr-2"></i>回到首頁
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div class="bg-white shadow overflow-hidden sm:rounded-lg mb-8">
+            <div class="px-4 py-5 sm:px-6">
+                <h2 class="text-xl font-semibold text-[rgb(0,80,151)]">理解 AI 的運作方式與限制</h2>
+                <p class="mt-1 max-w-2xl text-sm text-[rgb(0,144,212)]">深入了解 AI 工具的基礎知識，認識其能力邊界與有效使用方法</p>
+            </div>
+            <div class="border-t border-gray-200 px-4 py-5 sm:px-6">
+                <div class="prose max-w-none text-gray-700">
+                    <p class="mb-4">本章節將探討 AI 工具的基本原理、現有的限制，以及如何有效地使用這些工具來提升您的行銷工作效率。了解 AI 的運作方式有助於您更有效地與這些工具互動，避免常見的誤解，並充分發揮它們的潛力。</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- AI 工具的基本原理 -->
+        <div class="content-section bg-white shadow overflow-hidden sm:rounded-lg p-6 mb-8">
+            <h2 class="text-xl font-semibold text-gray-900 mb-4">
+                <i class="fas fa-microchip mr-2 text-[rgb(0,144,212)]"></i>AI 工具的基本原理
+            </h2>
+            <div class="prose max-w-none text-gray-700">
+                <h3 class="text-lg font-medium mb-3">什麼是大型語言模型 (LLMs)</h3>
+                <p class="mb-4">大型語言模型是透過大量文本資料訓練出來的 AI 系統，能夠理解和生成類似人類的語言。這些模型通過分析文字之間的關聯性來學習語言模式和知識。</p>
+                
+                <h3 class="text-lg font-medium mb-3">ChatGPT 與 Claude 的運作方式</h3>
+                <p class="mb-4">ChatGPT 和 Claude 等大型語言模型透過預測下一個最可能出現的詞彙來生成回應。它們不是簡單地記憶或搜尋答案，而是根據訓練數據產生流暢且相關的回應。</p>
+                
+                <div class="bg-gray-50 p-6 rounded-lg mb-6">
+                    <h4 class="font-medium mb-3">LLMs 的核心特性：</h4>
+                    <ul class="list-disc pl-6">
+                        <li class="mb-2">預測能力：預測序列中下一個可能的詞彙</li>
+                        <li class="mb-2">理解上下文：能夠把握對話或查詢的脈絡</li>
+                        <li class="mb-2">知識擷取：從訓練數據中提取和應用知識</li>
+                        <li>模式識別：辨識語言、風格和結構模式</li>
+                    </ul>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="bg-blue-50 p-4 rounded-lg">
+                        <h4 class="font-medium text-blue-800 mb-2">訓練數據</h4>
+                        <p class="text-blue-700">這些模型通過分析網頁、書籍、文章等數十億頁的文本進行訓練，學習人類語言的模式和世界知識。</p>
+                    </div>
+                    
+                    <div class="bg-blue-50 p-4 rounded-lg">
+                        <h4 class="font-medium text-blue-800 mb-2">參數量</h4>
+                        <p class="text-blue-700">大型語言模型擁有數十億到數萬億個參數，這使它們能夠捕捉複雜的語言關係和知識。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- AI 的侷限與注意事項 -->
+        <div class="content-section bg-white shadow overflow-hidden sm:rounded-lg p-6 mb-8">
+            <h2 class="text-xl font-semibold text-gray-900 mb-4">
+                <i class="fas fa-exclamation-triangle mr-2 text-[rgb(250,193,9)]"></i>AI 的侷限與注意事項
+            </h2>
+            <div class="prose max-w-none text-gray-700">
+                <p class="mb-4">雖然 AI 工具強大，但它們也有明顯的限制和局限性。了解這些局限有助於您更合理地設定期望並有效使用這些工具。</p>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                    <div class="warning-card bg-yellow-50 p-4 rounded-r-lg pl-6">
+                        <h3 class="font-medium text-yellow-800 mb-2">幻覺 (Hallucinations)</h3>
+                        <p class="text-yellow-700">AI 可能會產生看似可信但實際上不正確的內容。這是因為它們在預測文本時，並不總是能正確區分事實與非事實。</p>
+                    </div>
+                    
+                    <div class="warning-card bg-yellow-50 p-4 rounded-r-lg pl-6">
+                        <h3 class="font-medium text-yellow-800 mb-2">知識截止點</h3>
+                        <p class="text-yellow-700">大多數 AI 模型的訓練數據有截止日期，之後的事件和資訊它們可能不了解。</p>
+                    </div>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                    <div class="warning-card bg-yellow-50 p-4 rounded-r-lg pl-6">
+                        <h3 class="font-medium text-yellow-800 mb-2">上下文理解限制</h3>
+                        <p class="text-yellow-700">AI 可能無法完全理解複雜的上下文或含蓄的指示，尤其是在多輪對話中。</p>
+                    </div>
+                    
+                    <div class="warning-card bg-yellow-50 p-4 rounded-r-lg pl-6">
+                        <h3 class="font-medium text-yellow-800 mb-2">創意思維有限</h3>
+                        <p class="text-yellow-700">雖然 AI 能產生創意內容，但難以提供真正原創的策略思考或突破性想法。</p>
+                    </div>
+                </div>
+                
+                <div class="bg-red-50 p-6 rounded-lg mb-6">
+                    <h3 class="font-medium text-red-800 mb-3">重要注意事項</h3>
+                    <ul class="list-disc pl-6 text-red-700">
+                        <li class="mb-2">不要將 AI 生成的資訊視為絕對真實，始終進行事實核查</li>
+                        <li class="mb-2">避免共享敏感或機密資訊</li>
+                        <li class="mb-2">認識到 AI 生成的內容可能缺乏獨特的創意視角</li>
+                        <li>AI 無法完全理解特定企業或行業的複雜脈絡</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- 有效使用的心法與技巧 -->
+        <div class="content-section bg-white shadow overflow-hidden sm:rounded-lg p-6 mb-8">
+            <h2 class="text-xl font-semibold text-gray-900 mb-4">
+                <i class="fas fa-lightbulb mr-2 text-[rgb(203,211,0)]"></i>有效使用的心法與技巧
+            </h2>
+            <div class="prose max-w-none text-gray-700">
+                <p class="mb-4">掌握以下技巧和心法，能夠大幅提升您使用 AI 工具的效率和效果。</p>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                    <div class="tip-card bg-blue-50 p-4 rounded-r-lg pl-6">
+                        <h3 class="font-medium text-blue-800 mb-2">提供明確指示</h3>
+                        <p class="text-blue-700">清晰、具體且詳細的提示能夠顯著提高 AI 回應的質量。指定格式、風格、長度和受眾。</p>
+                    </div>
+                    
+                    <div class="tip-card bg-blue-50 p-4 rounded-r-lg pl-6">
+                        <h3 class="font-medium text-blue-800 mb-2">迭代改進</h3>
+                        <p class="text-blue-700">將 AI 使用視為對話過程，根據初始結果提供反饋，逐步調整和改進輸出。</p>
+                    </div>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                    <div class="tip-card bg-blue-50 p-4 rounded-r-lg pl-6">
+                        <h3 class="font-medium text-blue-800 mb-2">分解複雜任務</h3>
+                        <p class="text-blue-700">將複雜問題分解為較小的子任務，逐一處理，然後整合結果。</p>
+                    </div>
+                    
+                    <div class="tip-card bg-blue-50 p-4 rounded-r-lg pl-6">
+                        <h3 class="font-medium text-blue-800 mb-2">提供參考示例</h3>
+                        <p class="text-blue-700">向 AI 提供您期望的輸出類型的示例，幫助它更好地理解您的期望。</p>
+                    </div>
+                </div>
+                
+                <div class="bg-green-50 p-6 rounded-lg mb-6">
+                    <h3 class="font-medium text-green-800 mb-3">行銷應用的最佳實踐</h3>
+                    <ul class="list-disc pl-6 text-green-700">
+                        <li class="mb-2">將 AI 視為協作夥伴而非替代品</li>
+                        <li class="mb-2">保持人工審核和編輯所有 AI 生成的內容</li>
+                        <li class="mb-2">使用 AI 進行起草和頭腦風暴，但由人類做最終決策</li>
+                        <li class="mb-2">持續學習和實驗不同的提示方法</li>
+                        <li>透過不同的角度和方法詢問同一個問題，獲取多樣視角</li>
+                    </ul>
+                </div>
+                
+                <div class="bg-gray-100 p-6 rounded-lg">
+                    <h3 class="font-medium mb-3">提示詞工程的關鍵元素</h3>
+                    <ul class="list-none space-y-4">
+                        <li class="flex items-start">
+                            <span class="bg-[rgb(0,80,151)] text-white rounded-full w-6 h-6 flex items-center justify-center mr-3 flex-shrink-0">1</span>
+                            <div>
+                                <span class="font-medium">角色設定</span>：告訴 AI 它應該以什麼角色或專業身份回應
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="bg-[rgb(0,80,151)] text-white rounded-full w-6 h-6 flex items-center justify-center mr-3 flex-shrink-0">2</span>
+                            <div>
+                                <span class="font-medium">背景資訊</span>：提供相關的背景或上下文
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="bg-[rgb(0,80,151)] text-white rounded-full w-6 h-6 flex items-center justify-center mr-3 flex-shrink-0">3</span>
+                            <div>
+                                <span class="font-medium">明確任務</span>：清楚說明您希望完成的任務
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="bg-[rgb(0,80,151)] text-white rounded-full w-6 h-6 flex items-center justify-center mr-3 flex-shrink-0">4</span>
+                            <div>
+                                <span class="font-medium">具體格式</span>：指定所需的輸出格式和結構
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="bg-[rgb(0,80,151)] text-white rounded-full w-6 h-6 flex items-center justify-center mr-3 flex-shrink-0">5</span>
+                            <div>
+                                <span class="font-medium">評估標準</span>：說明如何評判成功的回應
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 實用提示詞模板 -->
+        <div class="bg-white shadow overflow-hidden sm:rounded-lg p-6">
+            <h2 class="text-xl font-semibold text-[rgb(0,80,151)] mb-4">實用提示詞模板</h2>
+            <div class="space-y-6">
+                <div class="bg-gray-50 p-6 rounded-lg">
+                    <h3 class="font-medium text-gray-900 mb-3">行銷文案改進模板</h3>
+                    <div class="bg-white p-4 rounded border border-gray-200">
+                        <p class="text-gray-700 text-sm">扮演一位專業的台灣繁體中文數位行銷文案編輯。請幫我審核並改進以下產品描述文案，使其更具吸引力、說服力並符合台灣的語言習慣。保持原有的主要訊息，但提升其吸引力和清晰度。</p>
+                        <p class="text-gray-700 text-sm mt-2">文案：[您的原始文案]</p>
+                        <p class="text-gray-700 text-sm mt-2">目標受眾：[描述目標客群]</p>
+                        <p class="text-gray-700 text-sm mt-2">傳播渠道：[如社群媒體、EDM、網站等]</p>
+                        <p class="text-gray-700 text-sm mt-2">請提供：</p>
+                        <p class="text-gray-700 text-sm mt-1">1. 改進後的文案</p>
+                        <p class="text-gray-700 text-sm mt-1">2. 您做出的主要改進及其原因</p>
+                        <p class="text-gray-700 text-sm mt-1">3. 2-3個可選的標題建議</p>
+                    </div>
+                </div>
+                
+                <div class="bg-gray-50 p-6 rounded-lg">
+                    <h3 class="font-medium text-gray-900 mb-3">行銷策略分析模板</h3>
+                    <div class="bg-white p-4 rounded border border-gray-200">
+                        <p class="text-gray-700 text-sm">扮演一位專業的行銷策略顧問。分析以下行銷活動的效果，並提供改進建議。你的分析應基於數據洞見，並提供具體、可行的優化方向。</p>
+                        <p class="text-gray-700 text-sm mt-2">活動背景：[描述活動目標、對象、渠道等]</p>
+                        <p class="text-gray-700 text-sm mt-2">關鍵績效指標：[列出KPI數據]</p>
+                        <p class="text-gray-700 text-sm mt-2">請提供：</p>
+                        <p class="text-gray-700 text-sm mt-1">1. 活動效果分析（優勢與不足）</p>
+                        <p class="text-gray-700 text-sm mt-1">2. 3-5個具體改進建議</p>
+                        <p class="text-gray-700 text-sm mt-1">3. 未來活動的優化方向</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-[rgb(0,80,151)] text-white py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <p>&copy; 2025 行銷初學者的 AI 教學</p>
+                </div>
+                <div class="flex space-x-6">
+                    <a href="ai-marketing-credits.html" class="text-[rgb(203,211,0)] hover:text-white">製作說明與來源</a>
+                    <a href="index.html" class="text-[rgb(203,211,0)] hover:text-white">回到首頁</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // JavaScript for any interactive elements can be added here
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('Page loaded successfully');
+        });
+    </script>
+</body>
+</html>

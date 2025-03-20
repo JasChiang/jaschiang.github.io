@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>大型語言模型（LLM）原理與應用 | 行銷初學者的 AI 教學</title>
+    <!-- TailwindCSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+        .content-section {
+            transition: all 0.3s ease;
+        }
+        .content-section:hover {
+            transform: scale(1.01);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+        .highlight-text {
+            background: linear-gradient(120deg, rgba(0, 144, 212, 0.2), rgba(0, 144, 212, 0.2));
+            background-repeat: no-repeat;
+            background-size: 100% 40%;
+            background-position: 0 90%;
+        }
+        .quote-box {
+            border-left: 4px solid rgb(0, 80, 151);
+            background-color: #f3f4f6;
+        }
+        :root {
+            --senao-deep-blue: rgb(0, 80, 151);    /* Pantone 294 C */
+            --senao-green: rgb(203, 211, 0);       /* Pantone 390 C */
+            --senao-blue: rgb(0, 144, 212);        /* Pantone 2925 C */
+            --senao-yellow: rgb(250, 193, 9);      /* Pantone 1235 C */
+            --senao-pink: rgb(230, 72, 148);       /* Pantone 225 C */
+            --senao-silver: rgb(181, 181, 182);    /* Pantone 877C */
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <header class="bg-[rgb(0,80,151)] shadow-sm sticky top-0 z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+            <div class="flex justify-between items-center">
+                <h1 class="text-3xl font-bold text-white">大型語言模型（LLM）原理與應用</h1>
+                <div class="flex space-x-4">
+                    <a href="ai-marketing-course.html" class="text-[rgb(203,211,0)] hover:text-white flex items-center">
+                        <i class="fas fa-arrow-left mr-2"></i>回到課程
+                    </a>
+                    <a href="index.html" class="text-[rgb(203,211,0)] hover:text-white flex items-center">
+                        <i class="fas fa-home mr-2"></i>回到首頁
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div class="bg-white shadow overflow-hidden sm:rounded-lg mb-8">
+            <div class="px-4 py-5 sm:px-6">
+                <h2 class="text-xl font-semibold text-gray-900">認識大型語言模型（LLM）的核心原理</h2>
+                <p class="mt-1 max-w-2xl text-sm text-gray-500">深入瞭解 LLM 的工作原理、局限性及有效使用策略</p>
+            </div>
+            <div class="border-t border-gray-200 px-4 py-5 sm:px-6">
+                <p class="text-gray-700 mb-4">大型語言模型（LLM）已經成為行銷工作中的重要工具。瞭解這些模型的基本原理、限制以及如何有效地與它們互動，可以幫助您更好地將它們應用於行銷工作流程中。</p>
+                <p class="text-gray-700">本單元將介紹 LLM 的運作機制、常見限制、有效提示技巧，以及如何將 LLM 整合到行銷工作流程中，為您提供全面的 LLM 應用知識。</p>
+            </div>
+        </div>
+
+        <div class="space-y-8">
+            <!-- LLM 限制說明區塊 -->
+            <section id="llm-limitations" class="content-section bg-white shadow overflow-hidden sm:rounded-lg p-6">
+                <h2 class="text-xl font-semibold text-gray-900 mb-4">
+                    <i class="fas fa-exclamation-triangle mr-2 text-[rgb(250,193,9)]"></i>LLM 的局限性
+                </h2>
+                <p class="text-gray-700 mb-4">雖然大型語言模型功能強大，但了解它們的局限性對於有效使用這些工具至關重要。以下是使用 LLM 時需要注意的幾個主要限制：</p>
+
+                <!-- 幻覺 -->
+                <div class="mb-6">
+                    <h3 class="text-lg font-medium text-gray-900 mb-2">
+                        <i class="fas fa-ghost text-gray-500 mr-2"></i>幻覺 (Hallucination)
+                    </h3>
+                    <p class="text-gray-700 mb-3">LLM 可能會產生聽起來合理但實際上不正確的資訊，特別是在涉及具體事實或數據時。</p>
+                    <div class="bg-amber-50 border-l-4 border-amber-500 p-4 mb-3">
+                        <p class="text-amber-700"><strong>行銷陷阱：</strong>在行銷內容中使用未經驗證的資料或產品資訊，可能導致錯誤宣傳。</p>
+                    </div>
+                    <p class="text-gray-700 mb-2"><strong>最佳做法：</strong></p>
+                    <ul class="list-disc pl-5 text-gray-700 mb-4">
+                        <li class="mb-1">始終核實關鍵事實和數據。</li>
+                        <li class="mb-1">請 LLM 列出資訊來源，以便您可以進行驗證。</li>
+                        <li>對於重要數據，使用多種來源交叉檢查。</li>
+                    </ul>
+                </div>
+
+                <!-- 知識時效性 -->
+                <div class="mb-6">
+                    <h3 class="text-lg font-medium text-gray-900 mb-2">
+                        <i class="fas fa-calendar-times text-gray-500 mr-2"></i>知識時效性
+                    </h3>
+                    <p class="text-gray-700 mb-3">LLM 的知識僅限於其訓練資料的截止日期，無法獲取最新資訊。</p>
+                    <div class="bg-amber-50 border-l-4 border-amber-500 p-4 mb-3">
+                        <p class="text-amber-700"><strong>行銷陷阱：</strong>依賴過時的市場趨勢或競爭對手資訊制定策略。</p>
+                    </div>
+                    <p class="text-gray-700 mb-2"><strong>最佳做法：</strong></p>
+                    <ul class="list-disc pl-5 text-gray-700 mb-4">
+                        <li class="mb-1">詢問 LLM 其知識截止日期。</li>
+                        <li class="mb-1">補充最新資訊作為提示的一部分。</li>
+                        <li>對於需要最新資訊的任務，考慮使用具有網路搜尋功能的 AI 工具。</li>
+                    </ul>
+                </div>
+
+                <!-- 理解和推理限制 -->
+                <div class="mb-6">
+                    <h3 class="text-lg font-medium text-gray-900 mb-2">
+                        <i class="fas fa-brain text-gray-500 mr-2"></i>理解和推理限制
+                    </h3>
+                    <p class="text-gray-700 mb-3">LLM 在複雜推理任務上可能表現不佳，且對微妙的上下文線索可能缺乏真正的理解。</p>
+                    <div class="bg-amber-50 border-l-4 border-amber-500 p-4 mb-3">
+                        <p class="text-amber-700"><strong>行銷陷阱：</strong>過度依賴 AI 制定複雜的戰略決策或解釋受眾行為的微妙動機。</p>
+                    </div>
+                    <p class="text-gray-700 mb-2"><strong>最佳做法：</strong></p>
+                    <ul class="list-disc pl-5 text-gray-700 mb-4">
+                        <li class="mb-1">將複雜問題分解為更小的、更具體的子任務。</li>
+                        <li class="mb-1">使用 LLM 生成多個觀點，而非單一答案。</li>
+                        <li>結合人類專業知識與 AI 輔助，尤其是在戰略決策方面。</li>
+                    </ul>
+                </div>
+
+                <!-- 創造力和原創性限制 -->
+                <div class="mb-6">
+                    <h3 class="text-lg font-medium text-gray-900 mb-2">
+                        <i class="fas fa-lightbulb text-gray-500 mr-2"></i>創造力和原創性限制
+                    </h3>
+                    <p class="text-gray-700 mb-3">雖然 LLM 可以模仿創意內容，但它們缺乏真正的原創性，往往生成基於現有模式的內容。</p>
+                    <div class="bg-amber-50 border-l-4 border-amber-500 p-4 mb-3">
+                        <p class="text-amber-700"><strong>行銷陷阱：</strong>生成的內容可能與其他使用 AI 的品牌相似，缺乏獨特的品牌聲音。</p>
+                    </div>
+                    <p class="text-gray-700 mb-2"><strong>最佳做法：</strong></p>
+                    <ul class="list-disc pl-5 text-gray-700 mb-4">
+                        <li class="mb-1">使用 LLM 作為創意頭腦風暴的起點，而不是最終產品。</li>
+                        <li class="mb-1">提供具體的品牌聲音指南和範例以作為參考。</li>
+                        <li>結合人類創意和 AI 輔助以創造真正獨特的內容。</li>
+                    </ul>
+                </div>
+
+                <!-- 行銷陷阱與最佳做法摘要表 -->
+                <div class="overflow-x-auto rounded-lg shadow mb-6">
+                    <table class="min-w-full divide-y divide-gray-200">
+                        <thead class="bg-gray-50">
+                            <tr>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    常見行銷陷阱
+                                </th>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    最佳做法
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody class="bg-white divide-y divide-gray-200">
+                            <tr>
+                                <td class="px-6 py-4 whitespace-normal text-sm text-gray-700">
+                                    僅憑 AI 產生的內容發布沒有事實檢查的行銷材料
+                                </td>
+                                <td class="px-6 py-4 whitespace-normal text-sm text-gray-700">
+                                    實施審核流程，確保所有 AI 產生的內容在發布前經過事實核查
+                                </td>
+                            </tr>
+                            <tr class="bg-gray-50">
+                                <td class="px-6 py-4 whitespace-normal text-sm text-gray-700">
+                                    將 AI 生成的市場分析視為絕對事實
+                                </td>
+                                <td class="px-6 py-4 whitespace-normal text-sm text-gray-700">
+                                    將 AI 分析與行業報告和專家觀點相結合以獲得更全面的視角
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 whitespace-normal text-sm text-gray-700">
+                                    使用過於籠統的提示，導致內容淺顯且缺乏專業深度
+                                </td>
+                                <td class="px-6 py-4 whitespace-normal text-sm text-gray-700">
+                                    使用詳細的提示，包括行業專業知識、期望和上下文資訊
+                                </td>
+                            </tr>
+                            <tr class="bg-gray-50">
+                                <td class="px-6 py-4 whitespace-normal text-sm text-gray-700">
+                                    過度依賴 AI 生成的內容而不添加人類創意和專業知識
+                                </td>
+                                <td class="px-6 py-4 whitespace-normal text-sm text-gray-700">
+                                    將 AI 視為協作工具，而不是完全替代人類創意和專業判斷
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="bg-blue-50 p-4 rounded-lg">
+                    <h3 class="text-md font-medium text-blue-800 mb-2">
+                        <i class="fas fa-info-circle mr-2"></i>關鍵要點
+                    </h3>
+                    <p class="text-blue-700 text-sm">
+                        瞭解 LLM 的局限性不是為了限制其使用，而是為了更有效地利用它們。當您知道這些工具的強項和弱點時，就能設計更好的提示，並知道何時需要人類審核和專業知識的介入。
+                    </p>
+                </div>
+            </section>
+
+            <!-- 有效提示策略區塊 -->
+            <section id="effective-prompting" class="content-section bg-white shadow overflow-hidden sm:rounded-lg p-6">
+                <h2 class="text-xl font-semibold text-gray-900 mb-4">
+                    <i class="fas fa-magic mr-2 text-[rgb(0,144,212)]"></i>有效的提示策略
+                </h2>
+                <p class="text-gray-700 mb-4">掌握提示工程（Prompt Engineering）的基本原則可以顯著提高 LLM 輸出的品質。以下是設計有效提示的核心原則和進階技巧：</p>
+
+                <!-- 基本原則 -->
+                <div class="mb-8">
+                    <h3 class="text-lg font-medium text-gray-900 mb-3">
+                        <i class="fas fa-list-ol text-gray-500 mr-2"></i>提示工程的基本原則
+                    </h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                        <div class="bg-white p-4 rounded-lg border border-gray-200 shadow-sm">
+                            <h4 class="font-medium text-gray-900 mb-2">1. 具體明確</h4>
+                            <p class="text-gray-700 text-sm">避免模糊指令。明確指出您需要什麼、需要的格式、長度和風格。</p>
+                            <div class="mt-2 text-xs bg-gray-50 p-2 rounded">
+                                <p class="text-gray-500 mb-1">❌ <span class="line-through">"寫一些關於我們產品的內容"</span></p>
+                                <p class="text-green-600">✓ "撰寫一篇 300 字的產品說明，強調其獨特賣點，適合用於產品網頁"</p>
+                            </div>
+                        </div>
+                        <div class="bg-white p-4 rounded-lg border border-gray-200 shadow-sm">
+                            <h4 class="font-medium text-gray-900 mb-2">2. 提供上下文</h4>
+                            <p class="text-gray-700 text-sm">包含必要的背景資訊，如目標受眾、品牌聲音、行業知識等。</p>
+                            <div class="mt-2 text-xs bg-gray-50 p-2 rounded">
+                                <p class="text-gray-500 mb-1">❌ <span class="line-through">"為我們的新手機寫一則廣告"</span></p>
+                                <p class="text-green-600">✓ "為我們的新款 XYZ 手機撰寫廣告文案，目標是 25-40 歲的專業人士，強調其電池續航力和相機功能"</p>
+                            </div>
+                        </div>
+                        <div class="bg-white p-4 rounded-lg border border-gray-200 shadow-sm">
+                            <h4 class="font-medium text-gray-900 mb-2">3. 分步驟指導</h4>
+                            <p class="text-gray-700 text-sm">對於複雜任務，將其分解為更小的步驟，逐步引導 LLM。</p>
+                            <div class="mt-2 text-xs bg-gray-50 p-2 rounded">
+                                <p class="text-gray-500 mb-1">❌ <span class="line-through">"為我們的產品制定完整的行銷策略"</span></p>
+                                <p class="text-green-600">✓ "首先，分析我們產品的優勢；其次，確定目標受眾；然後，建議 3-5 個最適合的行銷管道"</p>
+                            </div>
+                        </div>
+                        <div class="bg-white p-4 rounded-lg border border-gray-200 shadow-sm">
+                            <h4 class="font-medium text-gray-900 mb-2">4. 迭代優化</h4>
+                            <p class="text-gray-700 text-sm">將提示視為對話過程。根據模型回應提供反饋並調整後續提示。</p>
+                            <div class="mt-2 text-xs bg-gray-50 p-2 rounded">
+                                <p class="text-gray-500 mb-1">❌ <span class="line-through">一次性期望完美結果</span></p>
+                                <p class="text-green-600">✓ "這很好，但可以更加強調環保特性嗎？同時，使用更簡潔的語言"</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 進階提示技巧 -->
+                <div class="mb-8">
+                    <h3 class="text-lg font-medium text-gray-900 mb-3">
+                        <i class="fas fa-graduation-cap text-gray-500 mr-2"></i>進階提示技巧
+                    </h3>
+                    
+                    <!-- 角色扮演提示 -->
+                    <div class="mb-6">
+                        <h4 class="font-medium text-gray-900 mb-2">角色扮演提示</h4>
+                        <p class="text-gray-700 mb-3">指示 LLM 扮演特定角色，可以引導其以特定的專業知識或風格回應。</p>
+                        <div class="bg-gray-50 p-3 rounded-lg border border-gray-200 mb-3">
+                            <h5 class="font-medium text-gray-700 mb-1">範例：</h5>
+                            <p class="text-gray-600 text-sm italic">"以資深品牌策略師的身分，評估我們當前的品牌定位並提供改進建議。針對數位原生世代，我們想展現更年輕、更具創新性的形象。"</p>
+                        </div>
+                        <p class="text-gray-700 text-sm">此技巧特別適用於需要特定觀點或專業知識的任務，如市場分析、消費者洞察或創意策略。</p>
+                    </div>
+                    
+                    <!-- 框架提示 -->
+                    <div class="mb-6">
+                        <h4 class="font-medium text-gray-900 mb-2">框架提示</h4>
+                        <p class="text-gray-700 mb-3">指定特定的分析或思考框架，幫助 LLM 提供更結構化的回應。</p>
+                        <div class="bg-gray-50 p-3 rounded-lg border border-gray-200 mb-3">
+                            <h5 class="font-medium text-gray-700 mb-1">範例：</h5>
+                            <p class="text-gray-600 text-sm italic">"使用 SWOT 分析框架（優勢、劣勢、機會、威脅），評估我們計劃在第三季度推出的新社群媒體行銷活動。特別關注競爭對手的類似活動和市場趨勢。"</p>
+                        </div>
+                        <p class="text-gray-700 text-sm">常用行銷框架包括 SWOT 分析、4P 行銷組合、顧客旅程圖等。這些框架可以幫助 LLM 提供更全面、更有條理的分析。</p>
+                    </div>
+                    
+                    <!-- 重寫和優化提示 -->
+                    <div class="mb-6">
+                        <h4 class="font-medium text-gray-900 mb-2">重寫和優化提示</h4>
+                        <p class="text-gray-700 mb-3">提供現有的內容，並具體說明需要優化的方向。</p>
+                        <div class="bg-gray-50 p-3 rounded-lg border border-gray-200 mb-3">
+                            <h5 class="font-medium text-gray-700 mb-1">範例：</h5>
+                            <p class="text-gray-600 text-sm italic">"重寫以下產品描述，使其更加生動、情感化，同時保持專業性。目標受眾是 30-45 歲的專業人士，希望強調產品的效率和耐用性：[原始描述]"</p>
+                        </div>
+                        <p class="text-gray-700 text-sm">這種技巧特別適用於改進現有的行銷文案、電子郵件、社群媒體貼文等。具體說明您希望如何改進（更簡潔、更有說服力、更符合品牌聲音等）。</p>
+                    </div>
+                    
+                    <!-- 多角度提示 -->
+                    <div class="mb-6">
+                        <h4 class="font-medium text-gray-900 mb-2">多角度提示</h4>
+                        <p class="text-gray-700 mb-3">要求 LLM 從不同角度思考問題，提供多樣化的觀點或解決方案。</p>
+                        <div class="bg-gray-50 p-3 rounded-lg border border-gray-200 mb-3">
+                            <h5 class="font-medium text-gray-700 mb-1">範例：</h5>
+                            <p class="text-gray-600 text-sm italic">"針對我們的新產品發布，分別從以下三個角度提供行銷策略建議：1) 成本效益最高的策略，2) 最能快速提高品牌知名度的策略，3) 長期建立客戶忠誠度的策略。"</p>
+                        </div>
+                        <p class="text-gray-700 text-sm">這種方法可以幫助您獲得更全面的見解，避免單一思維方式的局限，特別適用於策略規劃和創意開發。</p>
+                    </div>
+                </div>
+                
+                <!-- 行銷特定提示範例 -->
+                <div class="mb-8">
+                    <h3 class="text-lg font-medium text-gray-900 mb-3">
+                        <i class="fas fa-bullhorn text-gray-500 mr-2"></i>行銷特定提示範例
+                    </h3>
+                    <div class="overflow-x-auto rounded-lg shadow mb-6">
+                        <table class="min-w-full divide-y divide-gray-200">
+                            <thead class="bg-gray-50">
+                                <tr>
+                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                        行銷任務
+                                    </th>
+                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                        有效提示範例
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody class="bg-white divide-y divide-gray-200">
+                                <tr>
+                                    <td class="px-6 py-4 whitespace-normal text-sm text-gray-700">
+                                        產品描述
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-normal text-sm text-gray-700">
+                                        "撰寫一篇 200 字的產品描述，突出以下功能：[列出功能]。目標受眾是 [受眾描述]。使用 [品牌名稱] 的品牌聲音，強調情感連結和實用性。加入 2-3 個吸引人的標題選項。"
+                                    </td>
+                                </tr>
+                                <tr class="bg-gray-50">
+                                    <td class="px-6 py-4 whitespace-normal text-sm text-gray-700">
+                                        社群媒體內容
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-normal text-sm text-gray-700">
+                                        "為 Instagram 撰寫 5 則貼文，推廣我們的 [產品/服務]。每則貼文不超過 100 字，風格輕鬆活潑，包含相關標籤建議。貼文應圍繞 [節日/季節/趨勢] 主題，並鼓勵用戶互動。"
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="px-6 py-4 whitespace-normal text-sm text-gray-700">
+                                        競爭對手分析
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-normal text-sm text-gray-700">
+                                        "分析我們與以下三個競爭對手的差異：[列出競爭對手]。專注於行銷策略、訊息傳達和目標受眾定位。提供一個表格比較各個品牌的優勢和劣勢，並建議我們如何在市場中脫穎而出。"
+                                    </td>
+                                </tr>
+                                <tr class="bg-gray-50">
+                                    <td class="px-6 py-4 whitespace-normal text-sm text-gray-700">
+                                        電子郵件行銷
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-normal text-sm text-gray-700">
+                                        "撰寫一封針對 [特定活動] 的宣傳電子郵件。包含引人注目的主旨行（提供 3 個選項）、個人化開場白、清晰的價值主張、強而有力的行動呼籲。目標是提高開信率和點擊率。"
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- 提示優化步驟 -->
+                <div class="mb-6">
+                    <h3 class="text-lg font-medium text-gray-900 mb-3">
+                        <i class="fas fa-sync-alt text-gray-500 mr-2"></i>提示優化步驟
+                    </h3>
+                    <div class="bg-gray-50 p-4 rounded-lg">
+                        <ol class="list-decimal list-inside text-gray-700 space-y-3">
+                            <li>
+                                <span class="font-medium">從基本提示開始</span>
+                                <p class="pl-7 text-sm mt-1">從簡單的提示開始，觀察 LLM 的回應和表現。</p>
+                            </li>
+                            <li>
+                                <span class="font-medium">識別差距和問題</span>
+                                <p class="pl-7 text-sm mt-1">分析回應中的不足之處——是否缺乏細節、風格不符、結構混亂等。</p>
+                            </li>
+                            <li>
+                                <span class="font-medium">添加具體指示和上下文</span>
+                                <p class="pl-7 text-sm mt-1">根據確定的差距，加入更多細節、例子、格式要求或其他相關上下文。</p>
+                            </li>
+                            <li>
+                                <span class="font-medium">持續迭代和精煉</span>
+                                <p class="pl-7 text-sm mt-1">不斷調整提示，直到獲得滿意的結果。記錄有效的提示模式以便未來使用。</p>
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+
+                <div class="bg-blue-50 p-4 rounded-lg">
+                    <h3 class="text-md font-medium text-blue-800 mb-2">
+                        <i class="fas fa-info-circle mr-2"></i>關鍵要點
+                    </h3>
+                    <p class="text-blue-700 text-sm">
+                        提示工程是一項需要練習的技能。通過嘗試不同的提示策略和格式，您將能夠更有效地與 LLM 溝通，獲得更符合您需求的結果。記住，好的提示往往是具體的、有結構的，並提供足夠的上下文信息。
+                    </p>
+                </div>
+            </section>
+
+    </main>
+
+    <footer class="bg-[rgb(0,80,151)] text-white py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center">
+                <div>
+                    <h3 class="text-lg font-medium">行銷初學者的 AI 教學</h3>
+                    <p class="text-sm">為神腦國際行銷部打造的實用指南</p>
+                </div>
+                <div class="flex space-x-4">
+                    <a href="index.html" class="text-[rgb(203,211,0)] hover:text-white">
+                        <i class="fas fa-home mr-1"></i>首頁
+                    </a>
+                    <a href="ai-marketing-course.html" class="text-[rgb(203,211,0)] hover:text-white">
+                        <i class="fas fa-book mr-1"></i>課程
+                    </a>
+                </div>
+            </div>
+            <div class="mt-4 pt-4 border-t border-blue-800">
+                <p class="text-center">&copy; 2025 行銷初學者的 AI 教學 | <a href="ai-marketing-credits.html" class="text-[rgb(203,211,0)] hover:text-white">製作說明與來源</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // 初始化任何需要的 JavaScript
+        document.addEventListener('DOMContentLoaded', function() {
+            // 可以在這裡添加需要的 JavaScript 功能
+        });
+    </script>
+</body>
+</html>

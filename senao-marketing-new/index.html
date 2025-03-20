@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>為神腦國際行銷部製作的 AI 入門課程</title>
+    <!-- TailwindCSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+        .content-section {
+            transition: all 0.3s ease;
+        }
+        .content-section:hover {
+            transform: scale(1.01);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+        .highlight-text {
+            background: linear-gradient(120deg, rgba(0, 144, 212, 0.2), rgba(0, 144, 212, 0.2));
+            background-repeat: no-repeat;
+            background-size: 100% 40%;
+            background-position: 0 90%;
+        }
+        .course-card {
+            transition: all 0.3s ease;
+        }
+        .course-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+        :root {
+            --senao-deep-blue: rgb(0, 80, 151);    /* Pantone 294 C */
+            --senao-green: rgb(203, 211, 0);       /* Pantone 390 C */
+            --senao-blue: rgb(0, 144, 212);        /* Pantone 2925 C */
+            --senao-yellow: rgb(250, 193, 9);      /* Pantone 1235 C */
+            --senao-pink: rgb(230, 72, 148);       /* Pantone 225 C */
+            --senao-silver: rgb(181, 181, 182);    /* Pantone 877C */
+        }
+        /* 頁面載入動畫 */
+        .loader-wrapper {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.9);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease-in-out;
+        }
+        
+        .loader {
+            border: 5px solid #f3f3f3;
+            border-top: 5px solid var(--senao-blue);
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- 頁面載入動畫 -->
+    <div class="loader-wrapper" id="loader">
+        <div class="loader"></div>
+    </div>
+
+    <header class="bg-[rgb(0,80,151)] shadow-sm sticky top-0 z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+            <div class="flex justify-between items-center">
+                <h1 class="text-3xl font-bold text-white">為神腦國際行銷部製作的 AI 入門課程</h1>
+                <a href="index.html" class="text-[rgb(203,211,0)] hover:text-white flex items-center">
+                    <i class="fas fa-home mr-2"></i>回到首頁
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div class="bg-white shadow overflow-hidden sm:rounded-lg mb-8">
+            <div class="px-4 py-5 sm:px-6">
+                <h2 class="text-xl font-semibold text-gray-900">利用 AI 提升行銷工作效率</h2>
+                <p class="mt-1 max-w-2xl text-sm text-gray-500">為神腦國際行銷部打造的實用 AI 指南</p>
+            </div>
+            <div class="border-t border-gray-200 px-4 py-5 sm:px-6">
+                <p class="text-gray-700 mb-4">現今的行銷環境變化快速，人工智慧（AI）已成為一股不可忽視的力量，正以前所未有的速度重塑著行銷的各個層面。無論是提升工作效率、激發創意、或是實現更精準的個人化行銷，AI 都展現了巨大的潛力。本課程將聚焦於 AI 在行銷領域的應用，幫助行銷團隊快速掌握並應用這些強大的技術工具。</p>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+            <!-- 課程單元 1 -->
+            <div class="course-card bg-white rounded-lg shadow overflow-hidden">
+                <div class="p-6">
+                    <div class="flex items-center mb-4">
+                        <div class="flex-shrink-0 bg-[rgb(0,80,151)] text-white rounded-full p-2">
+                            <i class="fas fa-info-circle text-white"></i>
+                        </div>
+                        <h3 class="ml-3 text-lg font-medium text-gray-900">前言</h3>
+                    </div>
+                    <p class="text-gray-600 mb-4">以個人經驗為出發點，分享 AI 工具的使用心得與初學者指南。</p>
+                    <ul class="text-sm text-gray-500 mb-4">
+                        <li class="flex items-center mb-1">
+                            <i class="fas fa-check text-green-500 mr-2"></i>個人 AI 使用經驗分享
+                        </li>
+                        <li class="flex items-center mb-1">
+                            <i class="fas fa-check text-green-500 mr-2"></i>為什麼要使用 AI？
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-2"></i>初學者如何上手
+                        </li>
+                    </ul>
+                    <a href="introduction.html" class="inline-flex items-center text-blue-600 hover:text-blue-800">
+                        閱讀更多
+                        <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- 課程單元 2 -->
+            <div class="course-card bg-white rounded-lg shadow overflow-hidden">
+                <div class="p-6">
+                    <div class="flex items-center mb-4">
+                        <div class="flex-shrink-0 bg-[rgb(203,211,0)] text-white rounded-full p-2">
+                            <i class="fas fa-lightbulb text-white"></i>
+                        </div>
+                        <h3 class="ml-3 text-lg font-medium text-gray-900">案例展示</h3>
+                    </div>
+                    <p class="text-gray-600 mb-4">展示 AI 在行銷領域的實際應用，從資料蒐集到視覺設計的全方位應用。</p>
+                    <ul class="text-sm text-gray-500 mb-4">
+                        <li class="flex items-center mb-1">
+                            <i class="fas fa-check text-green-500 mr-2"></i>資料蒐集與分析
+                        </li>
+                        <li class="flex items-center mb-1">
+                            <i class="fas fa-check text-green-500 mr-2"></i>初稿與內容生成
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-2"></i>圖片影像與簡報視覺設計
+                        </li>
+                    </ul>
+                    <a href="case-studies.html" class="inline-flex items-center text-blue-600 hover:text-blue-800">
+                        閱讀更多
+                        <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- 課程單元 3 -->
+            <div class="course-card bg-white rounded-lg shadow overflow-hidden">
+                <div class="p-6">
+                    <div class="flex items-center mb-4">
+                        <div class="flex-shrink-0 bg-[rgb(0,144,212)] text-white rounded-full p-2">
+                            <i class="fas fa-cogs text-white"></i>
+                        </div>
+                        <h3 class="ml-3 text-lg font-medium text-gray-900">LLMs 原理與使用心法</h3>
+                    </div>
+                    <p class="text-gray-600 mb-4">瞭解大型語言模型的工作原理、限制與有效使用策略。</p>
+                    <ul class="text-sm text-gray-500 mb-4">
+                        <li class="flex items-center mb-1">
+                            <i class="fas fa-check text-green-500 mr-2"></i>LLM 基本原理
+                        </li>
+                        <li class="flex items-center mb-1">
+                            <i class="fas fa-check text-green-500 mr-2"></i>LLM 的局限性
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-2"></i>提示詞技巧與最佳實踐
+                        </li>
+                    </ul>
+                    <a href="llm-principles.html" class="inline-flex items-center text-blue-600 hover:text-blue-800">
+                        閱讀更多
+                        <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- 課程單元 4 -->
+            <div class="course-card bg-white rounded-lg shadow overflow-hidden">
+                <div class="p-6">
+                    <div class="flex items-center mb-4">
+                        <div class="flex-shrink-0 bg-[rgb(250,193,9)] text-white rounded-full p-2">
+                            <i class="fas fa-briefcase text-white"></i>
+                        </div>
+                        <h3 class="ml-3 text-lg font-medium text-gray-900">神腦國際行銷部應用方向</h3>
+                    </div>
+                    <p class="text-gray-600 mb-4">探討各部門如何有效整合 AI 技術，提升工作效率與創意表現。</p>
+                    <ul class="text-sm text-gray-500 mb-4">
+                        <li class="flex items-center mb-1">
+                            <i class="fas fa-check text-green-500 mr-2"></i>各部門專屬應用策略
+                        </li>
+                        <li class="flex items-center mb-1">
+                            <i class="fas fa-check text-green-500 mr-2"></i>工作流程優化建議
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-2"></i>實用提示詞模板
+                        </li>
+                    </ul>
+                    <a href="senao-marketing-applications.html" class="inline-flex items-center text-blue-600 hover:text-blue-800">
+                        閱讀更多
+                        <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- 課程單元 5 -->
+            <div class="course-card bg-white rounded-lg shadow overflow-hidden">
+                <div class="p-6">
+                    <div class="flex items-center mb-4">
+                        <div class="flex-shrink-0 bg-[rgb(230,72,148)] text-white rounded-full p-2">
+                            <i class="fas fa-tools text-white"></i>
+                        </div>
+                        <h3 class="ml-3 text-lg font-medium text-gray-900">進階 AI 工具</h3>
+                    </div>
+                    <p class="text-gray-600 mb-4">介紹各類進階 AI 工具，從圖像生成到資料分析的全方位解決方案。</p>
+                    <ul class="text-sm text-gray-500 mb-4">
+                        <li class="flex items-center mb-1">
+                            <i class="fas fa-check text-green-500 mr-2"></i>圖像與影片生成工具
+                        </li>
+                        <li class="flex items-center mb-1">
+                            <i class="fas fa-check text-green-500 mr-2"></i>資料分析與研究工具
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-2"></i>音訊與文字處理工具
+                        </li>
+                    </ul>
+                    <a href="advanced-tools.html" class="inline-flex items-center text-blue-600 hover:text-blue-800">
+                        閱讀更多
+                        <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-white shadow overflow-hidden sm:rounded-lg p-6">
+            <h2 class="text-xl font-semibold text-gray-900 mb-4">課程總覽</h2>
+            <p class="text-gray-700 mb-6">本課程專為神腦國際行銷部設計，從個人經驗出發，逐步深入探討 AI 在行銷領域的應用。透過實際案例展示、技術原理說明及部門專屬應用方向，協助團隊更有效地整合 AI 技術，提升工作效率與創意表現。</p>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <a href="introduction.html" class="block p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition duration-300">
+                    <h3 class="font-medium text-[rgb(0,80,151)]">立即開始學習 <i class="fas fa-arrow-right ml-1"></i></h3>
+                </a>
+                <a href="#" class="block p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition duration-300">
+                    <h3 class="font-medium text-[rgb(0,80,151)]">提出問題或建議 <i class="fas fa-question-circle ml-1"></i></h3>
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-[rgb(0,80,151)] text-white py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <p class="text-center">&copy; 2025 神腦國際行銷部 AI 教學 | <a href="credits.html" class="text-[rgb(203,211,0)] hover:text-white">製作說明與來源</a> | <a href="index.html" class="text-[rgb(203,211,0)] hover:text-white">回到首頁</a></p>
+        </div>
+    </footer>
+
+    <script>
+        // 頁面載入動畫
+        window.addEventListener('load', function() {
+            const loader = document.getElementById('loader');
+            setTimeout(function() {
+                loader.style.opacity = '0';
+                setTimeout(function() {
+                    loader.style.display = 'none';
+                }, 500);
+            }, 500);
+        });
+    </script>
+</body>
+</html>
