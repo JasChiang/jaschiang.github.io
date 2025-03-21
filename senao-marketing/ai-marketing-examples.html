@@ -30,6 +30,60 @@
             --senao-pink: rgb(230, 72, 148);       /* Pantone 225 C */
             --senao-silver: rgb(181, 181, 182);    /* Pantone 877C */
         }
+        
+        /* Lightbox styles */
+        .lightbox-image {
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        .lightbox-image:hover {
+            transform: scale(1.05);
+        }
+        #lightbox {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+        #lightbox.active {
+            opacity: 1;
+            pointer-events: auto;
+            display: flex;
+        }
+        #lightbox-content {
+            max-width: 90%;
+            max-height: 90%;
+            background-color: white;
+            padding: 10px;
+            border-radius: 5px;
+            position: relative;
+        }
+        #lightbox-image {
+            max-width: 100%;
+            max-height: 80vh;
+            display: block;
+        }
+        #lightbox-close {
+            position: absolute;
+            top: -40px;
+            right: -10px;
+            font-size: 30px;
+            color: white;
+            cursor: pointer;
+            background: none;
+            border: none;
+            outline: none;
+        }
     </style>
 </head>
 <body class="bg-gray-50">
@@ -109,13 +163,13 @@
                         <div class="md:col-span-2 bg-gray-100 p-4 rounded-lg">
                             <h4 class="font-medium text-gray-900 mb-2">提示詞範例</h4>
                             <p class="text-sm text-gray-700 font-mono">
-                                以下是一段會議內容的轉錄稿，請幫我整理成結構化的會議記錄，包含：1. 會議主題 2. 討論要點 3. 決議事項 4. 後續行動項目。內容如下：[將會議內容粘貼於此]
+                                以下是一段會議內容的轉錄稿，請幫我整理成結構化的會議記錄，包含：1. 會議主題 2. 討論要點 3. 決議事項 4. 後續行動項目。內容如下：[將會議內容在此貼上]（或上傳檔案附件）
                             </p>
                         </div>
                         <div class="flex items-center justify-center bg-gray-50 rounded-lg p-2">
                             <div class="text-center">
                                 <p class="text-sm text-gray-500 mb-2">[示意圖]</p>
-                                <img src="images/whisper-chatgpt.png" alt="會議記錄示意圖" class="max-w-full h-auto rounded shadow-sm">
+                                <img src="images/whisper-chatgpt.png" alt="會議記錄示意圖" class="max-w-full h-auto rounded shadow-sm lightbox-image">
                             </div>
                         </div>
                     </div>
@@ -130,13 +184,13 @@
                         <div class="md:col-span-2 bg-gray-100 p-4 rounded-lg">
                             <h4 class="font-medium text-gray-900 mb-2">提示詞範例</h4>
                             <p class="text-sm text-gray-700 font-mono">
-                                以下是一段會議內容的轉錄稿，請幫我整理成結構化的會議記錄，包含：1. 會議主題 2. 討論要點 3. 決議事項 4. 後續行動項目。內容如下：[將會議內容粘貼於此]
+                                以下是一段會議內容的轉錄稿，請幫我整理成結構化的會議記錄，包含：1. 會議主題 2. 討論要點 3. 決議事項 4. 後續行動項目。內容如下：[將會議內容在此貼上]（或上傳檔案附件）
                             </p>
                         </div>
                         <div class="flex items-center justify-center bg-gray-50 rounded-lg p-2">
                             <div class="text-center">
                                 <p class="text-sm text-gray-500 mb-2">[示意圖]</p>
-                                <img src="images/notebooklm.png" alt="會議記錄示意圖" class="max-w-full h-auto rounded shadow-sm">
+                                <img src="images/notebooklm.png" alt="會議記錄示意圖" class="max-w-full h-auto rounded shadow-sm lightbox-image">
                             </div>
                         </div>
                     </div>
@@ -168,7 +222,7 @@
                         <div class="flex items-center justify-center bg-gray-50 rounded-lg p-2">
                             <div class="text-center">
                                 <p class="text-sm text-gray-500 mb-2">[示意圖]</p>
-                                <img src="images/claude-slide.png" alt="簡報排版示意圖" class="max-w-full h-auto rounded shadow-sm">
+                                <img src="images/claude-slide.png" alt="簡報排版示意圖" class="max-w-full h-auto rounded shadow-sm lightbox-image">
                             </div>
                         </div>
                     </div>
@@ -213,7 +267,7 @@
                         <div class="flex items-center justify-center bg-blue-50 rounded-lg p-2">
                             <div class="text-center">
                                 <p class="text-sm text-blue-500 mb-2">[示意圖]</p>
-                                <img src="images/google-imagen-digital-prompt.png" alt="圖像生成輔助溝通示意圖" class="max-w-full h-auto rounded shadow-sm">
+                                <img src="images/google-imagen-digital-prompt.png" alt="圖像生成輔助溝通示意圖" class="max-w-full h-auto rounded shadow-sm lightbox-image">
                             </div>
                         </div>
                     </div>
@@ -235,7 +289,7 @@
                         <div class="flex items-center justify-center bg-blue-50 rounded-lg p-2">
                             <div class="text-center">
                                 <p class="text-sm text-blue-500 mb-2">[示意圖]</p>
-                                <img src="images/grok-how-to-use.png" alt="軟體技能教學示意圖" class="max-w-full h-auto rounded shadow-sm">
+                                <img src="images/grok-how-to-use.png" alt="軟體技能教學示意圖" class="max-w-full h-auto rounded shadow-sm lightbox-image">
                             </div>
                         </div>
                     </div>
@@ -259,7 +313,7 @@
                         <div class="flex items-center justify-center bg-blue-50 rounded-lg p-2">
                             <div class="text-center">
                                 <p class="text-sm text-blue-500 mb-2">[示意圖]</p>
-                                <img src="images/google-mascot.png" alt="吉祥物設計概念示意圖" class="max-w-full h-auto rounded shadow-sm">
+                                <img src="images/google-mascot.png" alt="吉祥物設計概念示意圖" class="max-w-full h-auto rounded shadow-sm lightbox-image">
                             </div>
                         </div>
                     </div>
@@ -330,7 +384,7 @@
                             <div class="flex items-center justify-center bg-green-50 rounded-lg p-2">
                                 <div class="text-center">
                                     <p class="text-sm text-green-500 mb-2">[示意圖]</p>
-                                    <img src="images/windsurf.png" alt="個人化電子報示意圖" class="max-w-full h-auto rounded shadow-sm">
+                                    <img src="images/windsurf.png" alt="個人化電子報示意圖" class="max-w-full h-auto rounded shadow-sm lightbox-image">
                                 </div>
                             </div>
                         </div>
@@ -361,7 +415,7 @@
                             <div class="flex items-center justify-center bg-green-50 rounded-lg p-2">
                                 <div class="text-center">
                                     <p class="text-sm text-green-500 mb-2">[示意圖]</p>
-                                    <img src="images/comfyui-senomi.JPG" alt="會員流失預防策略示意圖" class="max-w-full h-auto rounded shadow-sm">
+                                    <img src="images/comfyui-senomi.JPG" alt="會員流失預防策略示意圖" class="max-w-full h-auto rounded shadow-sm lightbox-image">
                                 </div>
                             </div>
                         </div>
@@ -428,7 +482,7 @@
                             <div class="flex items-center justify-center bg-blue-50 rounded-lg p-2">
                                 <div class="text-center">
                                     <p class="text-sm text-blue-500 mb-2">[示意圖]</p>
-                                    <img src="images/IMG_9766.JPG" alt="社群貼文示意圖" class="max-w-full h-auto rounded shadow-sm">
+                                    <img src="images/IMG_9766.JPG" alt="社群貼文示意圖" class="max-w-full h-auto rounded shadow-sm lightbox-image">
                                 </div>
                             </div>
                         </div>
@@ -456,7 +510,7 @@
                             <div class="flex items-center justify-center bg-blue-50 rounded-lg p-2">
                                 <div class="text-center">
                                     <p class="text-sm text-blue-500 mb-2">[示意圖]</p>
-                                    <img src="images/IMG_9764.JPG" alt="行銷活動企劃示意圖" class="max-w-full h-auto rounded shadow-sm">
+                                    <img src="images/IMG_9764.JPG" alt="行銷活動企劃示意圖" class="max-w-full h-auto rounded shadow-sm lightbox-image">
                                 </div>
                             </div>
                         </div>
@@ -528,7 +582,7 @@
                             <div class="flex items-center justify-center bg-pink-50 rounded-lg p-2">
                                 <div class="text-center">
                                     <p class="text-sm text-pink-500 mb-2">[示意圖]</p>
-                                    <img src="images/IMG_9766.JPG" alt="設計創意指導示意圖" class="max-w-full h-auto rounded shadow-sm">
+                                    <img src="images/IMG_9766.JPG" alt="設計創意指導示意圖" class="max-w-full h-auto rounded shadow-sm lightbox-image">
                                 </div>
                             </div>
                         </div>
@@ -556,7 +610,7 @@
                             <div class="flex items-center justify-center bg-pink-50 rounded-lg p-2">
                                 <div class="text-center">
                                     <p class="text-sm text-pink-500 mb-2">[示意圖]</p>
-                                    <img src="images/IMG_9764.JPG" alt="設計簡報生成器示意圖" class="max-w-full h-auto rounded shadow-sm">
+                                    <img src="images/IMG_9764.JPG" alt="設計簡報生成器示意圖" class="max-w-full h-auto rounded shadow-sm lightbox-image">
                                 </div>
                             </div>
                         </div>
@@ -628,7 +682,7 @@
                             <div class="flex items-center justify-center bg-gray-100 rounded-lg p-2">
                                 <div class="text-center">
                                     <p class="text-sm text-gray-500 mb-2">[示意圖]</p>
-                                    <img src="images/comfyui-senomi.JPG" alt="圖像生成示意圖" class="max-w-full h-auto rounded shadow-sm">
+                                    <img src="images/comfyui-senomi.JPG" alt="圖像生成示意圖" class="max-w-full h-auto rounded shadow-sm lightbox-image">
                                 </div>
                             </div>
                         </div>
@@ -656,7 +710,7 @@
                             <div class="flex items-center justify-center bg-gray-100 rounded-lg p-2">
                                 <div class="text-center">
                                     <p class="text-sm text-gray-500 mb-2">[示意圖]</p>
-                                    <img src="images/comfyui-video.JPG" alt="分鏡腳本示意圖" class="max-w-full h-auto rounded shadow-sm">
+                                    <img src="images/comfyui-video.JPG" alt="分鏡腳本示意圖" class="max-w-full h-auto rounded shadow-sm lightbox-image">
                                 </div>
                             </div>
                         </div>
@@ -683,7 +737,7 @@
                             <div class="flex items-center justify-center bg-gray-100 rounded-lg p-2">
                                 <div class="text-center">
                                     <p class="text-sm text-gray-500 mb-2">[示意圖]</p>
-                                    <img src="images/IMG_9767.JPG" alt="軟體學習示意圖" class="max-w-full h-auto rounded shadow-sm">
+                                    <img src="images/IMG_9767.JPG" alt="軟體學習示意圖" class="max-w-full h-auto rounded shadow-sm lightbox-image">
                                 </div>
                             </div>
                         </div>
@@ -757,7 +811,7 @@
                             <div class="flex items-center justify-center bg-blue-50 rounded-lg p-2">
                                 <div class="text-center">
                                     <p class="text-sm text-blue-500 mb-2">[示意圖]</p>
-                                    <img src="images/IMG_9764.JPG" alt="內容策略規劃示意圖" class="max-w-full h-auto rounded shadow-sm">
+                                    <img src="images/IMG_9764.JPG" alt="內容策略規劃示意圖" class="max-w-full h-auto rounded shadow-sm lightbox-image">
                                 </div>
                             </div>
                         </div>
@@ -787,7 +841,7 @@
                             <div class="flex items-center justify-center bg-blue-50 rounded-lg p-2">
                                 <div class="text-center">
                                     <p class="text-sm text-blue-500 mb-2">[示意圖]</p>
-                                    <img src="images/IMG_9766.JPG" alt="內容日曆生成示意圖" class="max-w-full h-auto rounded shadow-sm">
+                                    <img src="images/IMG_9766.JPG" alt="內容日曆生成示意圖" class="max-w-full h-auto rounded shadow-sm lightbox-image">
                                 </div>
                             </div>
                         </div>
@@ -886,6 +940,57 @@
                         top: targetElement.offsetTop - 100, // 100px offset to account for the sticky header
                         behavior: 'smooth'
                     });
+                }
+            });
+        });
+    </script>
+
+    <!-- Lightbox container -->
+    <div id="lightbox">
+        <div id="lightbox-content">
+            <button id="lightbox-close">&times;</button>
+            <img id="lightbox-image" src="" alt="Enlarged image">
+        </div>
+    </div>
+
+    <script>
+        // Add lightbox functionality to all images
+        document.addEventListener('DOMContentLoaded', function() {
+            // Get all images that should have lightbox functionality
+            const images = document.querySelectorAll('.max-w-full.h-auto.rounded.shadow-sm.lightbox-image');
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImage = document.getElementById('lightbox-image');
+            const lightboxClose = document.getElementById('lightbox-close');
+            
+            // Add lightbox-image class to all target images
+            images.forEach(img => {
+                img.addEventListener('click', function() {
+                    lightboxImage.src = this.src;
+                    lightboxImage.alt = this.alt;
+                    lightbox.classList.add('active');
+                    document.body.style.overflow = 'hidden'; // Prevent scrolling when lightbox is open
+                });
+            });
+            
+            // Close lightbox when clicking the close button
+            lightboxClose.addEventListener('click', function() {
+                lightbox.classList.remove('active');
+                document.body.style.overflow = ''; // Restore scrolling
+            });
+            
+            // Close lightbox when clicking outside the image
+            lightbox.addEventListener('click', function(e) {
+                if (e.target === lightbox) {
+                    lightbox.classList.remove('active');
+                    document.body.style.overflow = ''; // Restore scrolling
+                }
+            });
+            
+            // Close lightbox when pressing ESC key
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && lightbox.classList.contains('active')) {
+                    lightbox.classList.remove('active');
+                    document.body.style.overflow = ''; // Restore scrolling
                 }
             });
         });
