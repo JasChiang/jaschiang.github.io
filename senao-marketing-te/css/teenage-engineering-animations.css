@@ -1,0 +1,108 @@
+/* Teenage Engineering 風格動畫與互動效果 */
+
+/* 基本淡入動畫 */
+@keyframes te-fade-in {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.te-fade-in {
+    animation: te-fade-in 0.5s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+/* 脈衝動畫 */
+@keyframes te-pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+.te-pulse {
+    animation: te-pulse 2s infinite cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+/* 像素化過渡效果 */
+@keyframes te-pixelate {
+    0% { filter: blur(0px); }
+    25% { filter: blur(1px); }
+    50% { filter: blur(0px); }
+    75% { filter: blur(2px); }
+    100% { filter: blur(0px); }
+}
+
+.te-pixelate {
+    animation: te-pixelate 2s infinite;
+}
+
+/* 掃描線效果 */
+@keyframes te-scanline {
+    0% { background-position: 0 0; }
+    100% { background-position: 0 30px; }
+}
+
+.te-scanline {
+    position: relative;
+    overflow: hidden;
+}
+
+.te-scanline::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, transparent 50%, rgba(0, 0, 0, 0.05) 50%);
+    background-size: 100% 4px;
+    pointer-events: none;
+    animation: te-scanline 1s linear infinite;
+    z-index: 1;
+}
+
+/* 打字機效果 */
+@keyframes te-typewriter {
+    from { width: 0; }
+    to { width: 100%; }
+}
+
+.te-typewriter {
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
+    border-right: 2px solid var(--senao-blue);
+    animation: 
+        te-typewriter 2s steps(40, end) forwards,
+        te-cursor 0.75s step-end infinite;
+}
+
+@keyframes te-cursor {
+    from, to { border-color: transparent; }
+    50% { border-color: var(--senao-blue); }
+}
+
+/* 像素化淡入效果 */
+@keyframes te-pixel-fade-in {
+    0% { opacity: 0; filter: blur(5px); }
+    50% { opacity: 0.5; filter: blur(2px); }
+    100% { opacity: 1; filter: blur(0); }
+}
+
+.te-pixel-fade-in {
+    animation: te-pixel-fade-in 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+/* 工業設計風格載入動畫 */
+@keyframes te-loading {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.te-loading {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    border: 2px solid rgba(0, 0, 0, 0.1);
+    border-left-color: var(--senao-blue);
+    border-radius: 50%;
+    animation: te-loading 1s linear infinite;
+}

@@ -1,0 +1,284 @@
+/* 表單元素樣式補充 */
+input, textarea, select {
+    font-family: var(--te-mono-font);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: var(--te-border-radius);
+    padding: 8px 12px;
+    font-size: 0.85rem;
+    transition: var(--te-transition);
+    background-color: rgba(0, 0, 0, 0.02);
+    letter-spacing: -0.03em;
+}
+
+input:focus, textarea:focus, select:focus {
+    outline: none;
+    border-color: var(--senao-blue);
+    box-shadow: 0 0 0 2px rgba(0, 144, 212, 0.1);
+}
+
+/* 新增工業設計元素 - 增強版 */
+.te-knob {
+    display: inline-block;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #f5f5f5, #e0e0e0);
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    position: relative;
+    cursor: pointer;
+    transition: var(--te-transition);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.te-knob::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 4px;
+    width: 2px;
+    height: 12px;
+    background-color: #333;
+    transform: translateY(-50%);
+}
+
+.te-knob::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 8px;
+    height: 8px;
+    background-color: rgba(0, 0, 0, 0.05);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.te-knob:hover {
+    transform: rotate(30deg);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+}
+
+/* LED 指示燈 */
+.te-led {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: #ccc;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    position: relative;
+    margin: 0 4px;
+    vertical-align: middle;
+}
+
+.te-led.on {
+    background-color: var(--senao-green);
+    box-shadow: 0 0 5px rgba(203, 211, 0, 0.5);
+}
+
+.te-led.error {
+    background-color: #ff3b30;
+    box-shadow: 0 0 5px rgba(255, 59, 48, 0.5);
+}
+
+/* 數字顯示 */
+.te-display {
+    display: inline-block;
+    font-family: var(--te-mono-font);
+    font-size: 0.8rem;
+    background-color: #111;
+    color: #0f0;
+    padding: 4px 8px;
+    border-radius: 1px;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    letter-spacing: 0.1em;
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.5);
+}
+
+/* 技術風格標籤 - 增強版 */
+.te-tag {
+    display: inline-flex;
+    align-items: center;
+    padding: 4px 8px;
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    background-color: rgba(0, 0, 0, 0.05);
+    border-radius: 0;
+    margin-right: 6px;
+    margin-bottom: 6px;
+    font-weight: 700;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+.te-tag::before {
+    content: '';
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    background-color: var(--senao-blue);
+    border-radius: 0;
+    margin-right: 6px;
+}
+
+.te-tag::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 4px;
+    height: 100%;
+    background-image: var(--te-pixel-border);
+    opacity: 0.5;
+}
+
+.te-tag:hover {
+    background-color: rgba(0, 0, 0, 0.08);
+    transform: translateY(-1px);
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.05);
+}
+
+/* 像素藝術元素 - 增強版 */
+.te-pixel-art {
+    image-rendering: pixelated;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: crisp-edges;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    padding: 2px;
+    background-color: #fff;
+}
+
+/* 工業設計風格分隔線 - 增強版 */
+.te-divider {
+    height: 8px;
+    width: 100%;
+    background-image: var(--te-pixel-border);
+    margin: 2rem 0;
+    position: relative;
+}
+
+.te-divider::before {
+    content: '';
+    position: absolute;
+    top: -4px;
+    left: 0;
+    width: 16px;
+    height: 16px;
+    background-color: var(--senao-blue);
+    border-radius: 50%;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+/* 網格背景 */
+.te-grid-background {
+    background-image: var(--te-grid-lines);
+    background-size: calc(var(--te-grid-size) * 4) calc(var(--te-grid-size) * 4);
+    position: relative;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+/* 噪點背景 */
+.te-noise-background {
+    position: relative;
+}
+
+.te-noise-background::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: var(--te-noise-bg);
+    opacity: 0.05;
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* 更多Teenage Engineering風格元素 */
+.te-panel {
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: var(--te-border-radius);
+    padding: 16px;
+    background-color: white;
+    position: relative;
+}
+
+.te-panel::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 16px;
+    width: 32px;
+    height: 4px;
+    background-color: var(--senao-blue);
+}
+
+/* 工業設計風格的開關 - 增強版 */
+.te-switch {
+    position: relative;
+    display: inline-block;
+    width: 40px;
+    height: 22px;
+    margin: 4px 0;
+}
+
+.te-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.te-switch-slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ddd;
+    transition: var(--te-transition);
+    border-radius: 1px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.te-switch-slider:before {
+    position: absolute;
+    content: "";
+    height: 16px;
+    width: 16px;
+    left: 2px;
+    bottom: 2px;
+    background-color: white;
+    transition: var(--te-transition);
+    border-radius: 0;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.te-switch-slider:after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 28px;
+    width: 4px;
+    height: 1px;
+    background-color: rgba(0, 0, 0, 0.3);
+    transform: translateY(-50%);
+}
+
+input:checked + .te-switch-slider {
+    background-color: var(--senao-blue);
+}
+
+input:checked + .te-switch-slider:before {
+    transform: translateX(18px);
+}
+
+input:checked + .te-switch-slider:after {
+    left: 8px;
+    background-color: rgba(255, 255, 255, 0.5);
+}

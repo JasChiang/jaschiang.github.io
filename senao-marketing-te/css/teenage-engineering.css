@@ -1,0 +1,415 @@
+/* Teenage Engineering inspired CSS */
+
+/* 基本字體與排版 */
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap');
+
+body {
+    font-family: 'Space Mono', monospace, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: #f7f7f7;
+    color: #111;
+    line-height: 1.4;
+    letter-spacing: -0.05em;
+    text-rendering: geometricPrecision;
+    margin: 0;
+    padding: 0;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* 色系變數 */
+:root {
+    --senao-deep-blue: rgb(0, 80, 151);    /* Pantone 294 C */
+    --senao-green: rgb(203, 211, 0);       /* Pantone 390 C */
+    --senao-blue: rgb(0, 144, 212);        /* Pantone 2925 C */
+    --senao-yellow: rgb(250, 193, 9);      /* Pantone 1235 C */
+    --senao-pink: rgb(230, 72, 148);       /* Pantone 225 C */
+    --senao-silver: rgb(181, 181, 182);    /* Pantone 877C */
+    
+    /* Teenage Engineering 風格元素 - 增強版 */
+    --te-bg-color: #f7f7f7;
+    --te-text-color: #111;
+    --te-accent-color: var(--senao-blue);
+    --te-grid-size: 8px;
+    --te-border-radius: 2px;
+    --te-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.12);
+    --te-transition: all 0.15s cubic-bezier(0.2, 0.8, 0.2, 1);
+    --te-pixel-border: repeating-linear-gradient(90deg, #000, #000 1px, transparent 1px, transparent 4px);
+    --te-grid-color: rgba(0, 0, 0, 0.06);
+    --te-mono-font: 'Space Mono', monospace;
+    --te-noise-bg: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    --te-grid-lines: linear-gradient(to right, var(--te-grid-color) 1px, transparent 1px), linear-gradient(to bottom, var(--te-grid-color) 1px, transparent 1px);
+    --te-highlight-color: rgba(0, 144, 212, 0.2);
+}
+
+/* 標題樣式 */
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 700;
+    letter-spacing: -0.06em;
+    line-height: 1;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+    position: relative;
+}
+
+h1::after, h2::after, h3::after {
+    content: '';
+    position: absolute;
+    bottom: -0.5rem;
+    left: 0;
+    width: 2rem;
+    height: 2px;
+    background-color: currentColor;
+}
+
+/* 頁首樣式 */
+header {
+    background-color: var(--senao-deep-blue);
+    border-bottom: 2px solid var(--senao-green);
+    padding: calc(var(--te-grid-size) * 2) 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+header h1 {
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    letter-spacing: -0.05em;
+    margin-bottom: 0;
+}
+
+header h1::after {
+    display: none;
+}
+
+/* 卡片樣式 - 更像TE */
+.course-card, .content-section, .bg-white {
+    background-color: white;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: var(--te-border-radius);
+    transition: var(--te-transition);
+    box-shadow: var(--te-box-shadow);
+    position: relative;
+    overflow: hidden;
+    padding: calc(var(--te-grid-size) * 3);
+}
+
+.course-card:hover, .content-section:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+}
+
+.course-card::before, .content-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, var(--senao-blue), var(--senao-green));
+    opacity: 0;
+    transition: var(--te-transition);
+}
+
+.course-card:hover::before, .content-section:hover::before {
+    opacity: 1;
+}
+
+/* 像素化邊框元素 */
+.te-pixel-border {
+    position: relative;
+}
+
+.te-pixel-border::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background-image: var(--te-pixel-border);
+}
+
+/* 按鈕樣式 - 更工業化 */
+a.inline-flex, button, .btn {
+    font-family: var(--te-mono-font);
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: 0.05em;
+    padding: 8px 16px;
+    border-radius: var(--te-border-radius);
+    transition: var(--te-transition);
+    border: 1px solid currentColor;
+    position: relative;
+    overflow: hidden;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+a.inline-flex::after, button::after, .btn::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: currentColor;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.3s ease;
+}
+
+a.inline-flex:hover::after, button:hover::after, .btn:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+a.inline-flex:hover, button:hover, .btn:hover {
+    background-color: rgba(0, 0, 0, 0.03);
+    transform: translateY(-1px);
+}
+
+a.inline-flex:active, button:active, .btn:active {
+    transform: translateY(1px);
+}
+
+/* 圖標樣式 */
+.fas, .fa, .far, .fab {
+    font-size: 0.9em;
+    display: inline-block;
+    vertical-align: middle;
+    transition: var(--te-transition);
+}
+
+a:hover .fas, a:hover .fa, a:hover .far, a:hover .fab,
+button:hover .fas, button:hover .fa, button:hover .far, button:hover .fab {
+    transform: translateX(3px);
+}
+
+/* 網格與間距 */
+.grid, .flex {
+    gap: calc(var(--te-grid-size) * 2);
+}
+
+/* 網格容器 */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+}
+
+/* Teenage Engineering 風格元素 - 增強版 */
+.te-grid-lines {
+    background-image: linear-gradient(to right, var(--te-grid-color) 1px, transparent 1px),
+                      linear-gradient(to bottom, var(--te-grid-color) 1px, transparent 1px);
+    background-size: calc(var(--te-grid-size) * 4) calc(var(--te-grid-size) * 4);
+    position: relative;
+}
+
+.te-mono {
+    font-family: var(--te-mono-font);
+    letter-spacing: -0.05em;
+}
+
+.te-label {
+    text-transform: uppercase;
+    font-size: 0.65rem;
+    letter-spacing: 0.08em;
+    color: #555;
+    margin-bottom: var(--te-grid-size);
+    font-weight: 700;
+}
+
+.te-border {
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: var(--te-border-radius);
+}
+
+.te-dot {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    margin-right: 6px;
+}
+
+.te-dot-blue { background-color: var(--senao-blue); }
+.te-dot-green { background-color: var(--senao-green); }
+.te-dot-yellow { background-color: var(--senao-yellow); }
+.te-dot-pink { background-color: var(--senao-pink); }
+
+/* 點陣圖案背景 */
+.te-dot-pattern {
+    position: relative;
+    overflow: hidden;
+}
+
+.te-dot-pattern::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: radial-gradient(var(--te-grid-color) 1px, transparent 1px);
+    background-size: 16px 16px;
+    z-index: -1;
+    opacity: 0.8;
+}
+
+/* 圓角元素 */
+.rounded-lg, .rounded-full {
+    border-radius: var(--te-border-radius);
+}
+
+/* 頁面區塊 */
+main {
+    padding: calc(var(--te-grid-size) * 4) 0;
+    position: relative;
+}
+
+/* 頁尾樣式 */
+footer {
+    margin-top: calc(var(--te-grid-size) * 6);
+    padding: calc(var(--te-grid-size) * 3) 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    font-size: 0.8rem;
+    letter-spacing: -0.02em;
+}
+
+/* 高亮文字 */
+.highlight-text {
+    background: linear-gradient(120deg, rgba(0, 144, 212, 0.15), rgba(0, 144, 212, 0.15));
+    background-repeat: no-repeat;
+    background-size: 100% 40%;
+    background-position: 0 90%;
+    padding: 0 2px;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+}
+
+/* 代碼區塊 */
+code, .font-mono {
+    font-family: var(--te-mono-font);
+    font-size: 0.85em;
+    background-color: rgba(0, 0, 0, 0.03);
+    padding: 2px 4px;
+    border-radius: var(--te-border-radius);
+    border-left: 2px solid var(--senao-blue);
+}
+
+/* 表格樣式 */
+table {
+    border-collapse: collapse;
+    width: 100%;
+    font-size: 0.85em;
+    margin: 2rem 0;
+}
+
+table th, table td {
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    padding: 10px 12px;
+    text-align: left;
+}
+
+table th {
+    background-color: rgba(0, 0, 0, 0.02);
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-size: 0.75em;
+}
+
+/* 列表樣式 */
+ul, ol {
+    padding-left: 1.5rem;
+}
+
+li {
+    margin-bottom: 0.75rem;
+    position: relative;
+}
+
+ul li::marker {
+    color: var(--senao-blue);
+}
+
+/* 引用樣式 */
+blockquote {
+    border-left: 3px solid var(--senao-blue);
+    padding-left: 1rem;
+    font-style: italic;
+    margin-left: 0;
+    color: #444;
+    background-color: rgba(0, 0, 0, 0.02);
+    padding: 1rem 1rem 1rem 2rem;
+    border-radius: 0 var(--te-border-radius) var(--te-border-radius) 0;
+}
+
+/* 分隔線 */
+hr {
+    border: none;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    margin: 2.5rem 0;
+    position: relative;
+}
+
+hr::after {
+    content: '';
+    position: absolute;
+    top: -1px;
+    left: 0;
+    width: 40px;
+    height: 3px;
+    background-color: var(--senao-blue);
+}
+
+/* 響應式調整 */
+@media (max-width: 768px) {
+    body {
+        font-size: 14px;
+    }
+    
+    header h1 {
+        font-size: 1.2rem;
+    }
+    
+    .grid {
+        grid-template-columns: 1fr;
+    }
+    
+    main {
+        padding: calc(var(--te-grid-size) * 2) 0;
+    }
+}
+
+/* 動畫效果 */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in {
+    animation: fadeIn 0.5s ease forwards;
+}
+
+/* 表單元素 */
+input, textarea, select {
+    font-family: var(--te-mono-font);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: var(--te-border-radius);
+    padding: 8px 12px;
+    font-size: 0.85rem;
+    transition: var(--te-transition);
+    background-color: rgba(0, 0, 0, 0.02);
+    letter-spacing: -0.03em;
+}
+
+input:focus, textarea:focus, select:focus {
+    outline: none;
+    border-color: var(--senao-blue);
+    box-shadow: 0 0 0 2px rgba(0, 144, 212, 0.1);
+}
