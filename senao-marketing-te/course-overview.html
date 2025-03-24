@@ -14,18 +14,12 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Google Fonts - Space Mono -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap">
-    <!-- Teenage Engineering Style -->
-    <link rel="stylesheet" href="css/teenage-engineering.css">
-    <!-- macOS Style with Blur Effects -->
-    <link rel="stylesheet" href="css/macos-style.css">
-    <style>
-        /* 所有樣式已移至teenage-engineering.css */
+    <!-- 共用樣式 -->
+    <link rel="stylesheet" href="css/styles.css">
     </style>
 </head>
-<body>
-    <header class="bg-[rgb(0,80,151)] shadow-sm sticky top-0 z-10">
+<body class="bg-gray-50">
+    <header class="translucent-dark shadow-sm sticky top-0 z-10">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
             <div class="flex justify-between items-center">
                 <h1 class="text-3xl font-bold text-white">行銷初學者的 AI 教學課程總覽</h1>
@@ -54,7 +48,7 @@
         <!-- 課程章節列表 -->
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
             <!-- 前言 -->
-            <div class="course-card bg-white rounded-lg shadow overflow-hidden">
+            <div class="course-card translucent-card rounded-lg shadow overflow-hidden">
                 <div class="bg-[rgb(0,144,212)] px-4 py-3">
                     <h3 class="text-lg font-semibold text-white">前言：個人 AI 使用經驗</h3>
                 </div>
@@ -72,7 +66,7 @@
             </div>
 
             <!-- 第一章 -->
-            <div class="course-card bg-white rounded-lg shadow overflow-hidden">
+            <div class="course-card translucent-card rounded-lg shadow overflow-hidden">
                 <div class="bg-[rgb(230,72,148)] px-4 py-3">
                     <h3 class="text-lg font-semibold text-white">第一章：AI 能為我做到什麼事？</h3>
                 </div>
@@ -90,7 +84,7 @@
             </div>
 
             <!-- 第二章 -->
-            <div class="course-card bg-white rounded-lg shadow overflow-hidden">
+            <div class="course-card translucent-card rounded-lg shadow overflow-hidden">
                 <div class="bg-[rgb(250,193,9)] px-4 py-3">
                     <h3 class="text-lg font-semibold text-white">第二章：AI 的原理、侷限與使用心法</h3>
                 </div>
@@ -108,7 +102,7 @@
             </div>
 
             <!-- 第三章 -->
-            <div class="course-card bg-white rounded-lg shadow overflow-hidden">
+            <div class="course-card translucent-card rounded-lg shadow overflow-hidden">
                 <div class="bg-[rgb(203,211,0)] px-4 py-3">
                     <h3 class="text-lg font-semibold text-white">第三章：AI 行銷應用案例分享</h3>
                 </div>
@@ -130,7 +124,7 @@
         <h2 class="text-2xl font-bold text-[rgb(0,80,151)] mb-4">附錄與參考資料</h2>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
             <!-- 附錄一 -->
-            <div class="course-card bg-white rounded-lg shadow overflow-hidden">
+            <div class="course-card translucent-card rounded-lg shadow overflow-hidden">
                 <div class="bg-gray-800 px-4 py-3">
                     <h3 class="text-lg font-semibold text-white">附錄一：進階 AI 工具</h3>
                 </div>
@@ -145,7 +139,7 @@
             </div>
 
             <!-- 附錄二 -->
-            <div class="course-card bg-white rounded-lg shadow overflow-hidden">
+            <div class="course-card translucent-card rounded-lg shadow overflow-hidden">
                 <div class="bg-gray-700 px-4 py-3">
                     <h3 class="text-lg font-semibold text-white">附錄二：LLMs 原理</h3>
                 </div>
@@ -160,7 +154,7 @@
             </div>
 
             <!-- 附錄三 -->
-            <div class="course-card bg-white rounded-lg shadow overflow-hidden">
+            <div class="course-card translucent-card rounded-lg shadow overflow-hidden">
                 <div class="bg-gray-700 px-4 py-3">
                     <h3 class="text-lg font-semibold text-white">附錄三：提示詞注意事項與技巧</h3>
                 </div>
@@ -175,7 +169,7 @@
             </div>
 
             <!-- 附錄四 -->
-            <div class="course-card bg-white rounded-lg shadow overflow-hidden">
+            <div class="course-card translucent-card rounded-lg shadow overflow-hidden">
                 <div class="bg-gray-700 px-4 py-3">
                     <h3 class="text-lg font-semibold text-white">附錄四：AI 資訊來源</h3>
                 </div>
@@ -190,7 +184,7 @@
             </div>
 
             <!-- 製作說明與來源 -->
-            <div class="course-card bg-white rounded-lg shadow overflow-hidden">
+            <div class="course-card translucent-card rounded-lg shadow overflow-hidden">
                 <div class="bg-gray-600 px-4 py-3">
                     <h3 class="text-lg font-semibold text-white">製作說明與來源</h3>
                 </div>

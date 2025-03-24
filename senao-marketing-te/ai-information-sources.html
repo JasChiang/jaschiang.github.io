@@ -8,57 +8,29 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Google Fonts - Space Mono -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap">
-    <!-- Teenage Engineering Style -->
-    <link rel="stylesheet" href="css/teenage-engineering.css">
-    <!-- macOS Style with Blur Effects -->
-    <link rel="stylesheet" href="css/macos-style.css">
     <style>
-        /* 所有樣式已移至teenage-engineering.css */
-        /* 保留特殊樣式 */
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
         .source-card {
-            transition: var(--te-transition);
+            transition: all 0.3s ease;
         }
         .source-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 15px 30px -10px rgba(0, 0, 0, 0.1);
         }
-        /* 修復按鈕在白色背景上的可見性問題 */
-        .source-card a.inline-flex {
-            border: 1px solid rgba(0, 0, 0, 0.1);
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-            color: #333 !important; /* 強制使用深色文字 */
-        }
-        /* 為不同背景色的按鈕添加邊框顏色 */
-        .source-card a.inline-flex.bg-blue-500 {
-            border-color: #3b82f6;
-        }
-        .source-card a.inline-flex.bg-purple-500 {
-            border-color: #8b5cf6;
-        }
-        .source-card a.inline-flex.bg-red-500, .source-card a.inline-flex.bg-red-600 {
-            border-color: #ef4444;
-        }
-        .source-card a.inline-flex.bg-green-500 {
-            border-color: #10b981;
-        }
-        .source-card a.inline-flex.bg-blue-600 {
-            border-color: #2563eb;
-        }
-        .source-card a.inline-flex.bg-pink-500 {
-            border-color: #ec4899;
-        }
-        .source-card a.inline-flex.bg-yellow-500 {
-            border-color: #f59e0b;
-        }
-        .source-card a.inline-flex.bg-gray-800 {
-            border-color: #1f2937;
+        :root {
+            --senao-deep-blue: rgb(0, 80, 151);    /* Pantone 294 C */
+            --senao-green: rgb(203, 211, 0);       /* Pantone 390 C */
+            --senao-blue: rgb(0, 144, 212);        /* Pantone 2925 C */
+            --senao-yellow: rgb(250, 193, 9);      /* Pantone 1235 C */
+            --senao-pink: rgb(230, 72, 148);       /* Pantone 225 C */
+            --senao-silver: rgb(181, 181, 182);    /* Pantone 877C */
         }
     </style>
 </head>
-<body>
-    <header class="bg-[rgb(0,80,151)] shadow-sm sticky top-0 z-10">
+<body class="bg-gray-50">
+    <header class="translucent-dark shadow-sm sticky top-0 z-10">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
             <div class="flex justify-between items-center">
                 <h1 class="text-3xl font-bold text-white">附錄四：AI 資訊來源</h1>
@@ -72,7 +44,7 @@
     </header>
 
     <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <div class="bg-white shadow overflow-hidden sm:rounded-lg mb-8">
+        <div class="translucent shadow overflow-hidden sm:rounded-lg mb-8">
             <div class="px-4 py-5 sm:px-6">
                 <h2 class="text-xl font-semibold text-[rgb(0,80,151)]">AI 資訊來源</h2>
                 <p class="mt-1 max-w-2xl text-sm text-[rgb(0,144,212)]">透過 X 和 YouTube 可以最快速地取得 AI 相關新訊息</p>
@@ -444,7 +416,7 @@
             </div>
         </div>
 
-        <div class="bg-white shadow overflow-hidden sm:rounded-lg p-6 mb-8">
+        <div class="translucent shadow overflow-hidden sm:rounded-lg p-6 mb-8">
             <h2 class="text-xl font-semibold text-[rgb(0,80,151)] mb-4">如何有效利用這些資訊來源</h2>
             <div class="prose max-w-none text-gray-700">
                 <ul class="list-disc pl-5 space-y-2">

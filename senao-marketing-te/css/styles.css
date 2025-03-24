@@ -1,0 +1,110 @@
+/* 神腦國際行銷部 AI 入門課程 - 共用樣式 */
+
+/* 基本樣式 */
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: #f9f9f9;
+    background-image: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    background-attachment: fixed;
+}
+
+/* 內容區塊過渡效果 */
+.content-section {
+    transition: all 0.3s ease;
+}
+.content-section:hover {
+    transform: scale(1.01);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+/* 課程卡片過渡效果 */
+.course-card {
+    transition: all 0.3s ease;
+}
+.course-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+/* 神腦品牌顏色 */
+:root {
+    --senao-deep-blue: rgb(0, 80, 151);    /* Pantone 294 C */
+    --senao-green: rgb(203, 211, 0);       /* Pantone 390 C */
+    --senao-blue: rgb(0, 144, 212);        /* Pantone 2925 C */
+    --senao-yellow: rgb(250, 193, 9);      /* Pantone 1235 C */
+    --senao-pink: rgb(230, 72, 148);       /* Pantone 225 C */
+    --senao-silver: rgb(181, 181, 182);    /* Pantone 877C */
+}
+
+/* macOS 風格半透明效果 */
+.translucent {
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px); /* Safari 支援 */
+    background-color: rgba(255, 255, 255, 0.55);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+}
+
+.translucent-dark {
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    background-color: rgba(0, 80, 151, 0.65);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+    border: 1px solid rgba(0, 144, 212, 0.2);
+    border-radius: 10px;
+}
+
+.translucent-card {
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    background-color: rgba(255, 255, 255, 0.45);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 10px;
+    transition: all 0.3s ease;
+}
+
+.translucent-card:hover {
+    background-color: rgba(255, 255, 255, 0.6);
+    transform: translateY(-3px);
+    box-shadow: 0 12px 32px 0 rgba(31, 38, 135, 0.15);
+}
+
+/* 瀏覽器兼容性支援 */
+@supports not (backdrop-filter: blur(15px)) {
+    .translucent {
+        background-color: rgba(255, 255, 255, 0.8);
+    }
+    .translucent-dark {
+        background-color: rgba(0, 80, 151, 0.85);
+    }
+    .translucent-card {
+        background-color: rgba(255, 255, 255, 0.75);
+    }
+}
+
+/* 高亮文字 */
+.highlight-text {
+    background: linear-gradient(120deg, rgba(0, 144, 212, 0.2), rgba(0, 144, 212, 0.2));
+    background-repeat: no-repeat;
+    background-size: 100% 40%;
+    background-position: 0 90%;
+}
+
+/* 案例研究和筆記卡片 */
+.case-study {
+    border-left: 4px solid var(--senao-deep-blue);
+}
+
+.note-card {
+    border-left: 4px solid var(--senao-yellow);
+}
+
+/* 響應式調整 */
+@media (max-width: 768px) {
+    .translucent, .translucent-dark, .translucent-card {
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+    }
+}

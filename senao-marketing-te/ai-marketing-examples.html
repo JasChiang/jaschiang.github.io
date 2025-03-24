@@ -8,24 +8,13 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Google Fonts - Space Mono -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap">
-    <!-- Teenage Engineering Style -->
-    <link rel="stylesheet" href="css/teenage-engineering.css">
-    <!-- macOS Style with Blur Effects -->
-    <link rel="stylesheet" href="css/macos-style.css">
+    <!-- 共用樣式 -->
+    <link rel="stylesheet" href="css/styles.css">
     <style>
-        /* 所有樣式已移至teenage-engineering.css */
-        /* 保留特殊樣式 */
-        .case-study {
-            border-left: 4px solid var(--senao-deep-blue);
-            transition: var(--te-transition);
-        }
-        
         /* Lightbox styles */
         .lightbox-image {
             cursor: pointer;
-            transition: var(--te-transition);
+            transition: transform 0.2s;
         }
         .lightbox-image:hover {
             transform: scale(1.05);
@@ -44,7 +33,7 @@
             align-items: center;
             opacity: 0;
             pointer-events: none;
-            transition: var(--te-transition);
+            transition: opacity 0.3s ease;
         }
         #lightbox.active {
             opacity: 1;
@@ -56,7 +45,7 @@
             max-height: 90%;
             background-color: white;
             padding: 10px;
-            border-radius: var(--te-border-radius);
+            border-radius: 5px;
             position: relative;
         }
         #lightbox-image {
@@ -77,8 +66,8 @@
         }
     </style>
 </head>
-<body>
-    <header class="bg-[rgb(0,80,151)] shadow-sm sticky top-0 z-10">
+<body class="bg-gray-50">
+    <header class="translucent-dark shadow-sm sticky top-0 z-10">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
             <div class="flex justify-between items-center">
                 <h1 class="text-3xl font-bold text-white">行銷職能的實際 AI 應用</h1>
@@ -95,7 +84,7 @@
     </header>
 
     <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <div class="bg-white shadow overflow-hidden sm:rounded-lg mb-8">
+        <div class="translucent shadow overflow-hidden sm:rounded-lg mb-8">
             <div class="px-4 py-5 sm:px-6">
                 <h2 class="text-xl font-semibold text-[rgb(0,80,151)]">各行銷職能 AI 應用範例</h2>
                 <p class="mt-1 max-w-2xl text-sm text-[rgb(0,144,212)]">按照不同職能與工作內容，示範 AI 的使用範例</p>

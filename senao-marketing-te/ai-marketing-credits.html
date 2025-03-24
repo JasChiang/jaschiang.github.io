@@ -14,18 +14,15 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Google Fonts - Space Mono -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap">
-    <!-- Teenage Engineering Style -->
-    <link rel="stylesheet" href="css/teenage-engineering.css">
-    <!-- macOS Style with Blur Effects -->
-    <link rel="stylesheet" href="css/macos-style.css">
     <!-- AOS Animation Library -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <style>
-        /* 所有樣式已移至teenage-engineering.css */
-        /* 保留特殊樣式 */
+    <!-- 共用樣式 -->
+    <link rel="stylesheet" href="css/styles.css">
+            --senao-yellow: rgb(250, 193, 9);      /* Pantone 1235 C */
+            --senao-pink: rgb(230, 72, 148);       /* Pantone 225 C */
+            --senao-silver: rgb(181, 181, 182);    /* Pantone 877C */
+        }
         .gradient-text {
             background: linear-gradient(90deg, var(--senao-blue), var(--senao-deep-blue));
             -webkit-background-clip: text;
@@ -33,26 +30,26 @@
             background-clip: text;
         }
         .prompt-section {
-            transition: var(--te-transition);
+            transition: all 0.3s ease;
         }
         .prompt-section:hover {
             transform: scale(1.01);
-            box-shadow: var(--te-box-shadow);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
         }
         .prompt-card {
-            transition: var(--te-transition);
+            transition: all 0.3s ease;
         }
         .prompt-card:hover {
             transform: translateY(-5px);
-            box-shadow: var(--te-box-shadow);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
         }
         .code-block {
             background-color: #f8fafc;
-            border-radius: var(--te-border-radius);
+            border-radius: 0.5rem;
             padding: 1.5rem;
             overflow-x: auto;
             border-left: 4px solid var(--senao-blue);
-            font-family: 'Space Mono', monospace;
+            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
             font-size: 0.875rem;
             line-height: 1.7;
         }
@@ -64,8 +61,8 @@
         }
     </style>
 </head>
-<body>
-    <header class="bg-[rgb(0,80,151)] shadow-sm sticky top-0 z-10">
+<body class="bg-gray-50">
+    <header class="translucent-dark shadow-sm sticky top-0 z-10">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
             <div class="flex justify-between items-center">
                 <h1 class="text-3xl font-bold text-white">AI 行銷課程 - 製作說明與來源</h1>
@@ -83,7 +80,7 @@
 
     <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <!-- 來源說明區塊 -->
-        <section class="bg-white shadow rounded-lg p-6 mb-8" data-aos="fade-up">
+        <section class="translucent shadow rounded-lg p-6 mb-8" data-aos="fade-up">
             <h2 class="text-2xl font-bold text-[rgb(0,80,151)] mb-4">
                 <i class="fas fa-info-circle text-[rgb(0,144,212)] mr-2"></i>
                 關於本課程
@@ -112,7 +109,7 @@
         </section>
 
         <!-- 製作工具說明 -->
-        <section class="bg-white shadow rounded-lg p-6 mb-8" data-aos="fade-up" data-aos-delay="100">
+        <section class="translucent shadow rounded-lg p-6 mb-8" data-aos="fade-up" data-aos-delay="100">
             <h2 class="text-2xl font-bold text-[rgb(0,80,151)] mb-4">
                 <i class="fas fa-tools text-[rgb(230,72,148)] mr-2"></i>
                 製作工具與方法

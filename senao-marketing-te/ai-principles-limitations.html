@@ -8,22 +8,23 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Google Fonts - Space Mono -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap">
-    <!-- Teenage Engineering Style -->
-    <link rel="stylesheet" href="css/teenage-engineering.css">
-    <!-- macOS Style with Blur Effects -->
-    <link rel="stylesheet" href="css/macos-style.css">
+    <!-- 共用樣式 -->
+    <link rel="stylesheet" href="css/styles.css">
     <style>
-        /* 所有樣式已移至teenage-engineering.css */
-        /* 保留特殊動畫效果 */
+        /* 頁面特定樣式 */
+        .warning-card {
+            border-left: 4px solid rgb(250, 193, 9);
+        }
+        .tip-card {
+            border-left: 4px solid rgb(0, 144, 212);
+        }
+        /* 新增的樣式 */
         .diagram-container {
             background-color: white;
-            border-radius: var(--te-border-radius);
+            border-radius: 0.5rem;
             padding: 1rem;
             margin: 1.5rem 0;
-            box-shadow: var(--te-box-shadow);
-            transition: var(--te-transition);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
         }
         .monkey-typing {
             position: relative;
@@ -38,7 +39,7 @@
         .typewriter-container {
             position: relative;
             overflow: hidden;
-            border-radius: var(--te-border-radius);
+            border-radius: 4px;
             margin-top: 10px;
         }
         .typewriter-text {
@@ -74,7 +75,7 @@
             width: 100px;
             height: 40px;
             background-color: #e0e0e0;
-            border-radius: var(--te-border-radius);
+            border-radius: 5px;
             margin: 10px auto;
             overflow: hidden;
         }
@@ -84,7 +85,7 @@
             height: 15px;
             background-color: #fff;
             border: 1px solid #ccc;
-            border-radius: var(--te-border-radius);
+            border-radius: 3px;
         }
         .key-1 { top: 5px; left: 10px; animation: press 0.8s infinite; }
         .key-2 { top: 5px; left: 30px; animation: press 1.2s infinite 0.2s; }
@@ -103,22 +104,12 @@
             50% { transform: scale(1.2); }
             100% { transform: scale(1); }
         }
-        
-        /* Teenage Engineering 風格增強 */
-        .warning-card {
-            border-left: 4px solid var(--senao-yellow);
-            transition: var(--te-transition);
-        }
-        .tip-card {
-            border-left: 4px solid var(--senao-blue);
-            transition: var(--te-transition);
-        }
     </style>
     <!-- Mermaid JS for flowcharts and diagrams -->
     <script src="https://cdn.jsdelivr.net/npm/mermaid@10.6.1/dist/mermaid.min.js"></script>
 </head>
-<body>
-    <header class="bg-[rgb(0,80,151)] shadow-sm sticky top-0 z-10">
+<body class="bg-gray-50">
+    <header class="translucent-dark shadow-sm sticky top-0 z-10">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
             <div class="flex justify-between items-center">
                 <h1 class="text-3xl font-bold text-white">第二章：AI 的原理、侷限與使用心法</h1>
@@ -135,7 +126,7 @@
     </header>
 
     <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <div class="bg-white shadow overflow-hidden sm:rounded-lg mb-8">
+        <div class="translucent shadow overflow-hidden sm:rounded-lg mb-8">
             <div class="px-4 py-5 sm:px-6">
                 <h2 class="text-xl font-semibold text-[rgb(0,80,151)]">理解 AI 的運作方式與限制</h2>
                 <p class="mt-1 max-w-2xl text-sm text-[rgb(0,144,212)]">深入了解 AI 工具的基礎知識，認識其能力邊界與有效使用方法</p>
@@ -148,7 +139,7 @@
         </div>
 
         <!-- AI 工具的基本原理 -->
-        <div class="content-section bg-white shadow overflow-hidden sm:rounded-lg p-6 mb-8">
+        <div class="content-section translucent shadow overflow-hidden sm:rounded-lg p-6 mb-8">
             <h2 class="text-xl font-semibold text-gray-900 mb-4">
                 <i class="fas fa-microchip mr-2 text-[rgb(0,144,212)]"></i>AI 工具的基本原理
             </h2>
@@ -204,7 +195,7 @@
         </div>
 
         <!-- AI 的侷限與注意事項 -->
-        <div class="content-section bg-white shadow overflow-hidden sm:rounded-lg p-6 mb-8">
+        <div class="content-section translucent shadow overflow-hidden sm:rounded-lg p-6 mb-8">
             <h2 class="text-xl font-semibold text-gray-900 mb-4">
                 <i class="fas fa-exclamation-triangle mr-2 text-[rgb(250,193,9)]"></i>為什麼要使用 AI？好奇心最重要
             </h2>
@@ -444,7 +435,7 @@
         </div>
 
         <!-- 有效使用的心法與技巧 -->
-        <div class="content-section bg-white shadow overflow-hidden sm:rounded-lg p-6 mb-8">
+        <div class="content-section translucent shadow overflow-hidden sm:rounded-lg p-6 mb-8">
             <h2 class="text-xl font-semibold text-gray-900 mb-4">
                 <i class="fas fa-lightbulb mr-2 text-[rgb(203,211,0)]"></i>AI 能做什麼？使用者該扮演什麼角色？
             </h2>

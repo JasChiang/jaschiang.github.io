@@ -8,15 +8,19 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Google Fonts - Space Mono -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap">
-    <!-- Teenage Engineering Style -->
-    <link rel="stylesheet" href="css/teenage-engineering.css">
-    <!-- macOS Style with Blur Effects -->
-    <link rel="stylesheet" href="css/macos-style.css">
     <style>
-        /* 所有樣式已移至teenage-engineering.css */
-        /* 保留特殊樣式 */
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+        :root {
+            --senao-deep-blue: rgb(0, 80, 151);    /* Pantone 294 C */
+            --senao-green: rgb(203, 211, 0);       /* Pantone 390 C */
+            --senao-blue: rgb(0, 144, 212);        /* Pantone 2925 C */
+            --senao-yellow: rgb(250, 193, 9);      /* Pantone 1235 C */
+            --senao-pink: rgb(230, 72, 148);       /* Pantone 225 C */
+            --senao-silver: rgb(181, 181, 182);    /* Pantone 877C */
+        }
+        
         .tools-table {
             width: 100%;
             border-collapse: collapse;
@@ -44,12 +48,12 @@
         }
         
         .tool-card {
-            transition: var(--te-transition);
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
         }
         
         .tool-card:hover {
             transform: translateY(-2px);
-            box-shadow: var(--te-box-shadow);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
         }
         
         /* 頁面載入動畫 */
@@ -64,7 +68,7 @@
             justify-content: center;
             align-items: center;
             z-index: 9999;
-            transition: var(--te-transition);
+            transition: opacity 0.5s ease-in-out;
         }
         
         .loader {
@@ -81,9 +85,8 @@
             100% { transform: rotate(360deg); }
         }
     </style>
-    </style>
 </head>
-<body>
+<body class="bg-gray-50">
     <!-- 頁面載入動畫 -->
     <div class="loader-wrapper" id="loader">
         <div class="loader"></div>

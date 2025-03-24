@@ -14,23 +14,20 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Google Fonts - Space Mono -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap">
-    <!-- Teenage Engineering Style -->
-    <link rel="stylesheet" href="css/teenage-engineering.css">
-    <link rel="stylesheet" href="css/teenage-engineering-additions.css">
-    <link rel="stylesheet" href="css/teenage-engineering-animations.css">
-    <link rel="stylesheet" href="css/teenage-engineering-enhanced.css">
-    <!-- macOS Style with Blur Effects -->
-    <link rel="stylesheet" href="css/macos-style.css">
+    <!-- 共用樣式 -->
+    <link rel="stylesheet" href="css/styles.css">
     <style>
-        /* 所有樣式已移至teenage-engineering.css */
+        /* 頁面特定樣式 */
+        .highlight-text {
+            background: linear-gradient(120deg, rgba(0, 144, 212, 0.2), rgba(0, 144, 212, 0.2));
+            background-repeat: no-repeat;
+            background-size: 100% 40%;
+            background-position: 0 90%;
+        }
     </style>
-    <!-- Teenage Engineering 互動效果 -->
-    <script src="js/teenage-engineering-interactions.js" defer></script>
 </head>
-<body class="">
-    <header class="bg-[rgb(0,80,151)] shadow-sm sticky top-0 z-10">
+<body class="bg-gray-50">
+    <header class="translucent-dark shadow-sm sticky top-0 z-10">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
             <div class="flex justify-between items-center">
                 <h1 class="text-3xl font-bold text-white">為神腦國際行銷部製作的 AI 入門課程</h1>
@@ -42,19 +39,19 @@
     </header>
 
     <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <div class="bg-white shadow overflow-hidden sm:rounded-lg mb-8">
+        <div class="translucent shadow overflow-hidden sm:rounded-lg mb-8">
             <div class="px-4 py-5 sm:px-6">
                 <h2 class="text-xl font-semibold text-gray-900">如何利用 AI 提升工作效率</h2>
                 <p class="mt-1 max-w-2xl text-sm text-gray-500">為行銷團隊打造的實用 AI 指南</p>
             </div>
             <div class="border-t border-gray-200 px-4 py-5 sm:px-6">
-                <p class="text-gray-700 mb-4">本課程源於實戰經驗，旨在成為行銷部門 AI 新手的理想起點。<br>我認為<span class="highlight-text">學習 AI 最有效的方式是「知道、找出自己的需求」並「從做中學」</span>—找出能提升工作效率的應用場景。<br>
+                <p class="text-gray-700 mb-4">本課程源於實戰經驗，旨在成為行銷部門 AI 新手的理想起點。<br>我認為<span style="color: rgb(230,72,148)">學習 AI 最有效的方式是「知道、找出自己的需求」並「從做中學」</span>—找出能提升工作效率的應用場景。<br>
                     <p class="text-gray-700 mb-4">例如，當因找不到示意圖而與設計部反覆溝通設計需求時，AI 可以快速生成參考素材，大幅節省雙方時間。<br>又如文案創作，AI 能協助突破「下筆難」的瓶頸，迅速產出初稿，而有更多時間專注於創意發想與精細調整。</p>
             </div>
         </div>
 
         <!-- AI 學習流程圖 -->
-        <div class="bg-white shadow overflow-hidden sm:rounded-lg mb-8 p-6">
+        <div class="translucent shadow overflow-hidden sm:rounded-lg mb-8 p-6">
             <h3 class="text-lg font-medium text-gray-900 mb-4">
                 <i class="fas fa-lightbulb text-[rgb(250,193,9)] mr-2"></i>
                 AI 學習方法：從做中學
