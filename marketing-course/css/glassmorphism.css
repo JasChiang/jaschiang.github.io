@@ -1,0 +1,138 @@
+/* Glassmorphism 風格 CSS */
+
+/* 玻璃效果基本類 */
+.glass {
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+}
+
+/* 卡片玻璃效果 */
+.glass-card {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.2);
+    transition: all 0.3s ease;
+}
+
+.glass-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 40px 0 rgba(31, 38, 135, 0.3);
+    background: rgba(255, 255, 255, 0.25);
+}
+
+/* 頭部玻璃效果 */
+.glass-header {
+    background: rgba(0, 80, 151, 0.8);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+    box-shadow: 0 4px 20px 0 rgba(0, 80, 151, 0.3);
+}
+
+/* 內容區塊玻璃效果 */
+.glass-content {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    box-shadow: 0 4px 20px 0 rgba(31, 38, 135, 0.15);
+}
+
+/* 按鈕玻璃效果 */
+.glass-button {
+    background: rgba(0, 144, 212, 0.2);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border-radius: 5px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    box-shadow: 0 2px 10px 0 rgba(0, 144, 212, 0.2);
+    transition: all 0.3s ease;
+}
+
+.glass-button:hover {
+    background: rgba(0, 144, 212, 0.4);
+    box-shadow: 0 4px 15px 0 rgba(0, 144, 212, 0.4);
+}
+
+/* 背景漸變 */
+.glass-gradient-bg {
+    background: linear-gradient(135deg, rgba(0, 80, 151, 0.1) 0%, rgba(0, 144, 212, 0.1) 50%, rgba(203, 211, 0, 0.1) 100%);
+}
+
+/* 神腦色系玻璃效果 */
+.glass-senao-deep-blue {
+    background: rgba(0, 80, 151, 0.2);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.glass-senao-green {
+    background: rgba(203, 211, 0, 0.2);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.glass-senao-blue {
+    background: rgba(0, 144, 212, 0.2);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.glass-senao-yellow {
+    background: rgba(250, 193, 9, 0.2);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.glass-senao-pink {
+    background: rgba(230, 72, 148, 0.2);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.glass-senao-silver {
+    background: rgba(181, 181, 182, 0.2);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+/* 圖標玻璃效果 */
+.glass-icon-container {
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    box-shadow: 0 4px 15px 0 rgba(31, 38, 135, 0.15);
+}
+
+/* 光影效果 */
+.glass-light {
+    position: relative;
+    overflow: hidden;
+}
+
+.glass-light::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0) 70%);
+    transform: rotate(30deg);
+    pointer-events: none;
+}

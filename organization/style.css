@@ -1,0 +1,487 @@
+/* 
+神腦國際標準色碼:
+神腦深藍 - Pantone 294 C - RGB(0, 80, 151) - #00509F
+神腦螢綠 - Pantone 390 C - RGB(203, 211, 0) - #CBD300
+神腦水藍 - Pantone 2925 C - RGB(0, 144, 212) - #0090D0
+
+輔助色:
+神腦輔助黃 - Pantone 1235 C - RGB(250, 193, 9) - #FAC109
+神腦輔助桃紅 - Pantone 225 C - RGB(230, 72, 148) - #E64894
+神腦輔助銀 - Pantone 877C - RGB(181, 181, 182) - #B5B5B6
+*/
+
+:root {
+    --senao-deep-blue: #00509F;
+    --senao-neon-green: #CBD300;
+    --senao-water-blue: #0090D0;
+    --senao-aux-yellow: #FAC109;
+    --senao-aux-pink: #E64894;
+    --senao-aux-silver: #B5B5B6;
+    --light-gray: #f5f5f5;
+    --medium-gray: #e0e0e0;
+    --dark-gray: #333333;
+    --white: #ffffff;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Microsoft JhengHei', 'PingFang TC', 'Heiti TC', 'Apple LiGothic', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+body {
+    background-color: var(--light-gray);
+    color: var(--dark-gray);
+    line-height: 1.6;
+}
+
+header {
+    background-color: var(--senao-deep-blue);
+    color: var(--white);
+    padding: 2rem;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+}
+
+header h2 {
+    font-size: 1.8rem;
+    font-weight: normal;
+}
+
+main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+section {
+    margin-bottom: 3rem;
+    background-color: var(--white);
+    border-radius: 8px;
+    padding: 2rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+h3 {
+    color: var(--senao-deep-blue);
+    margin-bottom: 1.5rem;
+    font-size: 1.8rem;
+    border-bottom: 2px solid var(--senao-deep-blue);
+    padding-bottom: 0.5rem;
+}
+
+h4 {
+    color: var(--senao-deep-blue);
+    margin-bottom: 1rem;
+    font-size: 1.4rem;
+}
+
+h5 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+}
+
+/* 組織架構圖 */
+.org-chart-container {
+    display: flex;
+    justify-content: center;
+    margin: 2rem 0;
+}
+
+.org-chart {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.org-box {
+    padding: 1.5rem;
+    border-radius: 8px;
+    text-align: center;
+    min-width: 200px;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.department {
+    background-color: var(--senao-deep-blue);
+    color: var(--white);
+}
+
+.org-branches {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+}
+
+.org-branch {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.team {
+    position: relative;
+}
+
+.team::before {
+    content: '';
+    position: absolute;
+    top: -1.5rem;
+    left: 50%;
+    width: 2px;
+    height: 1.5rem;
+    background-color: var(--senao-deep-blue);
+}
+
+.team-planning {
+    background-color: var(--senao-water-blue);
+    color: var(--white);
+}
+
+.team-production {
+    background-color: var(--senao-neon-green);
+    color: var(--white);
+}
+
+.org-box, .team-planning, .team-production {
+    color: var(--white);
+}
+
+/* 部門卡片 */
+.department-card {
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.planning {
+    border-left: 5px solid var(--senao-water-blue);
+}
+
+.production {
+    border-left: 5px solid var(--senao-neon-green);
+}
+
+.department-content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+
+.function-description {
+    flex: 1;
+    min-width: 300px;
+}
+
+.function-description ul {
+    list-style-type: none;
+}
+
+.function-description li {
+    position: relative;
+    padding-left: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.function-description li::before {
+    display: none;
+}
+
+.function-description li i {
+    color: var(--senao-water-blue);
+    margin-right: 0.5rem;
+}
+
+/* 平台與媒體圖表 */
+.platform-chart-container, .media-chart-container {
+    flex: 1;
+    min-width: 300px;
+}
+
+.platforms, .media-items, .service-items {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.platform-item, .media-item, .service-item {
+    display: flex;
+    align-items: center;
+    background-color: var(--light-gray);
+    padding: 0.8rem;
+    border-radius: 6px;
+    width: 100%;
+}
+
+.platform-icon, .media-icon, .service-icon, .program-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--white);
+    font-size: 1.2rem;
+}
+
+.youtube {
+    background-color: #FF0000;
+}
+
+.facebook {
+    background-color: #1877F2;
+}
+
+.magazine {
+    background-color: var(--senao-aux-pink);
+}
+
+.edm {
+    background-color: var(--senao-aux-yellow);
+}
+
+.app {
+    background-color: var(--senao-water-blue);
+}
+
+/* 例行單元產出頻率圖表 */
+.content-production-chart {
+    margin: 2rem 0;
+}
+
+.chart-container {
+    height: 300px;
+    margin-top: 1rem;
+}
+
+/* 例行單元卡片 */
+.program-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.program-card {
+    background-color: var(--white);
+    border-radius: 8px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-top: 4px solid var(--senao-deep-blue);
+    transition: transform 0.3s ease;
+}
+
+.program-card:hover {
+    transform: translateY(-5px);
+}
+
+.program-card.live {
+    border-top-color: var(--senao-aux-pink);
+}
+
+.program-icon {
+    margin-bottom: 1rem;
+}
+
+.tech {
+    background-color: var(--senao-deep-blue);
+}
+
+.apple {
+    background-color: #000000;
+}
+
+.samsung {
+    background-color: var(--senao-deep-blue);
+}
+
+.news {
+    background-color: var(--senao-water-blue);
+}
+
+.gaming {
+    background-color: var(--senao-aux-yellow);
+}
+
+.health {
+    background-color: var(--senao-aux-pink);
+}
+
+.lifestyle {
+    background-color: var(--senao-neon-green);
+    color: var(--dark-gray);
+}
+
+.live-icon {
+    background-color: var(--senao-aux-pink);
+}
+
+.medical {
+    background-color: var(--senao-deep-blue);
+}
+
+.frequency {
+    display: inline-block;
+    background-color: var(--senao-deep-blue);
+    color: var(--white);
+    padding: 0.3rem 0.6rem;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+}
+
+.platforms-small {
+    margin-top: 0.8rem;
+    font-size: 0.9rem;
+}
+
+.platforms-small span {
+    display: inline-block;
+    background-color: var(--light-gray);
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+    margin-right: 0.3rem;
+    margin-bottom: 0.3rem;
+}
+
+.platforms-small span i {
+    margin-right: 0.3rem;
+    color: var(--senao-deep-blue);
+}
+
+/* 其他專案 */
+.other-projects {
+    background-color: var(--light-gray);
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin-top: 2rem;
+}
+
+.other-projects i {
+    color: var(--senao-deep-blue);
+    margin-right: 0.5rem;
+}
+
+/* 額外支援服務 */
+.additional-services {
+    margin-top: 2rem;
+}
+
+.foundation {
+    background-color: var(--senao-deep-blue);
+}
+
+.charity {
+    background-color: var(--senao-aux-pink);
+}
+
+.video {
+    background-color: var(--senao-water-blue);
+}
+
+/* 內容製作流程 */
+.flow-chart {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 2rem;
+}
+
+.flow-step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 200px;
+}
+
+.step-number {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: var(--senao-deep-blue);
+    color: var(--white);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+.flow-arrow {
+    width: 50px;
+    height: 2px;
+    background-color: var(--senao-deep-blue);
+    position: relative;
+}
+
+.flow-arrow::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: -4px;
+    width: 0;
+    height: 0;
+    border-top: 5px solid transparent;
+    border-bottom: 5px solid transparent;
+    border-left: 10px solid var(--senao-deep-blue);
+}
+
+footer {
+    background-color: var(--senao-deep-blue);
+    color: var(--white);
+    text-align: center;
+    padding: 1.5rem;
+    margin-top: 2rem;
+}
+
+/* 響應式設計 */
+@media (max-width: 768px) {
+    .org-branches {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+    
+    .flow-chart {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+    
+    .flow-arrow {
+        transform: rotate(90deg);
+        margin: 1rem 0;
+    }
+    
+    .program-cards {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    header h1 {
+        font-size: 2rem;
+    }
+    
+    header h2 {
+        font-size: 1.5rem;
+    }
+    
+    main {
+        padding: 1rem;
+    }
+    
+    section {
+        padding: 1.5rem;
+    }
+}
