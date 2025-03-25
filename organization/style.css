@@ -98,6 +98,10 @@ h5 {
     display: flex;
     flex-direction: column;
     align-items: center;
+    background-color: var(--white);
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .org-box {
@@ -107,11 +111,15 @@ h5 {
     min-width: 200px;
     margin-bottom: 1.5rem;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background-color: var(--white);
 }
 
 .department {
-    background-color: var(--senao-deep-blue);
-    color: var(--white);
+    border: 3px solid var(--senao-deep-blue);
+}
+
+.department h4 {
+    color: var(--senao-deep-blue);
 }
 
 .org-branches {
@@ -141,17 +149,19 @@ h5 {
 }
 
 .team-planning {
-    background-color: var(--senao-water-blue);
-    color: var(--white);
+    border: 3px solid var(--senao-water-blue);
+}
+
+.team-planning h4 {
+    color: var(--senao-water-blue);
 }
 
 .team-production {
-    background-color: var(--senao-neon-green);
-    color: var(--white);
+    border: 3px solid var(--senao-neon-green);
 }
 
-.org-box, .team-planning, .team-production {
-    color: var(--white);
+.team-production h4 {
+    color: var(--senao-neon-green);
 }
 
 /* 部門卡片 */
