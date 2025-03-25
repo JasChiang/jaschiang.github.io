@@ -21,6 +21,8 @@
     --medium-gray: #e0e0e0;
     --dark-gray: #333333;
     --white: #ffffff;
+    --senao-light-blue: #87CEEB;
+    --senao-green: #32CD32;
 }
 
 * {
@@ -456,7 +458,564 @@ footer {
     margin-top: 2rem;
 }
 
-/* 響應式設計 */
+/* 詳細組織架構 */
+.detailed-org-section {
+    margin-bottom: 3rem;
+    background-color: var(--white);
+    border-radius: 8px;
+    padding: 2rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.detailed-org-container {
+    margin-top: 2rem;
+}
+
+.department-header {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    margin-bottom: 2rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--medium-gray);
+}
+
+.department-title {
+    flex: 1;
+    min-width: 300px;
+}
+
+.department-title h4 {
+    color: var(--senao-deep-blue);
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    background-color: var(--light-gray);
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    border-left: 4px solid var(--senao-deep-blue);
+}
+
+.department-kpi {
+    flex: 2;
+    min-width: 300px;
+}
+
+.department-kpi h5 {
+    color: var(--senao-deep-blue);
+    margin-bottom: 0.8rem;
+}
+
+.department-kpi ol {
+    padding-left: 1.5rem;
+}
+
+.department-kpi li {
+    margin-bottom: 0.5rem;
+}
+
+.teams-container {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.team-detail {
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.planning-team {
+    border-left: 5px solid var(--senao-water-blue);
+}
+
+.production-team {
+    border-left: 5px solid var(--senao-neon-green);
+}
+
+.team-header {
+    margin-bottom: 1.5rem;
+}
+
+.team-header h4 {
+    color: var(--senao-deep-blue);
+    font-size: 1.4rem;
+    margin-bottom: 0.5rem;
+    background-color: var(--light-gray);
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+}
+
+.planning-team .team-header h4 {
+    border-left: 4px solid var(--senao-water-blue);
+}
+
+.production-team .team-header h4 {
+    border-left: 4px solid var(--senao-neon-green);
+}
+
+.team-stats {
+    margin-bottom: 1.5rem;
+}
+
+.team-stats table {
+    width: 100%;
+    max-width: 400px;
+    border-collapse: collapse;
+    margin-bottom: 1rem;
+}
+
+.team-stats th, .team-stats td {
+    border: 1px solid var(--medium-gray);
+    padding: 0.5rem;
+    text-align: center;
+}
+
+.team-stats th {
+    background-color: var(--light-gray);
+    font-weight: bold;
+}
+
+.team-functions {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.function-group {
+    margin-bottom: 1.5rem;
+}
+
+.function-title {
+    margin-bottom: 1rem;
+}
+
+.function-title h5 {
+    color: var(--senao-deep-blue);
+    font-size: 1.2rem;
+    padding-bottom: 0.3rem;
+    border-bottom: 2px solid var(--senao-deep-blue);
+    display: inline-block;
+}
+
+.function-manager {
+    background-color: var(--light-gray);
+    padding: 0.8rem;
+    border-radius: 6px;
+    margin-bottom: 1rem;
+}
+
+.function-manager p:first-child {
+    font-weight: bold;
+    margin-bottom: 0.3rem;
+}
+
+.function-sections {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+}
+
+.function-section {
+    flex: 1;
+    min-width: 300px;
+    margin-bottom: 1.5rem;
+}
+
+.function-tasks {
+    list-style-type: none;
+}
+
+.function-tasks li {
+    position: relative;
+    padding: 0.5rem 0;
+    border-bottom: 1px dotted var(--medium-gray);
+}
+
+.function-tasks li:last-child {
+    border-bottom: none;
+}
+
+/* Task lists in organizational chart */
+.task-list {
+    margin: 0.8rem 0 0 0;
+    padding-left: 1.2rem;
+    list-style-type: none;
+    font-size: 0.85rem;
+}
+
+.task-list li {
+    margin-bottom: 0.4rem;
+    line-height: 1.3;
+    position: relative;
+}
+
+.main-node .task-list {
+    text-align: left;
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
+    padding-top: 0.8rem;
+    margin-top: 1rem;
+}
+
+.main-node .task-list li {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.sub-function .task-list {
+    border-top: 1px solid var(--light-gray);
+    padding-top: 0.6rem;
+    margin-top: 0.6rem;
+}
+
+.sub-function .task-list li {
+    color: var(--dark-gray);
+}
+
+/* Adjust node sizes to accommodate task lists */
+.main-node {
+    max-width: 350px;
+}
+
+.sub-node .node-content {
+    padding: 1rem 1rem 0.5rem;
+}
+
+.sub-function {
+    padding: 0.8rem 0.8rem 0.5rem;
+}
+
+/* 詳細組織架構連結 */
+.detail-link-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 1.5rem;
+}
+
+.detail-link {
+    display: inline-block;
+    background-color: var(--senao-deep-blue);
+    color: var(--white);
+    padding: 0.8rem 1.5rem;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.detail-link:hover {
+    background-color: var(--senao-water-blue);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.detail-link i {
+    margin-left: 0.5rem;
+}
+
+/* 頁面導航 */
+.page-navigation {
+    margin-bottom: 2rem;
+}
+
+.nav-button {
+    display: inline-block;
+    background-color: var(--senao-deep-blue);
+    color: var(--white);
+    padding: 0.6rem 1.2rem;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.nav-button:hover {
+    background-color: var(--senao-water-blue);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.nav-button i {
+    margin-right: 0.5rem;
+}
+
+/* 詳細組織架構頁面 */
+.detailed-org-section .org-chart-container {
+    margin: 2rem auto;
+    max-width: 800px;
+}
+
+.detailed-org-section .org-chart {
+    margin-bottom: 3rem;
+    position: relative;
+}
+
+.detailed-org-section .org-branches {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    position: relative;
+    padding-top: 20px;
+}
+
+/* Vertical line from department to branches */
+.detailed-org-section .org-branches::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 2px;
+    height: 20px;
+    background-color: var(--light-gray);
+    transform: translateX(-50%);
+}
+
+/* Horizontal line connecting branches */
+.detailed-org-section .org-branches::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 25%;
+    width: 50%;
+    height: 2px;
+    background-color: var(--light-gray);
+}
+
+.detailed-org-section .org-branch {
+    position: relative;
+}
+
+/* Vertical lines to each team */
+.detailed-org-section .org-branch::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 2px;
+    height: 20px;
+    background-color: var(--light-gray);
+    transform: translateX(-50%);
+}
+
+.detailed-org-section .org-box {
+    padding: 1.2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.detailed-org-section .org-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.detailed-org-section .org-box h4 {
+    margin: 0 0 0.5rem;
+    font-size: 1.1rem;
+}
+
+.detailed-org-section .org-box p {
+    margin: 0;
+    font-size: 0.9rem;
+}
+
+.detailed-org-section .department {
+    background-color: transparent;
+    color: var(--dark-gray);
+    width: 250px;
+    margin: 0 auto 1.5rem;
+    border: 3px solid var(--senao-deep-blue);
+}
+
+.detailed-org-section .team {
+    width: 220px;
+}
+
+.detailed-org-section .team-planning {
+    background-color: transparent;
+    color: var(--dark-gray);
+    border: 3px solid var(--senao-light-blue);
+}
+
+.detailed-org-section .team-production {
+    background-color: transparent;
+    color: var(--dark-gray);
+    border: 3px solid var(--senao-green);
+}
+
+/* 詳細組織架構圖表 */
+.team-detail-chart {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    margin-top: 2rem;
+}
+
+.team-chart-container {
+    border-radius: 10px;
+    padding: 2rem;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    background-color: var(--white);
+}
+
+.planning-team-chart {
+    border-left: 5px solid var(--senao-light-blue);
+}
+
+.production-team-chart {
+    border-left: 5px solid var(--senao-green);
+}
+
+.team-chart-header {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--light-gray);
+}
+
+.team-chart-header h4 {
+    margin: 0 0 0.5rem;
+    color: var(--senao-deep-blue);
+    font-size: 1.3rem;
+}
+
+.team-chart-header p {
+    margin: 0;
+    font-size: 1rem;
+    color: var(--dark-gray);
+}
+
+.team-stats-box {
+    margin: 1.5rem auto;
+    max-width: 400px;
+}
+
+.team-stats-box table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 1.5rem;
+}
+
+.team-stats-box th, .team-stats-box td {
+    padding: 0.5rem;
+    text-align: center;
+    border: 1px solid var(--light-gray);
+}
+
+.team-stats-box th {
+    background-color: var(--medium-gray);
+    font-weight: 600;
+}
+
+.function-chart {
+    margin-top: 2rem;
+}
+
+.function-node {
+    margin-bottom: 1.5rem;
+    position: relative;
+}
+
+.main-node {
+    margin: 0 auto 2rem;
+    max-width: 300px;
+}
+
+.main-node .node-content {
+    background-color: var(--senao-deep-blue);
+    color: white;
+    padding: 1rem;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.function-branches {
+    display: flex;
+    justify-content: space-around;
+    position: relative;
+    margin-top: 2rem;
+}
+
+/* Connecting lines */
+.function-branches::before {
+    content: '';
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    width: 2px;
+    height: 20px;
+    background-color: var(--light-gray);
+    transform: translateX(-50%);
+}
+
+.function-branches::after {
+    content: '';
+    position: absolute;
+    top: -20px;
+    left: 25%;
+    width: 50%;
+    height: 2px;
+    background-color: var(--light-gray);
+}
+
+.sub-node {
+    flex: 1;
+    max-width: 45%;
+    position: relative;
+}
+
+.sub-node::before {
+    content: '';
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    width: 2px;
+    height: 20px;
+    background-color: var(--light-gray);
+    transform: translateX(-50%);
+}
+
+.sub-node .node-content {
+    background-color: var(--medium-gray);
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.sub-node h5 {
+    text-align: center;
+    margin: 0 0 1rem;
+    color: var(--senao-deep-blue);
+    font-size: 1.1rem;
+}
+
+.sub-functions {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.sub-function {
+    background-color: var(--white);
+    padding: 0.8rem;
+    border-radius: 6px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.sub-function p {
+    margin: 0.2rem 0;
+    font-size: 0.9rem;
+}
+
+.sub-function strong {
+    color: var(--senao-deep-blue);
+}
+
+/* Responsive adjustments */
 @media (max-width: 768px) {
     .org-branches {
         flex-direction: column;
@@ -476,6 +1035,40 @@ footer {
     .program-cards {
         grid-template-columns: 1fr;
     }
+    
+    .department-header, .function-sections {
+        flex-direction: column;
+    }
+    
+    .function-section {
+        width: 100%;
+    }
+    
+    .function-branches {
+        flex-direction: column;
+        align-items: center;
+        gap: 2rem;
+    }
+    
+    .sub-node {
+        max-width: 90%;
+    }
+    
+    .function-branches::after {
+        display: none;
+    }
+    
+    .sub-node::before {
+        height: 0;
+    }
+    
+    .task-list {
+        font-size: 0.8rem;
+    }
+    
+    .main-node {
+        max-width: 90%;
+    }
 }
 
 @media (max-width: 480px) {
@@ -494,4 +1087,53 @@ footer {
     section {
         padding: 1.5rem;
     }
+}
+
+/* Department header box */
+.department-header {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2rem;
+}
+
+.department-box {
+    max-width: 500px;
+    width: 100%;
+    border: 3px solid var(--senao-deep-blue);
+    border-radius: 10px;
+    padding: 1.5rem;
+    background-color: transparent;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+}
+
+.department-box h4 {
+    text-align: center;
+    margin: 0 0 0.5rem;
+    color: var(--senao-deep-blue);
+    font-size: 1.4rem;
+}
+
+.department-box p {
+    text-align: center;
+    margin: 0 0 1.5rem;
+    font-size: 1.1rem;
+    color: var(--dark-gray);
+}
+
+.department-kpi h5 {
+    margin: 0 0 0.8rem;
+    color: var(--senao-deep-blue);
+    font-size: 1.1rem;
+    border-bottom: 1px solid var(--light-gray);
+    padding-bottom: 0.5rem;
+}
+
+.department-kpi ol {
+    margin: 0;
+    padding-left: 1.5rem;
+}
+
+.department-kpi li {
+    margin-bottom: 0.5rem;
+    color: var(--dark-gray);
 }
