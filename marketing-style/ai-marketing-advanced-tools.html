@@ -14,14 +14,6 @@
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
         }
-        :root {
-            --deep-blue: rgb(0, 80, 151);    /* Pantone 294 C */
-            --green: rgb(203, 211, 0);       /* Pantone 390 C */
-            --blue: rgb(0, 144, 212);        /* Pantone 2925 C */
-            --yellow: rgb(250, 193, 9);      /* Pantone 1235 C */
-            --pink: rgb(230, 72, 148);       /* Pantone 225 C */
-            --silver: rgb(181, 181, 182);    /* Pantone 877C */
-        }
         
         .tools-table {
             width: 100%;
@@ -75,7 +67,7 @@
         
         .loader {
             border: 5px solid #f3f3f3;
-            border-top: 5px solid var(--blue);
+            border-top: 5px solid #0068b7;
             border-radius: 50%;
             width: 50px;
             height: 50px;
@@ -86,6 +78,14 @@
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
         }
+        
+        .bg-deep-blue {
+            background-color: #00507f;
+        }
+        
+        .text-green {
+            color: #cbcc00;
+        }
     </style>
 </head>
 <body class="bg-gray-50">
@@ -94,15 +94,15 @@
         <div class="loader"></div>
     </div>
 
-    <header class="bg-[var(--deep-blue)] shadow-sm sticky top-0 z-10">
+    <header class="bg-deep-blue shadow-sm sticky top-0 z-10">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
             <div class="flex justify-between items-center">
                 <h1 class="text-3xl font-bold text-white">進階 AI 工具</h1>
                 <div class="flex space-x-4">
-                    <a href="course-overview.html" class="text-[var(--green)] hover:text-white flex items-center">
+                    <a href="course-overview.html" class="text-green hover:text-white flex items-center">
                         <i class="fas fa-arrow-left mr-2"></i>回到課程
                     </a>
-                    <a href="index.html" class="text-[var(--green)] hover:text-white flex items-center">
+                    <a href="index.html" class="text-green hover:text-white flex items-center">
                         <i class="fas fa-home mr-2"></i>回到首頁
                     </a>
                 </div>
@@ -114,10 +114,10 @@
         <!-- 介紹部分 -->
         <div class="bg-white shadow overflow-hidden sm:rounded-lg mb-8 neu-box">
             <div class="px-4 py-5 sm:px-6 bg-[#f2f9f2]">
-                <h2 class="text-xl font-semibold text-[var(--blue)]">
-                    <i class="fas fa-tools mr-2 text-[var(--blue)]"></i>進階 AI 工具參考
+                <h2 class="text-xl font-semibold text-[#0068b7]">
+                    <i class="fas fa-tools mr-2 text-[#0068b7]"></i>進階 AI 工具參考
                 </h2>
-                <p class="mt-1 max-w-2xl text-sm text-[var(--blue)]">行銷團隊可使用的進階 AI 工具</p>
+                <p class="mt-1 max-w-2xl text-sm text-[#0068b7]">行銷團隊可使用的進階 AI 工具</p>
             </div>
             <div class="border-t border-gray-200 px-4 py-5 sm:px-6">
                 <p class="text-gray-700 mb-4">AI 技術日新月異，每天都在快速發展。本頁提供了部分市面上的 AI 工具，讓使用者可以根據需求挑選。</p>
@@ -133,47 +133,47 @@
             <div class="border-t border-gray-200 px-4 py-5 sm:px-6">
                 <ul class="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <li>
-                        <a href="#video-image-cloud" class="flex items-center text-[var(--blue)] hover:text-[var(--deep-blue)]">
+                        <a href="#video-image-cloud" class="flex items-center text-[#0068b7] hover:text-[#00507f]">
                             <i class="fas fa-cloud mr-2"></i>影片與圖像雲端服務
                         </a>
                     </li>
                     <li>
-                        <a href="#video-image-local" class="flex items-center text-[var(--blue)] hover:text-[var(--deep-blue)]">
+                        <a href="#video-image-local" class="flex items-center text-[#0068b7] hover:text-[#00507f]">
                             <i class="fas fa-desktop mr-2"></i>影片與圖像地端生成
                         </a>
                     </li>
                     <li>
-                        <a href="#data-collection" class="flex items-center text-[var(--blue)] hover:text-[var(--deep-blue)]">
+                        <a href="#data-collection" class="flex items-center text-[#0068b7] hover:text-[#00507f]">
                             <i class="fas fa-database mr-2"></i>資料收集與輔助使用
                         </a>
                     </li>
                     <li>
-                        <a href="#local-llm" class="flex items-center text-[var(--blue)] hover:text-[var(--deep-blue)]">
+                        <a href="#local-llm" class="flex items-center text-[#0068b7] hover:text-[#00507f]">
                             <i class="fas fa-microchip mr-2"></i>地端 LLM 軟體
                         </a>
                     </li>
                     <li>
-                        <a href="#speech-to-text" class="flex items-center text-[var(--blue)] hover:text-[var(--deep-blue)]">
+                        <a href="#speech-to-text" class="flex items-center text-[#0068b7] hover:text-[#00507f]">
                             <i class="fas fa-headphones mr-2"></i>地端語音轉文字
                         </a>
                     </li>
                     <li>
-                        <a href="#meeting-recording" class="flex items-center text-[var(--blue)] hover:text-[var(--deep-blue)]">
+                        <a href="#meeting-recording" class="flex items-center text-[#0068b7] hover:text-[#00507f]">
                             <i class="fas fa-file-alt mr-2"></i>會議記錄、文件整理雲端服務
                         </a>
                     </li>
                     <li>
-                        <a href="#browser-extensions" class="flex items-center text-[var(--blue)] hover:text-[var(--deep-blue)]">
+                        <a href="#browser-extensions" class="flex items-center text-[#0068b7] hover:text-[#00507f]">
                             <i class="fas fa-puzzle-piece mr-2"></i>瀏覽器擴充套件
                         </a>
                     </li>
                     <li>
-                        <a href="#music-voice" class="flex items-center text-[var(--blue)] hover:text-[var(--deep-blue)]">
+                        <a href="#music-voice" class="flex items-center text-[#0068b7] hover:text-[#00507f]">
                             <i class="fas fa-music mr-2"></i>地端音樂、人聲生成
                         </a>
                     </li>
                     <li>
-                        <a href="#integration-strategies" class="flex items-center text-[var(--blue)] hover:text-[var(--deep-blue)]">
+                        <a href="#integration-strategies" class="flex items-center text-[#0068b7] hover:text-[#00507f]">
                             <i class="fas fa-cogs mr-2"></i>進階 AI 工具整合策略
                         </a>
                     </li>
@@ -183,7 +183,7 @@
         
         <!-- 影片與圖像雲端服務 -->
         <section id="video-image-cloud" class="bg-white shadow overflow-hidden sm:rounded-lg mb-8">
-            <div class="px-4 py-5 sm:px-6 bg-gradient-to-r from-[var(--blue)] to-[var(--deep-blue)]">
+            <div class="px-4 py-5 sm:px-6 bg-gradient-to-r from-[#0068b7] to-[#00507f]">
                 <h2 class="text-xl font-semibold text-white">
                     <i class="fas fa-cloud mr-2"></i>影片與圖像雲端服務
                 </h2>
@@ -200,7 +200,7 @@
                         <p class="text-gray-700 text-sm mb-4">這個 AI 工具能讓使用者透過文字描述來生成圖像。</p>
                         <div class="flex items-center mt-4 space-x-4">
                             <span class="text-sm text-gray-500 flex items-center">
-                                <i class="fas fa-link mr-2"></i><a href="https://www.midjourney.com/" target="_blank" class="text-[var(--blue)] hover:underline">官方網站</a>
+                                <i class="fas fa-link mr-2"></i><a href="https://www.midjourney.com/" target="_blank" class="text-[#0068b7] hover:underline">官方網站</a>
                             </span>
                         </div>
                     </div>
@@ -214,7 +214,7 @@
                         <p class="text-gray-700 text-sm mb-4">由中國科技公司「快手」開發，Kling AI 是一種文本到影片與圖片到影片的生成模型服務，基本版是免費使用，每月提供固定點數。若需要更多點數或是更快地生成速度等功能，可以訂閱 $10 美元起的訂閱版本。</p>
                         <div class="flex items-center mt-4 space-x-4">
                             <span class="text-sm text-gray-500 flex items-center">
-                                <i class="fas fa-link mr-2"></i><a href="https://klingai.com/" target="_blank" class="text-[var(--blue)] hover:underline">官方網站</a>
+                                <i class="fas fa-link mr-2"></i><a href="https://klingai.com/" target="_blank" class="text-[#0068b7] hover:underline">官方網站</a>
                             </span>
                         </div>
                     </div>
@@ -228,7 +228,7 @@
                         <p class="text-gray-700 text-sm mb-4">Runway 是一個提供 AI 影片生成的平台。《媽的多重宇宙》也是這個服務的用戶。</p>
                         <div class="flex items-center mt-4 space-x-4">
                             <span class="text-sm text-gray-500 flex items-center">
-                                <i class="fas fa-link mr-2"></i><a href="https://runwayml.com/" target="_blank" class="text-[var(--blue)] hover:underline">官方網站</a>
+                                <i class="fas fa-link mr-2"></i><a href="https://runwayml.com/" target="_blank" class="text-[#0068b7] hover:underline">官方網站</a>
                             </span>
                         </div>
                     </div>
@@ -242,7 +242,7 @@
                         <p class="text-gray-700 text-sm mb-4">Hailuo AI 是中國科技公司 MiniMax 推出的 AI 影像生成服務，支援文字轉影像、圖片轉影像。同樣提供免費與付費訂閱方案，免費方案每日登入可得使用點數。</p>
                         <div class="flex items-center mt-4 space-x-4">
                             <span class="text-sm text-gray-500 flex items-center">
-                                <i class="fas fa-link mr-2"></i><a href="https://hailuoai.com/" target="_blank" class="text-[var(--blue)] hover:underline">官方網站</a>
+                                <i class="fas fa-link mr-2"></i><a href="https://hailuoai.com/" target="_blank" class="text-[#0068b7] hover:underline">官方網站</a>
                             </span>
                         </div>
                     </div>
@@ -256,7 +256,7 @@
                         <p class="text-gray-700 text-sm mb-4">Google AI Studio 是 Google 提供用於實驗各種 AI 模型的平台，可免費使用來自 Google 的多模態模型 Gemini，除了生成文本、摘要影音文件（YouTube 甚至只要提供連結即可），還有包括用於生成視覺效果的 Gemini 2.0 模型。</p>
                         <div class="flex items-center mt-4 space-x-4">
                             <span class="text-sm text-gray-500 flex items-center">
-                                <i class="fas fa-link mr-2"></i><a href="https://aistudio.google.com/" target="_blank" class="text-[var(--blue)] hover:underline">官方網站</a>
+                                <i class="fas fa-link mr-2"></i><a href="https://aistudio.google.com/" target="_blank" class="text-[#0068b7] hover:underline">官方網站</a>
                             </span>
                         </div>
                     </div>
@@ -270,7 +270,7 @@
                         <p class="text-gray-700 text-sm mb-4">Napkin AI 是一款能將文本轉換為引人入勝且清晰的視覺效果的工具，特別適合用於於簡報和報告。</p>
                         <div class="flex items-center mt-4 space-x-4">
                             <span class="text-sm text-gray-500 flex items-center">
-                                <i class="fas fa-link mr-2"></i><a href="https://napkin.ai/" target="_blank" class="text-[var(--blue)] hover:underline">官方網站</a>
+                                <i class="fas fa-link mr-2"></i><a href="https://napkin.ai/" target="_blank" class="text-[#0068b7] hover:underline">官方網站</a>
                             </span>
                         </div>
                     </div>
@@ -280,7 +280,7 @@
         
         <!-- 影片與圖像地端生成 -->
         <section id="video-image-local" class="bg-white shadow overflow-hidden sm:rounded-lg mb-8">
-            <div class="px-4 py-5 sm:px-6 bg-gradient-to-r from-[var(--green)] to-[var(--blue)]">
+            <div class="px-4 py-5 sm:px-6 bg-gradient-to-r from-[#34c759] to-[#0068b7]">
                 <h2 class="text-xl font-semibold text-white">
                     <i class="fas fa-desktop mr-2"></i>影片與圖像地端生成
                 </h2>
@@ -297,7 +297,7 @@
                         <p class="text-gray-700 text-sm mb-4">ComfyUI 是一個用於 Stable Diffusion、Flux 等模型的模組化、基於節點的圖形使用者介面。它提供高度客製化的圖像生成工作流程，但對於初學者來說有較陡峭的學習曲線，建議可以下載他人的工作流（workflow）來入門。</p>
                         <div class="flex items-center mt-4 space-x-4">
                             <span class="text-sm text-gray-500 flex items-center">
-                                <i class="fas fa-link mr-2"></i><a href="https://github.com/comfyanonymous/ComfyUI" target="_blank" class="text-[var(--blue)] hover:underline">官方網站</a>
+                                <i class="fas fa-link mr-2"></i><a href="https://github.com/comfyanonymous/ComfyUI" target="_blank" class="text-[#0068b7] hover:underline">官方網站</a>
                             </span>
                         </div>
                     </div>
@@ -311,7 +311,7 @@
                         <p class="text-gray-700 text-sm mb-4">HunyuanVideo-I2V 是由騰訊開發的圖像到影片生成模型。可透過 ComfyUI 或 Pinokio 來使用。</p>
                         <div class="flex items-center mt-4 space-x-4">
                             <span class="text-sm text-gray-500 flex items-center">
-                                <i class="fas fa-link mr-2"></i><a href="https://hunyuan.tencent.com/" target="_blank" class="text-[var(--blue)] hover:underline">官方網站</a>
+                                <i class="fas fa-link mr-2"></i><a href="https://hunyuan.tencent.com/" target="_blank" class="text-[#0068b7] hover:underline">官方網站</a>
                             </span>
                         </div>
                     </div>
@@ -325,7 +325,7 @@
                         <p class="text-gray-700 text-sm mb-4">Pinokio 是一個瀏覽器，可以簡化在使用者電腦上安裝和控制各種開源 AI 模型（包括語言和圖像模型）的過程。如果想嘗試在自己的電腦上使用 AI 應用，但是又看不懂安裝說明的話，可以使用 Pinokio 來加速安裝流程。</p>
                         <div class="flex items-center mt-4 space-x-4">
                             <span class="text-sm text-gray-500 flex items-center">
-                                <i class="fas fa-link mr-2"></i><a href="https://pinokio.computer/" target="_blank" class="text-[var(--blue)] hover:underline">官方網站</a>
+                                <i class="fas fa-link mr-2"></i><a href="https://pinokio.computer/" target="_blank" class="text-[#0068b7] hover:underline">官方網站</a>
                             </span>
                         </div>
                     </div>
@@ -339,7 +339,7 @@
                         <p class="text-gray-700 text-sm mb-4">Draw Things 是一款專為 iOS 和 macOS 設計的 AI 圖像生成應用，支援 Stable Diffusion 模型。它提供了直觀的使用者介面，讓行動裝置用戶也能輕鬆創建 AI 生成的圖像。支援文字轉圖像、圖像轉圖像、局部重繪等功能，並可自訂模型和工作流程。</p>
                         <div class="flex items-center mt-4 space-x-4">
                             <span class="text-sm text-gray-500 flex items-center">
-                                <i class="fas fa-link mr-2"></i><a href="https://drawthings.ai/" target="_blank" class="text-[var(--blue)] hover:underline">官方網站</a>
+                                <i class="fas fa-link mr-2"></i><a href="https://drawthings.ai/" target="_blank" class="text-[#0068b7] hover:underline">官方網站</a>
                             </span>
                         </div>
                     </div>
@@ -349,7 +349,7 @@
         
         <!-- 資料收集與輔助使用 -->
         <section id="data-collection" class="bg-white shadow overflow-hidden sm:rounded-lg mb-8">
-            <div class="px-4 py-5 sm:px-6 bg-gradient-to-r from-[var(--yellow)] to-[var(--green)]">
+            <div class="px-4 py-5 sm:px-6 bg-gradient-to-r from-[#ffff00] to-[#34c759]">
                 <h2 class="text-xl font-semibold text-white">
                     <i class="fas fa-database mr-2"></i>資料收集與輔助使用
                 </h2>
@@ -366,7 +366,7 @@
                         <p class="text-gray-700 text-sm mb-4">ChatGPT 的付費訂閱提供多項優勢，包括更高的額度、高峰時段的存取、更快的回應時間、優先使用新功能以及增強的資料分析功能等。</p>
                         <div class="flex items-center mt-4 space-x-4">
                             <span class="text-sm text-gray-500 flex items-center">
-                                <i class="fas fa-link mr-2"></i><a href="https://chat.openai.com/" target="_blank" class="text-[var(--blue)] hover:underline">官方網站</a>
+                                <i class="fas fa-link mr-2"></i><a href="https://chat.openai.com/" target="_blank" class="text-[#0068b7] hover:underline">官方網站</a>
                             </span>
                         </div>
                     </div>
@@ -380,7 +380,7 @@
                         <p class="text-gray-700 text-sm mb-4">Grok 是由 Elon Musk 的 xAI 開發並整合到 X（前身為 Twitter）平台的 AI 服務。它可以搜尋 X 上的內容。若想搜尋英語世界的消息，可以嘗試使用 Grok。Grok 也具備了圖像生成能力。</p>
                         <div class="flex items-center mt-4 space-x-4">
                             <span class="text-sm text-gray-500 flex items-center">
-                                <i class="fas fa-link mr-2"></i><a href="https://grok.com/" target="_blank" class="text-[var(--blue)] hover:underline">官方網站</a>
+                                <i class="fas fa-link mr-2"></i><a href="https://grok.com/" target="_blank" class="text-[#0068b7] hover:underline">官方網站</a>
                             </span>
                         </div>
                     </div>
@@ -394,7 +394,7 @@
                         <p class="text-gray-700 text-sm mb-4">來自 Google 的 AI 服務，提供生成、文字生成、程式碼生成等功能。也具備了 Gems 等自訂工具。訂閱 Google One AI 進階版還能取得 NotebookLM Plus 以及 2TB 儲存空間等功能。</p>
                         <div class="flex items-center mt-4 space-x-4">
                             <span class="text-sm text-gray-500 flex items-center">
-                                <i class="fas fa-link mr-2"></i><a href="https://gemini.google.com/app" target="_blank" class="text-[var(--blue)] hover:underline">官方網站</a>
+                                <i class="fas fa-link mr-2"></i><a href="https://gemini.google.com/app" target="_blank" class="text-[#0068b7] hover:underline">官方網站</a>
                             </span>
                         </div>
                     </div>
@@ -408,7 +408,7 @@
                         <p class="text-gray-700 text-sm mb-4">Perplexity 是一個具備多家 AI 模型的搜尋引擎，專注於提供直接問題答案並引用其來源。是一個快速研究和資訊收集的有用工具。</p>
                         <div class="flex items-center mt-4 space-x-4">
                             <span class="text-sm text-gray-500 flex items-center">
-                                <i class="fas fa-link mr-2"></i><a href="https://www.perplexity.ai/" target="_blank" class="text-[var(--blue)] hover:underline">官方網站</a>
+                                <i class="fas fa-link mr-2"></i><a href="https://www.perplexity.ai/" target="_blank" class="text-[#0068b7] hover:underline">官方網站</a>
                             </span>
                         </div>
                     </div>
@@ -418,7 +418,7 @@
         
         <!-- 地端 LLM 軟體 -->
         <section id="local-llm" class="bg-white shadow overflow-hidden sm:rounded-lg mb-8">
-            <div class="px-4 py-5 sm:px-6 bg-gradient-to-r from-[var(--blue)] to-[var(--deep-blue)]">
+            <div class="px-4 py-5 sm:px-6 bg-gradient-to-r from-[#0068b7] to-[#00507f]">
                 <h2 class="text-xl font-semibold text-white">
                     <i class="fas fa-microchip mr-2"></i>地端 LLM 軟體
                 </h2>
@@ -435,7 +435,7 @@
                         <p class="text-gray-700 text-sm mb-4">Ollama 讓使用者直接在自己的電腦上下載和運行大型語言模型，如 Llama 和 Mistral。這提供了對資料隱私的更多控制，但需要足夠的硬體資源。</p>
                         <div class="flex items-center mt-4 space-x-4">
                             <span class="text-sm text-gray-500 flex items-center">
-                                <i class="fas fa-link mr-2"></i><a href="https://ollama.com/" target="_blank" class="text-[var(--blue)] hover:underline">官方網站</a>
+                                <i class="fas fa-link mr-2"></i><a href="https://ollama.com/" target="_blank" class="text-[#0068b7] hover:underline">官方網站</a>
                             </span>
                         </div>
                     </div>
@@ -449,7 +449,7 @@
                         <p class="text-gray-700 text-sm mb-4">與 Ollama 類似，LM Studio 允許使用者在自己的電腦上運行大型語言模型。它提供了一個友好的使用者介面，讓下載、管理和使用各種 LLM 變得更加容易。請注意，使用地端 LLM 同樣有硬體要求。</p>
                         <div class="flex items-center mt-4 space-x-4">
                             <span class="text-sm text-gray-500 flex items-center">
-                                <i class="fas fa-link mr-2"></i><a href="https://lmstudio.ai/" target="_blank" class="text-[var(--blue)] hover:underline">官方網站</a>
+                                <i class="fas fa-link mr-2"></i><a href="https://lmstudio.ai/" target="_blank" class="text-[#0068b7] hover:underline">官方網站</a>
                             </span>
                         </div>
                     </div>
@@ -459,7 +459,7 @@
         
         <!-- 地端語音轉文字 -->
         <section id="speech-to-text" class="bg-white shadow overflow-hidden sm:rounded-lg mb-8">
-            <div class="px-4 py-5 sm:px-6 bg-gradient-to-r from-[var(--green)] to-[var(--blue)]">
+            <div class="px-4 py-5 sm:px-6 bg-gradient-to-r from-[#34c759] to-[#0068b7]">
                 <h2 class="text-xl font-semibold text-white">
                     <i class="fas fa-headphones mr-2"></i>地端語音轉文字
                 </h2>
@@ -476,7 +476,7 @@
                         <p class="text-gray-700 text-sm mb-4">MacWhisper 是一個設計用於在 Mac 上將音訊和影片檔案轉錄為文字的應用程式。Windows 使用者則可以使用 WhisperDesktop 等工具</p>
                         <div class="flex items-center mt-4 space-x-4">
                             <span class="text-sm text-gray-500 flex items-center">
-                                <i class="fas fa-link mr-2"></i><a href="https://goodsnooze.gumroad.com/l/macwhisper" target="_blank" class="text-[var(--blue)] hover:underline">官方網站</a>
+                                <i class="fas fa-link mr-2"></i><a href="https://goodsnooze.gumroad.com/l/macwhisper" target="_blank" class="text-[#0068b7] hover:underline">官方網站</a>
                             </span>
                         </div>
                     </div>
@@ -486,7 +486,7 @@
         
         <!-- 會議記錄、文件整理雲端服務 -->
         <section id="meeting-recording" class="bg-white shadow overflow-hidden sm:rounded-lg mb-8">
-            <div class="px-4 py-5 sm:px-6 bg-gradient-to-r from-[var(--yellow)] to-[var(--green)]">
+            <div class="px-4 py-5 sm:px-6 bg-gradient-to-r from-[#ffff00] to-[#34c759]">
                 <h2 class="text-xl font-semibold text-white">
                     <i class="fas fa-file-alt mr-2"></i>會議記錄、文件整理雲端服務
                 </h2>
@@ -503,7 +503,7 @@
                         <p class="text-gray-700 text-sm mb-4">NotebookLM 是款由 Google 的 Gemini 為基底的研究助理，能讓使用者上傳文件、筆記和其他來源，然後提問、總結資訊並提供見解。</p>
                         <div class="flex items-center mt-4 space-x-4">
                             <span class="text-sm text-gray-500 flex items-center">
-                                <i class="fas fa-link mr-2"></i><a href="https://notebooklm.google.com/" target="_blank" class="text-[var(--blue)] hover:underline">官方網站</a>
+                                <i class="fas fa-link mr-2"></i><a href="https://notebooklm.google.com/" target="_blank" class="text-[#0068b7] hover:underline">官方網站</a>
                             </span>
                         </div>
                     </div>
@@ -513,7 +513,7 @@
         
         <!-- 瀏覽器擴充套件 -->
         <section id="browser-extensions" class="bg-white shadow overflow-hidden sm:rounded-lg mb-8">
-            <div class="px-4 py-5 sm:px-6 bg-gradient-to-r from-[var(--blue)] to-[var(--deep-blue)]">
+            <div class="px-4 py-5 sm:px-6 bg-gradient-to-r from-[#0068b7] to-[#00507f]">
                 <h2 class="text-xl font-semibold text-white">
                     <i class="fas fa-puzzle-piece mr-2"></i>瀏覽器擴充套件
                 </h2>
@@ -530,7 +530,7 @@
                         <p class="text-gray-700 text-sm mb-4">這個瀏覽器擴充功能提供網站、影片字幕、PDF 文件甚至圖像的無縫翻譯。它不僅支援 Google 翻譯等常見的翻譯引擎，還能串接 OpenAI 等 AI 服務的 API 來為你翻譯，也能搭配使用 Ollama API 來享受免費的翻譯服務。</p>
                         <div class="flex items-center mt-4 space-x-4">
                             <span class="text-sm text-gray-500 flex items-center">
-                                <i class="fas fa-link mr-2"></i><a href="https://immersivetranslate.com/" target="_blank" class="text-[var(--blue)] hover:underline">官方網站</a>
+                                <i class="fas fa-link mr-2"></i><a href="https://immersivetranslate.com/" target="_blank" class="text-[#0068b7] hover:underline">官方網站</a>
                             </span>
                         </div>
                     </div>
@@ -540,7 +540,7 @@
         
         <!-- 地端音樂、人聲生成 -->
         <section id="music-voice" class="bg-white shadow overflow-hidden sm:rounded-lg mb-8">
-            <div class="px-4 py-5 sm:px-6 bg-gradient-to-r from-[var(--green)] to-[var(--blue)]">
+            <div class="px-4 py-5 sm:px-6 bg-gradient-to-r from-[#34c759] to-[#0068b7]">
                 <h2 class="text-xl font-semibold text-white">
                     <i class="fas fa-music mr-2"></i>地端音樂、人聲生成
                 </h2>
@@ -557,7 +557,7 @@
                         <p class="text-gray-700 text-sm mb-4">DiffRhythm 是一個能夠產生包含人聲和伴奏音軌的完整歌曲的 AI 模型。可透過 Pinokio 快速安裝使用。</p>
                         <div class="flex items-center mt-4 space-x-4">
                             <span class="text-sm text-gray-500 flex items-center">
-                                <i class="fas fa-link mr-2"></i><a href="https://github.com/ASLP-lab/DiffRhythm" target="_blank" class="text-[var(--blue)] hover:underline">官方網站</a>
+                                <i class="fas fa-link mr-2"></i><a href="https://github.com/ASLP-lab/DiffRhythm" target="_blank" class="text-[#0068b7] hover:underline">官方網站</a>
                             </span>
                         </div>
                     </div>
@@ -571,7 +571,7 @@
                         <p class="text-gray-700 text-sm mb-4">GPT-SoVITS 是一個用於零樣本語音合成的模型，僅需一個簡短的音訊樣本即可產生不同聲音的語音，並支援跨語言推論。</p>
                         <div class="flex items-center mt-4 space-x-4">
                             <span class="text-sm text-gray-500 flex items-center">
-                                <i class="fas fa-link mr-2"></i><a href="https://github.com/RVC-Boss/GPT-SoVITS" target="_blank" class="text-[var(--blue)] hover:underline">官方網站</a>
+                                <i class="fas fa-link mr-2"></i><a href="https://github.com/RVC-Boss/GPT-SoVITS" target="_blank" class="text-[#0068b7] hover:underline">官方網站</a>
                             </span>
                         </div>
                     </div>
@@ -603,20 +603,20 @@
         
         <!-- 下一頁連結 -->
         <div class="flex justify-end mt-8 mb-8">
-            <a href="llm-principles.html" class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-[rgb(0,80,151)] hover:bg-[rgb(0,60,120)] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+            <a href="llm-principles.html" class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-[#00507f] hover:bg-[#00407f] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
                 附錄二：LLMs 原理
                 <i class="fas fa-arrow-right ml-2"></i>
             </a>
         </div>
     </main>
 
-    <footer class="bg-[var(--deep-blue)] text-white py-8">
+    <footer class="bg-deep-blue text-white py-8">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-center items-center">
-                <a href="ai-marketing-credits.html" class="text-[var(--green)] hover:text-white flex items-center mx-3">
+                <a href="ai-marketing-credits.html" class="text-green hover:text-white flex items-center mx-3">
                     <i class="fas fa-info-circle mr-2"></i>製作說明與來源
                 </a>
-                <a href="index.html" class="text-[var(--green)] hover:text-white flex items-center mx-3">
+                <a href="index.html" class="text-green hover:text-white flex items-center mx-3">
                     <i class="fas fa-home mr-2"></i>回到首頁
                 </a>
             </div>

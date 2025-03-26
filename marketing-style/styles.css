@@ -5,12 +5,85 @@ body {
 
 /* Color Variables */
 :root {
-    --deep-blue: #2563eb;    /* RGB(0, 80, 151) - Pantone 294 C */
-    --green: #10b981;        /* RGB(203, 211, 0) - Pantone 390 C */
-    --blue: #3b82f6;         /* RGB(0, 144, 212) - Pantone 2925 C */
-    --yellow: #f59e0b;       /* RGB(250, 193, 9) - Pantone 1235 C */
-    --pink: #ec4899;         /* RGB(230, 72, 148) - Pantone 225 C */
-    --silver: #94a3b8;       /* RGB(181, 181, 182) - Pantone 877C */
+    --deep-blue: #2563eb;    /* Previously RGB(0, 80, 151) - Pantone 294 C */
+    --green: #10b981;        /* Previously RGB(203, 211, 0) - Pantone 390 C */
+    --blue: #3b82f6;         /* Previously RGB(0, 144, 212) - Pantone 2925 C */
+    --yellow: #f59e0b;       /* Previously RGB(250, 193, 9) - Pantone 1235 C */
+    --pink: #ec4899;         /* Previously RGB(230, 72, 148) - Pantone 225 C */
+    --silver: #94a3b8;       /* Previously RGB(181, 181, 182) - Pantone 877C */
+}
+
+/* Color Classes */
+.bg-deep-blue {
+    background-color: var(--deep-blue);
+}
+
+.bg-green {
+    background-color: var(--green);
+}
+
+.bg-blue {
+    background-color: var(--blue);
+}
+
+.bg-yellow {
+    background-color: var(--yellow);
+}
+
+.bg-pink {
+    background-color: var(--pink);
+}
+
+.bg-silver {
+    background-color: var(--silver);
+}
+
+.text-deep-blue {
+    color: var(--deep-blue);
+}
+
+.text-green {
+    color: var(--green);
+}
+
+.text-blue {
+    color: var(--blue);
+}
+
+.text-yellow {
+    color: var(--yellow);
+}
+
+.text-pink {
+    color: var(--pink);
+}
+
+.text-silver {
+    color: var(--silver);
+}
+
+.border-deep-blue {
+    border-color: var(--deep-blue);
+}
+
+.border-green {
+    border-color: var(--green);
+}
+
+.border-blue {
+    border-color: var(--blue);
+}
+
+.border-yellow {
+    border-color: var(--yellow);
+}
+
+.border-pink {
+    border-color: var(--pink);
+}
+
+.border-silver {
+    border-color: var(--silver);
 }
 
 /* Animation and Hover Effects */
