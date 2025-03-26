@@ -1,0 +1,11 @@
+/* 品牌顏色定義 */
+
+:root {
+    /* 主要顏色 */
+    --brand-deep-blue: rgb(0, 80, 151);    /* 原 senao-deep-blue, Pantone 294 C */
+    --brand-green: rgb(203, 211, 0);       /* 原 senao-green, Pantone 390 C */
+    --brand-blue: rgb(0, 144, 212);        /* 原 senao-blue, Pantone 2925 C */
+    --brand-yellow: rgb(250, 193, 9);      /* 原 senao-yellow, Pantone 1235 C */
+    --brand-pink: rgb(230, 72, 148);       /* 原 senao-pink, Pantone 225 C */
+    --brand-silver: rgb(181, 181, 182);    /* 原 senao-silver, Pantone 877C */
+}

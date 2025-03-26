@@ -27,14 +27,10 @@
         .tip-card {
             border-left: 4px solid rgb(0, 144, 212);
         }
-        :root {
-            --senao-deep-blue: rgb(0, 80, 151);    /* Pantone 294 C */
-            --senao-green: rgb(203, 211, 0);       /* Pantone 390 C */
-            --senao-blue: rgb(0, 144, 212);        /* Pantone 2925 C */
-            --senao-yellow: rgb(250, 193, 9);      /* Pantone 1235 C */
-            --senao-pink: rgb(230, 72, 148);       /* Pantone 225 C */
-            --senao-silver: rgb(181, 181, 182);    /* Pantone 877C */
-        }
+        /* 引入品牌顏色 CSS */
+    </style>
+    <link rel="stylesheet" href="css/brand-colors.css">
+    <style>
         /* 新增的樣式 */
         .diagram-container {
             background-color: white;
@@ -125,8 +121,8 @@
     <!-- Mermaid JS for flowcharts and diagrams -->
     <script src="https://cdn.jsdelivr.net/npm/mermaid@10.6.1/dist/mermaid.min.js"></script>
 </head>
-<body class="bg-gray-50 glass-gradient-bg">
-    <header class="glass-header sticky top-0 z-10">
+<body class="neumorph-gradient-bg">
+    <header class="neumorph-header sticky top-0 z-10">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
             <div class="flex justify-between items-center">
                 <h1 class="text-3xl font-bold text-white">第二章：AI 的原理、侷限與使用心法</h1>
@@ -143,7 +139,7 @@
     </header>
 
     <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <div class="glass-content overflow-hidden sm:rounded-lg mb-8">
+        <div class="neumorph-content overflow-hidden sm:rounded-lg mb-8">
             <div class="px-4 py-5 sm:px-6">
                 <h2 class="text-xl font-semibold text-[rgb(0,80,151)]">理解 AI 的運作方式與限制</h2>
                 <p class="mt-1 max-w-2xl text-sm text-[rgb(0,144,212)]">深入了解 AI 工具的基礎知識，認識其能力邊界與有效使用方法</p>

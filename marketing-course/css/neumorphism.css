@@ -1,0 +1,252 @@
+/* Neumorphism 風格 CSS */
+
+:root {
+    /* 全新配色方案 */
+    --primary: #5E60CE;
+    --primary-light: #7B78FF;
+    --primary-dark: #4D4DBA;
+    --secondary: #FF6B6B;
+    --accent: #48BFE3;
+    --dark: #2B2D42;
+    --light: #F8F9FA;
+    --gray: #9A9CA8;
+    --shadow-light: rgba(255, 255, 255, 0.85);
+    --shadow-dark: rgba(0, 0, 0, 0.12);
+    --bg-color: #EDF2F7;
+}
+
+/* 基本 Neumorphism 效果 */
+.neumorph {
+    background: var(--bg-color);
+    border-radius: 10px;
+    box-shadow: 
+        6px 6px 12px var(--shadow-dark), 
+        -6px -6px 12px var(--shadow-light);
+    transition: all 0.3s ease;
+}
+
+.neumorph-inset {
+    background: var(--bg-color);
+    border-radius: 10px;
+    box-shadow: 
+        inset 6px 6px 12px var(--shadow-dark), 
+        inset -6px -6px 12px var(--shadow-light);
+    transition: all 0.3s ease;
+}
+
+/* 卡片效果 */
+.neumorph-card {
+    background: var(--bg-color);
+    border-radius: 15px;
+    box-shadow: 
+        6px 6px 15px var(--shadow-dark), 
+        -6px -6px 15px var(--shadow-light);
+    transition: all 0.3s ease;
+}
+
+.neumorph-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 
+        8px 8px 20px var(--shadow-dark), 
+        -8px -8px 20px var(--shadow-light);
+}
+
+/* 頭部效果 */
+.neumorph-header {
+    background: var(--primary);
+    color: white;
+    border-radius: 0 0 10px 10px;
+    box-shadow: 
+        0 5px 15px var(--shadow-dark);
+    transition: all 0.3s ease;
+}
+
+/* 內容區塊效果 */
+.neumorph-content {
+    background: var(--bg-color);
+    border-radius: 15px;
+    box-shadow: 
+        6px 6px 15px var(--shadow-dark), 
+        -6px -6px 15px var(--shadow-light);
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+/* 按鈕效果 */
+.neumorph-button {
+    background: var(--bg-color);
+    color: var(--primary);
+    border: none;
+    border-radius: 8px;
+    padding: 8px 16px;
+    box-shadow: 
+        6px 6px 12px var(--shadow-dark), 
+        -6px -6px 12px var(--shadow-light);
+    transition: all 0.2s ease;
+}
+
+.neumorph-button:hover {
+    box-shadow: 
+        4px 4px 8px var(--shadow-dark), 
+        -4px -4px 8px var(--shadow-light);
+    transform: translateY(2px);
+}
+
+.neumorph-button:active {
+    box-shadow: 
+        inset 4px 4px 8px var(--shadow-dark), 
+        inset -4px -4px 8px var(--shadow-light);
+}
+
+/* 背景漸變 */
+.neumorph-gradient-bg {
+    background: linear-gradient(135deg, var(--bg-color) 0%, var(--light) 100%);
+}
+
+/* 顏色變體 */
+.neumorph-primary {
+    background: var(--primary-light);
+    color: white;
+    box-shadow: 
+        6px 6px 12px rgba(0, 0, 0, 0.25), 
+        -6px -6px 12px rgba(255, 255, 255, 0.15);
+}
+
+.neumorph-secondary {
+    background: var(--secondary);
+    color: white;
+    box-shadow: 
+        6px 6px 12px rgba(0, 0, 0, 0.25), 
+        -6px -6px 12px rgba(255, 255, 255, 0.15);
+}
+
+.neumorph-accent {
+    background: var(--accent);
+    color: var(--dark);
+    box-shadow: 
+        6px 6px 12px rgba(0, 0, 0, 0.25), 
+        -6px -6px 12px rgba(255, 255, 255, 0.15);
+}
+
+.neumorph-dark {
+    background: var(--dark);
+    color: white;
+    box-shadow: 
+        6px 6px 12px rgba(0, 0, 0, 0.25), 
+        -6px -6px 12px rgba(255, 255, 255, 0.15);
+}
+
+.neumorph-light {
+    background: var(--light);
+    color: var(--dark);
+    box-shadow: 
+        6px 6px 12px rgba(0, 0, 0, 0.15), 
+        -6px -6px 12px rgba(255, 255, 255, 0.85);
+}
+
+.neumorph-gray {
+    background: var(--gray);
+    color: white;
+    box-shadow: 
+        6px 6px 12px rgba(0, 0, 0, 0.25), 
+        -6px -6px 12px rgba(255, 255, 255, 0.15);
+}
+
+/* 圖標容器效果 */
+.neumorph-icon-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--bg-color);
+    box-shadow: 
+        4px 4px 8px var(--shadow-dark), 
+        -4px -4px 8px var(--shadow-light);
+}
+
+.neumorph-icon-container.primary {
+    background: var(--primary);
+    color: white;
+}
+
+.neumorph-icon-container.secondary {
+    background: var(--secondary);
+    color: white;
+}
+
+.neumorph-icon-container.accent {
+    background: var(--accent);
+    color: var(--dark);
+}
+
+.neumorph-icon-container.dark {
+    background: var(--dark);
+    color: white;
+}
+
+/* 輸入框效果 */
+.neumorph-input {
+    background: var(--bg-color);
+    border: none;
+    border-radius: 8px;
+    padding: 10px 15px;
+    box-shadow: 
+        inset 4px 4px 8px var(--shadow-dark), 
+        inset -4px -4px 8px var(--shadow-light);
+    transition: all 0.3s ease;
+}
+
+.neumorph-input:focus {
+    outline: none;
+    box-shadow: 
+        inset 5px 5px 10px var(--shadow-dark), 
+        inset -5px -5px 10px var(--shadow-light);
+}
+
+/* 分隔線效果 */
+.neumorph-divider {
+    height: 2px;
+    background: linear-gradient(
+        to right,
+        var(--bg-color),
+        var(--gray),
+        var(--bg-color)
+    );
+    border: none;
+    margin: 20px 0;
+}
+
+/* 標籤效果 */
+.neumorph-tag {
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 15px;
+    background: var(--bg-color);
+    box-shadow: 
+        3px 3px 6px var(--shadow-dark), 
+        -3px -3px 6px var(--shadow-light);
+    margin-right: 8px;
+    margin-bottom: 8px;
+    font-size: 0.8rem;
+}
+
+/* 進度條效果 */
+.neumorph-progress-container {
+    background: var(--bg-color);
+    border-radius: 10px;
+    height: 10px;
+    box-shadow: 
+        inset 4px 4px 8px var(--shadow-dark), 
+        inset -4px -4px 8px var(--shadow-light);
+    margin: 10px 0;
+}
+
+.neumorph-progress-bar {
+    height: 100%;
+    border-radius: 10px;
+    background: linear-gradient(to right, var(--primary-light), var(--primary));
+    box-shadow: 3px 0 6px rgba(0, 0, 0, 0.15);
+    transition: width 0.3s ease;
+}
