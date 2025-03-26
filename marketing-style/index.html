@@ -3,186 +3,164 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI 入門課程 - Mac OS 9 風格</title>
+    <title>AI 入門課程</title>
     <!-- Open Graph / Facebook / Line -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://jaschiang.github.io/marketing/">
-    <meta property="og:title" content="AI 入門課程 - Mac OS 9 風格">
+    <meta property="og:title" content="AI 入門課程">
     <meta property="og:description" content="專為行銷團隊打造的實用 AI 指南，幫助行銷專業人員掌握 AI 工具，提升工作效率">
     <meta property="og:image" content="https://jaschiang.github.io/marketing/images/open-graph.png">
     <!-- TailwindCSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Mac OS 9 風格 CSS -->
-    <link rel="stylesheet" href="css/macos9.css">
-    <!-- Chicago 字體 CSS -->
-    <link rel="stylesheet" href="css/chicago-font.css">
+    <!-- Neubrutalism Style -->
+    <link rel="stylesheet" href="neubrutalism.css">
     <style>
-        /* 覆蓋 Tailwind 的一些默認樣式 */
         body {
-            font-family: 'Chicago', 'Geneva', 'Helvetica', sans-serif;
-            background-color: var(--macos9-desktop-bg);
-            color: var(--macos9-text);
-            padding: 20px;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
         }
-        
-        /* 保留一些原有的動畫效果，但調整為 Mac OS 9 風格 */
         .content-section {
-            transition: all 0.2s ease;
-            background-color: var(--macos9-window-bg);
-            border: 2px solid var(--macos9-border);
-            border-radius: 0;
+            transition: all 0.3s ease;
         }
         .content-section:hover {
-            transform: translateY(-3px);
-            box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+            transform: scale(1.01);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
         }
         .highlight-text {
-            background: linear-gradient(120deg, var(--macos9-highlight), var(--macos9-highlight));
+            background: linear-gradient(120deg, rgba(0, 144, 212, 0.2), rgba(0, 144, 212, 0.2));
             background-repeat: no-repeat;
             background-size: 100% 40%;
             background-position: 0 90%;
-            color: var(--macos9-text);
         }
         .course-card {
-            transition: all 0.2s ease;
-            background-color: var(--macos9-window-bg);
-            border: 2px solid var(--macos9-border);
-            border-radius: 0;
+            transition: all 0.3s ease;
         }
         .course-card:hover {
-            transform: translateY(-3px);
-            box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+        :root {
+            --deep-blue: rgb(0, 80, 151);    /* Pantone 294 C */
+            --green: rgb(203, 211, 0);       /* Pantone 390 C */
+            --blue: rgb(0, 144, 212);        /* Pantone 2925 C */
+            --yellow: rgb(250, 193, 9);      /* Pantone 1235 C */
+            --pink: rgb(230, 72, 148);       /* Pantone 225 C */
+            --silver: rgb(181, 181, 182);    /* Pantone 877C */
         }
     </style>
 </head>
-<body>
-    <!-- Mac OS 9 風格標題欄 -->
-    <header class="macos9-title-bar sticky top-0 z-10">
-        <div class="macos9-window-controls">
-            <div class="macos9-window-button macos9-close-button"></div>
-            <div class="macos9-window-button" style="background-color: #FFCC00;"></div>
-            <div class="macos9-window-button" style="background-color: #00CC00;"></div>
+<body class="bg-gray-50">
+    <header class="bg-[rgb(0,80,151)] shadow-sm sticky top-0 z-10 neu-box">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+            <div class="flex justify-between items-center">
+                <h1 class="text-3xl font-bold text-white">AI 入門課程</h1>
+                <a href="index.html" class="text-[rgb(203,211,0)] hover:text-white flex items-center">
+                    <i class="fas fa-home mr-2"></i>回到首頁
+                </a>
+            </div>
         </div>
-        <h1 class="macos9-window-title">AI 入門課程 - Mac OS 9 風格</h1>
-        <a href="index.html" class="macos9-menu-item flex items-center">
-            <img src="images/macos9-icons.svg#home-icon" width="16" height="16" class="mr-2" alt="首頁">
-            <span>回到首頁</span>
-        </a>
     </header>
 
-    <main class="macos9-window max-w-7xl mx-auto py-4">
-        <div class="macos9-window mb-8">
-            <div class="macos9-title-bar">
-                <div class="macos9-window-controls">
-                    <div class="macos9-window-button macos9-close-button"></div>
-                </div>
-                <h2 class="macos9-window-title">如何利用 AI 提升工作效率</h2>
-                <div></div> <!-- 空白元素保持 flex 布局平衡 -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div class="bg-white shadow overflow-hidden sm:rounded-lg mb-8 neu-box">
+            <div class="px-4 py-5 sm:px-6">
+                <h2 class="text-xl font-semibold text-gray-900">如何利用 AI 提升工作效率</h2>
+                <p class="mt-1 max-w-2xl text-sm text-gray-500">為行銷團隊打造的實用 AI 指南</p>
             </div>
-            <div class="macos9-window-content">
-                <p class="macos9-body-text mb-4">為行銷團隊打造的實用 AI 指南</p>
-                <hr class="macos9-divider">
-                <p class="macos9-body-text mb-4">本課程源於實戰經驗，旨在成為行銷部門 AI 新手的理想起點。<br>我認為<span class="highlight-text">學習 AI 最有效的方式是「知道、找出自己的需求」並「從做中學」</span>—找出能提升工作效率的應用場景。<br>
-                <p class="macos9-body-text mb-4">例如，當因找不到示意圖而與設計部反覆溝通設計需求時，AI 可以快速生成參考素材，大幅節省雙方時間。<br>又如文案創作，AI 能協助突破「下筆難」的瓶頸，迅速產出初稿，而有更多時間專注於創意發想與精細調整。</p>
+            <div class="border-t border-gray-200 px-4 py-5 sm:px-6">
+                <p class="text-gray-700 mb-4">本課程源於實戰經驗，旨在成為行銷部門 AI 新手的理想起點。<br>我認為<span style="color: rgb(230,72,148)">學習 AI 最有效的方式是「知道、找出自己的需求」並「從做中學」</span>—找出能提升工作效率的應用場景。<br>
+                    <p class="text-gray-700 mb-4">例如，當因找不到示意圖而與設計部反覆溝通設計需求時，AI 可以快速生成參考素材，大幅節省雙方時間。<br>又如文案創作，AI 能協助突破「下筆難」的瓶頸，迅速產出初稿，而有更多時間專注於創意發想與精細調整。</p>
             </div>
         </div>
 
         <!-- AI 學習流程圖 -->
-        <div class="macos9-window mb-8">
-            <div class="macos9-title-bar">
-                <div class="macos9-window-controls">
-                    <div class="macos9-window-button macos9-close-button"></div>
+        <div class="bg-white shadow overflow-hidden sm:rounded-lg mb-8 p-6 neu-box">
+            <h3 class="text-lg font-medium text-gray-900 mb-4">
+                <i class="fas fa-lightbulb text-[rgb(250,193,9)] mr-2"></i>
+                AI 學習方法：從做中學
+            </h3>
+            
+            <div class="flex flex-col md:flex-row justify-between items-center gap-4 mb-6">
+                <!-- 步驟 1 -->
+                <div class="bg-gray-50 rounded-lg p-4 flex-1 border-l-4 border-[rgb(0,80,151)] shadow-sm">
+                    <div class="flex items-center mb-2">
+                        <div class="flex-shrink-0 bg-[rgb(0,80,151)] text-white rounded-full p-2 mr-3 icon-container">
+                            <i class="fas fa-search"></i>
+                        </div>
+                        <h4 class="font-medium">識別痛點</h4>
+                    </div>
+                    <p class="text-sm text-gray-600">找出工作中耗時且重複性高的任務</p>
                 </div>
-                <h3 class="macos9-window-title">AI 學習方法：從做中學</h3>
-                <div></div> <!-- 空白元素保持 flex 布局平衡 -->
+                
+                <div class="text-[rgb(0,144,212)]">
+                    <i class="fas fa-arrow-right hidden md:block text-xl"></i>
+                    <i class="fas fa-arrow-down md:hidden text-xl"></i>
+                </div>
+                
+                <!-- 步驟 2 -->
+                <div class="bg-gray-50 rounded-lg p-4 flex-1 border-l-4 border-[rgb(0,144,212)] shadow-sm">
+                    <div class="flex items-center mb-2">
+                        <div class="flex-shrink-0 bg-[rgb(0,144,212)] text-white rounded-full p-2 mr-3 icon-container">
+                            <i class="fas fa-tools"></i>
+                        </div>
+                        <h4 class="font-medium">選擇 AI 工具</h4>
+                    </div>
+                    <p class="text-sm text-gray-600">選擇適合該任務的 AI 工具</p>
+                </div>
+                
+                <div class="text-[rgb(0,144,212)]">
+                    <i class="fas fa-arrow-right hidden md:block text-xl"></i>
+                    <i class="fas fa-arrow-down md:hidden text-xl"></i>
+                </div>
+                
+                <!-- 步驟 3 -->
+                <div class="bg-gray-50 rounded-lg p-4 flex-1 border-l-4 border-[rgb(203,211,0)] shadow-sm">
+                    <div class="flex items-center mb-2">
+                        <div class="flex-shrink-0 bg-[rgb(203,211,0)] text-white rounded-full p-2 mr-3 icon-container">
+                            <i class="fas fa-rocket"></i>
+                        </div>
+                        <h4 class="font-medium">實際應用</h4>
+                    </div>
+                    <p class="text-sm text-gray-600">將 AI 融入實際工作流程</p>
+                </div>
+                
+                <div class="text-[rgb(0,144,212)]">
+                    <i class="fas fa-arrow-right hidden md:block text-xl"></i>
+                    <i class="fas fa-arrow-down md:hidden text-xl"></i>
+                </div>
+                
+                <!-- 步驟 4 -->
+                <div class="bg-gray-50 rounded-lg p-4 flex-1 border-l-4 border-[rgb(230,72,148)] shadow-sm">
+                    <div class="flex items-center mb-2">
+                        <div class="flex-shrink-0 bg-[rgb(230,72,148)] text-white rounded-full p-2 mr-3 icon-container">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h4 class="font-medium">效率提升</h4>
+                    </div>
+                    <p class="text-sm text-gray-600">享受工作效率的顯著提升</p>
+                </div>
             </div>
             
-            <div class="macos9-window-content">
-                <div class="flex flex-col md:flex-row justify-between items-center gap-4 mb-6">
-                    <!-- 步驟 1 -->
-                    <div class="macos9-card p-4 flex-1">
-                        <div class="flex items-center mb-2">
-                            <div class="macos9-icon" style="background-color: var(--macos9-button-face); padding: 4px; border: 1px solid var(--macos9-border);">
-                                <i class="fas fa-search"></i>
-                            </div>
-                            <h4 class="macos9-heading-text ml-2">識別痛點</h4>
-                        </div>
-                        <p class="macos9-body-text">找出工作中耗時且重複性高的任務</p>
+            <!-- 應用場景示例 -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
+                <div class="bg-gray-50 rounded-lg p-4 flex items-start">
+                    <div class="flex-shrink-0 bg-[rgb(0,144,212)] text-white rounded-full p-2 mr-3 icon-container">
+                        <i class="fas fa-image"></i>
                     </div>
-                    
-                    <div class="text-black">
-                        <i class="fas fa-arrow-right hidden md:block text-xl"></i>
-                        <i class="fas fa-arrow-down md:hidden text-xl"></i>
-                    </div>
-                    
-                    <!-- 步驟 2 -->
-                    <div class="macos9-card p-4 flex-1">
-                        <div class="flex items-center mb-2">
-                            <div class="macos9-icon" style="background-color: var(--macos9-button-face); padding: 4px; border: 1px solid var(--macos9-border);">
-                                <i class="fas fa-tools"></i>
-                            </div>
-                            <h4 class="macos9-heading-text ml-2">選擇 AI 工具</h4>
-                        </div>
-                        <p class="macos9-body-text">選擇適合該任務的 AI 工具</p>
-                    </div>
-                    
-                    <div class="text-black">
-                        <i class="fas fa-arrow-right hidden md:block text-xl"></i>
-                        <i class="fas fa-arrow-down md:hidden text-xl"></i>
-                    </div>
-                    
-                    <!-- 步驟 3 -->
-                    <div class="macos9-card p-4 flex-1">
-                        <div class="flex items-center mb-2">
-                            <div class="macos9-icon" style="background-color: var(--macos9-button-face); padding: 4px; border: 1px solid var(--macos9-border);">
-                                <i class="fas fa-rocket"></i>
-                            </div>
-                            <h4 class="macos9-heading-text ml-2">實際應用</h4>
-                        </div>
-                        <p class="macos9-body-text">將 AI 融入實際工作流程</p>
-                    </div>
-                    
-                    <div class="text-black">
-                        <i class="fas fa-arrow-right hidden md:block text-xl"></i>
-                        <i class="fas fa-arrow-down md:hidden text-xl"></i>
-                    </div>
-                    
-                    <!-- 步驟 4 -->
-                    <div class="macos9-card p-4 flex-1">
-                        <div class="flex items-center mb-2">
-                            <div class="macos9-icon" style="background-color: var(--macos9-button-face); padding: 4px; border: 1px solid var(--macos9-border);">
-                                <i class="fas fa-chart-line"></i>
-                            </div>
-                            <h4 class="macos9-heading-text ml-2">效率提升</h4>
-                        </div>
-                        <p class="macos9-body-text">享受工作效率的顯著提升</p>
+                    <div>
+                        <h4 class="font-medium text-gray-900 mb-1">示意圖生成</h4>
+                        <p class="text-sm text-gray-600">AI 快速生成參考素材，節省與設計部門的溝通時間</p>
                     </div>
                 </div>
                 
-                <!-- 應用場景示例 -->
-                <hr class="macos9-divider">
-                <h4 class="macos9-heading-text mb-2">應用場景示例</h4>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-2">
-                    <div class="macos9-card p-4 flex items-start">
-                        <div class="macos9-icon" style="background-color: var(--macos9-button-face); padding: 4px; border: 1px solid var(--macos9-border);">
-                            <i class="fas fa-image"></i>
-                        </div>
-                        <div class="ml-2">
-                            <h4 class="macos9-heading-text mb-1">示意圖生成</h4>
-                            <p class="macos9-body-text">AI 快速生成參考素材，節省與設計部門的溝通時間</p>
-                        </div>
+                <div class="bg-gray-50 rounded-lg p-4 flex items-start">
+                    <div class="flex-shrink-0 bg-[rgb(230,72,148)] text-white rounded-full p-2 mr-3 icon-container">
+                        <i class="fas fa-pen-fancy"></i>
                     </div>
-                    
-                    <div class="macos9-card p-4 flex items-start">
-                        <div class="macos9-icon" style="background-color: var(--macos9-button-face); padding: 4px; border: 1px solid var(--macos9-border);">
-                            <i class="fas fa-pen-fancy"></i>
-                        </div>
-                        <div class="ml-2">
-                            <h4 class="macos9-heading-text mb-1">文案創作</h4>
-                            <p class="macos9-body-text">AI 協助突破「下筆難」瓶頸，快速產出初稿</p>
-                        </div>
+                    <div>
+                        <h4 class="font-medium text-gray-900 mb-1">文案創作</h4>
+                        <p class="text-sm text-gray-600">AI 協助突破「下筆難」瓶頸，快速產出初稿</p>
                     </div>
                 </div>
             </div>
@@ -190,34 +168,27 @@
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
             <!-- 前言：個人 AI 使用經驗 -->
-            <div class="macos9-window">
-                <div class="macos9-title-bar">
-                    <div class="macos9-window-controls">
-                        <div class="macos9-window-button macos9-close-button"></div>
-                    </div>
-                    <h3 class="macos9-window-title">前言：個人 AI 使用經驗</h3>
-                    <div></div> <!-- 空白元素保持 flex 布局平衡 -->
-                </div>
-                <div class="macos9-window-content p-4">
+            <div class="course-card bg-white rounded-lg shadow overflow-hidden neu-box">
+                <div class="p-6">
                     <div class="flex items-center mb-4">
-                        <div class="macos9-icon" style="background-color: var(--macos9-button-face); padding: 4px; border: 1px solid var(--macos9-border);">
-                            <i class="fas fa-user-circle"></i>
+                        <div class="flex-shrink-0 bg-[rgb(0,80,151)] text-white rounded-full p-2 icon-container">
+                            <i class="fas fa-user-circle text-white"></i>
                         </div>
-                        <h3 class="macos9-heading-text ml-2">個人 AI 使用經驗</h3>
+                        <h3 class="ml-3 text-lg font-medium text-gray-900">前言：個人 AI 使用經驗</h3>
                     </div>
-                    <p class="macos9-body-text mb-4">分享個人使用 AI 輔助工具的經驗，從初步接觸到日常應用的過程與心得。</p>
-                    <ul class="macos9-list mb-4">
-                        <li class="macos9-body-text mb-1">
-                            初次接觸 AI 的經驗
+                    <p class="text-gray-600 mb-4">分享個人使用 AI 輔助工具的經驗，從初步接觸到日常應用的過程與心得。</p>
+                    <ul class="text-sm text-gray-500 mb-4">
+                        <li class="flex items-center mb-1">
+                            <i class="fas fa-check text-green-500 mr-2"></i>初次接觸 AI 的經驗
                         </li>
-                        <li class="macos9-body-text mb-1">
-                            日常工作中的應用
+                        <li class="flex items-center mb-1">
+                            <i class="fas fa-check text-green-500 mr-2"></i>日常工作中的應用
                         </li>
-                        <li class="macos9-body-text">
-                            個人心得與建議
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-2"></i>個人心得與建議
                         </li>
                     </ul>
-                    <a href="ai-personal-experience.html" class="macos9-button inline-block">
+                    <a href="ai-personal-experience.html" class="inline-flex items-center text-blue-600 hover:text-blue-800">
                         閱讀更多
                         <i class="fas fa-arrow-right ml-2"></i>
                     </a>
@@ -225,10 +196,10 @@
             </div>
 
             <!-- 第一章：AI 能為我做到什麼事？ -->
-            <div class="course-card bg-white rounded-lg shadow overflow-hidden">
+            <div class="course-card bg-white rounded-lg shadow overflow-hidden neu-box">
                 <div class="p-6">
                     <div class="flex items-center mb-4">
-                        <div class="flex-shrink-0 bg-[rgb(203,211,0)] text-white rounded-full p-2">
+                        <div class="flex-shrink-0 bg-[rgb(203,211,0)] text-white rounded-full p-2 icon-container">
                             <i class="fas fa-robot text-white"></i>
                         </div>
                         <h3 class="ml-3 text-lg font-medium text-gray-900">第一章：AI 能為我做到什麼事？</h3>
@@ -253,10 +224,10 @@
             </div>
 
             <!-- 第二章：AI 的原理、侷限與使用心法 -->
-            <div class="course-card bg-white rounded-lg shadow overflow-hidden">
+            <div class="course-card bg-white rounded-lg shadow overflow-hidden neu-box">
                 <div class="p-6">
                     <div class="flex items-center mb-4">
-                        <div class="flex-shrink-0 bg-[rgb(0,144,212)] text-white rounded-full p-2">
+                        <div class="flex-shrink-0 bg-[rgb(0,144,212)] text-white rounded-full p-2 icon-container">
                             <i class="fas fa-cogs text-white"></i>
                         </div>
                         <h3 class="ml-3 text-lg font-medium text-gray-900">第二章：AI 的原理、侷限與使用心法</h3>
@@ -281,10 +252,10 @@
             </div>
 
             <!-- 第三章：行銷職能的實際 AI 應用 -->
-            <div class="course-card bg-white rounded-lg shadow overflow-hidden">
+            <div class="course-card bg-white rounded-lg shadow overflow-hidden neu-box">
                 <div class="p-6">
                     <div class="flex items-center mb-4">
-                        <div class="flex-shrink-0 bg-[rgb(250,193,9)] text-white rounded-full p-2">
+                        <div class="flex-shrink-0 bg-[rgb(250,193,9)] text-white rounded-full p-2 icon-container">
                             <i class="fas fa-briefcase text-white"></i>
                         </div>
                         <h3 class="ml-3 text-lg font-medium text-gray-900">第三章：行銷職能的實際 AI 應用</h3>
@@ -309,10 +280,10 @@
             </div>
 
             <!-- 附錄一：進階 AI 工具 -->
-            <div class="course-card bg-white rounded-lg shadow overflow-hidden">
+            <div class="course-card bg-white rounded-lg shadow overflow-hidden neu-box">
                 <div class="p-6">
                     <div class="flex items-center mb-4">
-                        <div class="flex-shrink-0 bg-[rgb(230,72,148)] text-white rounded-full p-2">
+                        <div class="flex-shrink-0 bg-[rgb(230,72,148)] text-white rounded-full p-2 icon-container">
                             <i class="fas fa-tools text-white"></i>
                         </div>
                         <h3 class="ml-3 text-lg font-medium text-gray-900">附錄一：進階 AI 工具</h3>
@@ -337,10 +308,10 @@
             </div>
 
             <!-- 附錄二：LLMs 原理 -->
-            <div class="course-card bg-white rounded-lg shadow overflow-hidden">
+            <div class="course-card bg-white rounded-lg shadow overflow-hidden neu-box">
                 <div class="p-6">
                     <div class="flex items-center mb-4">
-                        <div class="flex-shrink-0 bg-[rgb(181,181,182)] text-white rounded-full p-2">
+                        <div class="flex-shrink-0 bg-[rgb(181,181,182)] text-white rounded-full p-2 icon-container">
                             <i class="fas fa-brain text-white"></i>
                         </div>
                         <h3 class="ml-3 text-lg font-medium text-gray-900">附錄二：LLMs 原理</h3>
@@ -368,10 +339,10 @@
             </div>
 
             <!-- 附錄三：提示詞注意事項與技巧 -->
-            <div class="course-card bg-white rounded-lg shadow overflow-hidden">
+            <div class="course-card bg-white rounded-lg shadow overflow-hidden neu-box">
                 <div class="p-6">
                     <div class="flex items-center mb-4">
-                        <div class="flex-shrink-0 bg-[rgb(0,80,151)] text-white rounded-full p-2">
+                        <div class="flex-shrink-0 bg-[rgb(0,80,151)] text-white rounded-full p-2 icon-container">
                             <i class="fas fa-lightbulb text-white"></i>
                         </div>
                         <h3 class="ml-3 text-lg font-medium text-gray-900">附錄三：提示詞注意事項與技巧</h3>
@@ -396,10 +367,10 @@
             </div>
 
             <!-- 附錄四：AI 資訊來源 -->
-            <div class="course-card bg-white rounded-lg shadow overflow-hidden">
+            <div class="course-card bg-white rounded-lg shadow overflow-hidden neu-box">
                 <div class="p-6">
                     <div class="flex items-center mb-4">
-                        <div class="flex-shrink-0 bg-[rgb(0,144,212)] text-white rounded-full p-2">
+                        <div class="flex-shrink-0 bg-[rgb(0,144,212)] text-white rounded-full p-2 icon-container">
                             <i class="fas fa-rss text-white"></i>
                         </div>
                         <h3 class="ml-3 text-lg font-medium text-gray-900">附錄四：AI 資訊來源</h3>
@@ -424,38 +395,46 @@
             </div>
         </div>
 
-        <div class="macos9-window mb-8">
-            <div class="macos9-title-bar">
-                <div class="macos9-window-controls">
-                    <div class="macos9-window-button macos9-close-button"></div>
+        <div class="bg-white shadow overflow-hidden sm:rounded-lg p-6 neu-box">
+            <h2 class="text-xl font-semibold text-gray-900 mb-4">課程總覽</h2>
+            <p class="text-gray-700 mb-6">本課程旨在幫助行銷專業人員掌握 AI 工具，提升工作效率。從基本概念到實際應用，循序漸進地引導您進入 AI 輔助行銷的世界。</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="bg-gray-50 p-4 rounded-lg border border-gray-200">
+                    <h3 class="font-medium text-gray-900 mb-2">課程特色</h3>
+                    <ul class="list-disc pl-5 text-sm text-gray-600">
+                        <li class="mb-1">實用導向，著重於實際應用</li>
+                        <li class="mb-1">針對不同職能的具體案例</li>
+                        <li class="mb-1">提供現成可用的提示詞範本</li>
+                        <li>持續更新的最新 AI 工具資訊</li>
+                    </ul>
                 </div>
-                <h2 class="macos9-window-title">課程總覽</h2>
-                <div></div> <!-- 空白元素保持 flex 布局平衡 -->
+                <div class="bg-gray-50 p-4 rounded-lg border border-gray-200">
+                    <h3 class="font-medium text-gray-900 mb-2">適合對象</h3>
+                    <ul class="list-disc pl-5 text-sm text-gray-600">
+                        <li class="mb-1">行銷團隊成員</li>
+                        <li class="mb-1">內容創作者</li>
+                        <li class="mb-1">設計與媒體製作人員</li>
+                        <li>對 AI 應用感興趣的專業人士</li>
+                    </ul>
+                </div>
             </div>
-            <div class="macos9-window-content p-4">
-                <p class="macos9-body-text mb-4">本課程旨在幫助行銷專業人員掌握 AI 工具，提升工作效率。從基本概念到實際應用，循序漸進地引導您進入 AI 輔助行銷的世界。</p>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-                    <div class="macos9-card p-4">
-                        <h3 class="macos9-heading-text mb-2">課程特色</h3>
-                        <ul class="macos9-list">
-                            <li class="macos9-body-text mb-1">實用導向，著重於實際應用</li>
-                            <li class="macos9-body-text mb-1">針對不同職能的具體案例</li>
-                            <li class="macos9-body-text mb-1">提供現成可用的提示詞範本</li>
-                            <li class="macos9-body-text">持續更新的最新 AI 工具資訊
+            <div class="flex justify-center mt-6">
+                <a href="course-overview.html" class="text-[rgb(0,144,212)] hover:underline">
+                    <span class="neu-button">查看課程總覽 <i class="fas fa-arrow-right ml-1"></i></span>
+                </a>
+            </div>
+        </div>
     </main>
 
-    <footer class="macos9-footer py-4">
-        <div class="max-w-7xl mx-auto px-4">
+    <footer class="bg-[rgb(0,80,151)] text-white py-8 neu-box">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-center items-center">
-                <a href="ai-marketing-credits.html" class="macos9-button inline-block mx-2">
+                <a href="ai-marketing-credits.html" class="text-[rgb(203,211,0)] hover:text-white flex items-center mx-3">
                     <i class="fas fa-info-circle mr-2"></i>製作說明與來源
                 </a>
-                <a href="index.html" class="macos9-button inline-block mx-2">
+                <a href="index.html" class="text-[rgb(203,211,0)] hover:text-white flex items-center mx-3">
                     <i class="fas fa-home mr-2"></i>回到首頁
                 </a>
-            </div>
-            <div class="text-center mt-4 macos9-body-text">
-                © 2023 Mac OS 9 風格網站 | 使用 Chicago 字體
             </div>
         </div>
     </footer>

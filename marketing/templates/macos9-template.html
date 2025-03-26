@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mac OS 9 風格模板</title>
+    <!-- TailwindCSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Mac OS 9 風格 CSS -->
+    <link rel="stylesheet" href="../css/macos9.css">
+    <!-- Chicago 字體 CSS -->
+    <link rel="stylesheet" href="../css/chicago-font.css">
+    <style>
+        /* 頁面特定樣式可以在這裡添加 */
+    </style>
+</head>
+<body>
+    <!-- Mac OS 9 風格標題欄 -->
+    <header class="macos9-title-bar sticky top-0 z-10">
+        <div class="macos9-window-controls">
+            <div class="macos9-window-button macos9-close-button"></div>
+            <div class="macos9-window-button" style="background-color: #FFCC00;"></div>
+            <div class="macos9-window-button" style="background-color: #00CC00;"></div>
+        </div>
+        <h1 class="macos9-window-title">頁面標題 - Mac OS 9 風格</h1>
+        <a href="../index.html" class="macos9-menu-item flex items-center">
+            <img src="../images/macos9-icons.svg#home-icon" width="16" height="16" class="mr-2" alt="首頁">
+            <span>回到首頁</span>
+        </a>
+    </header>
+
+    <main class="macos9-window max-w-7xl mx-auto py-4">
+        <!-- 主要內容窗口 -->
+        <div class="macos9-window mb-8">
+            <div class="macos9-title-bar">
+                <div class="macos9-window-controls">
+                    <div class="macos9-window-button macos9-close-button"></div>
+                </div>
+                <h2 class="macos9-window-title">內容標題</h2>
+                <div></div> <!-- 空白元素保持 flex 布局平衡 -->
+            </div>
+            <div class="macos9-window-content">
+                <!-- 在這裡添加頁面內容 -->
+                <p class="macos9-body-text mb-4">這是一個 Mac OS 9 風格的頁面模板。</p>
+            </div>
+        </div>
+
+        <!-- 其他內容窗口 -->
+        <div class="macos9-window mb-8">
+            <div class="macos9-title-bar">
+                <div class="macos9-window-controls">
+                    <div class="macos9-window-button macos9-close-button"></div>
+                </div>
+                <h3 class="macos9-window-title">其他內容</h3>
+                <div></div> <!-- 空白元素保持 flex 布局平衡 -->
+            </div>
+            <div class="macos9-window-content">
+                <!-- 在這裡添加更多內容 -->
+                <p class="macos9-body-text">這裡可以添加更多的內容。</p>
+            </div>
+        </div>
+    </main>
+
+    <footer class="macos9-footer py-4">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex justify-center items-center">
+                <a href="../index.html" class="macos9-button inline-block mx-2">
+                    <i class="fas fa-home mr-2"></i>回到首頁
+                </a>
+            </div>
+            <div class="text-center mt-4 macos9-body-text">
+                © 2023 Mac OS 9 風格網站 | 使用 Chicago 字體
+            </div>
+        </div>
+    </footer>
+
+    <!-- Mac OS 9 啟動畫面 JavaScript -->
+    <script src="../js/macos9-startup.js"></script>
+</body>
+</html>

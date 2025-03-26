@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200">
+  <!-- Mac OS 9 風格圖標集 -->
+  
+  <!-- 資料夾圖標 -->
+  <g id="folder-icon" transform="translate(10, 10)">
+    <path d="M0,0 L20,0 L25,5 L60,5 L60,40 L0,40 Z" fill="#CCCCCC" stroke="#000000" stroke-width="1"/>
+    <path d="M0,5 L60,5 L60,40 L0,40 Z" fill="#EEEEEE" stroke="#000000" stroke-width="1"/>
+  </g>
+  
+  <!-- 文件圖標 -->
+  <g id="file-icon" transform="translate(80, 10)">
+    <path d="M0,0 L30,0 L40,10 L40,40 L0,40 Z" fill="#FFFFFF" stroke="#000000" stroke-width="1"/>
+    <path d="M30,0 L30,10 L40,10" fill="none" stroke="#000000" stroke-width="1"/>
+    <line x1="5" y1="15" x2="35" y2="15" stroke="#000000" stroke-width="1"/>
+    <line x1="5" y1="20" x2="35" y2="20" stroke="#000000" stroke-width="1"/>
+    <line x1="5" y1="25" x2="35" y2="25" stroke="#000000" stroke-width="1"/>
+    <line x1="5" y1="30" x2="25" y2="30" stroke="#000000" stroke-width="1"/>
+  </g>
+  
+  <!-- 應用程式圖標 -->
+  <g id="app-icon" transform="translate(10, 60)">
+    <rect x="0" y="0" width="40" height="40" rx="5" ry="5" fill="#3A69B5" stroke="#000000" stroke-width="1"/>
+    <circle cx="20" cy="20" r="15" fill="#FFFFFF" stroke="#000000" stroke-width="1"/>
+    <path d="M15,15 L25,20 L15,25 Z" fill="#000000"/>
+  </g>
+  
+  <!-- 首頁圖標 -->
+  <g id="home-icon" transform="translate(80, 60)">
+    <path d="M20,0 L40,20 L35,20 L35,40 L5,40 L5,20 L0,20 Z" fill="#CCCCCC" stroke="#000000" stroke-width="1"/>
+    <rect x="15" y="25" width="10" height="15" fill="#FFFFFF" stroke="#000000" stroke-width="1"/>
+  </g>
+  
+  <!-- 關閉按鈕 -->
+  <g id="close-button" transform="translate(10, 110)">
+    <circle cx="10" cy="10" r="10" fill="#FF0000" stroke="#000000" stroke-width="1"/>
+    <line x1="5" y1="5" x2="15" y2="15" stroke="#000000" stroke-width="1.5"/>
+    <line x1="15" y1="5" x2="5" y2="15" stroke="#000000" stroke-width="1.5"/>
+  </g>
+  
+  <!-- 最小化按鈕 -->
+  <g id="minimize-button" transform="translate(40, 110)">
+    <circle cx="10" cy="10" r="10" fill="#FFCC00" stroke="#000000" stroke-width="1"/>
+    <line x1="5" y1="10" x2="15" y2="10" stroke="#000000" stroke-width="1.5"/>
+  </g>
+  
+  <!-- 最大化按鈕 -->
+  <g id="maximize-button" transform="translate(70, 110)">
+    <circle cx="10" cy="10" r="10" fill="#00CC00" stroke="#000000" stroke-width="1"/>
+    <rect x="5" y="5" width="10" height="10" fill="none" stroke="#000000" stroke-width="1.5"/>
+  </g>
+  
+  <!-- 蘋果標誌 -->
+  <g id="apple-logo" transform="translate(100, 110)">
+    <path d="M15,0 C16.5,0 19,1.5 19,5 C19,8.5 16,10 15,10 C14,10 12,8.5 10,8.5 C8,8.5 5,10 5,15 C5,20 8,25 10,25 C12,25 13,24 15,24 C17,24 18,25 20,25 C22,25 25,20 25,15 C25,10 22,8 20,8 C18,8 17,10 15,10 C13,10 12,8 12,5 C12,2 13.5,0 15,0 Z" fill="#000000"/>
+    <path d="M17,0 C17,0 18,2 18,5 C18,8 15,10 15,10" fill="none" stroke="#000000" stroke-width="1"/>
+  </g>
+  
+  <!-- 窗口標題欄 -->
+  <g id="window-titlebar" transform="translate(10, 150)">
+    <rect x="0" y="0" width="180" height="20" fill="url(#titlebar-gradient)" stroke="#000000" stroke-width="1"/>
+    <circle cx="10" cy="10" r="6" fill="#FF0000" stroke="#000000" stroke-width="1"/>
+    <text x="90" y="14" font-family="Chicago, Geneva, sans-serif" font-size="12" text-anchor="middle" fill="#000000">Window Title</text>
+  </g>
+  
+  <!-- 漸變定義 -->
+  <defs>
+    <linearGradient id="titlebar-gradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#CCCCCC;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#999999;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+</svg>

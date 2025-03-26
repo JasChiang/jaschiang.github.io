@@ -3,62 +3,58 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>前言：個人 AI 使用經驗 | 行銷初學者的 AI 教學 - Mac OS 9 風格</title>
+    <title>前言：個人 AI 使用經驗 | 行銷初學者的 AI 教學</title>
     <!-- TailwindCSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Mac OS 9 風格 CSS -->
-    <link rel="stylesheet" href="css/macos9.css">
-    <!-- Chicago 字體 CSS -->
-    <link rel="stylesheet" href="css/chicago-font.css">
+    <!-- Neubrutalism Style -->
+    <link rel="stylesheet" href="neubrutalism.css">
     <style>
-        /* 覆蓋 Tailwind 的一些默認樣式 */
         body {
-            font-family: 'Chicago', 'Geneva', 'Helvetica', sans-serif;
-            background-color: var(--macos9-desktop-bg);
-            color: var(--macos9-text);
-            padding: 20px;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
         }
-        
-        /* 保留一些原有的動畫效果，但調整為 Mac OS 9 風格 */
         .content-section {
-            transition: all 0.2s ease;
-            background-color: var(--macos9-window-bg);
-            border: 2px solid var(--macos9-border);
-            border-radius: 0;
+            transition: all 0.3s ease;
         }
         .content-section:hover {
-            transform: translateY(-3px);
-            box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+            transform: scale(1.01);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+        :root {
+            --deep-blue: rgb(0, 80, 151);    /* Pantone 294 C */
+            --green: rgb(203, 211, 0);       /* Pantone 390 C */
+            --blue: rgb(0, 144, 212);        /* Pantone 2925 C */
+            --yellow: rgb(250, 193, 9);      /* Pantone 1235 C */
+            --pink: rgb(230, 72, 148);       /* Pantone 225 C */
+            --silver: rgb(181, 181, 182);    /* Pantone 877C */
         }
     </style>
 </head>
-<body>
-    <!-- Mac OS 9 風格標題欄 -->
-    <header class="macos9-title-bar sticky top-0 z-10">
-        <div class="macos9-window-controls">
-            <div class="macos9-window-button macos9-close-button"></div>
-            <div class="macos9-window-button" style="background-color: #FFCC00;"></div>
-            <div class="macos9-window-button" style="background-color: #00CC00;"></div>
+<body class="bg-gray-50">
+    <header class="bg-[rgb(0,80,151)] shadow-sm sticky top-0 z-10 neu-box">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+            <div class="flex justify-between items-center">
+                <h1 class="text-3xl font-bold text-white">前言：個人 AI 使用經驗</h1>
+                <div class="flex space-x-4">
+                    <a href="course-overview.html" class="text-[rgb(203,211,0)] hover:text-white flex items-center">
+                        <i class="fas fa-arrow-left mr-2"></i>回到課程
+                    </a>
+                    <a href="index.html" class="text-[rgb(203,211,0)] hover:text-white flex items-center">
+                        <i class="fas fa-home mr-2"></i>回到首頁
+                    </a>
+                </div>
+            </div>
         </div>
-        <h1 class="macos9-window-title">前言：個人 AI 使用經驗 - Mac OS 9 風格</h1>
-        <a href="index.html" class="macos9-menu-item flex items-center">
-            <img src="images/macos9-icons.svg#home-icon" width="16" height="16" class="mr-2" alt="首頁">
-            <span>回到首頁</span>
-        </a>
     </header>
 
-    <main class="macos9-window max-w-7xl mx-auto py-4">
-        <div class="macos9-window mb-8">
-            <div class="macos9-title-bar">
-                <div class="macos9-window-controls">
-                    <div class="macos9-window-button macos9-close-button"></div>
-                </div>
-                <h2 class="macos9-window-title">個人 AI 使用歷程</h2>
-                <div></div> <!-- 空白元素保持 flex 布局平衡 -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div class="bg-white shadow overflow-hidden sm:rounded-lg mb-8 neu-box">
+            <div class="px-4 py-5 sm:px-6">
+                <h2 class="text-xl font-semibold text-[rgb(0,80,151)]">個人 AI 使用歷程</h2>
+                <p class="mt-1 max-w-2xl text-sm text-[rgb(0,144,212)]">從初始接觸到日常運用的心得分享</p>
             </div>
-            <div class="macos9-window-content p-4">
+            <div class="border-t border-gray-200 px-4 py-5 sm:px-6">
                 <div class="prose max-w-none text-gray-700">
                     <p class="mb-4">因為不知道各位使用 AI 的深入程度，我想以我個人經驗為出發點，分享我是如何開始接觸並逐步整合 AI 工具到日常工作中的。</p>
                     
@@ -120,17 +116,17 @@
                         </div>
                     </div>
                     
-                    <div class="my-8 macos9-card p-6">
-                        <h3 class="macos9-heading-text mb-3">示意圖：</h3>
+                    <div class="my-8 bg-gray-50 p-6 rounded-lg">
+                        <h3 class="font-semibold text-lg text-gray-900 mb-3">示意圖：</h3>
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            <div class="macos9-card p-4">
-                                <div class="text-center"><img src="images/claude-article.png" alt="AI 使用示意圖"></div>
+                            <div class="bg-white p-4 rounded-lg shadow">
+                                <div class="text-center text-gray-500"><img src="images/claude-article.png" alt="AI 使用示意圖"></div>
                             </div>
-                            <div class="macos9-card p-4">
-                                <div class="text-center"><img src="images/claude-slide.png" alt="AI 使用示意圖"></div>
+                            <div class="bg-white p-4 rounded-lg shadow">
+                                <div class="text-center text-gray-500"><img src="images/claude-slide.png" alt="AI 使用示意圖"></div>
                             </div>
-                            <div class="macos9-card p-4">
-                                <div class="text-center"><img src="images/windsurf.png" alt="AI 使用示意圖"></div>
+                            <div class="bg-white p-4 rounded-lg shadow">
+                                <div class="text-center text-gray-500"><img src="images/windsurf.png" alt="AI 使用示意圖"></div>
                             </div>
                         </div>
                     </div>
@@ -141,16 +137,9 @@
         </div>
 
         <!-- 進階資源區塊 -->
-        <div class="macos9-window mb-8">
-            <div class="macos9-title-bar">
-                <div class="macos9-window-controls">
-                    <div class="macos9-window-button macos9-close-button"></div>
-                </div>
-                <h2 class="macos9-window-title">我目前使用的 AI 工具</h2>
-                <div></div> <!-- 空白元素保持 flex 布局平衡 -->
-            </div>
-            <div class="macos9-window-content p-4">
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="bg-white shadow overflow-hidden sm:rounded-lg p-6 mb-8">
+            <h2 class="text-xl font-semibold text-[rgb(0,80,151)] mb-4">我目前使用的 AI 工具</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div class="border border-gray-200 rounded-lg p-4 hover:shadow-md transition-shadow">
                     <h3 class="font-medium text-lg mb-2">Claude</h3>
                     <p class="text-gray-600 text-sm mb-3">Anthropic 公司推出的 LLM 服務。目前我使用每月 $20 的 Claude Pro 訂閱版做為我主要的 AI 工具。</p>
@@ -214,15 +203,9 @@
         </div>
 
         <!-- 個人心得與建議 -->
-        <div class="macos9-window mb-8">
-            <div class="macos9-title-bar">
-                <div class="macos9-window-controls">
-                    <div class="macos9-window-button macos9-close-button"></div>
-                </div>
-                <h2 class="macos9-window-title">個人心得與建議</h2>
-                <div></div> <!-- 空白元素保持 flex 布局平衡 -->
-            </div>
-            <div class="macos9-window-content p-4">
+        <div class="bg-white shadow overflow-hidden sm:rounded-lg p-6 neu-box">
+            <h2 class="text-xl font-semibold text-[rgb(0,80,151)] mb-4">個人心得與建議</h2>
+            <div class="space-y-4 text-gray-700">
                 <p>在我使用 AI 工具的過程中，彙整了以下幾點心得：</p>
                 <ul class="list-disc pl-6 space-y-2">
                     <li>明確的目標和需求描述能大幅提升 AI 輸出的品質</li>
@@ -236,25 +219,22 @@
         
         <!-- 下一頁連結 -->
         <div class="flex justify-end mt-8 mb-8">
-            <a href="ai-capabilities.html" class="macos9-button inline-block">
+            <a href="ai-capabilities.html" class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-[rgb(0,80,151)] hover:bg-[rgb(0,60,120)] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
                 第一章：AI 能為我做到什麼事？
                 <i class="fas fa-arrow-right ml-2"></i>
             </a>
         </div>
     </main>
 
-    <footer class="macos9-footer py-4">
-        <div class="max-w-7xl mx-auto px-4">
+    <footer class="bg-[rgb(0,80,151)] text-white py-8 neu-box">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-center items-center">
-                <a href="ai-marketing-credits.html" class="macos9-button inline-block mx-2">
+                <a href="ai-marketing-credits.html" class="text-[rgb(203,211,0)] hover:text-white flex items-center mx-3">
                     <i class="fas fa-info-circle mr-2"></i>製作說明與來源
                 </a>
-                <a href="index.html" class="macos9-button inline-block mx-2">
+                <a href="index.html" class="text-[rgb(203,211,0)] hover:text-white flex items-center mx-3">
                     <i class="fas fa-home mr-2"></i>回到首頁
                 </a>
-            </div>
-            <div class="text-center mt-4 macos9-body-text">
-                © 2023 Mac OS 9 風格網站 | 使用 Chicago 字體
             </div>
         </div>
     </footer>
