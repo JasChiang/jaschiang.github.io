@@ -1,0 +1,102 @@
+/* General Styles */
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+/* Color Variables */
+:root {
+    --deep-blue: #2563eb;    /* RGB(0, 80, 151) - Pantone 294 C */
+    --green: #10b981;        /* RGB(203, 211, 0) - Pantone 390 C */
+    --blue: #3b82f6;         /* RGB(0, 144, 212) - Pantone 2925 C */
+    --yellow: #f59e0b;       /* RGB(250, 193, 9) - Pantone 1235 C */
+    --pink: #ec4899;         /* RGB(230, 72, 148) - Pantone 225 C */
+    --silver: #94a3b8;       /* RGB(181, 181, 182) - Pantone 877C */
+}
+
+/* Animation and Hover Effects */
+.content-section {
+    transition: all 0.3s ease;
+}
+
+.content-section:hover {
+    transform: scale(1.01);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+.course-card {
+    transition: all 0.3s ease;
+}
+
+.course-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+.source-card {
+    transition: all 0.3s ease;
+}
+
+.source-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px -10px rgba(0, 0, 0, 0.1);
+}
+
+/* Text Styling */
+.highlight-text {
+    background: linear-gradient(120deg, rgba(59, 130, 246, 0.2), rgba(59, 130, 246, 0.2));
+    background-repeat: no-repeat;
+    background-size: 100% 40%;
+    background-position: 0 90%;
+}
+
+/* Card Styling */
+.concept-card {
+    border-left: 4px solid var(--silver);
+}
+
+.benefit-card {
+    border-left: 4px solid var(--green);
+}
+
+.note-card {
+    border-left: 4px solid var(--yellow);
+}
+
+/* Prompt Examples Styling */
+.prompt-example {
+    background-color: #f3f4f6;
+    border-left: 4px solid var(--blue);
+    padding: 1rem;
+    margin: 1rem 0;
+    border-radius: 0.25rem;
+}
+
+.do-box {
+    border-left: 4px solid var(--green);
+    background-color: #ecfdf5;
+}
+
+.dont-box {
+    border-left: 4px solid var(--pink);
+    background-color: #fef2f2;
+}
+
+/* Icon Container */
+.icon-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2rem;
+    height: 2rem;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .md\:flex-row {
+        flex-direction: column;
+    }
+    
+    .md\:grid-cols-2, .md\:grid-cols-3 {
+        grid-template-columns: 1fr;
+    }
+}
