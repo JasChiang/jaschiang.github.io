@@ -1,31 +1,53 @@
 /* Neubrutalism CSS for AI Marketing Website */
 
 :root {
-  /* Primary colors */
-  --primary-color: #FF6B6B;
-  --secondary-color: #4ECDC4;
-  --accent-color: #FFE66D;
+  /* Primary colors based on new Neobrutalism color scheme */
+  --primary-color: #FF5470;    /* 鮮明粉紅 - 主色調 */
+  --text-color: #0D0D0D;       /* 純黑 - 提高對比度 */
+  --background-color: #FFFEFA; /* 溫暖白 - 柔和背景 */
   
-  /* Neutral colors */
-  --background-color: #F7F9FC;
-  --card-color: #FFFFFF;
-  --text-color: #1A1A1A;
+  /* Card background colors - 更鮮豔的配色 */
+  --card-blue: #5EDFFF;        /* 亮藍 */
+  --card-yellow: #FFDE59;      /* 亮黃 */
+  --card-green: #A6FF96;       /* 亮綠 */
+  --card-orange: #FFAA5B;      /* 亮橙 */
   
   /* Shadow colors */
-  --shadow-color: #000000;
+  --shadow-color: #000000;     /* Neobrutalism 經典粗黑線 */
+  
+  /* Pantone colors from HTML files - 保留但更新為更鮮明的色調 */
+  --deep-blue: rgb(0, 99, 199);    /* 更亮的深藍 */
+  --green: rgb(126, 217, 87);      /* 更鮮明的綠 */
+  --blue: rgb(0, 174, 255);        /* 更亮的藍 */
+  --yellow: rgb(255, 213, 0);      /* 更亮的黃 */
+  --pink: rgb(255, 64, 129);       /* 更鮮明的粉紅 */
+  --silver: rgb(200, 200, 200);    /* 更亮的銀 */
 }
 
 /* Global styles */
 body {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
   background-color: var(--background-color);
   color: var(--text-color);
+  line-height: 1.6;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 800;
+  letter-spacing: -0.5px;
+}
+
+p, li, a, span, div {
+  font-size: 18px;
   line-height: 1.6;
 }
 
 /* Neubrutalism box style */
 .neu-box {
-  background-color: var(--card-color);
+  background-color: var(--background-color);
   border: 3px solid var(--shadow-color);
   box-shadow: 8px 8px 0px var(--shadow-color);
   border-radius: 12px;
@@ -51,8 +73,8 @@ header h1 {
 
 /* Button styles */
 .neu-button {
-  background-color: var(--accent-color);
-  color: var(--text-color);
+  background-color: var(--card-yellow);
+  color: var(--shadow-color);
   font-weight: 700;
   padding: 0.75rem 1.5rem;
   border: 3px solid var(--shadow-color);
@@ -74,13 +96,51 @@ header h1 {
   box-shadow: 2px 2px 0px var(--shadow-color);
 }
 
+/* Action button styles */
+.action-button {
+  background-color: var(--card-yellow);
+  color: var(--shadow-color);
+  font-weight: 700;
+}
+
+.warning-button {
+  background-color: var(--card-orange);
+  color: var(--shadow-color);
+  font-weight: 700;
+}
+
+/* Chapter card styles */
+.chapter-card-blue {
+  background-color: var(--card-blue) !important;
+  border: 3px solid var(--shadow-color) !important;
+  box-shadow: 8px 8px 0px var(--shadow-color) !important;
+}
+
+.chapter-card-yellow {
+  background-color: var(--card-yellow) !important;
+  border: 3px solid var(--shadow-color) !important;
+  box-shadow: 8px 8px 0px var(--shadow-color) !important;
+}
+
+.chapter-card-green {
+  background-color: var(--card-green) !important;
+  border: 3px solid var(--shadow-color) !important;
+  box-shadow: 8px 8px 0px var(--shadow-color) !important;
+}
+
+.chapter-card-orange {
+  background-color: var(--card-orange) !important;
+  border: 3px solid var(--shadow-color) !important;
+  box-shadow: 8px 8px 0px var(--shadow-color) !important;
+}
+
 /* Course card styles */
 .course-card {
   border: 3px solid var(--shadow-color) !important;
   box-shadow: 8px 8px 0px var(--shadow-color) !important;
   border-radius: 12px !important;
   transition: all 0.2s ease !important;
-  background-color: var(--card-color) !important;
+  background-color: var(--background-color) !important;
 }
 
 .course-card:hover {
@@ -90,10 +150,28 @@ header h1 {
 
 /* Icon containers */
 .icon-container {
-  background-color: var(--secondary-color) !important;
+  background-color: var(--primary-color) !important;
   border: 2px solid var(--shadow-color) !important;
   box-shadow: 3px 3px 0px var(--shadow-color) !important;
   border-radius: 10px !important;
+}
+
+/* Section styling */
+.section-container {
+  background-color: var(--background-color);
+  border: 2px solid var(--shadow-color);
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin: 1.5rem 0;
+}
+
+/* Card styling */
+.card-container {
+  background-color: var(--background-color);
+  border: 2px solid var(--shadow-color);
+  border-radius: 12px;
+  padding: 1rem;
+  margin: 1rem 0;
 }
 
 /* Footer styles */
@@ -103,15 +181,9 @@ footer {
   box-shadow: 0px -4px 0px var(--shadow-color);
 }
 
-/* Typography */
-h1, h2, h3, h4, h5, h6 {
-  font-weight: 800;
-  letter-spacing: -0.5px;
-}
-
 /* Highlight text */
 .highlight-text {
-  background: linear-gradient(120deg, var(--accent-color), var(--accent-color));
+  background: linear-gradient(120deg, rgba(255, 84, 112, 0.2), rgba(255, 84, 112, 0.2));
   background-repeat: no-repeat;
   background-size: 100% 40%;
   background-position: 0 88%;
@@ -120,7 +192,7 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Overriding Tailwind classes */
 .bg-white {
-  background-color: var(--card-color) !important;
+  background-color: var(--background-color) !important;
 }
 
 .shadow {
@@ -131,29 +203,6 @@ h1, h2, h3, h4, h5, h6 {
 
 .rounded-lg, .sm\:rounded-lg {
   border-radius: 12px !important;
-}
-
-/* Custom color overrides for icons */
-.text-\[rgb\(0\,144\,212\)\], 
-.bg-\[rgb\(0\,144\,212\)\] {
-  background-color: var(--secondary-color) !important;
-  color: var(--text-color) !important;
-}
-
-.text-\[rgb\(0\,80\,151\)\], 
-.bg-\[rgb\(0\,80\,151\)\] {
-  background-color: var(--primary-color) !important;
-  color: var(--text-color) !important;
-}
-
-.text-\[rgb\(230\,72\,148\)\], 
-.bg-\[rgb\(230\,72\,148\)\] {
-  background-color: var(--accent-color) !important;
-  color: var(--text-color) !important;
-}
-
-.text-\[rgb\(250\,193\,9\)\] {
-  color: var(--accent-color) !important;
 }
 
 /* Make sure icons are visible on colored backgrounds */

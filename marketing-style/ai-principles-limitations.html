@@ -27,14 +27,7 @@
         .tip-card {
             border-left: 4px solid rgb(0, 144, 212);
         }
-        :root {
-            --deep-blue: rgb(0, 80, 151);    /* Pantone 294 C */
-            --green: rgb(203, 211, 0);       /* Pantone 390 C */
-            --blue: rgb(0, 144, 212);        /* Pantone 2925 C */
-            --yellow: rgb(250, 193, 9);      /* Pantone 1235 C */
-            --pink: rgb(230, 72, 148);       /* Pantone 225 C */
-            --silver: rgb(181, 181, 182);    /* Pantone 877C */
-        }
+        /* 使用neubrutalism.css中的顏色變數 */
         /* 新增的樣式 */
         .diagram-container {
             background-color: white;
@@ -91,7 +84,7 @@
             position: relative;
             width: 100px;
             height: 40px;
-            background-color: #e0e0e0;
+            background-color: var(--background);
             border-radius: 5px;
             margin: 10px auto;
             overflow: hidden;
@@ -100,8 +93,8 @@
             position: absolute;
             width: 15px;
             height: 15px;
-            background-color: #fff;
-            border: 1px solid #ccc;
+            background-color: var(--background);
+            border: 1px solid var(--border);
             border-radius: 3px;
         }
         .key-1 { top: 5px; left: 10px; animation: press 0.8s infinite; }
@@ -114,7 +107,7 @@
         
         @keyframes press {
             0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(3px); background-color: #f0f0f0; }
+            50% { transform: translateY(3px); background-color: var(--background); }
         }
         @keyframes pulse {
             0% { transform: scale(1); }
