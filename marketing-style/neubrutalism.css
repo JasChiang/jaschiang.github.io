@@ -61,7 +61,7 @@ p, li, a, span, div {
 
 /* Header styles */
 header {
-  background-color: var(--primary-color) !important;
+  background-color: var(--deep-blue) !important;
   border-bottom: 3px solid var(--shadow-color);
   box-shadow: 0px 4px 0px var(--shadow-color);
 }
@@ -176,7 +176,7 @@ header h1 {
 
 /* Footer styles */
 footer {
-  background-color: var(--primary-color) !important;
+  background-color: var(--deep-blue) !important;
   border-top: 3px solid var(--shadow-color);
   box-shadow: 0px -4px 0px var(--shadow-color);
 }
@@ -213,6 +213,51 @@ footer {
 .next-page-link:active {
   transform: translate(0px, 0px);
   box-shadow: 2px 2px 0px var(--shadow-color);
+}
+
+/* Read more link styles */
+.read-more-link {
+  font-weight: 600;
+  padding: 0.5rem 0.75rem;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+  display: inline-block;
+  position: relative;
+}
+
+.read-more-link:hover {
+  background-color: var(--card-blue);
+  transform: translateY(-2px);
+}
+
+.read-more-link:active {
+  transform: translateY(0);
+}
+
+/* Link styles */
+a {
+  color: var(--blue);
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  color: var(--deep-blue);
+}
+
+.text-blue-600 {
+  color: var(--yellow) !important;
+}
+
+.text-blue-600:hover {
+  color: var(--card-yellow) !important;
+}
+
+.text-green {
+  color: var(--yellow) !important;
+}
+
+.text-green:hover {
+  color: var(--card-yellow) !important;
 }
 
 /* Overriding Tailwind classes */
