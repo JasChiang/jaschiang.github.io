@@ -48,7 +48,7 @@ h1, h2, h3, h4, h5, h6 {
 .bg-pink h4, 
 .bg-silver h4,
 .bg-gray-50 .icon-container + div h4 {
-  color: white;
+  color: rgb(0, 80, 151);
 }
 
 p, li, a, span, div {
@@ -342,7 +342,7 @@ a:hover {
 
 /* Make sure icons are visible on colored backgrounds */
 .text-white {
-  color: var(--text-color) !important;
+  color: white !important;
 }
 
 /* Add some fun tilted elements for Neubrutalism style */
