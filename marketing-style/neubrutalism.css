@@ -40,6 +40,17 @@ h1, h2, h3, h4, h5, h6 {
   letter-spacing: -0.5px;
 }
 
+/* Ensure headings in colored containers have white text */
+.bg-deep-blue h4, 
+.bg-green h4, 
+.bg-blue h4, 
+.bg-yellow h4, 
+.bg-pink h4, 
+.bg-silver h4,
+.bg-gray-50 .icon-container + div h4 {
+  color: white;
+}
+
 p, li, a, span, div {
   font-size: 18px;
   line-height: 1.6;
@@ -258,6 +269,60 @@ a:hover {
 
 .text-green:hover {
   color: var(--card-yellow) !important;
+}
+
+/* Text color utilities */
+.text-deep-blue {
+  color: var(--deep-blue);
+}
+
+.text-green {
+  color: var(--green);
+}
+
+.text-blue {
+  color: var(--blue);
+}
+
+.text-yellow {
+  color: var(--yellow);
+}
+
+.text-pink {
+  color: var(--pink);
+}
+
+.text-silver {
+  color: var(--silver);
+}
+
+.text-text-color {
+  color: var(--text-color);
+}
+
+/* Background color utilities */
+.bg-deep-blue {
+  background-color: var(--deep-blue);
+}
+
+.bg-green {
+  background-color: var(--green);
+}
+
+.bg-blue {
+  background-color: var(--blue);
+}
+
+.bg-yellow {
+  background-color: var(--yellow);
+}
+
+.bg-pink {
+  background-color: var(--pink);
+}
+
+.bg-silver {
+  background-color: var(--silver);
 }
 
 /* Overriding Tailwind classes */
