@@ -190,6 +190,31 @@ footer {
   padding: 0 4px;
 }
 
+/* Next page link styles */
+.next-page-link {
+  background-color: var(--card-blue);
+  color: var(--text-color);
+  font-weight: 700;
+  border: 3px solid var(--shadow-color);
+  box-shadow: 5px 5px 0px var(--shadow-color);
+  border-radius: 12px;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+}
+
+.next-page-link:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 7px 7px 0px var(--shadow-color);
+}
+
+.next-page-link:active {
+  transform: translate(0px, 0px);
+  box-shadow: 2px 2px 0px var(--shadow-color);
+}
+
 /* Overriding Tailwind classes */
 .bg-white {
   background-color: var(--background-color) !important;
