@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI 行銷課程 - 製作說明與來源</title>
+    <!-- Open Graph / Facebook / Line -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://jaschiang.github.io/senao-marketing/ai-marketing-credits.html">
+    <meta property="og:title" content="AI 行銷課程 - 製作說明與來源">
+    <meta property="og:description" content="神腦國際行銷部 AI 入門課程的製作說明、參考資料與相關來源">
+    <meta property="og:image" content="https://jaschiang.github.io/senao-marketing/images/open-graph.png">
+    <!-- TailwindCSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Neubrutalism Style -->
+    <link rel="stylesheet" href="neubrutalism.css">
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+        /* 使用neubrutalism.css中的顏色變數 */
+        .gradient-text {
+            background: linear-gradient(90deg, var(--blue), var(--deep-blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .text-deep-blue {
+            color: var(--deep-blue);
+        }
+        .text-blue {
+            color: var(--blue);
+        }
+        .text-pink {
+            color: var(--pink);
+        }
+        .border-blue {
+            border-color: var(--blue);
+        }
+        .prompt-section {
+            transition: all 0.3s ease;
+        }
+        .prompt-section:hover {
+            transform: scale(1.01);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+        .prompt-card {
+            transition: all 0.3s ease;
+        }
+        .prompt-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+        .code-block {
+            background-color: var(--background);
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            overflow-x: auto;
+            border-left: 4px solid var(--blue);
+            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+            font-size: 0.875rem;
+            line-height: 1.7;
+        }
+        .highlight {
+            background: linear-gradient(120deg, rgba(0, 144, 212, 0.2), rgba(0, 144, 212, 0.2));
+            background-repeat: no-repeat;
+            background-size: 100% 40%;
+            background-position: 0 90%;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <header class="bg-deep-blue shadow-sm sticky top-0 z-10 neu-box">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+            <div class="flex justify-between items-center">
+                <h1 class="text-3xl font-bold text-white">AI 行銷課程 - 製作說明與來源</h1>
+                <div class="flex space-x-4">
+                    <a href="course-overview.html" class="text-green hover:text-white flex items-center">
+                        <i class="fas fa-book mr-2"></i>回到課程
+                    </a>
+                    <a href="index.html" class="text-green hover:text-white flex items-center">
+                        <i class="fas fa-home mr-2"></i>回到首頁
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <!-- 來源說明區塊 -->
+        <section class="bg-white shadow rounded-lg p-6 mb-8" data-aos="fade-up">
+            <h2 class="text-2xl font-bold text-deep-blue mb-4">
+                <i class="fas fa-info-circle text-blue mr-2"></i>
+                關於本課程
+            </h2>
+            <div class="border-l-4 border-blue pl-4 py-2 mb-6">
+                <p class="text-gray-700">本 AI 行銷課程網站是一個綜合性資源，旨在幫助行銷人員了解並應用 AI 工具來提升工作效率。</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                <div class="bg-blue-50 rounded-lg p-5">
+                    <h3 class="text-lg font-semibold text-deep-blue mb-3">
+                        <i class="fas fa-book-open text-blue mr-2"></i>
+                        資料來源
+                    </h3>
+                    <p class="text-gray-700">本課程部分內容基於 <span class="highlight font-medium">Google Gemini Deep Research</span> 所搜集的研究資訊</p>
+                </div>
+                
+                <div class="bg-purple-50 rounded-lg p-5">
+                    <h3 class="text-lg font-semibold text-deep-blue mb-3">
+                        <i class="fas fa-user-edit text-pink mr-2"></i>
+                        製作者
+                    </h3>
+                    <p class="text-gray-700">內容大綱經由 <a href="https://www.linkedin.com/in/jascty/" target="_blank"><span class="highlight font-medium">Jas Chiang</span></a> 進行規劃，並針對行銷領域的 AI 初學者的可能需求進行調整。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 製作工具說明 -->
+        <section class="bg-white shadow rounded-lg p-6 mb-8" data-aos="fade-up" data-aos-delay="100">
+            <h2 class="text-2xl font-bold text-deep-blue mb-4">
+                <i class="fas fa-tools text-pink mr-2"></i>
+                製作工具與方法
+            </h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                <div class="bg-gradient-to-br from-indigo-50 to-blue-50 rounded-lg p-5">
+                    <div class="flex items-start">
+                        <div class="flex-shrink-0 bg-blue rounded-full p-2 mt-1">
+                            <i class="fas fa-robot text-white"></i>
+                        </div>
+                        <div class="ml-4">
+                            <h3 class="text-lg font-semibold text-deep-blue mb-2">開發環境</h3>
+                            <p class="text-gray-700">本網站使用 <span class="font-medium">Windsurf</span> 作為主要開發環境，在 <span class="font-medium">Claude 3.7 Sonnet</span> 的幫助下進行網頁設計。</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-gradient-to-br from-green-50 to-teal-50 rounded-lg p-5">
+                    <div class="flex items-start">
+                        <div class="flex-shrink-0 bg-green rounded-full p-2 mt-1">
+                            <i class="fas fa-code text-white"></i>
+                        </div>
+                        <div class="ml-4">
+                            <h3 class="text-lg font-semibold text-deep-blue mb-2">使用技術</h3>
+                            <p class="text-gray-700">網站使用 <span class="font-medium">HTML5</span>、<span class="font-medium">TailwindCSS</span> 和 <span class="font-medium">Font Awesome</span> 圖標庫構建，確保視覺吸引力和響應式設計。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-gradient-to-r from-blue-50 to-purple-50 rounded-lg p-5 mb-6">
+                <div class="flex items-center mb-3">
+                    <div class="flex-shrink-0 bg-blue rounded-full p-2">
+                        <i class="fas fa-magic text-white"></i>
+                    </div>
+                    <h3 class="ml-3 text-lg font-semibold text-deep-blue">網頁製作提示詞來源</h3>
+                </div>
+                <p class="text-gray-700 mb-3">本網站的設計和內容生成使用了修改自 X 用戶 <span class="font-medium text-blue">@op7418</span> 的網頁生成提示詞，並根據 AI 行銷課程的特定需求進行了調整。</p>
+            </div>
+        </section>
+
+        <!-- 視覺流程圖說明 -->
+        <section class="bg-white shadow rounded-lg p-6 mb-8" data-aos="fade-up" data-aos-delay="200">
+            <h2 class="text-2xl font-bold text-deep-blue mb-4">
+                <i class="fas fa-chart-network text-green mr-2"></i>
+                視覺化設計特色
+            </h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+                <div class="prompt-card bg-gradient-to-br from-blue-50 to-indigo-50 rounded-lg p-5">
+                    <div class="flex items-center mb-3">
+                        <div class="flex-shrink-0 bg-blue rounded-full p-2">
+                            <i class="fas fa-project-diagram text-white"></i>
+                        </div>
+                        <h3 class="ml-3 text-lg font-medium text-deep-blue">流程圖設計</h3>
+                    </div>
+                    <p class="text-gray-700">課程中的流程圖使用 HTML 和 CSS 創建，採用不同顏色區塊和圖標直觀展示各個步驟，並在移動設備上自動調整為垂直排列。</p>
+                </div>
+                
+                <div class="prompt-card bg-gradient-to-br from-purple-50 to-pink-50 rounded-lg p-5">
+                    <div class="flex items-center mb-3">
+                        <div class="flex-shrink-0 bg-pink rounded-full p-2">
+                            <i class="fas fa-table text-white"></i>
+                        </div>
+                        <h3 class="ml-3 text-lg font-medium text-deep-blue">比較表格</h3>
+                    </div>
+                    <p class="text-gray-700">比較表格採用卡片式設計，使用顏色對比和圖標增強視覺效果，幫助讀者快速理解不同概念或工具之間的差異。</p>
+                </div>
+                
+                <div class="prompt-card bg-gradient-to-br from-green-50 to-emerald-50 rounded-lg p-5">
+                    <div class="flex items-center mb-3">
+                        <div class="flex-shrink-0 bg-green rounded-full p-2">
+                            <i class="fas fa-sitemap text-white"></i>
+                        </div>
+                        <h3 class="ml-3 text-lg font-medium text-deep-blue">關係圖</h3>
+                    </div>
+                    <p class="text-gray-700">關係圖展示了不同概念、角色或步驟之間的連接和互動，使用不同顏色區塊和連接線清晰呈現複雜關係。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 提示詞展示區塊 -->
+        <!--<section class="bg-white shadow rounded-lg p-6" data-aos="fade-up" data-aos-delay="300">
+            <h2 class="text-2xl font-bold text-deep-blue mb-4">
+                <i class="fas fa-comment-alt text-blue mr-2"></i>
+                網頁生成提示詞
+            </h2>
+            <p class="text-gray-700 mb-6">以下是用於生成本 AI 行銷課程網站的完整提示詞，修改自 X 用戶 @op7418 的網頁生成提示詞，並根據 AI 行銷課程的特定需求進行了調整：</p>
+            
+            <div class="prompt-section bg-gray-50 rounded-lg p-6 mb-6">
+                <h3 class="text-xl font-semibold text-deep-blue mb-4 gradient-text">內容要求</h3>
+                <div class="code-block text-gray-800">
+                    * 根據所提供的資料或文件（無論格式）中的內容來製作 HTML 網頁<br>
+                    * HTML 檔案名稱需與主題有關<br>
+                    * 所有頁面內容必須為繁體中文<br>
+                    * 保持原文件的重點資訊，但以更易讀、視覺化的方式呈現<br>
+                    * 網頁內容不能全部都是文字，必須有視覺元素等<br>
+                    * 文字內容超過300字的段落，必須考慮轉化為視覺圖表形式呈現<br>
+                    * 列表型資訊（步驟、比較、分類等）必須轉化為流程圖、比較表格或圖示卡片<br>
+                    * 每個主要頁面必須加入至少2-3個視覺化流程圖、比較表格或工作流程圖來呈現複雜概念<br>
+                    * 視覺元素必須使用 HTML、CSS 和 Font Awesome 圖標創建，確保響應式設計<br>
+                    * 當提供的資料內容過多（超過5000字或包含多個獨立主題）時，應拆分為多個HTML頁面<br>
+                    * 拆分頁面時，應建立清晰的導航結構，包括主頁面和子頁面之間的連結<br>
+                    * 拆分的頁面應遵循一致的設計風格和命名規則（如主題-子主題.html）<br>
+                    * HTML 網頁製作完成後，在 index.html 中新增連結與簡述<br>
+                    * 如果專案沒有 index.html，請新增 index.html<br>
+                    * 如果專案有 index.html，請在 index.html 中新增連結與簡述
+                </div>
+            </div>
+            
+            <div class="prompt-section bg-gray-50 rounded-lg p-6 mb-6">
+                <h3 class="text-xl font-semibold text-deep-blue mb-4 gradient-text">設計風格</h3>
+                <div class="code-block text-gray-800">
+                    * 整體風格參考 Apple 官網的簡潔現代感設計<br>
+                    * 分析內容，根據內容建立層次結構，突出重要內容<br>
+                    * 配色方案若無指定，則以 Apple 官網為主<br>
+                    * 使用漸變色背景增加視覺吸引力<br>
+                    * 適當使用卡片式設計呈現相關內容組<br>
+                    * 確保視覺元素與文字內容相輔相成，增強理解<br>
+                    * 流程圖和工作流程圖應使用不同顏色區分不同步驟或階段<br>
+                    * 比較表格應使用清晰的視覺層次和顏色對比展示差異<br>
+                    * 文字密集段落應轉化為圖示卡片、時間軸或流程圖等視覺形式<br>
+                    * 多頁面專案應保持一致的頁眉、頁腳和導航元素，確保用戶體驗連貫
+                </div>
+            </div>
+            
+            <div class="prompt-section bg-gray-50 rounded-lg p-6 mb-6">
+                <h3 class="text-xl font-semibold text-deep-blue mb-4 gradient-text">技術規範</h3>
+                <div class="code-block text-gray-800">
+                    * 使用HTML5、TailwindCSS 3.0+（通過CDN引入）和必要的JavaScript<br>
+                    * 程式碼結構清晰，包含適當註釋，易於理解和後續維護<br>
+                    * 使用 HTML 和 CSS 創建流程圖和比較表格，而非依賴外部庫<br>
+                    * 針對不同類型的資訊選擇最合適的視覺呈現方式（流程圖、比較表格、工作流程圖等）<br>
+                    * 使用 AOS (Animate On Scroll) 庫實現滾動動畫效果<br>
+                    * 確保所有視覺元素都有適當的 HTML 語義標記，提高可訪問性<br>
+                    * 文字轉圖表時，保留原始文字作為輔助說明或替代文本
+                </div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="prompt-section bg-gray-50 rounded-lg p-6">
+                    <h3 class="text-xl font-semibold text-deep-blue mb-4 gradient-text">RWD 響應式設計</h3>
+                    <div class="code-block text-gray-800">
+                        * 頁面必須在所有裝置上（手機、平板、桌面）完美展示<br>
+                        * 針對不同螢幕尺寸調整版面佈局和字型大小<br>
+                        * 確保行動裝置也有良好的觸控體驗<br>
+                        * 使用 grid 和 flex 布局確保內容靈活適應不同螢幕<br>
+                        * 確保流程圖和比較表格在小螢幕上能自動調整為垂直排列<br>
+                        * 在移動設備上隱藏非必要的裝飾性元素，保持核心內容清晰可讀<br>
+                        * 複雜圖表在移動設備上可考慮分解為多個簡化版本
+                    </div>
+                </div>
+                
+                <div class="prompt-section bg-gray-50 rounded-lg p-6">
+                    <h3 class="text-xl font-semibold text-deep-blue mb-4 gradient-text">互動體驗</h3>
+                    <div class="code-block text-gray-800">
+                        - 參考 Apple 官網增添互動效果提升用戶體驗<br>
+                          * 按鈕懸停時有輕微放大和顏色變化<br>
+                          * 卡片元素懸停時有精緻的陰影和邊框效果<br>
+                          * 頁面捲動時有平滑過渡效果<br>
+                          * 內容區塊加載時有優雅的淡入動畫<br>
+                        - 添加互動式元素<br>
+                          * 使用可折疊的問答區域（Accordion）處理長文本內容<br>
+                          * 添加標籤式內容切換（Tabs）組織相關主題<br>
+                          * 實現簡單的懸停提示（Tooltips）提供額外資訊<br>
+                          * 使用進度指示器顯示閱讀位置
+                    </div>
+                </div>
+            </div>
+        </section>-->
+    </main>
+
+    <footer class="bg-deep-blue text-white py-8 neu-box">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-center items-center">
+                <a href="ai-marketing-credits.html" class="text-green hover:text-white flex items-center mx-3">
+                    <i class="fas fa-info-circle mr-2"></i>製作說明與來源
+                </a>
+                <a href="index.html" class="text-green hover:text-white flex items-center mx-3">
+                    <i class="fas fa-home mr-2"></i>回到首頁
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize AOS animation library
+        AOS.init({
+            duration: 800,
+            easing: 'ease-in-out',
+            once: true
+        });
+    </script>
+</body>
+</html>
