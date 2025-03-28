@@ -8,8 +8,6 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Neubrutalism Style -->
-    <link rel="stylesheet" href="neubrutalism.css">
     <style>
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
@@ -21,19 +19,22 @@
             transform: scale(1.01);
             box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
         }
-        /* 使用neubrutalism.css中的顏色變數 */
+        /* 引入品牌顏色 CSS */
+    </style>
+    <link rel="stylesheet" href="css/brand-colors.css">
+    <style>
     </style>
 </head>
 <body class="bg-gray-50">
-    <header class="bg-deep-blue shadow-sm sticky top-0 z-10 neu-box">
+    <header class="bg-[rgb(0,80,151)] shadow-sm sticky top-0 z-10">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
             <div class="flex justify-between items-center">
                 <h1 class="text-3xl font-bold text-white">前言：個人 AI 使用經驗</h1>
                 <div class="flex space-x-4">
-                    <a href="course-overview.html" class="text-green hover:text-white flex items-center">
+                    <a href="course-overview.html" class="text-[rgb(203,211,0)] hover:text-white flex items-center">
                         <i class="fas fa-arrow-left mr-2"></i>回到課程
                     </a>
-                    <a href="index.html" class="text-green hover:text-white flex items-center">
+                    <a href="index.html" class="text-[rgb(203,211,0)] hover:text-white flex items-center">
                         <i class="fas fa-home mr-2"></i>回到首頁
                     </a>
                 </div>
@@ -42,7 +43,7 @@
     </header>
 
     <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <div class="bg-white shadow overflow-hidden sm:rounded-lg mb-8 neu-box">
+        <div class="bg-white shadow overflow-hidden sm:rounded-lg mb-8">
             <div class="px-4 py-5 sm:px-6">
                 <h2 class="text-xl font-semibold text-[rgb(0,80,151)]">個人 AI 使用歷程</h2>
                 <p class="mt-1 max-w-2xl text-sm text-[rgb(0,144,212)]">從初始接觸到日常運用的心得分享</p>
@@ -51,106 +52,70 @@
                 <div class="prose max-w-none text-gray-700">
                     <p class="mb-4">因為不知道各位使用 AI 的深入程度，我想以我個人經驗為出發點，分享我是如何開始接觸並逐步整合 AI 工具到日常工作中的。</p>
                     
-                    <p class="mb-4">現在提到 AI 通常指的是 ChatGPT 這些大型語言模型（LLM，Large Language Model）服務。<br>我第一次認識到這個名詞是在 2022 年 12 月 ChatGPT 亮相的時候。<br>不同於當時有些人僅僅將之視為「聊天機器人」或是另一種「Google」，我已經在嘗試它能為我解決工作上的哪些問題了。</p>
+                    <p class="mb-4">現在提到 AI 通常指的是大型語言模型（LLM，Large Language Model）。我第一次認識到這個名詞是在 2022 年 12 月 ChatGPT 亮相的時候。不同於當時有些人僅僅將之視為「聊天機器人」或是另一種「Google」，我已經在嘗試它能為我解決工作上的哪些問題了。</p>
                     
-                    <p class="mb-4">目前我最常使用的是來自 Anthropic 的 Claude，並且有使用付費訂閱的 Claude Pro 服務。<br>一個月只要 $20 美元，我就讓 Claude 的 Projects 功能根據我過往的文本內容來編寫拍攝腳本以及文章的初稿。<br>甚至，還能透過 Artifacts 功能，以視覺化的方式建議簡報上的文字與數據可以如何排版。</p>
+                    <p class="mb-4">目前我最常使用的是來自 Anthropic 的 Claude，並且有使用付費訂閱的 Claude Pro 服務。一個月只要 $20 美元，我就可以透過 Claude 的 Projects 功能以及模型，根據我過往的文本內容為我編寫拍攝腳本以及文章的初稿。甚至，還能透過 Artifacts 功能，為我以視覺化的方式建議簡報上的文字與數據可以如何排版。</p>
                     
-                    <!-- 個人 AI 使用歷程時間軸 - 水平設計 -->
+                    <!-- 個人 AI 使用歷程時間軸 - 橫向設計 -->
                     <div class="my-8 bg-gray-50 p-6 rounded-lg">
                         <h3 class="font-semibold text-lg text-gray-900 mb-5">使用歷程時間表</h3>
-                        <div class="relative">
-                            <!-- 水平時間軸容器 -->
-                            <div class="overflow-x-auto pb-4">
-                                <!-- 水平時間軸線 -->
-                                <div class="hidden md:block absolute h-1 bg-[rgb(0,144,212)] left-0 right-0 top-1/2 transform -translate-y-1/2 rounded-full"></div>
+                        <div class="relative pb-8">
+                            <!-- 時間點容器 -->
+                            <div class="grid grid-cols-6 gap-2">
+                                <!-- 2022/12 -->
+                                <div class="relative text-center">
+                                    <h4 class="font-medium text-[rgb(0,80,151)] mb-2">2022/12</h4>
+                                    <div class="absolute left-1/2 top-16 transform -translate-x-1/2 -translate-y-1/2 w-6 h-6 rounded-full bg-[rgb(0,80,151)] border-4 border-white z-10"></div>
+                                    <p class="text-gray-700 text-sm mt-12">使用 ChatGPT</p>
+                                </div>
                                 
-                                <!-- 時間點容器 - 水平排列 (大螢幕) / 垂直排列 (小螢幕) -->
-                                <div class="flex flex-col md:flex-row md:justify-between md:items-start md:space-x-4 space-y-16 md:space-y-0 relative">
-                                    <!-- 2022/12 -->
-                                    <div class="flex flex-row md:flex-col items-start md:items-center md:w-1/6">
-                                        <div class="relative">
-                                            <div class="w-6 h-6 rounded-full bg-[rgb(0,80,151)] border-4 border-white z-10 md:mb-3"></div>
-                                            <!-- 小螢幕垂直線 -->
-                                            <div class="md:hidden absolute h-[calc(100%+4rem)] w-1 bg-[rgb(0,144,212)] left-3 top-6 rounded-full"></div>
-                                        </div>
-                                        <div class="ml-4 md:ml-0 md:text-center">
-                                            <h4 class="font-medium text-[rgb(0,80,151)] mb-1">2022/12</h4>
-                                            <p class="text-gray-700 text-sm">使用 ChatGPT</p>
-                                        </div>
-                                    </div>
-                                    
-                                    <!-- 2024/1 -->
-                                    <div class="flex flex-row md:flex-col items-start md:items-center md:w-1/6">
-                                        <div class="relative">
-                                            <div class="w-6 h-6 rounded-full bg-[rgb(0,80,151)] border-4 border-white z-10 md:mb-3"></div>
-                                            <!-- 小螢幕垂直線 -->
-                                            <div class="md:hidden absolute h-[calc(100%+4rem)] w-1 bg-[rgb(0,144,212)] left-3 top-6 rounded-full"></div>
-                                        </div>
-                                        <div class="ml-4 md:ml-0 md:text-center">
-                                            <h4 class="font-medium text-[rgb(0,80,151)] mb-1">2024/1</h4>
-                                            <p class="text-gray-700 text-sm">嘗試語音合成與雲端圖影生成 AI</p>
-                                        </div>
-                                    </div>
-                                    
-                                    <!-- 2024/3 -->
-                                    <div class="flex flex-row md:flex-col items-start md:items-center md:w-1/6">
-                                        <div class="relative">
-                                            <div class="w-6 h-6 rounded-full bg-[rgb(0,80,151)] border-4 border-white z-10 md:mb-3"></div>
-                                            <!-- 小螢幕垂直線 -->
-                                            <div class="md:hidden absolute h-[calc(100%+4rem)] w-1 bg-[rgb(0,144,212)] left-3 top-6 rounded-full"></div>
-                                        </div>
-                                        <div class="ml-4 md:ml-0 md:text-center">
-                                            <h4 class="font-medium text-[rgb(0,80,151)] mb-1">2024/3</h4>
-                                            <p class="text-gray-700 text-sm">開始使用 Claude</p>
-                                        </div>
-                                    </div>
-                                    
-                                    <!-- 2024/6 -->
-                                    <div class="flex flex-row md:flex-col items-start md:items-center md:w-1/6">
-                                        <div class="relative">
-                                            <div class="w-6 h-6 rounded-full bg-[rgb(0,80,151)] border-4 border-white z-10 md:mb-3"></div>
-                                            <!-- 小螢幕垂直線 -->
-                                            <div class="md:hidden absolute h-[calc(100%+4rem)] w-1 bg-[rgb(0,144,212)] left-3 top-6 rounded-full"></div>
-                                        </div>
-                                        <div class="ml-4 md:ml-0 md:text-center">
-                                            <h4 class="font-medium text-[rgb(0,80,151)] mb-1">2024/6</h4>
-                                            <p class="text-gray-700 text-sm">開始使用 Perplexity</p>
-                                        </div>
-                                    </div>
-                                    
-                                    <!-- 2024/10 -->
-                                    <div class="flex flex-row md:flex-col items-start md:items-center md:w-1/6">
-                                        <div class="relative">
-                                            <div class="w-6 h-6 rounded-full bg-[rgb(0,80,151)] border-4 border-white z-10 md:mb-3"></div>
-                                            <!-- 小螢幕垂直線 -->
-                                            <div class="md:hidden absolute h-[calc(100%+4rem)] w-1 bg-[rgb(0,144,212)] left-3 top-6 rounded-full"></div>
-                                        </div>
-                                        <div class="ml-4 md:ml-0 md:text-center">
-                                            <h4 class="font-medium text-[rgb(0,80,151)] mb-1">2024/10</h4>
-                                            <p class="text-gray-700 text-sm">嘗試地端的圖影生成 AI</p>
-                                        </div>
-                                    </div>
-                                    
-                                    <!-- 2024/12 -->
-                                    <div class="flex flex-row md:flex-col items-start md:items-center md:w-1/6">
-                                        <div class="relative">
-                                            <div class="w-6 h-6 rounded-full bg-[rgb(0,80,151)] border-4 border-white z-10 md:mb-3"></div>
-                                            <!-- 最後一個不需要垂直線 -->
-                                        </div>
-                                        <div class="ml-4 md:ml-0 md:text-center">
-                                            <h4 class="font-medium text-[rgb(0,80,151)] mb-1">2024/12</h4>
-                                            <p class="text-gray-700 text-sm">開始使用 AI IDE</p>
-                                        </div>
-                                    </div>
+                                <!-- 2024/1 -->
+                                <div class="relative text-center">
+                                    <h4 class="font-medium text-[rgb(0,80,151)] mb-2">2024/1</h4>
+                                    <div class="absolute left-1/2 top-16 transform -translate-x-1/2 -translate-y-1/2 w-6 h-6 rounded-full bg-[rgb(0,80,151)] border-4 border-white z-10"></div>
+                                    <p class="text-gray-700 text-sm mt-12">嘗試語音合成與雲端圖影生成 AI</p>
+                                </div>
+                                
+                                <!-- 2024/3 -->
+                                <div class="relative text-center">
+                                    <h4 class="font-medium text-[rgb(0,80,151)] mb-2">2024/3</h4>
+                                    <div class="absolute left-1/2 top-16 transform -translate-x-1/2 -translate-y-1/2 w-6 h-6 rounded-full bg-[rgb(0,80,151)] border-4 border-white z-10"></div>
+                                    <p class="text-gray-700 text-sm mt-12">開始使用 Claude</p>
+                                </div>
+                                
+                                <!-- 2024/6 -->
+                                <div class="relative text-center">
+                                    <h4 class="font-medium text-[rgb(0,80,151)] mb-2">2024/6</h4>
+                                    <div class="absolute left-1/2 top-16 transform -translate-x-1/2 -translate-y-1/2 w-6 h-6 rounded-full bg-[rgb(0,80,151)] border-4 border-white z-10"></div>
+                                    <p class="text-gray-700 text-sm mt-12">開始使用 Perplexity</p>
+                                </div>
+                                
+                                <!-- 2024/10 -->
+                                <div class="relative text-center">
+                                    <h4 class="font-medium text-[rgb(0,80,151)] mb-2">2024/10</h4>
+                                    <div class="absolute left-1/2 top-16 transform -translate-x-1/2 -translate-y-1/2 w-6 h-6 rounded-full bg-[rgb(0,80,151)] border-4 border-white z-10"></div>
+                                    <p class="text-gray-700 text-sm mt-12">嘗試地端的圖影生成 AI</p>
+                                </div>
+                                
+                                <!-- 2024/12 -->
+                                <div class="relative text-center">
+                                    <h4 class="font-medium text-[rgb(0,80,151)] mb-2">2024/12</h4>
+                                    <div class="absolute left-1/2 top-16 transform -translate-x-1/2 -translate-y-1/2 w-6 h-6 rounded-full bg-[rgb(0,80,151)] border-4 border-white z-10"></div>
+                                    <p class="text-gray-700 text-sm mt-12">開始使用 AI IDE</p>
                                 </div>
                             </div>
+                            
+                            <!-- 時間軸線 -->
+                            <div class="absolute w-full h-1 bg-[rgb(0,144,212)] top-16 left-0 rounded-full"></div>
                         </div>
                     </div>
                     
                     <div class="my-8 bg-gray-50 p-6 rounded-lg">
                         <h3 class="font-semibold text-lg text-gray-900 mb-3">示意圖：</h3>
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-
+                            <div class="bg-white p-4 rounded-lg shadow">
+                                <div class="text-center text-gray-500"><img src="images/claude-article.png" alt="AI 使用示意圖"></div>
+                            </div>
                             <div class="bg-white p-4 rounded-lg shadow">
                                 <div class="text-center text-gray-500"><img src="images/claude-slide.png" alt="AI 使用示意圖"></div>
                             </div>
@@ -171,12 +136,12 @@
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div class="border border-gray-200 rounded-lg p-4 hover:shadow-md transition-shadow">
                     <h3 class="font-medium text-lg mb-2">Claude</h3>
-                    <p class="text-gray-600 text-sm mb-3">Anthropic 公司推出的 LLM 服務。<br>目前我使用每月 $20 的 Claude Pro 訂閱版做為我主要的 AI 工具。</p>
-                    <p class="text-gray-500 text-xs">用途：想法推敲、文案腳本初稿編寫、簡報設計視覺建議等</p>
+                    <p class="text-gray-600 text-sm mb-3">Anthropic 公司推出的 LLM 服務。目前我使用每月 $20 的 Claude Pro 訂閱版做為我主要的 AI 工具。</p>
+                    <p class="text-gray-500 text-xs">用途：想法推敲、文案腳本初稿編寫、簡報設計視覺建議</p>
                 </div>
                 <div class="border border-gray-200 rounded-lg p-4 hover:shadow-md transition-shadow">
                     <h3 class="font-medium text-lg mb-2">ChatGPT</h3>
-                    <p class="text-gray-600 text-sm mb-3">OpenAI 公司推出的 LLM 服務。<br>目前我使用每月 $20 的 ChatGPT Plus 訂閱版做為第二意見來源，<br>以及試玩新功能（如 4o 圖像生成）。</p>
+                    <p class="text-gray-600 text-sm mb-3">OpenAI 公司推出的 LLM 服務。目前我使用每月 $20 的 ChatGPT Plus 訂閱版做為第二意見來源，以及試玩新功能。</p>
                     <p class="text-gray-500 text-xs">用途：想法推敲</p>
                 </div>
                 <div class="border border-gray-200 rounded-lg p-4 hover:shadow-md transition-shadow">
@@ -191,17 +156,17 @@
                 </div>
                 <div class="border border-gray-200 rounded-lg p-4 hover:shadow-md transition-shadow">
                     <h3 class="font-medium text-lg mb-2">Gemini / Google AI Studio</h3>
-                    <p class="text-gray-600 text-sm mb-3">由 Google 所推出的 AI 服務。<br>我主要使用 Google AI Studio 來測試提示詞以及最新的 Gemini 模型。<br>目前也使用 Google Gemini 的 Deep Research 功能為主要的資料搜集來源。<br> 正在評估是否訂閱 Google Gemini Advanced，來使用更多配額的 Deep Research。</p>
+                    <p class="text-gray-600 text-sm mb-3">由 Google 所推出的 AI 服務。我主要使用 Google AI Studio 來測試提示詞以及最新的 Gemini 模型。目前也使用 Google Gemini 的 Deep Research 功能為主要的資料搜集來源。目前正在評估是否訂閱 Google Gemini Advanced，來使用更高配額的 Deep Research</p>
                     <p class="text-gray-500 text-xs">用途：測試、資料搜集整理</p>
                 </div>
                 <div class="border border-gray-200 rounded-lg p-4 hover:shadow-md transition-shadow">
                     <h3 class="font-medium text-lg mb-2">Windsurf</h3>
-                    <p class="text-gray-600 text-sm mb-3">一款支援多家 LLM 的整合開發環境（IDE），訂閱費為每個月 $15。目前我主要用來製作工作相關的網頁或程式。如 UTM 網址與短網址產生器</a>和本教學網頁。偶爾也會交叉使用 Cursor 和 Trae。</p>
+                    <p class="text-gray-600 text-sm mb-3">一款支援多家 LLM 的整合開發環境（IDE），訂閱費為每個月 $15。目前我主要用來製作工作相關的網頁或程式。如 <a href="https://utm-generator-ten.vercel.app/" class="text-blue-600 hover:underline" target="_blank">UTM 網址與短網址產生器</a>和本教學網頁。</p>
                     <p class="text-gray-500 text-xs">用途：簡單的專案開發</p>
                 </div>
                 <div class="border border-gray-200 rounded-lg p-4 hover:shadow-md transition-shadow">
                     <h3 class="font-medium text-lg mb-2">NotebookLM</h3>
-                    <p class="text-gray-600 text-sm mb-3">由 Google 實驗室所推出的 AI 筆記服務。<br>可以彙整多樣資料來協助使用者學習、問答。目前我用來整理會議記錄居多。</p>
+                    <p class="text-gray-600 text-sm mb-3">由 Google 實驗室所推出的 AI 筆記服務。可以彙整多樣資料來協助使用者學習、問答。目前我用來整理會議記錄居多。</p>
                     <p class="text-gray-500 text-xs">用途：會議記錄整理</p>
                 </div>
             </div>
@@ -209,7 +174,7 @@
             <div class="mt-6 bg-blue-50 p-4 rounded-lg border border-blue-200">
                 <p class="text-gray-700 flex items-center">
                     <i class="fas fa-info-circle text-blue-500 mr-2"></i>
-                    <span>我目前每月在 AI 工具上的基本花費約為 <strong>55 美元</strong>。</span>
+                    <span>我目前每月在 AI 工具上的花費約為 <strong>55 美元</strong>。</span>
                 </p>
             </div>
             
@@ -218,11 +183,13 @@
                 
                 <div class="bg-gray-50 p-6 rounded-lg mt-4">
                     <h3 class="font-semibold text-lg text-gray-900 mb-3">案例：</h3>
-                    <p class="text-gray-700 mb-4">例如自行訓練「公司吉祥物」LoRA，使用 ComfyUI 生成圖像，當作向設計同仁提出活動主視覺設計需求的參考示意圖。<span style="font-size: small; color: red">*</span></p>
-                    <p style="font-size: small; color: red">*如果電腦跑不動，現在也可以使用具備高度一致性能力的「4o 圖像生成」來呈現<p><br>
+                    <p class="text-gray-700 mb-4">例如：自行訓練「神歐迷」LoRA，使用 ComfyUI 生成圖像，給數位設計課當作活動案主視覺的參考圖。</p>
                     <div class="bg-white p-4 rounded-lg shadow">
-                        <div class="grid grid-cols-1 gap-4">
-                            <div class="text-center text-gray-500"><img src="images/comfyui.png" alt="ComfyUI 生成的圖像" class="w-full"></div>
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="text-center text-gray-500"><img src="images/senomi-1.png" alt="ComfyUI 生成的圖像" class="w-full"></div>
+                            <div class="text-center text-gray-500"><img src="images/senomi-2.png" alt="ComfyUI 生成的圖像" class="w-full"></div>
+                            <div class="text-center text-gray-500"><img src="images/senomi-3.jpg" alt="ComfyUI 生成的圖像" class="w-full"></div>
+                            <div class="text-center text-gray-500"><img src="images/senomi-4.jpg" alt="ComfyUI 生成的圖像" class="w-full"></div>
                         </div>
                     </div>
                 </div>
@@ -230,7 +197,7 @@
         </div>
 
         <!-- 個人心得與建議 -->
-        <div class="bg-white shadow overflow-hidden sm:rounded-lg p-6 neu-box">
+        <div class="bg-white shadow overflow-hidden sm:rounded-lg p-6">
             <h2 class="text-xl font-semibold text-[rgb(0,80,151)] mb-4">個人心得與建議</h2>
             <div class="space-y-4 text-gray-700">
                 <p>在我使用 AI 工具的過程中，彙整了以下幾點心得：</p>
@@ -238,28 +205,28 @@
                     <li>明確的目標和需求描述能大幅提升 AI 輸出的品質</li>
                     <li>AI 生成的內容需要人工審核和編輯，不應完全依賴</li>
                     <li>多嘗試不同的工具與提問方式，找出最適合自己工作流程的方法</li>
-                    <li>保持好奇心，持續關注 AI 技術的發展，定期嘗試新功能</li>
+                    <li>持續關注 AI 技術的發展，定期嘗試新功能</li>
                 </ul>
-                <p class="mt-4">AI 工具是協助而非取代人類創意的工具。它們最大的價值之一在於解放我們的時間，讓我們能夠專注於更具創造性和策略性的工作。</p>
+                <p class="mt-4">最後，我想強調的是 AI 工具是協助而非取代人類創意的工具。它們最大的價值在於解放我們的時間，讓我們能夠專注於更具創造性和策略性的工作。</p>
             </div>
         </div>
         
         <!-- 下一頁連結 -->
         <div class="flex justify-end mt-8 mb-8">
-            <a href="ai-capabilities.html" class="next-page-link inline-flex items-center px-6 py-3 text-base font-medium">
+            <a href="ai-capabilities.html" class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-[rgb(0,80,151)] hover:bg-[rgb(0,60,120)] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
                 第一章：AI 能為我做到什麼事？
                 <i class="fas fa-arrow-right ml-2"></i>
             </a>
         </div>
     </main>
 
-    <footer class="bg-deep-blue text-white py-8 neu-box">
+    <footer class="bg-[rgb(0,80,151)] text-white py-8">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-center items-center">
-                <a href="ai-marketing-credits.html" class="text-green hover:text-white flex items-center mx-3">
+                <a href="ai-marketing-credits.html" class="text-[rgb(203,211,0)] hover:text-white flex items-center mx-3">
                     <i class="fas fa-info-circle mr-2"></i>製作說明與來源
                 </a>
-                <a href="index.html" class="text-green hover:text-white flex items-center mx-3">
+                <a href="index.html" class="text-[rgb(203,211,0)] hover:text-white flex items-center mx-3">
                     <i class="fas fa-home mr-2"></i>回到首頁
                 </a>
             </div>
