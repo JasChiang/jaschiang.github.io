@@ -105,7 +105,7 @@
                 <p class="mt-1 max-w-2xl text-sm text-[rgb(0,144,212)]">按照不同行銷工作職責與內容，示範 AI 的使用案例</p>
             </div>
             <div class="border-t border-gray-200 px-4 py-5 sm:px-6">
-                <p class="text-gray-700">本章節原始版本為根據作者公司內部的行銷部門職能差異來設計範例，對外版本則去除部門名稱，將職能整合。<br>以下為基礎 AI 應用方案與技巧範例，各位可根據當下需求迭代變更下列提示詞，<br>或重試、開啟新對話讓 AI 提供不一樣的結果，希望可以為各位在日常工作應用時有所啟發。</p>
+                <p class="text-gray-700">本章節原始版本為根據作者公司內部的行銷部門職能差異來設計範例，對外版本則去除部門名稱，將職能整合。<br>以下為基礎 AI 應用方案與技巧範例，各位可根據當下需求迭代變更下列提示詞，<br>或重試、開啟新對話讓 AI 提供不一樣的結果，希望可以為各位在日常工作應用時有所啟發。</p><br><p>雖然隨著技術演進，AI 已經能越來越了解使用者的需求，往往只要簡單的一句提示詞，就能提供不錯的結果。<br>但，就如同日常工作，提出需求時就詳述目的、指示，能更快地得到理想結果。
             </div>
         </div>
 
@@ -247,7 +247,7 @@
                         <div class="flex items-center justify-center bg-blue-50 rounded-lg p-2">
                             <div class="text-center">
                                 <p class="text-sm text-blue-500 mb-2">[示意圖]</p>
-                                <img src="images/google-imagen-digital-prompt.png" alt="圖像生成輔助溝通示意圖" class="max-w-full h-auto rounded shadow-sm lightbox-image">
+                                <img src="images/kv_fastersday2.png" alt="圖像生成輔助溝通示意圖" class="max-w-full h-auto rounded shadow-sm lightbox-image">
                             </div>
                         </div>
                     </div>
@@ -266,35 +266,42 @@
                                 請詳細解釋如何在[軟體名稱]中使用[特定效果或功能]。包括：所需的工具、步驟詳解、常見問題與解決方案，以及 3-5 個可以提高效率的專業技巧或快捷鍵。
                             </p>
                         </div>
-                        <div class="flex items-center justify-center bg-blue-50 rounded-lg p-2">
+                        <!--<div class="flex items-center justify-center bg-blue-50 rounded-lg p-2">
                             <div class="text-center">
                                 <p class="text-sm text-blue-500 mb-2">[示意圖]</p>
                                 <img src="images/grok-how-to-use.png" alt="軟體技能教學示意圖" class="max-w-full h-auto rounded shadow-sm lightbox-image">
                             </div>
-                        </div>
+                        </div>-->
                     </div>
                 </div>
                 
                 <div class="mb-6">
                     <h3 class="text-lg font-medium text-gray-900 mb-3">
-                        <i class="fas fa-comment-dots text-gray-500 mr-2"></i>品牌角色設計概念
+                        <i class="fas fa-comment-dots text-gray-500 mr-2"></i>品牌角色運用
                     </h3>
                     <p class="text-gray-700 mb-3">利用 AI 快速生成品牌角色在不同場景、情境下的視覺表現，驗證設計概念的適應性與延展性。<br>
-                    可以使用 Google AI Studio 中的 Gemini 2.0 Flash (Image Generation) Experimental 模型，或是 ChatGPT 的 4o 圖像生成（4o Image Generation）功能<br>
-                    或是使用 VRAM 較大的顯卡，用 fluxgym 等工具自行訓練角色 LoRA。</p>
+                    可以使用 Google AI Studio 中的 Gemini 2.0 Flash (Image Generation) Experimental 模型，<br>或是 ChatGPT 的 4o 圖像生成（4o Image Generation）功能。<br>
+                    若擁有 VRAM 較大的顯卡，則可使用用 fluxgym 等工具自行在地端訓練角色 LoRA。</p>
                     
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                         <div class="md:col-span-2 bg-gray-100 p-4 rounded-lg">
                             <h4 class="font-medium text-gray-900 mb-2">提示詞範例</h4>
                             <p class="text-sm text-gray-700 font-mono">
-                                假設有一個名為[名稱]的品牌角色，它是一個[外觀描述]。請為這個角色構思 5 個不同情緒/場景的貼圖概念，每個概念包括表情、肢體動作和可能的背景元素。情緒/場景包括：開心、驚訝、困惑、工作中、慶祝節日。
+                                為這個角色生成 5 個不同情緒/場景的貼圖概念，<br>每個概念包括表情、肢體動作和可能的背景元素。情緒/場景包括：開心、驚訝、困惑、工作中、慶祝節日。
                             </p>
                         </div>
                         <div class="flex items-center justify-center bg-blue-50 rounded-lg p-2">
-                            <div class="text-center">
-                                <p class="text-sm text-blue-500 mb-2">[示意圖]</p>
-                                <img src="images/google-mascot.png" alt="吉祥物設計概念示意圖" class="max-w-full h-auto rounded shadow-sm lightbox-image">
-                            </div>
+<div class="flex flex-col md:flex-row items-center justify-center gap-4 bg-blue-50 rounded-lg p-4">
+    <div class="text-center w-1/2">
+        <p class="text-sm text-blue-500 mb-2">[示意圖1]</p>
+        <img src="images/mascot.png" alt="吉祥物設計概念示意圖1" class="w-full max-w-xs h-auto rounded shadow-sm lightbox-image mx-auto">
+    </div>
+    <div class="text-center w-1/2">
+        <p class="text-sm text-blue-500 mb-2">[示意圖2]</p>
+        <img src="images/line.png" alt="吉祥物設計概念示意圖2" class="w-full max-w-xs h-auto rounded shadow-sm lightbox-image mx-auto">
+    </div>
+</div>
+
                         </div>
                     </div>
                 </div>
@@ -304,7 +311,8 @@
                         <i class="fas fa-lightbulb mr-2"></i>使用技巧
                     </h3>
                     <ul class="list-disc pl-5 text-sm text-blue-700">
-                        <li class="mb-1">在使用 AI 生成視覺概念時，提供詳細需求和參考圖片可有效地提高生成結果的相關性</li>
+                        <li class="mb-1">在使用 AI 生成視覺概念時，提供詳細需求（如用途）和參考圖片可有效地提高生成結果的相關性</li>
+                        
                         <li>將 AI 生成的結果視為靈感來源與起點，而非最終成品，結合專業設計知識進行後續製作</li>
                     </ul>
                 </div>
@@ -394,9 +402,10 @@
                 <div class="bg-green-100 p-4 rounded-lg">
                     <h3 class="font-medium text-green-900 mb-2">使用技巧與注意事項</h3>
                     <ul class="text-sm text-green-800">
-                        <li><span style="color: rgb(230,72,148)">◉ <span class="font-medium">移除機敏</span>：若要使用雲端 AI 服務，記得移除或調整機敏資訊後再詢問。</span></li>
-                        <li class="mb-2">◉ <span class="font-medium">分析數據</span>：結合 AI 與數據分析，可以更精準地找出會員流失風險並制定相應策略。</li>
-                        <li>◉ <span class="font-medium">持續優化</span>：根據實際執行結果，定期調整與優化會員溝通內容與策略。</li>
+                         <li class="mb-2"><span style="color: rgb(230,72,148)">◉ <span class="font-medium">移除機敏</span>：若要使用雲端 AI 服務，記得移除或調整機敏資訊後再詢問。</span></li>
+                         <li class="mb-2">◉ <span class="font-medium">品牌特色</span>：以 AI 提供的文案為基礎修正、調整，「降低 AI 味」並加入品牌特色。亦可嘗試使用有專案（Projects）功能的 AI 服務，讓 AI 以你所提供的品牌資料、風格為底來編寫</li>
+                         <li class="mb-2">◉ <span class="font-medium">分析數據</span>：結合 AI 與數據分析，可以更精準地找出會員流失風險並制定相應策略。</li>
+                         <li class="mb-2">◉ <span class="font-medium">持續調整</span>：根據實際執行結果，定期調整與調整會員溝通內容與策略。</li>
                     </ul>
                 </div>
             </section>
@@ -412,7 +421,7 @@
                         <ul class="list-disc pl-5 text-sm text-gray-600">
                             <li class="mb-1">社群媒體內容規劃與撰寫</li>
                             <li class="mb-1">市場趨勢分析與洞察</li>
-                            <li class="mb-1">廣告文案撰寫與優化</li>
+                            <li class="mb-1">廣告文案撰寫與改善</li>
                             <li>行銷策略制定與評估</li>
                         </ul>
                     </div>
@@ -423,7 +432,7 @@
                             <li class="mb-1">協助產出廣告文案初稿</li>
                             <li class="mb-1">提供多元點子，避免想法局限</li>
                             <li class="mb-1">協助分析競爭對手策略與市場定位</li>
-                            <li>優化廣告文案，提高轉換率</li>
+                            <li>改善廣告文案，協助提高轉換率等成效</li>
                         </ul>
                     </div>
                 </div>
@@ -476,7 +485,7 @@
                     <ul class="text-sm text-blue-800">
                         <li class="mb-2">◉ <span class="font-medium">提供充分情境</span>：在提示詞中清楚描述目標受眾、傳播管道和產品特色，以獲得更符合需求的結果。</li>
                         <li class="mb-2">◉ <span class="font-medium">迭代改善</span>：根據 AI 生成的初步方案，提供具體意見並要求調整，以取得更好的效果。</li>
-                        <li class="mb-2">◉ <span class="font-medium">參考競品</span>：可以使用 Google Gemini 等具備搜度搜尋功能的服務，來收集並協助分析競品的行銷策略優缺點，並根據分析結果提出差異化的方案。</li>
+                        <li class="mb-2">◉ <span class="font-medium">參考競品</span>：可以使用 Google Gemini 等具備深度搜尋功能的服務，來收集並協助分析競品的行銷策略優缺點，並根據分析結果提出差異化的方案。</li>
                     </ul>
                 </div>
             </section>
@@ -493,7 +502,7 @@
                             <li class="mb-1">內容主題研究與資料搜集</li>
                             <li class="mb-1">部落格文章與網站內容撰寫</li>
                             <li class="mb-1">內容策略規劃與日曆制定</li>
-                            <li class="mb-1">SEO 優化內容生成</li>
+                            <li class="mb-1">SEO 內容生成</li>
                             <li>內容成效分析與調整</li>
                         </ul>
                     </div>
@@ -536,9 +545,9 @@
                         
                         <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                             <div class="md:col-span-2">
-                                <h4 class="text-sm font-medium text-pink-800">◉ SEO 優化文章生成</h4>
+                                <h4 class="text-sm font-medium text-pink-800">◉ SEO 文章生成</h4>
                                 <p class="text-sm text-gray-700 font-mono bg-white p-3 rounded border border-pink-100">
-                                    請為我的 [網站/部落格] 撰寫一篇 SEO 優化的文章，主題是：[主題]。<br><br>
+                                    請為我的 [網站/部落格] 撰寫一篇符合 SEO 規範的文章，主題是：[主題]。<br><br>
                                     
                                     目標關鍵字：[列出 3-5 個主要關鍵字]<br>
                                     目標受眾：[描述目標讀者]<br>
@@ -563,7 +572,7 @@
                     <h3 class="font-medium text-pink-900 mb-2">使用技巧與注意事項</h3>
                     <ul class="text-sm text-pink-800">
                         <li class="mb-2">◉ <span class="font-medium">搜集題材資料</span>：透過具深度研究、深度搜尋功能的 AI，收集相關題材資料。</li>
-                        <li class="mb-2">◉ <span class="font-medium">建立內容主題庫</span>：將內容庫提供給 AI 來設定專案，作為參考資料。</li>
+                        <li class="mb-2">◉ <span class="font-medium">建立內容主題庫</span>：整理過往的內容庫與需設定專案，作為 AI 行文時的參考資料。</li>
                         <li class="mb-2">◉ <span class="font-medium">編輯與人工審核</span>：AI 生成的內容應經過人工編輯與審核，確保品牌語調一致性與資訊準確性。</li>
                     </ul>
                 </div>
@@ -659,10 +668,11 @@
                 <div class="bg-gray-100 p-4 rounded-lg">
                     <h3 class="font-medium text-gray-900 mb-2">使用技巧與注意事項</h3>
                     <ul class="text-sm text-gray-700">
-                        <li class="mb-2">◉ <span class="font-medium">詳細描述視覺需求</span>：在生成圖像或影像時，提供越詳細的描述（包括構圖、色彩、風格），結果就越符合期望。</li>
-                        <li class="mb-2">◉ <span class="font-medium">分鏡腳本迭代</span>：可使用口白腳本，再針對特定場景或鏡頭與 AI 進行深入討論。</li>
+                        <li class="mb-2">◉ <span class="font-medium">詳細描述視覺需求</span>：在生成圖像或影像時，提供越詳細的描述（包括構圖、色彩、風格），結果就越容易符合期望。</li>
+                                                <li class="mb-2">◉ <span class="font-medium">從文字腳本出發</span>：若公司的作業形式是企劃與攝影後製人員分離，可將腳本提供給 AI 來獲得分鏡建議。</li>
+                        <li class="mb-2">◉ <span class="font-medium">分鏡腳本迭代</span>：根據初步生成結果，再針對特定場景或鏡頭與 AI 進行深入討論。</li>
                         <li class="mb-2">◉ <span class="font-medium">軟體學習資源篩選</span>：向 AI 詢問特定影音軟體的學習資源時，可指明學習目標，讓 AI 能提供更有針對性的建議。</li>
-                        <li>◉ <span class="font-medium">結合實際案例</span>：在所有內容製作中，融入實際工作場景和案例，提高內容的實用性和相關性。</li>
+
                     </ul>
                 </div>
             </section>
@@ -681,7 +691,7 @@
                 
                 <div class="bg-gray-50 p-4 rounded-lg border border-gray-200">
                     <h3 class="font-medium text-gray-900 mb-2">迭代調整</h3>
-                    <p class="text-sm text-gray-600">將 AI 生成的結果視為起點，通過回饋和修改不斷改善，直到達到理想效果。</p>
+                    <p class="text-sm text-gray-600">將 AI 生成的結果視為起點，並根據需求修改、調整，直到達到理想效果。</p>
                 </div>
                 
                 <div class="bg-gray-50 p-4 rounded-lg border border-gray-200">
@@ -696,12 +706,12 @@
                 
                 <div class="bg-gray-50 p-4 rounded-lg border border-gray-200">
                     <h3 class="font-medium text-gray-900 mb-2">定期學習和更新</h3>
-                    <p class="text-sm text-gray-600">AI 工具持續發展，定期了解新功能和技巧可以不斷提升您的應用水平。</p>
+                    <p class="text-sm text-gray-600">AI 工具持續發展，定期了解新功能和技巧可以提升 AI 的應用技巧以及獲得新靈感。</p>
                 </div>
                 
                 <div class="bg-gray-50 p-4 rounded-lg border border-gray-200">
                     <h3 class="font-medium text-gray-900 mb-2">創意引導</h3>
-                    <p class="text-sm text-gray-600">使用 AI 探索不同的創意方向，擴展思路，而非僅限於常規思維模式。</p>
+                    <p class="text-sm text-gray-600">使用 AI 探索不同的創意、發散思考方向，不侷限於過去的思考模式。</p>
                 </div>
             </div>
             
