@@ -55,89 +55,91 @@
                     
                     <p class="mb-4">目前我最常使用的是來自 Anthropic 的 Claude，並且有使用付費訂閱的 Claude Pro 服務。一個月只要 $20 美元，我就可以透過 Claude 的 Projects 功能以及模型，根據我過往的文本內容為我編寫拍攝腳本以及文章的初稿。甚至，還能透過 Artifacts 功能，為我以視覺化的方式建議簡報上的文字與數據可以如何排版。</p>
                     
-                    <!-- 個人 AI 使用歷程時間軸 - 垂直設計 -->
+                    <!-- 個人 AI 使用歷程時間軸 - 水平設計 -->
                     <div class="my-8 bg-gray-50 p-6 rounded-lg">
                         <h3 class="font-semibold text-lg text-gray-900 mb-5">使用歷程時間表</h3>
                         <div class="relative">
-                            <!-- 垂直時間軸線 -->
-                            <div class="absolute h-full w-1 bg-[rgb(0,144,212)] left-4 md:left-1/2 top-0 bottom-0 transform md:-translate-x-1/2 rounded-full"></div>
-                            
-                            <!-- 時間點容器 - 垂直排列 -->
-                            <div class="space-y-12 relative">
-                                <!-- 2022/12 -->
-                                <div class="flex flex-col md:flex-row md:items-center">
-                                    <div class="flex items-center mb-2 md:mb-0 md:w-1/2 md:justify-end md:pr-8">
-                                        <h4 class="font-medium text-[rgb(0,80,151)] order-2 md:order-1">2022/12</h4>
-                                    </div>
-                                    <div class="relative flex items-center">
-                                        <div class="absolute w-6 h-6 rounded-full bg-[rgb(0,80,151)] border-4 border-white z-10 left-4 md:left-0 transform md:-translate-x-1/2"></div>
-                                        <div class="pl-10 md:pl-6 md:w-1/2">
-                                            <p class="text-gray-700">使用 ChatGPT</p>
+                            <!-- 水平時間軸容器 -->
+                            <div class="overflow-x-auto pb-4">
+                                <!-- 水平時間軸線 -->
+                                <div class="hidden md:block absolute h-1 bg-[rgb(0,144,212)] left-0 right-0 top-1/2 transform -translate-y-1/2 rounded-full"></div>
+                                
+                                <!-- 時間點容器 - 水平排列 (大螢幕) / 垂直排列 (小螢幕) -->
+                                <div class="flex flex-col md:flex-row md:justify-between md:items-start md:space-x-4 space-y-8 md:space-y-0 relative">
+                                    <!-- 2022/12 -->
+                                    <div class="flex flex-row md:flex-col items-start md:items-center md:w-1/6">
+                                        <div class="relative">
+                                            <div class="w-6 h-6 rounded-full bg-[rgb(0,80,151)] border-4 border-white z-10 md:mb-3"></div>
+                                            <!-- 小螢幕垂直線 -->
+                                            <div class="md:hidden absolute h-full w-1 bg-[rgb(0,144,212)] left-3 top-6 bottom-0 rounded-full"></div>
+                                        </div>
+                                        <div class="ml-4 md:ml-0 md:text-center">
+                                            <h4 class="font-medium text-[rgb(0,80,151)] mb-1">2022/12</h4>
+                                            <p class="text-gray-700 text-sm">使用 ChatGPT</p>
                                         </div>
                                     </div>
-                                </div>
-                                
-                                <!-- 2024/1 -->
-                                <div class="flex flex-col md:flex-row md:items-center">
-                                    <div class="flex items-center mb-2 md:mb-0 md:w-1/2 md:justify-end md:pr-8">
-                                        <h4 class="font-medium text-[rgb(0,80,151)] order-2 md:order-1">2024/1</h4>
-                                    </div>
-                                    <div class="relative flex items-center">
-                                        <div class="absolute w-6 h-6 rounded-full bg-[rgb(0,80,151)] border-4 border-white z-10 left-4 md:left-0 transform md:-translate-x-1/2"></div>
-                                        <div class="pl-10 md:pl-6 md:w-1/2">
-                                            <p class="text-gray-700">嘗試語音合成與雲端圖影生成 AI</p>
+                                    
+                                    <!-- 2024/1 -->
+                                    <div class="flex flex-row md:flex-col items-start md:items-center md:w-1/6">
+                                        <div class="relative">
+                                            <div class="w-6 h-6 rounded-full bg-[rgb(0,80,151)] border-4 border-white z-10 md:mb-3"></div>
+                                            <!-- 小螢幕垂直線 -->
+                                            <div class="md:hidden absolute h-full w-1 bg-[rgb(0,144,212)] left-3 top-6 bottom-0 rounded-full"></div>
+                                        </div>
+                                        <div class="ml-4 md:ml-0 md:text-center">
+                                            <h4 class="font-medium text-[rgb(0,80,151)] mb-1">2024/1</h4>
+                                            <p class="text-gray-700 text-sm">嘗試語音合成與雲端圖影生成 AI</p>
                                         </div>
                                     </div>
-                                </div>
-                                
-                                <!-- 2024/3 -->
-                                <div class="flex flex-col md:flex-row md:items-center">
-                                    <div class="flex items-center mb-2 md:mb-0 md:w-1/2 md:justify-end md:pr-8">
-                                        <h4 class="font-medium text-[rgb(0,80,151)] order-2 md:order-1">2024/3</h4>
-                                    </div>
-                                    <div class="relative flex items-center">
-                                        <div class="absolute w-6 h-6 rounded-full bg-[rgb(0,80,151)] border-4 border-white z-10 left-4 md:left-0 transform md:-translate-x-1/2"></div>
-                                        <div class="pl-10 md:pl-6 md:w-1/2">
-                                            <p class="text-gray-700">開始使用 Claude</p>
+                                    
+                                    <!-- 2024/3 -->
+                                    <div class="flex flex-row md:flex-col items-start md:items-center md:w-1/6">
+                                        <div class="relative">
+                                            <div class="w-6 h-6 rounded-full bg-[rgb(0,80,151)] border-4 border-white z-10 md:mb-3"></div>
+                                            <!-- 小螢幕垂直線 -->
+                                            <div class="md:hidden absolute h-full w-1 bg-[rgb(0,144,212)] left-3 top-6 bottom-0 rounded-full"></div>
+                                        </div>
+                                        <div class="ml-4 md:ml-0 md:text-center">
+                                            <h4 class="font-medium text-[rgb(0,80,151)] mb-1">2024/3</h4>
+                                            <p class="text-gray-700 text-sm">開始使用 Claude</p>
                                         </div>
                                     </div>
-                                </div>
-                                
-                                <!-- 2024/6 -->
-                                <div class="flex flex-col md:flex-row md:items-center">
-                                    <div class="flex items-center mb-2 md:mb-0 md:w-1/2 md:justify-end md:pr-8">
-                                        <h4 class="font-medium text-[rgb(0,80,151)] order-2 md:order-1">2024/6</h4>
-                                    </div>
-                                    <div class="relative flex items-center">
-                                        <div class="absolute w-6 h-6 rounded-full bg-[rgb(0,80,151)] border-4 border-white z-10 left-4 md:left-0 transform md:-translate-x-1/2"></div>
-                                        <div class="pl-10 md:pl-6 md:w-1/2">
-                                            <p class="text-gray-700">開始使用 Perplexity</p>
+                                    
+                                    <!-- 2024/6 -->
+                                    <div class="flex flex-row md:flex-col items-start md:items-center md:w-1/6">
+                                        <div class="relative">
+                                            <div class="w-6 h-6 rounded-full bg-[rgb(0,80,151)] border-4 border-white z-10 md:mb-3"></div>
+                                            <!-- 小螢幕垂直線 -->
+                                            <div class="md:hidden absolute h-full w-1 bg-[rgb(0,144,212)] left-3 top-6 bottom-0 rounded-full"></div>
+                                        </div>
+                                        <div class="ml-4 md:ml-0 md:text-center">
+                                            <h4 class="font-medium text-[rgb(0,80,151)] mb-1">2024/6</h4>
+                                            <p class="text-gray-700 text-sm">開始使用 Perplexity</p>
                                         </div>
                                     </div>
-                                </div>
-                                
-                                <!-- 2024/10 -->
-                                <div class="flex flex-col md:flex-row md:items-center">
-                                    <div class="flex items-center mb-2 md:mb-0 md:w-1/2 md:justify-end md:pr-8">
-                                        <h4 class="font-medium text-[rgb(0,80,151)] order-2 md:order-1">2024/10</h4>
-                                    </div>
-                                    <div class="relative flex items-center">
-                                        <div class="absolute w-6 h-6 rounded-full bg-[rgb(0,80,151)] border-4 border-white z-10 left-4 md:left-0 transform md:-translate-x-1/2"></div>
-                                        <div class="pl-10 md:pl-6 md:w-1/2">
-                                            <p class="text-gray-700">嘗試地端的圖影生成 AI</p>
+                                    
+                                    <!-- 2024/10 -->
+                                    <div class="flex flex-row md:flex-col items-start md:items-center md:w-1/6">
+                                        <div class="relative">
+                                            <div class="w-6 h-6 rounded-full bg-[rgb(0,80,151)] border-4 border-white z-10 md:mb-3"></div>
+                                            <!-- 小螢幕垂直線 -->
+                                            <div class="md:hidden absolute h-full w-1 bg-[rgb(0,144,212)] left-3 top-6 bottom-0 rounded-full"></div>
+                                        </div>
+                                        <div class="ml-4 md:ml-0 md:text-center">
+                                            <h4 class="font-medium text-[rgb(0,80,151)] mb-1">2024/10</h4>
+                                            <p class="text-gray-700 text-sm">嘗試地端的圖影生成 AI</p>
                                         </div>
                                     </div>
-                                </div>
-                                
-                                <!-- 2024/12 -->
-                                <div class="flex flex-col md:flex-row md:items-center">
-                                    <div class="flex items-center mb-2 md:mb-0 md:w-1/2 md:justify-end md:pr-8">
-                                        <h4 class="font-medium text-[rgb(0,80,151)] order-2 md:order-1">2024/12</h4>
-                                    </div>
-                                    <div class="relative flex items-center">
-                                        <div class="absolute w-6 h-6 rounded-full bg-[rgb(0,80,151)] border-4 border-white z-10 left-4 md:left-0 transform md:-translate-x-1/2"></div>
-                                        <div class="pl-10 md:pl-6 md:w-1/2">
-                                            <p class="text-gray-700">開始使用 AI IDE</p>
+                                    
+                                    <!-- 2024/12 -->
+                                    <div class="flex flex-row md:flex-col items-start md:items-center md:w-1/6">
+                                        <div class="relative">
+                                            <div class="w-6 h-6 rounded-full bg-[rgb(0,80,151)] border-4 border-white z-10 md:mb-3"></div>
+                                            <!-- 最後一個不需要垂直線 -->
+                                        </div>
+                                        <div class="ml-4 md:ml-0 md:text-center">
+                                            <h4 class="font-medium text-[rgb(0,80,151)] mb-1">2024/12</h4>
+                                            <p class="text-gray-700 text-sm">開始使用 AI IDE</p>
                                         </div>
                                     </div>
                                 </div>
