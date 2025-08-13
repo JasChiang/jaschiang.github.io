@@ -1,0 +1,267 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>我的在地星空 · GitHub Pages</title>
+  <meta name="description" content="根據瀏覽者地點與時間顯示星空，支援時間播放與手動設定經緯度。" />
+  <style>
+    :root { --bg:#0b1020; --fg:#e6e9ef; --muted:#9aa0a6; --accent:#7aa2f7; }
+    html, body { margin:0; height:100%; background:var(--bg); color:var(--fg); font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans TC", "Helvetica Neue", Arial, "PingFang TC", "Microsoft JhengHei", sans-serif; }
+    header { padding:1rem 1.25rem; display:flex; flex-wrap:wrap; gap:.75rem; align-items:center; justify-content:space-between; }
+    h1 { font-size:1.1rem; margin:0; letter-spacing:.02em; }
+    a, button, input, select { font:inherit; color:inherit; }
+    .controls { display:flex; flex-wrap:wrap; gap:.5rem .75rem; align-items:center; }
+    .group { display:flex; gap:.4rem; align-items:center; }
+    .group label { color:var(--muted); font-size:.92rem; }
+    input[type="number"] { width:7ch; padding:.35rem .5rem; border:1px solid #1f2438; border-radius:.4rem; background:#0f1530; color:var(--fg); }
+    input[type="range"] { width:220px; }
+    button { padding:.45rem .7rem; border:1px solid #1f2438; background:#101633; border-radius:.5rem; cursor:pointer; }
+    button:hover { border-color:#2a3355; }
+    .pill { background:#101633; border-radius:999px; padding:.25rem .6rem; color:var(--muted); border:1px solid #1f2438; }
+    #sky { width:100%; height:calc(100% - 148px); }
+    footer { color:var(--muted); font-size:.85rem; padding:.5rem 1.25rem 1rem; display:flex; justify-content:space-between; gap:.75rem; flex-wrap:wrap; }
+    .links a { color:var(--muted); text-decoration:none; border-bottom:1px dotted #2d3350; }
+    .toggle { display:flex; gap:.5rem; align-items:center; }
+    .banner { position:fixed; inset:auto 1rem 1rem 1rem; background:#101633; border:1px solid #27305a; border-radius:.75rem; padding:.75rem 1rem; color:#e6e9ef; box-shadow:0 10px 30px rgba(0,0,0,.3); display:none; white-space:pre-wrap; }
+    .banner.error { display:block; }
+    .testlog { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; font-size:.85rem; line-height:1.35; white-space:pre-wrap; background:#0f1530; border:1px solid #1f2438; border-radius:.5rem; padding:.5rem .75rem; max-height:260px; overflow:auto; }
+    details summary { cursor:pointer; }
+    noscript { display:block; margin:1rem; padding:1rem; background:#3b1d1d; border:1px solid #6a2a2a; border-radius:.5rem; color:#ffecec; }
+  </style>
+
+  <!-- ✅ 僅載入本地 /vendor 檔案；不連任何 CDN，最相容本機 file:// 開啟 -->
+  <script src="./vendor/d3.min.js"></script>
+  <script src="./vendor/celestial.min.js"></script>
+</head>
+<body>
+  <noscript>此網站需要 JavaScript 才能運作。請啟用後重新載入。</noscript>
+  <header>
+    <h1>我的在地星空</h1>
+    <div class="controls">
+      <span class="pill" id="locStatus">初始化中…</span>
+      <div class="group">
+        <label>緯度</label><input id="lat" type="number" step="0.0001" placeholder="25.033" />
+        <label>經度</label><input id="lng" type="number" step="0.0001" placeholder="121.565" />
+        <button id="applyLL">套用</button>
+        <button id="useGPS">使用定位</button>
+      </div>
+      <div class="group">
+        <label>時間</label>
+        <input id="timeSlider" type="range" min="-12" max="12" value="0" step="0.25" />
+        <span class="pill" id="timeLabel">現在</span>
+        <button id="play">▶︎ 播放</button>
+        <button id="now">回到現在</button>
+      </div>
+      <div class="toggle">
+        <label><input id="toggleConst" type="checkbox" checked /> 星座線</label>
+        <label><input id="toggleNames" type="checkbox" /> 星座名</label>
+        <label><input id="toggleMW" type="checkbox" checked /> 銀河</label>
+        <label><input id="toggleGraticule" type="checkbox" /> 經緯網</label>
+      </div>
+    </div>
+  </header>
+
+  <div id="sky"></div>
+
+  <footer>
+    <div>地點：
+      <span id="locText">—</span>｜時刻：
+      <span id="utcText">—</span>（自動依所在時區）
+    </div>
+    <div class="links">
+      資料與繪圖：d3‑celestial ｜
+      <details style="display:inline-block">
+        <summary>自我測試</summary>
+        <div class="testlog" id="testLog">尚未執行測試。</div>
+        <button id="runTests">執行自我測試</button>
+      </details>
+    </div>
+  </footer>
+
+  <div class="banner" id="errorBanner"></div>
+
+  <script>
+  // ====== 啟動（純本地依賴版） ======
+  (function boot() {
+    const skyNode = document.getElementById('sky');
+    const banner = document.getElementById('errorBanner');
+    const setStatus = (t) => { document.getElementById('locStatus').textContent = String(t); };
+    const showError = (msg) => { banner.textContent = String(msg); banner.classList.add('error'); console.error(msg); };
+
+    // 1) 檢查本地套件是否存在
+    if (!window.d3 || !window.Celestial) {
+      const baseDir = location.href.replace(/[^\/]*$/, '');
+      const tried = [
+        new URL('./vendor/d3.min.js', baseDir).href,
+        new URL('./vendor/celestial.min.js', baseDir).href
+      ].join('\n');
+      showError([
+        '無法載入必要套件（僅使用本地 /vendor，不連外部 CDN）。',
+        '',
+        '請確認這兩個檔案存在且檔名大小寫正確：',
+        '  /vendor/d3.min.js',
+        '  /vendor/celestial.min.js',
+        '',
+        '目前頁面位置：',
+        '  ' + location.href,
+        '預期嘗試路徑：',
+        '  ' + tried,
+        '',
+        '若仍不行，請改用本機伺服器在專案根目錄啟動：',
+        '  Python:  python3 -m http.server 8080',
+        '  Node:    npx http-server -p 8080'
+      ].join('\n'));
+      setStatus('等待本地套件…');
+      return;
+    }
+
+    // 2) 初始化 d3-celestial
+    setStatus('初始化中…');
+
+    const cfg = {
+      width: skyNode.clientWidth,
+      height: skyNode.clientHeight,
+      projection: 'airy',
+      transform: 'equatorial',
+      center: [0, 0, 0],
+      location: null,
+      form: false,
+      datapath: 'https://ofrohn.github.io/data/', // 若你也要離線，可改成本地鏡像
+      stars: { show: true, size: 3, exponent: -0.25, data: 'stars.6.json', designation: false, propername: true, namesType: 'name' },
+      dsos: { show: false },
+      constellations: { names: false, namesType: 'name', lines: true, lineStyle: { stroke: '#668', width: 0.6, opacity: 0.6 }, bounds: false },
+      mw: { show: true, style: { fill: '#223', opacity: 0.7 } },
+      lines: { graticule: { show: false } },
+      background: { fill: '#000', stroke: '#000', opacity: 1 },
+      horizon: { show: true }
+    };
+
+    try {
+      Celestial.display(cfg);
+    } catch (e) {
+      showError('初始化 Celestial 失敗：' + (e && e.message ? e.message : e));
+      return;
+    }
+
+    let playTimer = null;
+    let baseDate = new Date();
+    let hourOffset = 0;
+    let observer = { latitude: 0, longitude: 0 };
+
+    function updateTimeLabel() {
+      const label = hourOffset === 0 ? '現在' : (hourOffset > 0 ? `+${hourOffset.toFixed(2)} 小時` : `${hourOffset.toFixed(2)} 小時`);
+      document.getElementById('timeLabel').textContent = label;
+    }
+    function effectiveDate() {
+      const d = new Date(baseDate);
+      d.setMinutes(d.getMinutes() + Math.round(hourOffset * 60));
+      return d;
+    }
+    function render() {
+      const when = effectiveDate();
+      document.getElementById('utcText').textContent = when.toLocaleString(undefined, { timeZoneName: 'short' });
+      document.getElementById('locText').textContent = `${observer.latitude.toFixed(4)}, ${observer.longitude.toFixed(4)}`;
+      Celestial.observe({ latitude: observer.latitude, longitude: observer.longitude, elevation: 0 });
+      Celestial.date(when);
+      Celestial.redraw();
+    }
+
+    // ---- UI 綁定
+    document.getElementById('toggleConst').addEventListener('change', (e) => { Celestial.constellations({ lines: e.target.checked }); Celestial.redraw(); });
+    document.getElementById('toggleNames').addEventListener('change', (e) => { Celestial.constellations({ names: e.target.checked }); Celestial.redraw(); });
+    document.getElementById('toggleMW').addEventListener('change', (e) => { Celestial.milkyway({ show: e.target.checked }); Celestial.redraw(); });
+    document.getElementById('toggleGraticule').addEventListener('change', (e) => { Celestial.grid({ graticule: { show: e.target.checked } }); Celestial.redraw(); });
+
+    document.getElementById('timeSlider').addEventListener('input', (e) => { hourOffset = parseFloat(e.target.value); updateTimeLabel(); render(); });
+
+    document.getElementById('play').addEventListener('click', () => {
+      if (playTimer) {
+        clearInterval(playTimer); playTimer = null;
+        document.getElementById('play').textContent = '▶︎ 播放';
+      } else {
+        playTimer = setInterval(() => {
+          hourOffset = Math.min(12, Math.max(-12, hourOffset + (10/60)));
+          document.getElementById('timeSlider').value = hourOffset;
+          updateTimeLabel(); render();
+          if (hourOffset >= 12) hourOffset = -12;
+        }, 250);
+        document.getElementById('play').textContent = '⏸ 暫停';
+      }
+    });
+
+    document.getElementById('now').addEventListener('click', () => {
+      baseDate = new Date(); hourOffset = 0;
+      document.getElementById('timeSlider').value = 0; updateTimeLabel(); render();
+    });
+
+    document.getElementById('applyLL').addEventListener('click', () => {
+      const lat = parseFloat(document.getElementById('lat').value);
+      const lng = parseFloat(document.getElementById('lng').value);
+      if (Number.isFinite(lat) && Number.isFinite(lng) && lat >= -90 && lat <= 90 && lng >= -180 && lng <= 180) {
+        observer = { latitude: lat, longitude: lng };
+        document.getElementById('locStatus').textContent = '已套用手動地點';
+        render();
+      } else {
+        document.getElementById('locStatus').textContent = '經緯度格式不正確';
+      }
+    });
+
+    document.getElementById('useGPS').addEventListener('click', () => { getLocation(true); });
+
+    function getLocation(force=false) {
+      if (!navigator.geolocation) { document.getElementById('locStatus').textContent = '此瀏覽器不支援定位，請手動輸入經緯度。'; return; }
+      document.getElementById('locStatus').textContent = force ? '重新定位中…' : '定位中…';
+      navigator.geolocation.getCurrentPosition(
+        (pos) => {
+          observer.latitude = pos.coords.latitude; observer.longitude = pos.coords.longitude;
+          document.getElementById('lat').value = observer.latitude.toFixed(4);
+          document.getElementById('lng').value = observer.longitude.toFixed(4);
+          document.getElementById('locStatus').textContent = '已取得定位';
+          render();
+        },
+        (err) => {
+          console.warn(err);
+          document.getElementById('locStatus').textContent = '定位失敗，請手動輸入經緯度。';
+          if (!Number.isFinite(observer.latitude) || !Number.isFinite(observer.longitude)) {
+            observer = { latitude: 25.0330, longitude: 121.5654 }; // 預設台北
+            document.getElementById('lat').value = observer.latitude.toFixed(4);
+            document.getElementById('lng').value = observer.longitude.toFixed(4);
+            render();
+          }
+        },
+        { enableHighAccuracy: false, timeout: 8000, maximumAge: 600000 }
+      );
+    }
+
+    // ====== 自我測試（測試案例） ======
+    const testLog = document.getElementById('testLog');
+    document.getElementById('runTests').addEventListener('click', () => {
+      const logs = [];
+      const ok = (name) => logs.push(`✅ ${name}`);
+      const fail = (name, e) => logs.push(`❌ ${name} → ${e && e.message ? e.message : e}`);
+      try { window.d3 ? ok('d3 存在') : fail('d3 存在', 'd3 未載入'); } catch(e) { fail('d3 存在', e); }
+      try { window.Celestial ? ok('Celestial 存在') : fail('Celestial 存在', 'Celestial 未載入'); } catch(e) { fail('Celestial 存在', e); }
+      try { typeof Celestial.display === 'function' ? ok('Celestial.display 可用') : fail('Celestial.display 可用', '不是 function'); } catch(e) { fail('Celestial.display 可用', e); }
+      try { Celestial.redraw(); ok('Celestial.redraw 執行'); } catch(e) { fail('Celestial.redraw 執行', e); }
+      try { Celestial.constellations({ lines: true }); Celestial.redraw(); ok('切換星座線'); } catch(e) { fail('切換星座線', e); }
+      try { Celestial.grid({ graticule: { show: true } }); Celestial.redraw(); Celestial.grid({ graticule: { show: false } }); ok('切換經緯網'); } catch(e) { fail('切換經緯網', e); }
+      try { window.dispatchEvent(new Event('resize')); ok('觸發 resize'); } catch(e) { fail('觸發 resize', e); }
+      // 驗證錯誤字串不含非法分行符（避免 SyntaxError）
+      try { const msg = '測試\nA\nB\nC\n最後錯誤：X'; if (/\u2028|\u2029/.test(msg)) throw new Error('含 U+2028/U+2029'); ok('錯誤訊息不含非法換行符'); } catch(e) { fail('錯誤訊息不含非法換行符', e); }
+      // textContent 寫入特殊字元
+      try { const el = document.getElementById('locStatus'); const prev = el.textContent; el.textContent = '測試✓🚀 – 正常'; if (!el.textContent.includes('🚀')) throw new Error('Emoji 未正確寫入'); el.textContent = prev; ok('textContent 寫入特殊字元'); } catch(e) { fail('textContent 寫入特殊字元', e); }
+      testLog.textContent = logs.join('\n');
+    });
+
+    updateTimeLabel();
+    getLocation(false);
+    window.addEventListener('resize', () => {
+      Celestial.resize({ width: skyNode.clientWidth, height: skyNode.clientHeight });
+      Celestial.redraw();
+    });
+    setStatus('已載入，正在定位…');
+  })();
+  </script>
+</body>
+</html>
