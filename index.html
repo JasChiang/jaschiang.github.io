@@ -97,8 +97,30 @@
         color: var(--darkgray);
         font-size: 1.05rem;
         line-height: 1.65;
-        margin: 0 0 2.5rem 0;
+        margin: 0 0 1.5rem 0;
         max-width: 560px;
+      }
+
+      .meta-note {
+        margin: 0 0 2.5rem 0;
+        padding: 1rem 1.1rem;
+        border: 1px solid var(--lightgray);
+        border-radius: 6px;
+        font-size: 0.9rem;
+        line-height: 1.7;
+        color: var(--darkgray);
+      }
+
+      .meta-note p {
+        margin: 0;
+      }
+
+      .meta-note p + p {
+        margin-top: 0.6rem;
+      }
+
+      .meta-note strong {
+        color: var(--dark);
       }
 
       .links {
@@ -226,8 +248,18 @@
     <main>
       <h1>Jas Chiang</h1>
       <p class="lede">
-        行銷實踐者與 vibe coder。我用 AI 工具加速思考、實驗與內容產出，把日常工作裡好奇的事拆解成可重現的流程，順便寫下來。
+        個人筆記。工具開發紀錄、實測心得、流程整理。
       </p>
+
+      <div class="meta-note">
+        <p><strong>關於這裡的內容</strong></p>
+        <p>
+          多數文章是我把工作上的筆記、簡報或社群發文交給 <strong>Claude</strong> 協助結構化、再由我人工審稿後發布。也有一部分是 <strong>Claude Code</strong> 直接根據 repo / session 紀錄整理的開發筆記草稿，<strong>內容未經我人工校對</strong>，可能有理解錯誤或事實落差。
+        </p>
+        <p>
+          整體當作我工作過程的紀錄看就好，不是定稿、不是教學文。
+        </p>
+      </div>
 
       <nav class="links">
         <a href="/blog/" class="primary">
