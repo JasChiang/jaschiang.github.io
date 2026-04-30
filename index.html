@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Jas Chiang</title>
+    <meta name="description" content="Jas Chiang — 行銷實踐者與 vibe coder。我用 AI 工具加速思考、實驗與內容產出。" />
+    <meta property="og:title" content="Jas Chiang" />
+    <meta
+      property="og:description"
+      content="Jas Chiang — 行銷實踐者與 vibe coder。我用 AI 工具加速思考、實驗與內容產出。"
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://jaschiang.github.io/" />
+    <link
+      rel="preconnect"
+      href="https://fonts.googleapis.com"
+    />
+    <link
+      rel="preconnect"
+      href="https://fonts.gstatic.com"
+      crossorigin
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;700&family=Source+Sans+Pro:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --light: #faf8f8;
+        --lightgray: #e5e5e5;
+        --gray: #b8b8b8;
+        --darkgray: #4e4e4e;
+        --dark: #2b2b2b;
+        --secondary: #284b63;
+        --tertiary: #84a59d;
+      }
+
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --light: #161618;
+          --lightgray: #393639;
+          --gray: #646464;
+          --darkgray: #d4d4d4;
+          --dark: #ebebec;
+          --secondary: #7b97aa;
+          --tertiary: #84a59d;
+        }
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        background-color: var(--light);
+        color: var(--darkgray);
+        font-family: "Source Sans Pro", -apple-system, BlinkMacSystemFont,
+          "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+
+      main {
+        max-width: 720px;
+        margin: 0 auto;
+        padding: 6rem 1.5rem 4rem;
+      }
+
+      h1 {
+        font-family: "Schibsted Grotesk", sans-serif;
+        color: var(--dark);
+        font-size: 2.4rem;
+        line-height: 1.15;
+        margin: 0 0 0.5rem 0;
+        letter-spacing: -0.01em;
+      }
+
+      .lede {
+        color: var(--darkgray);
+        font-size: 1.05rem;
+        line-height: 1.65;
+        margin: 0 0 2.5rem 0;
+        max-width: 560px;
+      }
+
+      .links {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 0.75rem;
+        margin: 0 0 2.5rem 0;
+      }
+
+      @media (min-width: 600px) {
+        .links {
+          grid-template-columns: 1fr 1fr;
+        }
+
+        .links .primary {
+          grid-column: 1 / -1;
+        }
+      }
+
+      .links a {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        padding: 1rem 1.25rem;
+        background-color: var(--light);
+        border: 1px solid var(--lightgray);
+        border-radius: 10px;
+        color: var(--dark);
+        text-decoration: none;
+        transition: transform 0.15s ease, box-shadow 0.15s ease,
+          border-color 0.15s ease;
+      }
+
+      .links a:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
+        border-color: var(--secondary);
+      }
+
+      .links a.primary {
+        background-color: var(--secondary);
+        border-color: var(--secondary);
+        color: var(--light);
+      }
+
+      .links a.primary:hover {
+        background-color: var(--dark);
+        border-color: var(--dark);
+      }
+
+      .links .label {
+        display: flex;
+        flex-direction: column;
+        gap: 0.15rem;
+      }
+
+      .links .label strong {
+        font-size: 1.05rem;
+        font-weight: 600;
+      }
+
+      .links .label span {
+        font-size: 0.88rem;
+        opacity: 0.75;
+      }
+
+      .links .arrow {
+        font-size: 1.2rem;
+        opacity: 0.6;
+        flex-shrink: 0;
+      }
+
+      footer {
+        margin-top: 2.5rem;
+        padding-top: 1.5rem;
+        border-top: 1px solid var(--lightgray);
+        font-size: 0.85rem;
+        opacity: 0.6;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>Jas Chiang</h1>
+      <p class="lede">
+        行銷實踐者與 vibe coder。我用 AI 工具加速思考、實驗與內容產出，把日常工作裡好奇的事拆解成可重現的流程，順便寫下來。
+      </p>
+
+      <nav class="links">
+        <a href="/blog/" class="primary">
+          <span class="label">
+            <strong>Jas 的筆記</strong>
+            <span>關於 AI 工具、vibe coding、行銷實踐的紀錄</span>
+          </span>
+          <span class="arrow">→</span>
+        </a>
+        <a href="https://github.com/JasChiang">
+          <span class="label">
+            <strong>GitHub</strong>
+            <span>@JasChiang</span>
+          </span>
+          <span class="arrow">↗</span>
+        </a>
+        <a href="mailto:jaschiang.jc@gmail.com">
+          <span class="label">
+            <strong>Email</strong>
+            <span>jaschiang.jc@gmail.com</span>
+          </span>
+          <span class="arrow">↗</span>
+        </a>
+      </nav>
+
+      <footer>© Jas Chiang</footer>
+    </main>
+  </body>
+</html>
