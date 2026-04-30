@@ -11,7 +11,22 @@
       content="Jas Chiang — 行銷實踐者與 vibe coder。我用 AI 工具加速思考、實驗與內容產出。"
     />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://jaschiang.github.io/" />
+    <meta property="og:url" content="https://jasboughtit.com/" />
+    <meta property="og:image" content="https://jasboughtit.com/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image" content="https://jasboughtit.com/og-image.png" />
+    <script>
+      (function () {
+        try {
+          var stored = localStorage.getItem("theme");
+          var systemDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+          var theme = stored || (systemDark ? "dark" : "light");
+          document.documentElement.setAttribute("data-theme", theme);
+        } catch (e) {}
+      })();
+    </script>
     <link
       rel="preconnect"
       href="https://fonts.googleapis.com"
@@ -26,7 +41,8 @@
       rel="stylesheet"
     />
     <style>
-      :root {
+      :root,
+      :root[data-theme="light"] {
         --light: #faf8f8;
         --lightgray: #e5e5e5;
         --gray: #b8b8b8;
@@ -36,16 +52,14 @@
         --tertiary: #84a59d;
       }
 
-      @media (prefers-color-scheme: dark) {
-        :root {
-          --light: #161618;
-          --lightgray: #393639;
-          --gray: #646464;
-          --darkgray: #d4d4d4;
-          --dark: #ebebec;
-          --secondary: #7b97aa;
-          --tertiary: #84a59d;
-        }
+      :root[data-theme="dark"] {
+        --light: #161618;
+        --lightgray: #393639;
+        --gray: #646464;
+        --darkgray: #d4d4d4;
+        --dark: #ebebec;
+        --secondary: #7b97aa;
+        --tertiary: #84a59d;
       }
 
       * {
@@ -165,9 +179,50 @@
         font-size: 0.85rem;
         opacity: 0.6;
       }
+
+      .theme-toggle {
+        position: fixed;
+        top: 1rem;
+        right: 1rem;
+        width: 38px;
+        height: 38px;
+        padding: 0;
+        background: var(--light);
+        border: 1px solid var(--lightgray);
+        border-radius: 8px;
+        color: var(--darkgray);
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: border-color 0.15s ease, background-color 0.15s ease;
+      }
+
+      .theme-toggle:hover {
+        border-color: var(--secondary);
+      }
+
+      .theme-toggle svg {
+        width: 18px;
+        height: 18px;
+        stroke: currentColor;
+        fill: none;
+        stroke-width: 2;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+
+      :root[data-theme="dark"] .theme-toggle .icon-moon,
+      :root[data-theme="light"] .theme-toggle .icon-sun {
+        display: none;
+      }
     </style>
   </head>
   <body>
+    <button class="theme-toggle" id="theme-toggle" aria-label="切換主題">
+      <svg class="icon-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><line x1="12" y1="2" x2="12" y2="5"/><line x1="12" y1="19" x2="12" y2="22"/><line x1="2" y1="12" x2="5" y2="12"/><line x1="19" y1="12" x2="22" y2="12"/><line x1="4.5" y1="4.5" x2="6.5" y2="6.5"/><line x1="17.5" y1="17.5" x2="19.5" y2="19.5"/><line x1="4.5" y1="19.5" x2="6.5" y2="17.5"/><line x1="17.5" y1="6.5" x2="19.5" y2="4.5"/></svg>
+      <svg class="icon-moon" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    </button>
     <main>
       <h1>Jas Chiang</h1>
       <p class="lede">
@@ -200,5 +255,13 @@
 
       <footer>© Jas Chiang</footer>
     </main>
+    <script>
+      document.getElementById("theme-toggle").addEventListener("click", function () {
+        var current = document.documentElement.getAttribute("data-theme");
+        var next = current === "dark" ? "light" : "dark";
+        document.documentElement.setAttribute("data-theme", next);
+        try { localStorage.setItem("theme", next); } catch (e) {}
+      });
+    </script>
   </body>
 </html>
