@@ -736,32 +736,30 @@
         }
 
         summary.batch-summary {
-          align-items: flex-start;
-          gap: 0.6rem;
-          padding: 1rem 0.5rem;
-          flex-wrap: wrap;
-        }
-
-        .batch-meta {
-          margin-left: 0;
-          text-align: left;
+          display: block;
+          position: relative;
+          padding: 0.95rem 0.5rem 0.95rem 2.5rem;
+          margin: 0;
         }
 
         summary.batch-summary::before {
-          margin-top: 0.1rem;
-          flex: 0 0 auto;
+          position: absolute;
+          left: 0.4rem;
+          top: 0.95rem;
+          margin: 0;
         }
 
         summary.batch-summary .batch-title {
-          flex: 1 1 0;
-          min-width: 0;
+          display: block;
           line-height: 1.4;
         }
 
         summary.batch-summary .batch-meta {
-          flex: 1 0 100%;
-          margin-top: 0.4rem;
-          padding-left: 2.25rem;
+          display: block;
+          margin: 0.35rem 0 0 0;
+          margin-left: 0;
+          padding-left: 0;
+          text-align: left;
         }
 
         .spec-list dl {
