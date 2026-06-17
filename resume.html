@@ -472,7 +472,7 @@
         list-style: none;
         cursor: pointer;
         display: flex;
-        align-items: center;
+        align-items: flex-start;
         gap: 0.65rem;
         padding: 1rem 0.6rem;
         margin: 0 -0.6rem;
@@ -495,7 +495,21 @@
         color: var(--secondary);
         font-size: 1.25rem;
         line-height: 1.15;
+        margin-top: 0.1rem;
         transition: transform 0.15s ease;
+      }
+
+      .batch-text {
+        display: flex;
+        flex-direction: column;
+        gap: 0.25rem;
+        min-width: 0;
+      }
+
+      .batch-sub {
+        font-size: 0.86rem;
+        line-height: 1.45;
+        color: var(--muted);
       }
 
       .section-hint {
@@ -1238,7 +1252,7 @@
 
         <!-- ── 產品教學內容系列（非 AI，腳本＋動畫／攝影） ── -->
         <details class="video-batch">
-          <summary class="batch-summary"><span class="batch-title">產品教學內容系列</span><span class="batch-meta">企劃＋腳本・逾 350 支</span></summary>
+          <summary class="batch-summary"><span class="batch-text"><span class="batch-title">產品教學內容系列</span><span class="batch-sub">我企劃並負責腳本的 Apple、Samsung 與科技科普教學影片系列</span></span></summary>
           <p class="batch-intro">
             長期企劃與製作累計逾 350 支產品教學與科技科普影片，包含 Apple《神來點蘋》、Samsung《星事神最懂》與《秒懂潮科技》。
             我負責主題規劃與腳本，與動畫師或攝影師合作，把 3C 功能與科技知識轉成容易理解的影音內容。
@@ -1278,7 +1292,7 @@
 
         <!-- ── 第一批：吉祥物社群關懷影片 ── -->
         <details class="video-batch">
-          <summary class="batch-summary"><span class="batch-title">吉祥物社群關懷影片</span><span class="batch-meta">時事節慶・AI 生成・5 支</span></summary>
+          <summary class="batch-summary"><span class="batch-text"><span class="batch-title">吉祥物社群關懷影片</span><span class="batch-sub">配合地震、寒流、節慶等時事，用吉祥物向社群傳遞關懷的短影音</span></span></summary>
           <p class="batch-intro">
             以品牌吉祥物為主角，配合地震、寒流、開工、走春、颱風等時事與節慶推出的社群關懷短影音。
             這批作品重點在於用低成本快速產出多版素材，再挑選可用片段剪成社群內容。
@@ -1339,7 +1353,7 @@
 
         <!-- ── 第二批：AI 技術實驗（純程式碼合成影片）── -->
         <details class="video-batch">
-          <summary class="batch-summary"><span class="batch-title">AI 技術實驗：純程式碼合成影片</span><span class="batch-meta">Mac 教學・橫式＋直式</span></summary>
+          <summary class="batch-summary"><span class="batch-text"><span class="batch-title">AI 技術實驗：純程式碼合成影片</span><span class="batch-sub">不靠剪輯軟體、全程用 AI 與程式碼合成的 Mac 操作教學</span></span></summary>
           <p class="batch-intro">
             用 AI Agent 與網頁技術製作的影片實驗，從畫面、動畫、字幕到旁白都以程式化流程合成。
             同一支 Mac 操作教學輸出 16:9 與 9:16 兩種版本。
@@ -1374,7 +1388,7 @@
 
         <!-- ── 第三批：智慧家電推廣短影音 ── -->
         <details class="video-batch">
-          <summary class="batch-summary"><span class="batch-title">智慧家電推廣短影音</span><span class="batch-meta">LG／Samsung・AI 生成</span></summary>
+          <summary class="batch-summary"><span class="batch-text"><span class="batch-title">智慧家電推廣短影音</span><span class="batch-sub">LG、Samsung 智慧家電在零售門市的推廣短片</span></span></summary>
           <p class="batch-intro">
             LG、Samsung 智慧家電的零售通路推廣短影音。兩支共用同一條 AI 生成與 HyperFrames 合成管線，
             再依品牌敘事與鏡頭需求調整分鏡、角色和轉場。
@@ -1424,7 +1438,7 @@
 
         <!-- ── 第四批：手機健檢服務宣傳片 ── -->
         <details class="video-batch">
-          <summary class="batch-summary"><span class="batch-title">手機健檢服務宣傳片</span><span class="batch-meta">含 3D 門市動畫</span></summary>
+          <summary class="batch-summary"><span class="batch-text"><span class="batch-title">手機健檢服務宣傳片</span><span class="batch-sub">推廣門市手機健檢服務、結合 3D 門市場景的宣傳片</span></span></summary>
           <p class="batch-intro">
             為零售通路的手機健檢服務製作的宣傳片。3D 門市場景是用 Claude Code 生成 Three.js 場景、
             再以錄影功能錄出「進門市」的運鏡；搭配實際操作的手機健檢螢幕錄影，一起用 HyperFrames 合成製作。
@@ -1438,7 +1452,7 @@
 
         <!-- ── 第五批：Computex 攤位循環影片 ── -->
         <details class="video-batch">
-          <summary class="batch-summary"><span class="batch-title">Computex 攤位循環影片</span><span class="batch-meta">首尾動畫＋AI 配音</span></summary>
+          <summary class="batch-summary"><span class="batch-text"><span class="batch-title">Computex 攤位循環影片</span><span class="batch-sub">Computex 展場攤位循環播放的產品展示影片</span></span></summary>
           <p class="batch-intro">
             協助集團公司製作的 Computex 攤位循環播放影片。我負責首尾動畫、配音一致性與音量後處理，
             讓 IT 單位提供的中段螢幕錄影能包裝成完整展示影片。
