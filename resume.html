@@ -491,22 +491,11 @@
 
       summary.batch-summary::before {
         content: "▸";
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
         flex-shrink: 0;
-        width: 1.6rem;
-        height: 1.6rem;
-        border-radius: 50%;
-        background: var(--accent-soft);
-        border: 1px solid color-mix(in srgb, var(--lightgray), var(--secondary) 25%);
         color: var(--secondary);
-        font-size: 0.8rem;
-        transition: transform 0.15s ease, background 0.15s ease;
-      }
-
-      summary.batch-summary:hover::before {
-        background: color-mix(in srgb, var(--accent-soft), var(--secondary) 14%);
+        font-size: 1.25rem;
+        line-height: 1.15;
+        transition: transform 0.15s ease;
       }
 
       .section-hint {
@@ -738,14 +727,14 @@
         summary.batch-summary {
           display: block;
           position: relative;
-          padding: 0.95rem 0.5rem 0.95rem 2.5rem;
+          padding: 0.95rem 0.5rem 0.95rem 1.85rem;
           margin: 0;
         }
 
         summary.batch-summary::before {
           position: absolute;
-          left: 0.4rem;
-          top: 0.95rem;
+          left: 0.45rem;
+          top: 0.85rem;
           margin: 0;
         }
 
@@ -991,7 +980,7 @@
       <p class="eyebrow">履歷與作品集</p>
       <h1>Jas Chiang</h1>
       <p class="lede">
-        行銷從業人員，專長把生成式 AI 與自動化工具接成可營運的工作流，聚焦內容、影音與數據。
+        內容企劃／行銷從業人員，把生成式 AI 與自動化工具接成可營運的工作流，聚焦內容、影音與數據。
       </p>
       <div class="hero-points" aria-label="重點能力">
         <div class="hero-point">
@@ -1012,10 +1001,10 @@
       <section>
         <h2 class="block-title">關於我</h2>
         <p>
-          我把內容、影音、SEO／AEO、電商導購與數據分析，整理成可實際運作的 AI 工作流。
+          我是內容企劃／行銷從業人員，長期做產品教學與科技科普內容；近年把 AI 與自動化工具接進工作，從內容、影音到數據都串成可實際運作的工作流。
         </p>
         <p>
-          工作方式是先定義需求與驗收標準，再用 AI Agent 落地工具與素材；重點不是追求自動化本身，而是降低重複作業、提升判斷速度。
+          做法是先定義需求與驗收標準，再驅動 AI Agent 落地工具與素材（程式由 AI 產出，我負責拆問題與把關）；重點不是自動化本身，而是降低重複作業、提升判斷速度。
         </p>
       </section>
 
@@ -1030,7 +1019,7 @@
           </div>
           <ul>
             <li>企劃與執行累計逾 350 支產品教學與科技科普影片，涵蓋 Apple、Samsung 與《秒懂潮科技》等系列，其中單支最高觀看逾 17 萬。</li>
-            <li>協助經營神腦生活內容平台，將產品功能、科技知識與電商導購轉成可搜尋、可閱讀的內容。</li>
+            <li>協助經營神腦生活內容平台（累積數千篇文章、年瀏覽量達數十萬次級別），將產品功能、科技知識與電商導購轉成可搜尋、可閱讀的內容。</li>
             <li>把選題、產文、配圖、上架、導購追蹤與成效分析整理成 AI 輔助流程，降低重複手動作業。</li>
             <li>製作 AI 生成行銷影音，並建立 GA4、Search Console、YouTube Analytics 的對話式查詢工具。</li>
           </ul>
@@ -1254,6 +1243,11 @@
             長期企劃與製作累計逾 350 支產品教學與科技科普影片，包含 Apple《神來點蘋》、Samsung《星事神最懂》與《秒懂潮科技》。
             我負責主題規劃與腳本，與動畫師或攝影師合作，把 3C 功能與科技知識轉成容易理解的影音內容。
           </p>
+          <div class="ws-list">
+            <div class="ws"><strong>《神來點蘋》</strong>Apple 產品（iPhone、iPad、Mac、Apple Watch）的功能介紹與使用技巧。</div>
+            <div class="ws"><strong>《星事神最懂》</strong>Samsung Galaxy 手機與生態系的功能與操作教學。</div>
+            <div class="ws"><strong>《秒懂潮科技》</strong>把消費性科技名詞與原理講清楚的科普單元。</div>
+          </div>
           <div class="video-grid">
             <div class="video-wrap">
               <div class="video-frame">
