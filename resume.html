@@ -1,0 +1,1506 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>履歷與作品集 · Jas Chiang</title>
+    <meta name="description" content="Jas Chiang 的履歷與作品集，行銷 × AI 工具開發，自動化工作流、資料分析與內容生產。" />
+    <meta property="og:title" content="履歷與作品集 · Jas Chiang" />
+    <meta
+      property="og:description"
+      content="Jas Chiang 的履歷與作品集，行銷 × AI 工具開發，自動化工作流、資料分析與內容生產。"
+    />
+    <meta property="og:type" content="profile" />
+    <meta property="og:url" content="https://jasboughtit.com/resume.html" />
+    <meta property="og:image" content="https://jasboughtit.com/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image" content="https://jasboughtit.com/og-image.png" />
+    <script>
+      (function () {
+        try {
+          var stored = localStorage.getItem("theme");
+          var systemDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+          var theme = stored || (systemDark ? "dark" : "light");
+          document.documentElement.setAttribute("data-theme", theme);
+        } catch (e) {}
+      })();
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;700&family=Source+Sans+Pro:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root,
+      :root[data-theme="light"] {
+        --light: #faf8f8;
+        --lightgray: #e5e5e5;
+        --gray: #8d8d8d;
+        --muted: #6f6f6f;
+        --darkgray: #4e4e4e;
+        --dark: #2b2b2b;
+        --secondary: #284b63;
+        --tertiary: #84a59d;
+        --surface: #ffffff;
+        --surface-soft: #f5f2f1;
+        --accent-soft: #eef4f2;
+      }
+
+      :root[data-theme="dark"] {
+        --light: #161618;
+        --lightgray: #393639;
+        --gray: #9a9a9a;
+        --muted: #b6b6b6;
+        --darkgray: #d4d4d4;
+        --dark: #ebebec;
+        --secondary: #7b97aa;
+        --tertiary: #84a59d;
+        --surface: #1d1d20;
+        --surface-soft: #202024;
+        --accent-soft: #1f2a2a;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        overflow-x: hidden;
+        background-color: var(--light);
+        color: var(--darkgray);
+        font-family: "Source Sans Pro", -apple-system, BlinkMacSystemFont,
+          "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+
+      main {
+        max-width: 760px;
+        margin: 0 auto;
+        padding: 4rem 1.5rem 4rem;
+        overflow-wrap: break-word;
+      }
+
+      a.back {
+        display: inline-block;
+        margin-bottom: 2rem;
+        font-size: 0.9rem;
+        color: var(--gray);
+        text-decoration: none;
+      }
+
+      a.back:hover {
+        color: var(--secondary);
+      }
+
+      h1 {
+        font-family: "Schibsted Grotesk", sans-serif;
+        color: var(--dark);
+        font-size: 2.35rem;
+        line-height: 1.15;
+        margin: 0 0 0.4rem 0;
+        letter-spacing: -0.01em;
+      }
+
+      .eyebrow {
+        font-family: "Schibsted Grotesk", sans-serif;
+        font-size: 0.82rem;
+        font-weight: 600;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--secondary);
+        margin: 0 0 0.45rem 0;
+      }
+
+      .lede {
+        color: var(--darkgray);
+        font-size: 1.05rem;
+        line-height: 1.65;
+        margin: 0 0 1.25rem 0;
+        max-width: 580px;
+      }
+
+      .hero-points {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 0.75rem;
+        margin: 0 0 2.75rem 0;
+      }
+
+      .hero-point {
+        border-top: 1px solid var(--lightgray);
+        padding-top: 0.75rem;
+      }
+
+      .hero-point strong {
+        display: block;
+        font-family: "Schibsted Grotesk", sans-serif;
+        font-size: 0.9rem;
+        color: var(--dark);
+        margin-bottom: 0.25rem;
+      }
+
+      .hero-point span {
+        display: block;
+        font-size: 0.86rem;
+        line-height: 1.5;
+        color: var(--muted);
+      }
+
+      section {
+        margin: 0 0 2.75rem 0;
+      }
+
+      .block-title {
+        font-family: "Schibsted Grotesk", sans-serif;
+        font-size: 0.85rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: var(--muted);
+        margin: 0 0 1rem 0;
+        padding-bottom: 0.5rem;
+        border-bottom: 1px solid var(--lightgray);
+      }
+
+      p,
+      li {
+        font-size: 0.97rem;
+        line-height: 1.75;
+        color: var(--darkgray);
+      }
+
+      section > p {
+        max-width: 700px;
+      }
+
+      .placeholder {
+        color: var(--gray);
+        font-style: italic;
+      }
+
+      /* 經歷 */
+      .role {
+        margin: 0 0 1.75rem 0;
+      }
+
+      .role-head {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: baseline;
+        justify-content: space-between;
+        gap: 0.3rem 1rem;
+        margin-bottom: 0.55rem;
+      }
+
+      .role-head strong {
+        font-size: 1.05rem;
+        color: var(--dark);
+        min-width: 0;
+      }
+
+      .role-head .when {
+        font-size: 0.85rem;
+        color: var(--muted);
+        font-variant-numeric: tabular-nums;
+      }
+
+      .role ul {
+        margin: 0.3rem 0 0 0;
+        padding-left: 1.1rem;
+      }
+
+      .role li + li {
+        margin-top: 0.28rem;
+      }
+
+      /* 技能 */
+      .skills {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 0.75rem;
+      }
+
+      .skill-row {
+        margin: 0;
+        padding: 0.95rem 1rem;
+        background: var(--surface);
+        border: 1px solid var(--lightgray);
+        border-radius: 8px;
+      }
+
+      .skill-row:last-child {
+        grid-column: 1 / -1;
+      }
+
+      .skill-row strong {
+        display: block;
+        color: var(--dark);
+        margin-bottom: 0.4rem;
+      }
+
+      .skill-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.35rem;
+      }
+
+      .skill-tags span {
+        font-size: 0.84rem;
+        line-height: 1.35;
+        color: var(--darkgray);
+        padding: 0.18rem 0.45rem;
+        background: var(--surface-soft);
+        border: 1px solid color-mix(in srgb, var(--lightgray), var(--secondary) 10%);
+        border-radius: 999px;
+      }
+
+      /* 作品集 · 專案 */
+      .project-feature {
+        margin-bottom: 1.75rem;
+        padding-bottom: 1.5rem;
+        border-bottom: 1px solid var(--lightgray);
+      }
+
+      .project-featured {
+        background: var(--surface);
+        border: 1px solid var(--lightgray);
+        border-left: 3px solid var(--tertiary);
+        border-radius: 8px;
+        padding: 1.1rem 1.2rem 1.1rem 1.05rem;
+      }
+
+      .project-note {
+        margin: 0 0 1.1rem 0;
+        padding: 0.9rem 1rem;
+        background: var(--surface-soft);
+        border: 1px solid var(--lightgray);
+        border-radius: 8px;
+        font-size: 0.9rem;
+        line-height: 1.65;
+        color: var(--darkgray);
+      }
+
+      .project-feature:last-child {
+        margin-bottom: 0;
+        padding-bottom: 0;
+        border-bottom: none;
+      }
+
+      .project-feature .ph {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: baseline;
+        justify-content: space-between;
+        gap: 1rem;
+        margin-bottom: 0.5rem;
+      }
+
+      .project-feature .ph strong {
+        font-family: "Schibsted Grotesk", sans-serif;
+        font-size: 1.05rem;
+        color: var(--dark);
+        min-width: 0;
+        overflow-wrap: anywhere;
+      }
+
+      .project-feature .ph .role {
+        font-size: 0.82rem;
+        color: var(--muted);
+        white-space: nowrap;
+      }
+
+      .project-feature .lead {
+        font-size: 0.95rem;
+        line-height: 1.65;
+        margin: 0 0 0.9rem 0;
+      }
+
+      .ws-list {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        margin: 0 0 0.9rem 0;
+      }
+
+      .ws-list .ws {
+        font-size: 0.9rem;
+        line-height: 1.55;
+        color: var(--darkgray);
+      }
+
+      .ws-list .ws strong {
+        color: var(--secondary);
+      }
+
+      details.proj-more > summary {
+        list-style: none;
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: var(--secondary);
+        padding: 0.4rem 0.85rem;
+        background: var(--surface-soft);
+        border: 1px solid color-mix(in srgb, var(--lightgray), var(--secondary) 30%);
+        border-radius: 999px;
+        outline: none;
+        transition: background 0.15s ease, border-color 0.15s ease;
+      }
+
+      details.proj-more > summary:hover {
+        background: var(--accent-soft);
+        border-color: var(--secondary);
+      }
+
+      details.proj-more > summary::-webkit-details-marker {
+        display: none;
+      }
+
+      details.proj-more > summary::before {
+        content: "▸ ";
+      }
+
+      details.proj-more[open] > summary::before {
+        content: "▾ ";
+      }
+
+      details.proj-more .more-body {
+        margin-top: 0.7rem;
+        padding-left: 0.9rem;
+        border-left: 2px solid var(--lightgray);
+      }
+
+      details.proj-more .more-body p {
+        font-size: 0.9rem;
+        line-height: 1.6;
+        margin: 0 0 0.55rem 0;
+        color: var(--darkgray);
+      }
+
+      details.proj-more .more-body p:last-child {
+        margin-bottom: 0;
+      }
+
+      details.proj-more .more-body strong {
+        color: var(--dark);
+      }
+
+      details.proj-more code {
+        font-family: "IBM Plex Mono", ui-monospace, monospace;
+        font-size: 0.85em;
+        background: var(--lightgray);
+        padding: 0.05em 0.35em;
+        border-radius: 3px;
+      }
+
+      /* 專案截圖 */
+      .project-shot {
+        margin: 0.5rem 0 1.1rem 0;
+      }
+
+      .project-shot img {
+        display: block;
+        width: 100%;
+        height: auto;
+        border: 1px solid var(--lightgray);
+        border-radius: 8px;
+      }
+
+      .project-shot figcaption {
+        margin: 0.45rem 0 0 0;
+        font-size: 0.82rem;
+        color: var(--muted);
+      }
+
+      /* 影片 */
+      .video-wrap {
+        margin: 1rem 0;
+      }
+
+      .video-frame {
+        position: relative;
+        width: 100%;
+        padding-top: 56.25%;
+        border-radius: 10px;
+        overflow: hidden;
+        background: var(--lightgray);
+      }
+
+      .video-frame iframe {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        border: 0;
+      }
+
+      .video-wrap.vertical {
+        max-width: 300px;
+      }
+
+      .video-wrap.vertical .video-frame {
+        padding-top: 177.78%;
+      }
+
+      .video-caption {
+        font-size: 0.88rem;
+        color: var(--muted);
+        margin: 0.5rem 0 0 0;
+      }
+
+      details.video-batch {
+        background: var(--surface);
+        border: 1px solid var(--lightgray);
+        border-radius: 10px;
+        margin-bottom: 1rem;
+        padding: 0 1.2rem;
+      }
+
+      details.video-batch[open] {
+        padding-bottom: 1.5rem;
+      }
+
+      summary.batch-summary {
+        list-style: none;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 0.65rem;
+        padding: 1rem 0.6rem;
+        margin: 0 -0.6rem;
+        border-radius: 8px;
+        outline: none;
+        transition: background 0.15s ease;
+      }
+
+      summary.batch-summary:hover {
+        background: var(--surface-soft);
+      }
+
+      summary.batch-summary::-webkit-details-marker {
+        display: none;
+      }
+
+      summary.batch-summary::before {
+        content: "▸";
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        width: 1.6rem;
+        height: 1.6rem;
+        border-radius: 50%;
+        background: var(--accent-soft);
+        border: 1px solid color-mix(in srgb, var(--lightgray), var(--secondary) 25%);
+        color: var(--secondary);
+        font-size: 0.8rem;
+        transition: transform 0.15s ease, background 0.15s ease;
+      }
+
+      summary.batch-summary:hover::before {
+        background: color-mix(in srgb, var(--accent-soft), var(--secondary) 14%);
+      }
+
+      .section-hint {
+        margin: -0.55rem 0 1rem 0;
+        font-size: 0.84rem;
+        color: var(--muted);
+      }
+
+      details.video-batch[open] summary.batch-summary::before {
+        transform: rotate(90deg);
+      }
+
+      summary.batch-summary:hover .batch-title {
+        color: var(--secondary);
+      }
+
+      .batch-meta {
+        margin-left: auto;
+        font-size: 0.82rem;
+        color: var(--muted);
+        text-align: right;
+      }
+
+      .batch-title {
+        font-family: "Schibsted Grotesk", sans-serif;
+        font-size: 1.05rem;
+        line-height: 1.35;
+        color: var(--dark);
+        margin: 0 0 0.4rem 0;
+      }
+
+      summary .batch-title {
+        margin: 0;
+      }
+
+      details.video-batch[open] .batch-intro {
+        margin-top: 0.25rem;
+      }
+
+      .batch-intro {
+        font-size: 0.92rem;
+        line-height: 1.65;
+        margin: 0 0 1rem 0;
+        max-width: 620px;
+      }
+
+      .video-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1.25rem;
+      }
+
+      @media (min-width: 640px) {
+        .video-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+
+      /* 直式 Shorts（9:16）：窄欄多支並排 */
+      .video-grid.shorts {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        gap: 1rem;
+      }
+
+      .video-grid.shorts .video-frame {
+        padding-top: 177.78%;
+      }
+
+      .video-grid.shorts .video-caption {
+        text-align: center;
+        margin-top: 0.4rem;
+      }
+
+      /* 共用製作流程 pipeline flow */
+      .pipeline-flow {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.4rem;
+        align-items: center;
+        margin: 0 0 1.5rem 0;
+      }
+
+      .pipeline-flow .step {
+        font-size: 0.8rem;
+        padding: 0.3rem 0.7rem;
+        background: var(--accent-soft);
+        border: 1px solid color-mix(in srgb, var(--lightgray), var(--tertiary) 18%);
+        border-radius: 999px;
+        color: var(--darkgray);
+      }
+
+      .pipeline-flow .arrow {
+        color: var(--muted);
+        font-size: 0.8rem;
+      }
+
+      /* 單一作品：影片 + 獨立描述 */
+      .work-item {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        margin-bottom: 1.75rem;
+      }
+
+      @media (min-width: 680px) {
+        .work-item {
+          grid-template-columns: minmax(0, 1.25fr) 1fr;
+          gap: 1.5rem;
+          align-items: start;
+        }
+      }
+
+      .work-desc h4 {
+        font-family: "Schibsted Grotesk", sans-serif;
+        font-size: 1rem;
+        color: var(--dark);
+        margin: 0 0 0.5rem 0;
+      }
+
+      .work-desc p {
+        font-size: 0.92rem;
+        line-height: 1.65;
+        margin: 0 0 0.6rem 0;
+      }
+
+      .approach-note {
+        font-size: 0.95rem;
+        line-height: 1.7;
+        color: var(--darkgray);
+        margin: 1rem 0 0 0;
+        padding-left: 0.9rem;
+        border-left: 2px solid var(--tertiary);
+      }
+
+      /* 技術製作規格表 */
+      .spec-list {
+        margin: 0 0 1.5rem 0;
+        padding: 1.1rem 1.25rem;
+        background: var(--surface-soft);
+        border: 1px solid var(--lightgray);
+        border-radius: 10px;
+      }
+
+      .spec-list h4 {
+        font-family: "Schibsted Grotesk", sans-serif;
+        font-size: 0.8rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: var(--muted);
+        margin: 0 0 0.75rem 0;
+      }
+
+      .spec-list dl {
+        margin: 0;
+        display: grid;
+        grid-template-columns: max-content 1fr;
+        gap: 0.5rem 1.1rem;
+      }
+
+      .spec-list dt {
+        font-size: 0.9rem;
+        color: var(--dark);
+        font-weight: 600;
+        white-space: nowrap;
+      }
+
+      .spec-list dd {
+        margin: 0;
+        font-size: 0.9rem;
+        line-height: 1.55;
+        color: var(--darkgray);
+      }
+
+      @media (max-width: 520px) {
+        main {
+          padding: 3.25rem 1.15rem 3.5rem;
+        }
+
+        h1 {
+          font-size: 2.05rem;
+        }
+
+        .hero-points {
+          grid-template-columns: 1fr;
+          gap: 0.65rem;
+          margin-bottom: 2.35rem;
+        }
+
+        .skills {
+          grid-template-columns: 1fr;
+        }
+
+        .skill-row:last-child {
+          grid-column: auto;
+        }
+
+        .role-head {
+          display: block;
+        }
+
+        .role-head strong,
+        .lede,
+        .project-feature .lead,
+        .batch-intro {
+          overflow-wrap: anywhere;
+          word-break: break-word;
+        }
+
+        .role-head .when {
+          display: block;
+          margin-top: 0.2rem;
+        }
+
+        .project-feature .ph {
+          gap: 0.2rem;
+        }
+
+        .project-feature .ph .role {
+          display: block;
+          flex-basis: 100%;
+          white-space: normal;
+        }
+
+        details.video-batch {
+          padding: 0 1rem;
+        }
+
+        summary.batch-summary {
+          align-items: flex-start;
+          gap: 0.55rem;
+          flex-wrap: wrap;
+        }
+
+        .batch-meta {
+          margin-left: 0;
+          text-align: left;
+        }
+
+        summary.batch-summary::before {
+          margin-top: 0.18rem;
+        }
+
+        summary.batch-summary .batch-title {
+          flex: 1 1 calc(100% - 1.5rem);
+        }
+
+        summary.batch-summary .batch-meta {
+          flex: 0 0 100%;
+          padding-left: 1.45rem;
+        }
+
+        .spec-list dl {
+          grid-template-columns: 1fr;
+          gap: 0.1rem;
+        }
+        .spec-list dt {
+          margin-top: 0.6rem;
+        }
+      }
+
+      .pending-note {
+        font-size: 0.88rem;
+        color: var(--gray);
+        font-style: italic;
+        margin: 0.5rem 0 0 0;
+      }
+
+      footer {
+        margin-top: 2.5rem;
+        padding-top: 1.5rem;
+        border-top: 1px solid var(--lightgray);
+        font-size: 0.9rem;
+        color: var(--muted);
+      }
+
+      .contact-card {
+        margin-bottom: 1.25rem;
+        padding: 1rem 1.1rem;
+        background: var(--surface);
+        border: 1px solid var(--lightgray);
+        border-radius: 8px;
+      }
+
+      .contact-card strong {
+        display: block;
+        font-family: "Schibsted Grotesk", sans-serif;
+        font-size: 1rem;
+        color: var(--dark);
+        margin-bottom: 0.35rem;
+      }
+
+      .contact-card p {
+        margin: 0 0 0.75rem 0;
+        font-size: 0.92rem;
+        line-height: 1.6;
+      }
+
+      .contact-links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+      }
+
+      .contact-links a {
+        color: var(--secondary);
+        text-decoration: none;
+        font-weight: 600;
+        border-bottom: 1px solid transparent;
+      }
+
+      .contact-links a:hover {
+        border-bottom-color: var(--secondary);
+      }
+
+      .contact-meta {
+        margin: 0 0 0.9rem 0;
+        font-size: 0.88rem;
+        color: var(--muted);
+      }
+
+      .footer-meta {
+        margin: 0;
+      }
+
+      .theme-toggle {
+        position: fixed;
+        top: 1rem;
+        right: 1rem;
+        width: 38px;
+        height: 38px;
+        padding: 0;
+        background: var(--light);
+        border: 1px solid var(--lightgray);
+        border-radius: 8px;
+        color: var(--darkgray);
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: border-color 0.15s ease, background-color 0.15s ease;
+      }
+
+      .theme-toggle:hover {
+        border-color: var(--secondary);
+      }
+
+      .theme-toggle svg {
+        width: 18px;
+        height: 18px;
+        stroke: currentColor;
+        fill: none;
+        stroke-width: 2;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+
+      :root[data-theme="dark"] .theme-toggle .icon-moon,
+      :root[data-theme="light"] .theme-toggle .icon-sun {
+        display: none;
+      }
+
+      /* ===== 載入微動畫（尊重 prefers-reduced-motion）===== */
+      @media (prefers-reduced-motion: no-preference) {
+        main > .eyebrow,
+        main > h1,
+        main > .lede,
+        main > .hero-points,
+        main > section,
+        main > footer {
+          animation: rise 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
+        }
+        main > h1 { animation-delay: 0.05s; }
+        main > .lede { animation-delay: 0.1s; }
+        main > .hero-points { animation-delay: 0.15s; }
+        main > section:nth-of-type(1) { animation-delay: 0.2s; }
+        main > section:nth-of-type(2) { animation-delay: 0.24s; }
+        main > section:nth-of-type(n + 3) { animation-delay: 0.28s; }
+        main > footer { animation-delay: 0.3s; }
+      }
+
+      @keyframes rise {
+        from {
+          opacity: 0;
+          transform: translateY(10px);
+        }
+        to {
+          opacity: 1;
+          transform: none;
+        }
+      }
+
+      /* ===== 列印 / 存 PDF ===== */
+      @media print {
+        .theme-toggle,
+        a.back,
+        .pending-note {
+          display: none !important;
+        }
+
+        :root,
+        :root[data-theme="dark"],
+        :root[data-theme="light"] {
+          --light: #fff;
+          --surface: #fff;
+          --surface-soft: #fff;
+          --accent-soft: #fff;
+          --dark: #000;
+          --darkgray: #1a1a1a;
+          --muted: #444;
+          --gray: #555;
+          --lightgray: #c9c9c9;
+          --secondary: #1b3a4b;
+          --tertiary: #5b7a72;
+        }
+
+        html,
+        body {
+          background: #fff !important;
+        }
+
+        main {
+          max-width: 100%;
+          padding: 0;
+        }
+
+        /* 影片無法列印：隱藏播放框，保留標題文字 */
+        .video-frame {
+          display: none !important;
+        }
+
+        .video-grid {
+          display: block;
+        }
+
+        .video-caption {
+          color: #000;
+          margin: 0 0 0.4rem 0;
+        }
+
+        /* 列印時隱藏展開鈕與三角形（內容由 JS 先展開） */
+        details.proj-more > summary {
+          display: none;
+        }
+
+        summary.batch-summary::before {
+          display: none;
+        }
+
+        /* 避免關鍵區塊被切頁 */
+        .role,
+        .project-feature,
+        details.video-batch,
+        .contact-card,
+        .skill-row,
+        .hero-point,
+        .work-item,
+        .spec-list {
+          break-inside: avoid;
+        }
+
+        a {
+          color: #000 !important;
+          text-decoration: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <button class="theme-toggle" id="theme-toggle" aria-label="切換主題">
+      <svg class="icon-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><line x1="12" y1="2" x2="12" y2="5"/><line x1="12" y1="19" x2="12" y2="22"/><line x1="2" y1="12" x2="5" y2="12"/><line x1="19" y1="12" x2="22" y2="12"/><line x1="4.5" y1="4.5" x2="6.5" y2="6.5"/><line x1="17.5" y1="17.5" x2="19.5" y2="19.5"/><line x1="4.5" y1="19.5" x2="6.5" y2="17.5"/><line x1="17.5" y1="6.5" x2="19.5" y2="4.5"/></svg>
+      <svg class="icon-moon" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    </button>
+    <main>
+      <a class="back" href="/">← 回首頁</a>
+
+      <p class="eyebrow">履歷與作品集</p>
+      <h1>Jas Chiang</h1>
+      <p class="lede">
+        行銷從業人員，專長把生成式 AI 與自動化工具接成可營運的工作流，聚焦內容、影音與數據。
+      </p>
+      <div class="hero-points" aria-label="重點能力">
+        <div class="hero-point">
+          <strong>AI 內容營運流程</strong>
+          <span>把選題、產文、配圖、上架、導購追蹤與成效分析串成閉環。</span>
+        </div>
+        <div class="hero-point">
+          <strong>生成式影音製作</strong>
+          <span>用 AI 生成、程式化合成與剪輯流程，產出品牌與零售短影音。</span>
+        </div>
+        <div class="hero-point">
+          <strong>數據對話工具</strong>
+          <span>把 GA4、Search Console、YouTube Analytics 接進 AI 對話，加快內容判斷。</span>
+        </div>
+      </div>
+
+      <!-- ===== 關於我 ===== -->
+      <section>
+        <h2 class="block-title">關於我</h2>
+        <p>
+          我把內容、影音、SEO／AEO、電商導購與數據分析，整理成可實際運作的 AI 工作流。
+        </p>
+        <p>
+          工作方式是先定義需求與驗收標準，再用 AI Agent 落地工具與素材；重點不是追求自動化本身，而是降低重複作業、提升判斷速度。
+        </p>
+      </section>
+
+      <!-- ===== 經歷 ===== -->
+      <section>
+        <h2 class="block-title">經歷</h2>
+
+        <div class="role">
+          <div class="role-head">
+            <strong>神腦國際企業 Senao International · 內容企劃／製作</strong>
+            <span class="when">2017/11 – 至今</span>
+          </div>
+          <ul>
+            <li>企劃與執行累計逾 350 支產品教學與科技科普影片，涵蓋 Apple、Samsung 與《秒懂潮科技》等系列，其中單支最高觀看逾 17 萬。</li>
+            <li>協助經營神腦生活內容平台，將產品功能、科技知識與電商導購轉成可搜尋、可閱讀的內容。</li>
+            <li>把選題、產文、配圖、上架、導購追蹤與成效分析整理成 AI 輔助流程，降低重複手動作業。</li>
+            <li>製作 AI 生成行銷影音，並建立 GA4、Search Console、YouTube Analytics 的對話式查詢工具。</li>
+          </ul>
+        </div>
+
+        <div class="role">
+          <div class="role-head">
+            <strong>神腦國際企業 Senao International · 數位行銷專員</strong>
+            <span class="when">2015/01 – 2017/11</span>
+          </div>
+          <ul>
+            <li>經營神腦國際社群粉絲團，撰寫官網「達人觀點」專欄，累積對 3C 受眾與內容操作的理解，奠定後續轉向內容企劃／製作的基礎。</li>
+          </ul>
+        </div>
+
+        <div class="role">
+          <div class="role-head">
+            <strong>Microsoft · Windows Phone Promoter（實習）</strong>
+            <span class="when">2013/07 – 2014/06</span>
+          </div>
+          <ul>
+            <li>經營 Windows Phone Taiwan 粉絲團，協助 Windows Phone 通路推廣。</li>
+          </ul>
+        </div>
+
+        <div class="role">
+          <div class="role-head">
+            <strong>智冠科技 ·《App 情報誌》特約作家</strong>
+            <span class="when">2012/04 – 2013/07</span>
+          </div>
+          <ul>
+            <li>App 評測與專欄撰寫。</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- ===== 學歷 ===== -->
+      <section>
+        <h2 class="block-title">學歷</h2>
+        <div class="role">
+          <div class="role-head">
+            <strong>中原大學 Chung Yuan Christian University · 企業管理碩士</strong>
+            <span class="when">2012/09 – 2014/06</span>
+          </div>
+        </div>
+        <div class="role">
+          <div class="role-head">
+            <strong>東吳大學 Soochow University · 財務工程與精算數學學士</strong>
+            <span class="when">2007/09 – 2012/06</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== 技能 ===== -->
+      <section>
+        <h2 class="block-title">技能</h2>
+        <div class="skills">
+          <p class="skill-row">
+            <strong>AI 工具與工作流</strong>
+            <span class="skill-tags"><span>Claude Code</span><span>Codex CLI</span><span>MCP</span><span>Prompt 設計</span></span>
+          </p>
+          <p class="skill-row">
+            <strong>生成式內容與影音</strong>
+            <span class="skill-tags"><span>GPT Image 2</span><span>Nano Banana Pro</span><span>Seedance／Kling</span><span>HyperFrames</span></span>
+          </p>
+          <p class="skill-row">
+            <strong>數據與分析</strong>
+            <span class="skill-tags"><span>GA4</span><span>Search Console</span><span>YouTube Analytics</span><span>Looker Studio 核對</span></span>
+          </p>
+          <p class="skill-row">
+            <strong>AI 輔助開發</strong>
+            <span class="skill-tags"><span>需求拆解</span><span>React／Node</span><span>API 串接</span><span>GitHub Actions</span></span>
+          </p>
+          <p class="skill-row">
+            <strong>行銷與內容</strong>
+            <span class="skill-tags"><span>內容策略</span><span>SEO／AEO</span><span>電商導購</span><span>品牌影音</span></span>
+          </p>
+        </div>
+      </section>
+
+      <!-- ===== 作品集 · 外部專案 ===== -->
+      <section>
+        <h2 class="block-title">作品集 · 專案</h2>
+        <p class="project-note">
+          以下工具多為個人自用或工作流程原型。我負責需求定義、流程設計、AI 協作開發與驗收，重點是把內容與數據工作轉成可操作的工具流程。
+        </p>
+
+        <div class="project-feature project-featured">
+          <div class="ph">
+            <strong>Article Suite｜AI 內容營運工作台</strong>
+            <span class="role">個人自用・Claude Code 開發</span>
+          </div>
+          <p class="lead">
+            給內容行銷與電商編輯使用的 AI 內容營運工作台，把選題、產文、配圖、上架、導購追蹤與成效分析接成同一條流程。
+          </p>
+          <div class="ws-list">
+            <div class="ws"><strong>選題策略：</strong>以人貨場框架分析活動頁或商品頁，產出選題矩陣並直接生成文章。</div>
+            <div class="ws"><strong>內容生產：</strong>從 YouTube、網址、檔案或主題產出 SEO／AEO 文章、FAQ、HTML 與配圖。</div>
+            <div class="ws"><strong>成效回看：</strong>串 GA4 與 Search Console，看文章是否真的帶來搜尋流量與商品導流。</div>
+          </div>
+          <figure class="project-shot">
+            <img src="images/article-suite.png" alt="Article Suite 內容工作站：生成新文章工作流" loading="lazy" />
+            <figcaption>內容工作站「生成新文章」工作流（來源 → 生成 → 截圖 → 配圖 → 發佈）</figcaption>
+          </figure>
+          <details class="proj-more">
+            <summary>技術組成與完整功能</summary>
+            <div class="more-body">
+              <p><strong>技術棧：</strong>React／TypeScript／Vite／Tailwind 前端，Node.js／Express 後端。</p>
+              <p><strong>AI 產文與改稿：</strong>Google Gemini（多模態、YouTube 影片理解、Files API、URL Context、Search Grounding）產出標題、內文、FAQ 與文章結構；OpenRouter 可換模型做整篇或局部改寫。</p>
+              <p><strong>AI 配圖（縮圖＋內文圖）：</strong>先用 OpenRouter 模型依文章內容規劃視覺風格與圖片提示詞，再透過 fal.ai 呼叫 Nano Banana Pro 或 GPT Image 2 生成縮圖與內文配圖，也能參考產品圖，省去另外開圖檔工具的步驟。</p>
+              <p><strong>智慧插卡：</strong>貼上商品頁／活動頁／文章網址，程式自動抓取網頁資料、交給 LLM 生成卡片的標題與描述，再拼成 HTML 卡片插入文章；支援商品卡、活動卡、延伸閱讀卡與影片卡，連結自動帶 <code>?content=postId</code> 標記是哪篇文章帶來的導購。</p>
+              <p><strong>一鍵發佈：</strong>文章與縮圖可接入既有 CMS 發佈流程，不必手動複製貼上或另外上傳縮圖；發佈時也會一併加入結構化資料（標題、作者、FAQ、商品價格與庫存狀態），並可匯出到 Notion 備份。</p>
+              <p><strong>成效串接：</strong>GA4 Data API ＋ Google Search Console API，看文章真實的曝光、點擊、流量與商品導流，回頭優化內容。</p>
+              <p><strong>自動化與品質：</strong>GitHub Actions 每日備好活動稿／商品稿候選、每週掃描失效商品連結；HTML lint＋Schema.org JSON-LD＋Vitest 把關 AI 產文格式。</p>
+              <p><strong>設計核心：</strong>不是單純「AI 寫文章」，而是「內容帶流量、流量帶商品、資料再反推內容優化」的閉環，從讀一條 YouTube 連結就產文的小工具，逐步長成涵蓋生產、上架、成效、維運的生產線。</p>
+              <p><strong>開發方式：</strong>整套以 Claude Code 輔助開發，我負責需求拆解、流程設計與驗收。</p>
+            </div>
+          </details>
+        </div>
+
+        <div class="project-feature">
+          <div class="ph">
+            <strong>AI Video Writer｜YouTube 內容生成與頻道分析</strong>
+            <span class="role">個人專案・Claude Code 開發</span>
+          </div>
+          <p class="lead">
+            給 YouTube 創作者使用的工具，把頻道影片轉成 SEO 內容，並用自然語言對話分析頻道資料。
+          </p>
+          <div class="ws-list">
+            <div class="ws"><strong>影片轉內容：</strong>產出標題、說明、標籤、文章與關鍵畫面截圖。</div>
+            <div class="ws"><strong>頻道分析：</strong>用自然語言查 YouTube Analytics，整理成含圖表與建議的報告。</div>
+          </div>
+          <figure class="project-shot">
+            <img src="images/ai-video-writer.png" alt="AI Video Writer 介面：影片清單與 SEO 標題建議" loading="lazy" />
+            <figcaption>影片內容工作台：選影片後產生 SEO 標題建議與文章草稿</figcaption>
+          </figure>
+          <details class="proj-more">
+            <summary>技術組成與完整功能</summary>
+            <div class="more-body">
+              <p><strong>技術棧：</strong>React 19／Node.js／Express，可部署到 Render 常駐使用。</p>
+              <p><strong>AI 與資料：</strong>Google Gemini（影片理解）、YouTube Data／Analytics API、OpenRouter（可切換 Claude、GPT 等模型）、Notion API、FFmpeg 截圖、chart.js 圖表。</p>
+              <p><strong>資料工具（AI 可呼叫）：</strong>頻道總覽、用關鍵字找影片、單片成效、觀眾留存率曲線，AI 自動決定查哪些資料再彙整成報告。</p>
+              <p><strong>自動化：</strong>GitHub Actions 定期更新影片快取，節省 YouTube API 配額。</p>
+              <p><strong>開發方式：</strong>主要由 Claude Code 協助開發，UI 由 Codex 協助調整。</p>
+            </div>
+          </details>
+        </div>
+
+        <div class="project-feature">
+          <div class="ph">
+            <strong>電商首頁影音輪播監控</strong>
+            <span class="role">個人專案・Claude Code 開發</span>
+          </div>
+          <p class="lead">
+            公司電商 App 首頁有影音輪播看板。賣場雖然有下架通知，但通知是寄 Excel 檔、又沒有看板介面，不容易即時掌握；
+            我做了一支每天自動巡檢首頁輪播的監控，確認該上的影片有上、點擊連結沒接錯，發現異常就寄 email 通知到公司信箱。
+          </p>
+          <details class="proj-more">
+            <summary>完整功能與用法</summary>
+            <div class="more-body">
+              <p><strong>檢查什麼：</strong>首頁輪播的影片看板是否正常上架（避免該上的沒上）、每個看板點進去的連結是否正確、以及看板連到特定館別時，該館別是否確實放了對應的影片。</p>
+              <p><strong>緣由：</strong>賣場雖有下架通知，但以 Excel 寄送、又沒有看板可看，不好即時發現問題，所以自己做了自動巡檢補上這個缺口。</p>
+              <p><strong>做法：</strong>原本想串 App 的對外 API，後來發現首頁其實是行動網頁（mweb），就改成定期抓取 mweb、比對輪播內容，邏輯更單純也更穩定。</p>
+              <p><strong>技術：</strong>Python 腳本 ＋ GitHub Actions 排程每日自動執行，偵測到異常就寄 email 通知到公司信箱。</p>
+              <p><strong>開發方式：</strong>用 Claude Code 研究頁面結構與落地腳本，我負責需求與驗收。</p>
+            </div>
+          </details>
+        </div>
+
+        <div class="project-feature">
+          <div class="ph">
+            <strong>ga4-remote-mcp｜GA4／搜尋分析 MCP Server</strong>
+            <span class="role">個人專案・Claude Code 開發</span>
+          </div>
+          <p class="lead">
+            把 GA4 與 Google Search Console 接進 Claude／ChatGPT，讓我能直接在對話裡查流量、搜尋曝光與內容機會。
+          </p>
+          <details class="proj-more">
+            <summary>完整功能與用法</summary>
+            <div class="more-body">
+              <p><strong>能聊什麼：</strong>網站的流量與即時在線、轉換漏斗、不同受眾的占比與排行；搜尋面的曝光、點擊、排名與關鍵字，還能查單一網址在 Google 的索引狀態。也接了站內的商品與文章搜尋，當寫 SEO 內容時的查料助手。</p>
+              <p><strong>一個入口查多種來源：</strong>GA4、搜尋成效（Search Console）、站內資料整合在同一個工具裡，問一句就能跨來源回答，不用在多個後台之間切換。</p>
+              <p><strong>我怎麼用它：</strong>主要拿來快速討論、找方向，有點像在跟同事討論數據；但為了避免 AI 抓錯或誤解我要的數字，真正的判斷還是會回 Looker Studio 或 GA 核對報表。</p>
+              <p><strong>隨處可用：</strong>可以在自己電腦上跑，也能部署到雲端、從任何裝置使用，不必依賴某台電腦一直開著。</p>
+              <p><strong>緣由：</strong>從一個「把 GA4 接進 Claude」的小實驗，約十天內長成涵蓋流量、搜尋成效與站內資料的多來源分析工具。</p>
+              <p><strong>開發方式：</strong>由 Claude Code 與 Codex 協助開發。</p>
+            </div>
+          </details>
+        </div>
+
+        <div class="project-feature">
+          <div class="ph">
+            <strong>youtube-analytics-mcp-server｜YouTube 分析 MCP Server</strong>
+            <span class="role">個人專案・Claude Code 開發</span>
+          </div>
+          <p class="lead">
+            把 YouTube 頻道與影片成效接進 Claude／ChatGPT，用問答方式查觀看、流量來源、留存與內容表現。
+          </p>
+          <details class="proj-more">
+            <summary>完整功能與用法</summary>
+            <div class="more-body">
+              <p><strong>能聊什麼：</strong>列出與搜尋自己的影片，查單支或整個頻道的觀看、完播、訂閱與流量來源，比較不同影片或時段的表現，快速找出哪些內容有效。</p>
+              <p><strong>Gist 快取省配額：</strong>YouTube 的 API 每天有固定查詢額度（約 10,000 點），很容易用完。所以我把影片清單快取到 GitHub Gist（GitHub 提供的免費雲端小筆記，這裡當輕量資料庫用），查影片時先讀快取、不必每次都打 API，把額度留給真正需要即時數字的分析。</p>
+              <p><strong>我怎麼用它：</strong>主要拿來快速討論成效、找洞察；但為了避免 AI 抓錯或誤解我要的數字，真正的判斷還是會回 YouTube Studio 核對報表。</p>
+              <p><strong>隨處可用：</strong>可以在自己電腦上跑，也能部署到雲端、從任何裝置使用。</p>
+              <p><strong>開發方式：</strong>由 Claude Code 協助開發。</p>
+            </div>
+          </details>
+        </div>
+      </section>
+
+      <!-- ===== 作品集 · 影片 ===== -->
+      <section>
+        <h2 class="block-title">作品集 · 內容企劃影片</h2>
+        <p class="section-hint">點任一列可展開說明與影片 ▾</p>
+
+        <!-- ── 產品教學內容系列（非 AI，腳本＋動畫／攝影） ── -->
+        <details class="video-batch">
+          <summary class="batch-summary"><span class="batch-title">產品教學內容系列</span><span class="batch-meta">企劃＋腳本・逾 350 支</span></summary>
+          <p class="batch-intro">
+            長期企劃與製作累計逾 350 支產品教學與科技科普影片，包含 Apple《神來點蘋》、Samsung《星事神最懂》與《秒懂潮科技》。
+            我負責主題規劃與腳本，與動畫師或攝影師合作，把 3C 功能與科技知識轉成容易理解的影音內容。
+          </p>
+          <div class="video-grid">
+            <div class="video-wrap">
+              <div class="video-frame">
+                <iframe src="https://www.youtube.com/embed/l-GEkNvD3Z4" title="【神來點蘋】學習使用 MacBook 的觸控式軌跡板" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+              </div>
+              <p class="video-caption">神來點蘋・Apple 教學</p>
+            </div>
+            <div class="video-wrap">
+              <div class="video-frame">
+                <iframe src="https://www.youtube.com/embed/cl07tihw7bA" title="【星事神最懂】SAMSUNG Galaxy S26 Ultra 隱私保護神技" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+              </div>
+              <p class="video-caption">星事神最懂・Samsung 教學</p>
+            </div>
+            <div class="video-wrap">
+              <div class="video-frame">
+                <iframe src="https://www.youtube.com/embed/6xQveT9nH_s" title="【秒懂潮科技】什麼是 Copilot+ PC？搭載 AI 的新一代電腦" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+              </div>
+              <p class="video-caption">秒懂潮科技・科技科普</p>
+            </div>
+          </div>
+        </details>
+      </section>
+
+      <!-- ===== 作品集 · AI 生成影片 ===== -->
+      <section>
+        <h2 class="block-title">作品集 · AI 生成影片</h2>
+        <p class="section-hint">點任一列可展開製作流程與影片 ▾</p>
+
+        <!-- ── 第一批：吉祥物社群關懷影片 ── -->
+        <details class="video-batch">
+          <summary class="batch-summary"><span class="batch-title">吉祥物社群關懷影片</span><span class="batch-meta">社群關懷・AI 生成・5 支</span></summary>
+          <p class="batch-intro">
+            以品牌吉祥物為主角，配合地震、寒流、開工、走春、颱風等時事與節慶推出的社群關懷短影音。
+            這批作品重點在於用低成本快速產出多版素材，再挑選可用片段剪成社群內容。
+          </p>
+
+          <div class="pipeline-flow">
+            <span class="step">GPT Image 2／Nano Banana Pro・分鏡圖＋主題字</span>
+            <span class="arrow">→</span>
+            <span class="step">Kling／Seedance・AI 影片</span>
+            <span class="arrow">→</span>
+            <span class="step">Premiere Pro・剪輯</span>
+          </div>
+
+          <div class="video-grid shorts">
+            <div class="video-wrap">
+              <div class="video-frame">
+                <iframe src="https://www.youtube.com/embed/Aq9z--fQz20" title="【時事節慶】吉祥物_地震篇" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+              </div>
+              <p class="video-caption">地震篇</p>
+            </div>
+
+            <div class="video-wrap">
+              <div class="video-frame">
+                <iframe src="https://www.youtube.com/embed/dKiNllvqBpc" title="【時事節慶】吉祥物_寒流篇" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+              </div>
+              <p class="video-caption">寒流篇</p>
+            </div>
+
+            <div class="video-wrap">
+              <div class="video-frame">
+                <iframe src="https://www.youtube.com/embed/v8iAuLLxseY" title="【時事節慶】吉祥物_開工篇" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+              </div>
+              <p class="video-caption">開工篇</p>
+            </div>
+
+            <div class="video-wrap">
+              <div class="video-frame">
+                <iframe src="https://www.youtube.com/embed/xgtpaGqw-F8" title="【時事節慶】吉祥物_走春篇" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+              </div>
+              <p class="video-caption">走春篇</p>
+            </div>
+
+            <div class="video-wrap">
+              <div class="video-frame">
+                <iframe src="https://www.youtube.com/embed/hKPWYNxv56o" title="【時事節慶相關】吉祥物_颱風篇" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+              </div>
+              <p class="video-caption">颱風篇</p>
+            </div>
+          </div>
+
+          <p class="approach-note">
+            吉祥物外觀有獨特設定，要在 AI 生成的每個畫面裡維持一致是主要挑戰。我的取捨是刻意讓吉祥物的動作維持簡單、
+            不做太大的肢體變化，降低走樣、露出破綻的機率；並刻意用較低畫質、較短秒數來生成。
+            失敗的高畫質長片段很燒錢，低成本的版本能多生成幾版，再從中調整、挑出堪用的片段拿去剪輯，
+            用更低的成本換到更多可用的選擇。
+          </p>
+        </details>
+
+        <!-- ── 第二批：AI 技術實驗（純程式碼合成影片）── -->
+        <details class="video-batch">
+          <summary class="batch-summary"><span class="batch-title">AI 技術實驗：純程式碼合成影片</span><span class="batch-meta">純程式碼合成・16:9／9:16</span></summary>
+          <p class="batch-intro">
+            用 AI Agent 與網頁技術製作的影片實驗，從畫面、動畫、字幕到旁白都以程式化流程合成。
+            同一支 Mac 操作教學輸出 16:9 與 9:16 兩種版本。
+          </p>
+
+          <div class="spec-list">
+            <h4>技術製作</h4>
+            <dl>
+              <dt>影片框架</dt><dd>HyperFrames（用 HTML/CSS/GSAP 寫動畫，headless Chrome 算圖）</dd>
+              <dt>AI Agent</dt><dd>Claude Code（我負責需求、流程與驗收）</dd>
+              <dt>中文旁白</dt><dd>16:9 版用 fal.ai gemini-3.1-flash-tts；9:16 版改用自己複製的語音 ＋ fal.ai minimax/speech-2.8-hd</dd>
+              <dt>字幕對齊</dt><dd>ffmpeg silencedetect</dd>
+              <dt>Mac 介面</dt><dd>100% 純 HTML/CSS 模擬，沒有用任何真實截圖</dd>
+            </dl>
+          </div>
+
+          <div class="video-grid">
+            <div class="video-wrap">
+              <div class="video-frame">
+                <iframe src="https://www.youtube.com/embed/G-hbvaefqAA" title="【神來點蘋】Mac 新手必學！截圖與錄螢幕（16:9，Made with HyperFrames + Claude Code）" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+              </div>
+              <p class="video-caption">16:9 版</p>
+            </div>
+            <div class="video-wrap vertical">
+              <div class="video-frame">
+                <iframe src="https://www.youtube.com/embed/o57SFH8gaIs" title="【神來點蘋】Mac 新手必學！截圖與錄螢幕（9:16 直式版）" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+              </div>
+              <p class="video-caption">9:16 版</p>
+            </div>
+          </div>
+        </details>
+
+        <!-- ── 第三批：智慧家電推廣短影音 ── -->
+        <details class="video-batch">
+          <summary class="batch-summary"><span class="batch-title">智慧家電推廣短影音</span><span class="batch-meta">LG／Samsung・Seedance 生成</span></summary>
+          <p class="batch-intro">
+            LG、Samsung 智慧家電的零售通路推廣短影音。兩支共用同一條 AI 生成與 HyperFrames 合成管線，
+            再依品牌敘事與鏡頭需求調整分鏡、角色和轉場。
+          </p>
+
+          <div class="pipeline-flow">
+            <span class="step">GPT Image 2・角色＋產品外觀</span>
+            <span class="arrow">→</span>
+            <span class="step">GPT Image 2・分鏡首幀</span>
+            <span class="arrow">→</span>
+            <span class="step">Claude Code → genmedia</span>
+            <span class="arrow">→</span>
+            <span class="step">Seedance 2.0 i2v</span>
+            <span class="arrow">→</span>
+            <span class="step">HyperFrames 合成・alpha 外框</span>
+          </div>
+
+          <!-- LG -->
+          <div class="work-item">
+            <div class="video-wrap">
+              <div class="video-frame">
+                <iframe src="https://www.youtube.com/embed/WXv5AstJGIU" title="【智慧家電門市】LG 複合店" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+              </div>
+            </div>
+            <div class="work-desc">
+              <h4>LG 複合店</h4>
+              <p>片段生成後在 HyperFrames 排版合成，部分鏡頭的銜接與瑕疵也靠 HyperFrames 做後製修正補強。</p>
+            </div>
+          </div>
+
+          <!-- Samsung -->
+          <div class="work-item">
+            <div class="video-wrap">
+              <div class="video-frame">
+                <iframe src="https://www.youtube.com/embed/BSoi-A2P4_0" title="【智慧家電門市】Samsung 複合店" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+              </div>
+            </div>
+            <div class="work-desc">
+              <h4>Samsung 複合店</h4>
+              <p>
+                為了讓鏡頭銜接合乎空間邏輯，先生成門市全景定位，
+                再依序生成不同正面景的分鏡，最後用 HyperFrames 的轉場把片段接續成完整動線。
+              </p>
+            </div>
+          </div>
+        </details>
+
+        <!-- ── 第四批：手機健檢服務宣傳片 ── -->
+        <details class="video-batch">
+          <summary class="batch-summary"><span class="batch-title">手機健檢服務宣傳片</span><span class="batch-meta">Three.js 3D 門市場景</span></summary>
+          <p class="batch-intro">
+            為零售通路的手機健檢服務製作的宣傳片。3D 門市場景是用 Claude Code 生成 Three.js 場景、
+            再以錄影功能錄出「進門市」的運鏡；搭配實際操作的手機健檢螢幕錄影，一起用 HyperFrames 合成製作。
+          </p>
+          <div class="video-wrap">
+            <div class="video-frame">
+              <iframe src="https://www.youtube.com/embed/2Pr03XvKhx0" title="【服務宣傳】手機健檢" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+          </div>
+        </details>
+
+        <!-- ── 第五批：Computex 攤位循環影片 ── -->
+        <details class="video-batch">
+          <summary class="batch-summary"><span class="batch-title">Computex 攤位循環影片</span><span class="batch-meta">HyperFrames 首尾＋語音複製</span></summary>
+          <p class="batch-intro">
+            協助集團公司製作的 Computex 攤位循環播放影片。我負責首尾動畫、配音一致性與音量後處理，
+            讓 IT 單位提供的中段螢幕錄影能包裝成完整展示影片。
+          </p>
+
+          <div class="spec-list">
+            <h4>技術製作</h4>
+            <dl>
+              <dt>首尾兩段</dt><dd>HyperFrames（HTML/CSS/GSAP 動畫），素材取自集團公司官網</dd>
+              <dt>中　　段</dt><dd>IT 單位提供、帶旁白的螢幕錄影</dd>
+              <dt>配音一致</dt><dd>提取中段旁白、複製語音後用在首尾段，讓整支配音是同一個聲音</dd>
+              <dt>音量一致</dt><dd>ffmpeg 後處理，讓全片響度一致</dd>
+            </dl>
+          </div>
+
+          <div class="video-wrap">
+            <div class="video-frame">
+              <iframe src="https://www.youtube.com/embed/zC3qT7_Ua6Y" title="【Computex】展場攤位播放影片" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+          </div>
+        </details>
+
+        <!--
+          下一批影片就再複製一整段 video-batch，改 batch-title 與 batch-intro。
+        -->
+      </section>
+
+      <footer>
+        <div class="contact-card">
+          <strong>聯絡與作品交流</strong>
+          <p>可提供更完整的工具流程說明、作品細節或 demo。若想聊內容工作流、AI 影音或數據工具，歡迎透過 LinkedIn 與我聯繫。</p>
+          <p class="contact-meta">工作地點：新北市新店　・　語言：中文（母語）／英文（多益 880）</p>
+          <div class="contact-links">
+            <a href="https://www.linkedin.com/in/jascty/">LinkedIn</a>
+            <a href="https://github.com/JasChiang">GitHub</a>
+            <a href="/">首頁</a>
+          </div>
+        </div>
+        <p class="footer-meta">© Jas Chiang · Last updated: 2026/06</p>
+      </footer>
+    </main>
+    <script>
+      document.getElementById("theme-toggle").addEventListener("click", function () {
+        var current = document.documentElement.getAttribute("data-theme");
+        var next = current === "dark" ? "light" : "dark";
+        document.documentElement.setAttribute("data-theme", next);
+        try { localStorage.setItem("theme", next); } catch (e) {}
+      });
+
+      // 列印 / 存 PDF 時，先展開所有收合區塊，印完還原
+      (function () {
+        var allDetails = Array.prototype.slice.call(document.querySelectorAll("details"));
+        var snapshot = [];
+        window.addEventListener("beforeprint", function () {
+          snapshot = allDetails.map(function (d) { return d.open; });
+          allDetails.forEach(function (d) { d.open = true; });
+        });
+        window.addEventListener("afterprint", function () {
+          allDetails.forEach(function (d, i) { d.open = snapshot[i]; });
+        });
+      })();
+    </script>
+  </body>
+</html>
