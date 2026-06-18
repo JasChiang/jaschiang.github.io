@@ -220,6 +220,42 @@
         margin-top: 0.28rem;
       }
 
+      /* 經歷時間軸（輕量）*/
+      .timeline {
+        position: relative;
+      }
+
+      .timeline::before {
+        content: "";
+        position: absolute;
+        left: 3.5px;
+        top: 0.55rem;
+        bottom: 0.6rem;
+        width: 2px;
+        background: var(--lightgray);
+      }
+
+      .timeline .role {
+        position: relative;
+        padding-left: 1.45rem;
+      }
+
+      .timeline .role::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0.45rem;
+        width: 9px;
+        height: 9px;
+        border-radius: 50%;
+        background: var(--surface);
+        border: 2px solid var(--secondary);
+      }
+
+      .timeline .role-head .when {
+        color: var(--darkgray);
+      }
+
       /* 技能 */
       .skills {
         display: grid;
@@ -1029,6 +1065,7 @@
       <section>
         <h2 class="block-title">經歷</h2>
 
+        <div class="timeline">
         <div class="role">
           <div class="role-head">
             <strong>神腦國際 Senao International · 內容企劃／製作</strong>
@@ -1070,6 +1107,7 @@
           <ul>
             <li>App 評測與專欄撰寫。</li>
           </ul>
+        </div>
         </div>
       </section>
 
